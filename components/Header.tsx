@@ -6,16 +6,9 @@ import {
   BellIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline';
-import { ChevronDownIcon, MenuIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon, MenuIcon, SearchIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import GlobalSearchField from './GlobalSearchField';
 import Logo from './Logo';
-
-const username = ''; // You can only access a username's profile if you have the authority (teacher or admin)
-/*
-# Profile is a dropdown with options PROFILE and SIGNIN/SIGNOUT
-<Link href={`/profiles/${username}`}>
-*/
 
 const Header: NextPage = () => {
   return (
@@ -24,17 +17,24 @@ const Header: NextPage = () => {
       <Logo />
 
       {/* Global Search Bar */}
-      <GlobalSearchField placeholder="Nach beliebigen Inhalten suchen" />
+      <form className="global-search-field">
+        <SearchIcon className="inline h-7 w-5 cursor-pointer text-gray-700 lg:w-7 lg:p-1" />
+        <input
+          className="h-full w-full rounded-xl border-none p-2 text-[18px] outline-none"
+          placeholder="Nach beliebigen Inhalten suchen"
+        />
+        <button hidden type="submit"></button>
+      </form>
 
       {/* Spaces, Profile and Notifications */}
       <div className="mx-5 flex items-center space-x-2 text-white lg:inline-flex">
-        <Link href="/units">
+        <Link href="/pages">
           <div className="header-tab pr-2">
             <AcademicCapIcon className="icon" />
             <p className="text">Lerneinheiten</p>
           </div>
         </Link>
-        <Link href="/clusters">
+        <Link href="/pages">
           <div className="header-tab pr-2">
             <CubeIcon className="icon" />
             <p className="text">Cluster</p>

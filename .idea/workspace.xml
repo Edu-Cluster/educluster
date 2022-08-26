@@ -4,27 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0d7d911-9254-41b0-a3e8-c765cbc86740" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/educluster.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/DropdownMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/FilterBox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/GlobalSearchField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/List.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Title.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/clusters/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/units/index.tsx" afterDir="false" />
+    <list default="true" id="d0d7d911-9254-41b0-a3e8-c765cbc86740" name="Changes" comment="Continued the setup of the project.">
+      <change afterPath="$PROJECT_DIR$/pages/api/trpc/[trpc].ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/config/default.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/auth.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/createContext.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/createRouter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/deserializeUser.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routers/app.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routers/auth.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/schema/user.schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/utils/jwt.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/utils/prisma.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/GlobalSearchField.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Logo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +63,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\source\web\educluster" />
+      <recent name="C:\source\web\educluster\src" />
+      <recent name="C:\source\web\educluster\client" />
       <recent name="C:\source\web\educluster\pages" />
       <recent name="C:\source\web\educluster\components" />
-      <recent name="C:\source\web\educluster" />
-      <recent name="C:\source\web\educluster\src\srv" />
-      <recent name="C:\source\web\educluster\src\srv\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -132,6 +132,8 @@
       <workItem from="1657976543828" duration="164000" />
       <workItem from="1657977094901" duration="9000" />
       <workItem from="1657977105374" duration="2775000" />
+      <workItem from="1661599674287" duration="2656000" />
+      <workItem from="1661683086413" duration="3974000" />
     </task>
     <task id="LOCAL-00001" summary="Init Project.">
       <created>1655635991507</created>
@@ -154,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657475708964</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Continued the setup of the project.">
+      <created>1661538720093</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661538720093</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +185,8 @@
     <MESSAGE value="Init Project." />
     <MESSAGE value="Created global header component." />
     <MESSAGE value="Improved global header component and initialised cluster and profile pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved global header component and initialised cluster and profile pages." />
+    <MESSAGE value="Continued the setup of the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Continued the setup of the project." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -19,4 +19,10 @@
     .header-menu-tab {
         @apply rounded-lg p-1 text-gray-700 text-2xl lg:hover:bg-blue-200 sm:block md:block lg:hidden;
     }
+
+    .global-search-field {
+        @apply hidden h-12 items-center justify-between rounded-xl border border-2
+        border-gray-200 px-2 transition duration-300 ease-in-out hover:border-gray-400
+        md:flex md:w-[30rem] lg:flex lg:w-[40rem] searchbox-md:lg:w-[24rem];
+    }
 }
