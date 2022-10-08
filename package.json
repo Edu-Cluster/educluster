@@ -21,6 +21,7 @@
     "react": "18.1.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.1.0",
+    "sass": "^1.55.0",
     "superjson": "^1.9.1",
     "webuntis": "^1.22.1",
     "zod": "^3.18.0"

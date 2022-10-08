@@ -5,13 +5,17 @@ import Footer from '../components/Footer';
 import { withTRPC } from '@trpc/next';
 import type { AppRouter } from '../server/routers/app.routes';
 import superjson from 'superjson';
+import { useState } from 'react';
+import '../styles/app.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [isSignedIn, setSignedIn] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header isSignedIn={isSignedIn} />
       <Component {...pageProps} />
-      <Footer />
+      <Footer isSignedIn={isSignedIn} />
     </>
   );
 }
