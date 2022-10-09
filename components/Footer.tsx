@@ -1,9 +1,12 @@
-import React from "react";
-import { NextPage } from "next";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
-const Footer: NextPage = () => {
-  return (
+export type Footer = {
+  isSignedIn: boolean;
+};
+
+const Footer = ({ isSignedIn }: Footer) => {
+  return isSignedIn ? (
     <footer className="flex h-24 w-full items-center justify-center border-t">
       <a
         className="flex items-center justify-center gap-2"
@@ -11,10 +14,12 @@ const Footer: NextPage = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by{" "}
+        Powered by{' '}
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </a>
     </footer>
+  ) : (
+    <></>
   );
 };
 

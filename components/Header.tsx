@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextPage } from 'next';
 import {
   AcademicCapIcon,
   CubeIcon,
@@ -10,8 +9,12 @@ import { ChevronDownIcon, MenuIcon, SearchIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import Logo from './Logo';
 
-const Header: NextPage = () => {
-  return (
+export type Header = {
+  isSignedIn: boolean;
+};
+
+const Header = ({ isSignedIn }: Header) => {
+  return isSignedIn ? (
     <div className="sticky top-0 z-50 mb-8 flex h-20 items-center justify-between bg-white px-8 shadow-lg">
       {/* Logo */}
       <Logo />
@@ -30,28 +33,30 @@ const Header: NextPage = () => {
       <div className="mx-5 flex items-center space-x-2 text-white lg:inline-flex">
         <Link href="/pages">
           <div className="header-tab pr-2">
-            <AcademicCapIcon className="icon" />
+            <AcademicCapIcon className="header-icon" />
             <p className="text">Lerneinheiten</p>
           </div>
         </Link>
         <Link href="/pages">
           <div className="header-tab pr-2">
-            <CubeIcon className="icon" />
+            <CubeIcon className="header-icon" />
             <p className="text">Cluster</p>
           </div>
         </Link>
         <div className="header-tab">
-          <BellIcon className="icon" />
+          <BellIcon className="header-icon" />
         </div>
         <div className="header-tab">
-          <UserCircleIcon className="icon" />
+          <UserCircleIcon className="header-icon" />
           <ChevronDownIcon className="inline h-5 w-5" />
         </div>
         <div className="header-menu-tab">
-          <MenuIcon className="icon" />
+          <MenuIcon className="header-icon" />
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 
