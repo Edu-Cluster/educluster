@@ -1,15 +1,10 @@
 import { TRPCError } from '@trpc/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyJwt } from '../utils/jwt';
-
-export type ContextWithUser = {
-  req: NextApiRequest;
-  res: NextApiResponse;
-  user: Object | null; // TODO
-};
+import { ContextWithUser } from '../../types';
 
 /**
- * Middleware that deserialzes the user if a valid access token and session exist
+ * Deserialzes the user if a valid access token and session exist
  * and if a user associated with those credentials can be found.
  *
  * @param req
@@ -23,17 +18,13 @@ export const deserializeUser = ({
   res: NextApiResponse;
 }): ContextWithUser => {
   try {
+    const { authorization } = req.headers;
     let access_token;
 
     // Get the access token
-    if (
-      // from ??? TODO
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
-    ) {
-      access_token = req.headers.authorization.split(' ')[1];
+    if (authorization && authorization.startsWith('Bearer')) {
+      access_token = authorization.split(' ')[1];
     } else if (req.cookies.access_token) {
-      // from ??? TODO
       access_token = req.cookies.access_token;
     }
 
@@ -48,7 +39,7 @@ export const deserializeUser = ({
       return notAuthenticated;
     }
 
-    // Validate Access Token
+    // Validate access token
     const decoded = verifyJwt(access_token, 'accessTokenPublicKey');
 
     // If no such access token could be decoded, return with empty user
@@ -64,8 +55,8 @@ export const deserializeUser = ({
       return notAuthenticated;
     }
 
-    // Check if user still exist
-    const user = { id: '' }; // TODO
+    // Check if user still exists in the database
+    const user = { id: 0, name: '', password: '' }; // TODO must correspond with User type
 
     // If no user was found, return with empty user
     if (!user) {
@@ -76,7 +67,7 @@ export const deserializeUser = ({
     return {
       req,
       res,
-      user: { ...user, id: user.id },
+      user,
     };
   } catch (err: any) {
     throw new TRPCError({
