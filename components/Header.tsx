@@ -9,11 +9,11 @@ import { ChevronDownIcon, MenuIcon, SearchIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import Logo from './Logo';
 
-export type Header = {
+type Props = {
   isSignedIn: boolean;
 };
 
-const Header = ({ isSignedIn }: Header) => {
+const Header = ({ isSignedIn }: Props) => {
   return isSignedIn ? (
     <div className="sticky top-0 z-50 mb-8 flex h-20 items-center justify-between bg-white px-8 shadow-lg">
       {/* Logo */}
