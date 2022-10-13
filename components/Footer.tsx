@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 
-export type Footer = {
+type Props = {
   isSignedIn: boolean;
 };
 
-const Footer = ({ isSignedIn }: Footer) => {
+const Footer = ({ isSignedIn }: Props) => {
   return isSignedIn ? (
     <footer className="flex h-24 w-full items-center justify-center border-t">
       <a

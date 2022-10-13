@@ -1,15 +1,19 @@
+// Main background color: bg-gray-100 (Tailwindcss)
+$primary-background: #f5f6fa;
+$primary-color: #6a89cc;
+$secondary-color: #546de5;
+
 /* Login Page */
-$input-mask-primary: #f5f6fa;
-$input-box-border-primary: #6a89cc;
-$input-box-border-secondary: #546de5;
-$input-mask-text: black;
-$input-box-text: black;
+
+.pattern-bg {
+    background-image: url('../public/assets/pattern.svg');
+}
 
 .input-mask {
-    background-color: $input-mask-primary;
+    background-color: $primary-background;
     box-shadow: rgba(100, 100, 111, 0.3) 0 7px 29px 0;
     display: grid;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3, 3fr);
 }
 
 .input-box {
@@ -20,34 +24,34 @@ $input-box-text: black;
     & > input:-webkit-autofill:hover,
     & > input:-webkit-autofill:focus,
     & > input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 1000px $input-mask-primary inset;
+        -webkit-box-shadow: 0 0 0 1000px $primary-background inset;
     }
 
     & > input {
         outline: none;
         padding: 10px;
-        border: 1px solid $input-box-border-primary;
+        border: 1px solid $primary-color;
         height: 48px;
         width: 100%;
         border-radius: 5px;
         font-size: 1.3em;
-        background-color: $input-mask-primary;
-        color: $input-box-text;
-        transition: .5s;
-        -webkit-transition: .5s;
+        background-color: $primary-background;
+        color: black;
+        transition: .1s;
+        -webkit-transition: .1s;
 
         &:focus,
         &:valid {
-            border: 1px solid $input-box-border-secondary;
+            border: 2px solid $secondary-color;
         }
 
         &:focus ~ span,
         &:valid ~ span {
-            color: $input-box-border-secondary;
+            color: $secondary-color;
             transform: translateX(10px) translateY(-7px);
             font-size: 0.65em;
             padding: 0 10px;
-            background: $input-mask-primary;
+            background: $primary-background;
         }
     }
 
@@ -57,10 +61,10 @@ $input-box-text: black;
         padding: 10px;
         pointer-events: none;
         font-size: 1em;
-        color: $input-box-border-primary;
+        color: $primary-color;
         text-transform: uppercase;
-        transition: .3s;
-        -webkit-transition: .3s;
+        transition: .2s;
+        -webkit-transition: .2s;
     }
 }
 
@@ -76,7 +80,7 @@ $input-box-text: black;
         height: 0;
 
         &:checked + .slider {
-            background-color: #2196F3;
+            background-color: $primary-color;
         }
 
         &:checked + .slider:before {
@@ -84,7 +88,7 @@ $input-box-text: black;
         }
 
         &:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
+            box-shadow: 0 0 1px $primary-color;
         }
     }
 
@@ -96,8 +100,8 @@ $input-box-text: black;
         right: 0;
         bottom: 0;
         background-color: #ccc;
-        transition: .4s;
-        -webkit-transition: .4s;
+        transition: .2s;
+        -webkit-transition: .2s;
 
         &:before {
             position: absolute;
@@ -107,8 +111,8 @@ $input-box-text: black;
             left: 4px;
             bottom: 4px;
             background-color: white;
-            transition: .4s;
-            -webkit-transition: .4s;
+            transition: .2s;
+            -webkit-transition: .2s;
         }
 
         &.round {
