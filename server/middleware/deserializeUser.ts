@@ -2,7 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyJwt } from '../utils/jwt';
 
-type ContextWithUser = {
+export type ContextWithUser = {
   req: NextApiRequest;
   res: NextApiResponse;
   user: Object | null; // TODO

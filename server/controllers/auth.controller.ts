@@ -6,6 +6,7 @@ import { Context } from '../createContext';
 import { LoginUserInput } from '../schema/user.schema';
 import { verifyJwt, signJwt } from '../utils/jwt';
 import WebUntis from 'webuntis';
+import { ContextWithUser } from '../middleware/deserializeUser';
 
 const cookieOptions: OptionsType = {
   httpOnly: true,
@@ -124,7 +125,7 @@ export const loginHandler = async ({
   }
 };
 
-export const logoutHandler = async (ctx: Context) => {
+export const logoutHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const { req, res, user } = ctx;
 
