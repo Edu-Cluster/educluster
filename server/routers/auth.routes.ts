@@ -4,7 +4,7 @@ import {
   logoutHandler,
   refreshAccessTokenHandler,
 } from '../controllers/auth.controller';
-import { loginUserSchema } from '../schema/user.schema';
+import { loginUserSchema } from '../schemata/user.schema';
 
 export const authRouter = createRouter()
   .mutation('login', {

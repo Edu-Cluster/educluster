@@ -12,8 +12,8 @@ const customConfig: {
   schoolBaseUrl: string;
 } = {
   port: 8000,
-  accessTokenExpiresIn: 15,
-  refreshTokenExpiresIn: 60,
+  accessTokenExpiresIn: 15, // In minutes
+  refreshTokenExpiresIn: 60, // In minutes
   origin: 'http://localhost:3000',
 
   dbUri: process.env.DATABASE_URL as string,
