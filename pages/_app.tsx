@@ -7,10 +7,9 @@ import Footer from '../client/components/Footer';
 import { withTRPC } from '@trpc/next';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { Toaster } from 'react-hot-toast';
-import superjson from 'superjson';
 import type { AppRouter } from '../server/routers/app.routes';
+import superjson from 'superjson';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isSignedIn, setSignedIn] = useState(false);
@@ -21,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Header isSignedIn={isSignedIn} />
       <Component {...pageProps} />
       <Footer isSignedIn={isSignedIn} />
-      <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
 }
@@ -30,13 +28,13 @@ export default withTRPC<AppRouter>({
   config({ ctx }) {
     const url = process.env.NEXT_PUBLIC_VERCEL_URL
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : (process.env.NEXT_PUBLIC_TRPC_ENDPOINT as string);
+      : 'http://localhost:3000/';
 
     const links = [
       loggerLink(),
       httpBatchLink({
         maxBatchSize: 10,
-        url: 'http://localhost:3000/api/trpc',
+        url: `${url}/api/trpc`,
       }),
     ];
 

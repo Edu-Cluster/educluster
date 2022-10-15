@@ -2,7 +2,6 @@ const customConfig: {
   port: number;
   accessTokenExpiresIn: number;
   refreshTokenExpiresIn: number;
-  origin: string;
   dbUri: string;
   accessTokenPrivateKey: string;
   refreshTokenPrivateKey: string;
@@ -14,7 +13,6 @@ const customConfig: {
   port: 8000,
   accessTokenExpiresIn: 15, // In minutes
   refreshTokenExpiresIn: 60, // In minutes
-  origin: 'http://localhost:3000',
 
   dbUri: process.env.DATABASE_URL as string,
   accessTokenPrivateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY as string,

@@ -65,6 +65,7 @@ const LoginPage: NextPage = () => {
                 {...register('username', { required: true })}
                 name="username"
                 type="text"
+                autoComplete="username"
                 required
               />
               <span>Benutzername</span>
@@ -74,6 +75,7 @@ const LoginPage: NextPage = () => {
                 {...register('password', { required: true })}
                 name="password"
                 type="password"
+                autoComplete="current-password"
                 required
               />
               <span>Passwort</span>
