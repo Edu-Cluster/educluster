@@ -5,26 +5,58 @@ import {
   BellIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline';
-import Logo from '../Logo';
+import { MenuIcon } from '@heroicons/react/solid';
+import Logo from './Logo';
 import HoverMenuOption from './HoverMenuOption';
 import NotificationBell from './NotificationBell';
 import ProfileBadge from './ProfileBadge';
-import { MenuIcon } from '@heroicons/react/solid';
 import MenuDrawer from './MenuDrawer';
+import SettingsCog from './SettingsCog';
+import useStore from '../../client/store';
 
-type Props = {
-  isSignedIn: boolean;
-};
+// Notification Bell
+const notifications = [
+  'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
+  'test2',
+  'test3',
+  'test4',
+  'test5',
+  'test6',
+  'test7',
+  'test8',
+];
 
-const Header = ({ isSignedIn }: Props) => {
-  return isSignedIn ? (
+// Menu Drawer
+const options = [
+  'Lerneinheit finden',
+  'Cluster finden',
+  'Cluster erstellen',
+  'Profil',
+  'Ausloggen',
+  'Einstellungen',
+];
+const notificationOptions = [
+  'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
+  'test2',
+  'test3',
+  'test4',
+  'test5',
+  'test6',
+  'test7',
+  'test8',
+];
+
+const Header = () => {
+  const user = useStore().authUser;
+
+  return user ? (
     <div className="sticky top-0 z-50 mb-8 flex h-20 items-center justify-between bg-white px-12 lg:px-36 shadow-lg">
       <Logo />
 
       <div className="mx-5 flex items-center space-x-3 text-white lg:inline-flex">
-        <HoverMenuOption options={['Termin suchen']}>
+        <HoverMenuOption options={['Lerneinheit suchen']}>
           <AcademicCapIcon className="header-icon" />
-          <p className="text">Termin</p>
+          <p className="text">Lerneinheit</p>
         </HoverMenuOption>
 
         <HoverMenuOption options={['Cluster suchen', 'Cluster erstellen']}>
@@ -32,45 +64,17 @@ const Header = ({ isSignedIn }: Props) => {
           <p className="text">Cluster</p>
         </HoverMenuOption>
 
-        <ProfileBadge options={['Profil', 'Einstellungen', 'Ausloggen']}>
+        <ProfileBadge options={['Ausloggen']}>
           <UserCircleIcon className="header-icon" />
         </ProfileBadge>
 
-        <NotificationBell
-          options={[
-            'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
-            'test2',
-            'test3',
-            'test4',
-            'test5',
-            'test6',
-            'test7',
-            'test8',
-          ]}
-        >
+        <NotificationBell notifications={notifications}>
           <BellIcon className="header-icon" />
         </NotificationBell>
 
-        <MenuDrawer
-          options={[
-            'Termin finden',
-            'Cluster finden',
-            'Cluster erstellen',
-            'Profil',
-            'Einstellungen',
-            'Ausloggen',
-          ]}
-          notificationOptions={[
-            'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
-            'test2',
-            'test3',
-            'test4',
-            'test5',
-            'test6',
-            'test7',
-            'test8',
-          ]}
-        >
+        <SettingsCog />
+
+        <MenuDrawer options={options} notificationOptions={notificationOptions}>
           <MenuIcon className="header-icon" />
         </MenuDrawer>
       </div>

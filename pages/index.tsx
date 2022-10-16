@@ -1,34 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { deleteCookie, setCookie } from 'cookies-next';
 import { useForm } from 'react-hook-form';
 import { trpc } from '../client/trpc';
+import useStore from '../client/store';
 import toast from 'react-hot-toast';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
-  // TODO Store variable
-
+  const store = useStore();
   const { register, setValue, getValues, handleSubmit } = useForm();
 
-  /*
-  * const query = trpc.useQuery(['user.me'], {
+  useEffect(() => {
+    deleteCookie('session');
+    store.setAuthUser(null);
+  }, []);
+
+  const query = trpc.useQuery(['user.me'], {
     enabled: false,
     onSuccess: (data) => {
-      // TODO Set store state
+      store.setAuthUser(data.user);
+
+      // Set browser cookie
+      setCookie('session', data.user, { maxAge: 60 * 60 });
     },
   });
-  * */
 
   const { mutate: loginUser } = trpc.useMutation(['auth.login'], {
     async onSuccess(data) {
       if (data) {
-        // TODO Save JWT Token as a cookie in the browser
-        // TODO await query.refetch();
+        // Fetch user and set store state
+        await query.refetch();
+
+        toast.dismiss();
+
+        // Redirect to dashboard
         await router.push('./dashboard');
         return;
       }
 
+      toast.remove();
       toast.error('Der Benutzername oder das Passwort ist falsch!');
     },
 
@@ -46,6 +58,8 @@ const LoginPage: NextPage = () => {
 
     // Send login POST request to auth router
     loginUser({ username, password });
+
+    toast.loading('Es wird nach Ihrem Profil gesucht...');
 
     // Reset input fields
     setValue('username', '');

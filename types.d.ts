@@ -1,4 +1,4 @@
-import {NextApiRequest, NextApiResponse} from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export type ContextWithUser = {
   req: NextApiRequest;
@@ -9,5 +9,4 @@ export type ContextWithUser = {
 export type User = {
   id: number;
   name: string;
-  password: string;
 };

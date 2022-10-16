@@ -1,19 +1,30 @@
 import create from 'zustand';
 import { User } from '../types';
 
+// Note: Store only contains states that cannot be isolated in a single component
+
 type Store = {
   authUser: User | null;
-  pageLoading: boolean;
-  setAuthUser: (user: User) => void;
-  setPageLoading: (isLoading: boolean) => void;
+  setAuthUser: (user: User | null) => void;
+
+  introPopupOpen: boolean;
+  setIntroPopupOpen: (isOpen: boolean) => void;
+
+  settingsPopupOpen: boolean;
+  setSettingsPopupOpen: (isOpen: boolean) => void;
 };
 
 const useStore = create<Store>((set) => ({
   authUser: null,
-  pageLoading: false,
   setAuthUser: (user) => set((state) => ({ ...state, authUser: user })),
-  setPageLoading: (isLoading) =>
-    set((state) => ({ ...state, pageLoading: isLoading })),
+
+  settingsPopupOpen: false,
+  setSettingsPopupOpen: (isOpen) =>
+    set((state) => ({ ...state, settingsPopupOpen: isOpen })),
+
+  introPopupOpen: false,
+  setIntroPopupOpen: (isOpen) =>
+    set((state) => ({ ...state, introPopupOpen: isOpen })),
 }));
 
 export default useStore;

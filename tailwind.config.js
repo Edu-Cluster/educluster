@@ -8,8 +8,10 @@ module.exports = {
     extend: {
       screens: {
         'searchbox-md': { max: '1350px' },
+        'screen-xxl': { min: '1350px' },
+        'screen-xxxl': { min: '1550px' },
       },
     },
   },
   plugins: [],
-}
+};

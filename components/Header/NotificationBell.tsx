@@ -2,8 +2,9 @@ import React, { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 
 type Props = {
+  // TODO if notification is an invitation, you should have buttons to accept/reject it
   children: ReactNode;
-  options: string[];
+  notifications: string[];
 };
 
 const NotificationBell = (props: Props) => {
@@ -40,25 +41,24 @@ const NotificationBell = (props: Props) => {
     <div className="inline-block relative">
       <div
         id="dropdown-bell"
-        className="rounded-lg p-1 text-gray-700 text-[22px] hover:bg-gray-200 hidden md:block cursor-pointer searchbox-md:text-[18px]
-      transition ease-in-out duration-300 hover:text-black dropdown-click'"
+        className="header-option dropdown-click"
         onClick={toggleDropdownBell}
       >
         {props.children}
       </div>
       <div
         id="dropdown-bell-content"
-        className="hidden absolute right-[-50%] bg-white w-[400px] h-[500px] overflow-auto shadow-2xl flex-col items-start dropdown-content-click"
+        className="hidden absolute right-[-50%] bg-white w-[400px] h-[500px] overflow-auto shadow-2xl flex-col items-start dropdown-content-click rounded-md"
       >
         <div className="w-full divide-y mt-2">
-          {props.options.map((option, idx) => (
+          {props.notifications.map((notification, idx) => (
             <Link key={idx} href="/">
               <div className="w-full hover:bg-gray-100 px-4 py-2 flex justify-around">
                 <div className="w-full break-words">
                   <p className="text text-sm font-semibold block mb-[-5px]">
                     Geplante Lerneinheit
                   </p>
-                  <p className="text text-sm leading-tight">{option}</p>
+                  <p className="text text-sm leading-tight">{notification}</p>
                 </div>
               </div>
             </Link>

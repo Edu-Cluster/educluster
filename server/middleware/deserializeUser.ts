@@ -18,7 +18,11 @@ export const deserializeUser = ({
   res: NextApiResponse;
 }): ContextWithUser => {
   try {
-    const { authorization } = req.headers;
+    return { req, res, user: { id: 1, name: 'test' } };
+
+    // TODO
+    /*
+    * const { authorization } = req.headers;
     let access_token;
 
     // Get the access token
@@ -48,7 +52,7 @@ export const deserializeUser = ({
     }
 
     // Check if user has a valid session
-    const session = ''; // TODO
+    const session = ''; // TODO Retrieve session from database
 
     // If no valid session was found, return with empty user
     if (!session) {
@@ -56,7 +60,7 @@ export const deserializeUser = ({
     }
 
     // Check if user still exists in the database
-    const user = { id: 0, name: '', password: '' }; // TODO must correspond with User type
+    const user = { id: 0, name: '' }; // TODO Retrieve user from database
 
     // If no user was found, return with empty user
     if (!user) {
@@ -69,6 +73,7 @@ export const deserializeUser = ({
       res,
       user,
     };
+    * */
   } catch (err: any) {
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
