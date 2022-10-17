@@ -125,4 +125,8 @@ $secondary-color: #546de5;
     }
 }
 
-/* ... */
+/* Dashboard Page */
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { trpc } from '../client/utils/trpc';
+import { trpc } from '../client/trpc';
 import toast from 'react-hot-toast';
 
 const LoginPage: NextPage = () => {
