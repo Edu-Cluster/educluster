@@ -1,9 +1,9 @@
 import '../styles/globals.css';
 import '../styles/app.scss';
+import 'react-modern-drawer/dist/index.css';
 import React, { useState } from 'react';
 import type { AppProps } from 'next/app';
-import Header from '../client/components/Header';
-import Footer from '../client/components/Footer';
+import Header from '../components/Header/Header';
 import { withTRPC } from '@trpc/next';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Toaster position="top-center" reverseOrder={false} />
       <Header isSignedIn={isSignedIn} />
       <Component {...pageProps} />
-      <Footer isSignedIn={isSignedIn} />
     </>
   );
 }
