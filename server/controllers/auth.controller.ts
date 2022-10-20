@@ -7,7 +7,7 @@ import { verifyJwt, signJwt } from '../utils/jwt';
 import { signTokens } from '../services/user.service';
 import customConfig from '../config/default';
 import WebUntis from 'webuntis';
-import {ContextWithUser} from "../../types";
+import { ContextWithUser } from '../../types';
 
 // Options
 const cookieOptions: OptionsType = {
@@ -41,8 +41,6 @@ export const refreshAccessTokenHandler = async ({
   ctx: Context;
 }) => {
   try {
-    // TODO see what happens if error is thrown
-
     // Get the refresh token from cookie
     const refresh_token = getCookie('refresh_token', { req, res }) as string;
     const message = 'Could not refresh access token!';
@@ -141,7 +139,7 @@ export const loginHandler = async ({
       password,
     });
 
-    // Insert encoded credentials into the database
+    // TODO Create session and insert it into the database
 
     // Send access token in cookie
     setCookie('access_token', access_token, {
@@ -175,7 +173,7 @@ export const loginHandler = async ({
 
 /**
  * Handles the logout process.
- * Note: The logout process only concerns EduCluster and has no relation to the untis logout process.
+ * Note: The logout process only concerns EduCluster and has no relation to the WebUntis logout process.
  *
  * @param ctx
  */
@@ -184,7 +182,7 @@ export const logoutHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
     const { req, res, user } = ctx;
     console.log(user);
 
-    // Delete session and credentials from database
+    // TODO Delete session and credentials from database
 
     // Reset browser cookies
     setCookie('access_token', '', { req, res, maxAge: -1 });

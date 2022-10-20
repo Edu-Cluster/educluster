@@ -1,23 +1,22 @@
 import '../styles/globals.css';
 import '../styles/app.scss';
 import 'react-modern-drawer/dist/index.css';
-import React, { useState } from 'react';
-import type { AppProps } from 'next/app';
+import React from 'react';
 import Header from '../components/Header/Header';
 import { withTRPC } from '@trpc/next';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { Toaster } from 'react-hot-toast';
-import type { AppRouter } from '../server/routers/app.routes';
 import superjson from 'superjson';
+import type { AppProps } from 'next/app';
+import type { AppRouter } from '../server/routers/app.routes';
 
+// TODO add global popups: intro, settings, etc
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isSignedIn, setSignedIn] = useState(false);
-
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <Header isSignedIn={isSignedIn} />
+      <Header />
       <Component {...pageProps} />
     </>
   );

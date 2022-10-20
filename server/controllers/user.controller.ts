@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server';
-import {ContextWithUser} from "../../types";
+import { ContextWithUser } from '../../types';
 
 export const getMeHandler = ({ ctx }: { ctx: ContextWithUser }) => {
   try {
@@ -7,9 +7,7 @@ export const getMeHandler = ({ ctx }: { ctx: ContextWithUser }) => {
 
     return {
       status: 'success',
-      data: {
-        user,
-      },
+      user,
     };
   } catch (err: any) {
     throw new TRPCError({

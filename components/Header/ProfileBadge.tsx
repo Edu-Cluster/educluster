@@ -9,9 +9,7 @@ type Props = {
 const ProfileBadge = (props: Props) => {
   return (
     <div className="inline-block relative dropdown">
-      <div className="rounded-lg p-1 text-gray-700 text-[22px] hover:bg-gray-200 hidden md:block cursor-pointer searchbox-md:text-[18px] transition ease-in-out duration-300 hover:text-black">
-        {props.children}
-      </div>
+      <div className="header-option">{props.children}</div>
       <div className="hidden absolute right-[-30%] bg-white w-40 overflow-auto shadow-2xl flex-col items-start dropdown-content">
         <div className="h-[55px] w-full pl-6 mb-2 border-b-[1px]">
           <p className="text text-xs">Eingeloggt als</p>
