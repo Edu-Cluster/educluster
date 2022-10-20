@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { deleteCookie, setCookie } from 'cookies-next';
@@ -11,6 +11,7 @@ const LoginPage: NextPage = () => {
   const router = useRouter();
   const store = useStore();
   const { register, setValue, getValues, handleSubmit } = useForm();
+  const [isSliderOn, setSliderOn] = useState(false);
 
   useEffect(() => {
     deleteCookie('session');
@@ -23,7 +24,13 @@ const LoginPage: NextPage = () => {
       store.setAuthUser(data.user);
 
       // Set browser cookie
-      setCookie('session', data.user, { maxAge: 60 * 60 });
+      if (isSliderOn) {
+        // Persistent cookie
+        setCookie('session', data.user, { maxAge: 60 * 60 * 24 * 999 });
+      } else {
+        // Non-persistent cookie
+        setCookie('session', data.user);
+      }
     },
   });
 
@@ -100,7 +107,10 @@ const LoginPage: NextPage = () => {
           <div className="flex flex-col items-center">
             <span className="text-xs mb-2">Angemeldet bleiben</span>
             <label className="switch">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => setSliderOn((prevState) => !prevState)}
+              />
               <span className="slider round"></span>
             </label>
           </div>
