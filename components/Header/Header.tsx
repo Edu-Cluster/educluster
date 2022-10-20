@@ -64,7 +64,9 @@ const Header = () => {
           <p className="text">Cluster</p>
         </HoverMenuOption>
 
-        <ProfileBadge options={['Ausloggen']}>
+        <ProfileBadge
+          options={[{ text: 'Ausloggen', isLogout: true, link: null }]}
+        >
           <UserCircleIcon className="header-icon" />
         </ProfileBadge>
 
