@@ -1,12 +1,22 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
+import useStore from '../../client/store';
+import { deleteCookie } from 'cookies-next';
 
 type Props = {
   children: ReactNode;
-  options: string[];
+  options: { text: string; link: string | null; isLogout: boolean }[];
 };
 
 const ProfileBadge = (props: Props) => {
+  const store = useStore();
+
+  const handleLogout = () => {
+    deleteCookie('session');
+    store.setAuthUser(null);
+    document.location.href = './';
+  };
+
   return (
     <div className="inline-block relative dropdown">
       <div className="header-option">{props.children}</div>
@@ -17,9 +27,12 @@ const ProfileBadge = (props: Props) => {
         </div>
         <div className="w-full">
           {props.options.map((option, idx) => (
-            <Link key={idx} href="/">
-              <div className="w-full hover:bg-gray-200 p-2 pl-6 cursor-pointer">
-                <p className="text">{option}</p>
+            <Link key={idx} href={option.link || ''}>
+              <div
+                className="w-full hover:bg-gray-200 p-2 pl-6 cursor-pointer"
+                onClick={option.isLogout ? handleLogout : undefined}
+              >
+                <p className="text">{option.text}</p>
               </div>
             </Link>
           ))}
