@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { deleteCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { useForm } from 'react-hook-form';
 import { trpc } from '../client/trpc';
 import useStore from '../client/store';
@@ -14,6 +14,11 @@ const LoginPage: NextPage = () => {
   const [isSliderOn, setSliderOn] = useState(false);
 
   useEffect(() => {
+    if (getCookie('session')) {
+      document.location.href = './dashboard';
+      return;
+    }
+
     deleteCookie('session');
     store.setAuthUser(null);
   }, []);
