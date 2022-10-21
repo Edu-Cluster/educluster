@@ -29,7 +29,7 @@ export default withTRPC<AppRouter>({
       : 'http://localhost:3000/';
 
     const links = [
-      loggerLink(),
+      // loggerLink()
       httpBatchLink({
         maxBatchSize: 10,
         url: `${url}/api/trpc`,
