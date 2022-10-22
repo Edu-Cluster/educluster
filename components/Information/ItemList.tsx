@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from '../Information/Item';
 import Tag from '../Information/Tag';
-import { Item } from '../types';
+import type { Item } from '../../types';
 
 type Props = {
   items: Item[];

@@ -1,10 +1,8 @@
-import '../styles/globals.css';
-import '../styles/app.scss';
+import '../styles/globals.scss';
 import 'react-modern-drawer/dist/index.css';
 import React from 'react';
 import Header from '../components/Header/Header';
 import { withTRPC } from '@trpc/next';
-import { loggerLink } from '@trpc/client/links/loggerLink';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { Toaster } from 'react-hot-toast';
 import superjson from 'superjson';
@@ -29,7 +27,6 @@ export default withTRPC<AppRouter>({
       : 'http://localhost:3000/';
 
     const links = [
-      // loggerLink()
       httpBatchLink({
         maxBatchSize: 10,
         url: `${url}/api/trpc`,

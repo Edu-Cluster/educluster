@@ -55,10 +55,10 @@ const NotificationBell = (props: Props) => {
             <Link key={idx} href="/">
               <div className="w-full hover:bg-gray-100 px-4 py-2 flex justify-around">
                 <div className="w-full break-words">
-                  <p className="text text-sm font-semibold block mb-[-5px]">
+                  <p className="text-sm font-semibold block mb-[-5px]">
                     Geplante Lerneinheit
                   </p>
-                  <p className="text text-sm leading-tight">{notification}</p>
+                  <p className="text-sm leading-tight">{notification}</p>
                 </div>
               </div>
             </Link>

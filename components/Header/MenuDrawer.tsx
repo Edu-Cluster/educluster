@@ -51,7 +51,7 @@ const HoverMenuOption = (props: Props) => {
             {props.options.map((option, idx) => (
               <Link key={idx} href="/">
                 <div className="w-full hover:bg-gray-200 p-2 pl-4 cursor-pointer">
-                  <p className="text">{option}</p>
+                  <p>{option}</p>
                 </div>
               </Link>
             ))}
@@ -60,7 +60,7 @@ const HoverMenuOption = (props: Props) => {
                 className="w-full hover:bg-gray-200 p-2 pl-4 cursor-pointer"
                 onClick={toggleNotificationsDropdown}
               >
-                <p className="text mr-1">Benachrichtigungen</p>
+                <p className="mr-1">Benachrichtigungen</p>
                 {!dropdownIsOpen ? (
                   <ChevronDownIcon className="inline h-5 w-5" />
                 ) : (
@@ -76,10 +76,10 @@ const HoverMenuOption = (props: Props) => {
                 <Link key={idx} href="/">
                   <div className="w-full hover:bg-gray-100 px-4 py-2 flex justify-around">
                     <div className="w-full break-words">
-                      <p className="text text-sm font-semibold block mb-[-5px]">
+                      <p className="text-sm font-semibold block mb-[-5px]">
                         Geplante Lerneinheit
                       </p>
-                      <p className="text text-sm leading-tight">{option}</p>
+                      <p className="text-sm leading-tight">{option}</p>
                     </div>
                   </div>
                 </Link>
