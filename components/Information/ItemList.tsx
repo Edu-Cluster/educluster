@@ -26,22 +26,24 @@ const ItemList = ({ items, title }: Props) => {
       ) : (
         <></>
       )}
-      <div className="h-full w-full overflow-y-auto divide-y card flex flex-col justify-between">
-        {items[page - 1].map((item, idx) => (
-          <ListItem
-            key={idx}
-            type={item.type}
-            title={item.title}
-            description={item.description}
-            host={item.host}
-            room={item.room}
-            link={item.link}
-          >
-            {item.type.category &&
-              item.tags &&
-              item.tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
-          </ListItem>
-        ))}
+      <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
+        <div className="h-fit divide-y">
+          {items[page - 1].map((item, idx) => (
+            <ListItem
+              key={idx}
+              type={item.type}
+              title={item.title}
+              description={item.description}
+              host={item.host}
+              room={item.room}
+              link={item.link}
+            >
+              {item.type.category &&
+                item.tags &&
+                item.tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
+            </ListItem>
+          ))}
+        </div>
         <div className="py-3 flex justify-center items-center gap-2">
           {items.map((item, idx) => (
             <div
