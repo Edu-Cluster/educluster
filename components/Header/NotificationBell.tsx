@@ -41,7 +41,7 @@ const NotificationBell = (props: Props) => {
     <div className="inline-block relative">
       <div
         id="dropdown-bell"
-        className="header-option dropdown-click"
+        className="header-option block dropdown-click"
         onClick={toggleDropdownBell}
       >
         {props.children}
