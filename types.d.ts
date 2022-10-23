@@ -26,6 +26,5 @@ export type Item = {
   description: string;
   host: string;
   room: string | null;
-  participants: string[];
-  maxParticipants: number;
+  link: string;
 };
