@@ -31,19 +31,8 @@ const options = [
   'Lerneinheit finden',
   'Cluster finden',
   'Cluster erstellen',
-  'Profil',
   'Ausloggen',
   'Einstellungen',
-];
-const notificationOptions = [
-  'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
-  'test2',
-  'test3',
-  'test4',
-  'test5',
-  'test6',
-  'test7',
-  'test8',
 ];
 
 const Header = () => {
@@ -76,7 +65,7 @@ const Header = () => {
 
         <SettingsCog />
 
-        <MenuDrawer options={options} notificationOptions={notificationOptions}>
+        <MenuDrawer options={options}>
           <MenuIcon className="header-icon" />
         </MenuDrawer>
       </div>
