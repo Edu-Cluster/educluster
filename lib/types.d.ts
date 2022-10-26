@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type User = {
+  // TODO Lara: Typ-Properties anpassen (muss mit der Person-Tabelle aus der DB übereinstimmen)
   id: number;
   name: string;
 };

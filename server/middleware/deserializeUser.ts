@@ -1,11 +1,10 @@
 import { TRPCError } from '@trpc/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyJwt } from '../utils/jwt';
-import { ContextWithUser } from '../../types';
+import { ContextWithUser } from '../../lib/types';
 
 /**
- * Deserialzes the user if a valid access token and session exist
- * and if a user associated with those credentials can be found.
+ * Deserializes the user if a valid access token and session exist and if a user associated with those credentials can be found.
  *
  * @param req
  * @param res
@@ -18,11 +17,7 @@ export const deserializeUser = ({
   res: NextApiResponse;
 }): ContextWithUser => {
   try {
-    return { req, res, user: { id: 1, name: 'test' } };
-
-    // TODO
-    /*
-    * const { authorization } = req.headers;
+    const { authorization } = req.headers;
     let access_token;
 
     // Get the access token
@@ -52,7 +47,7 @@ export const deserializeUser = ({
     }
 
     // Check if user has a valid session
-    const session = ''; // TODO Retrieve session from database
+    const session = ''; // TODO Lara: Nach session suchen in der Datenbank mit userId (decoded.sub)
 
     // If no valid session was found, return with empty user
     if (!session) {
@@ -60,7 +55,7 @@ export const deserializeUser = ({
     }
 
     // Check if user still exists in the database
-    const user = { id: 0, name: '' }; // TODO Retrieve user from database
+    const user = { id: 0, name: '' }; // TODO Lara: Nach user suchen in der Datenbank mit EduCluster username (decoded.sub)
 
     // If no user was found, return with empty user
     if (!user) {
@@ -73,7 +68,6 @@ export const deserializeUser = ({
       res,
       user,
     };
-    * */
   } catch (err: any) {
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',

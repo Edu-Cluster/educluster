@@ -1,6 +1,6 @@
 import { createRouter } from '../createRouter';
-import * as trpc from '@trpc/server';
 import { getMeHandler } from '../controllers/user.controller';
+import * as trpc from '@trpc/server';
 
 export const userRouter = createRouter()
   .middleware(async ({ ctx, next }) => {

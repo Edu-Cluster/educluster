@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { User } from '../types';
+import { User } from '../lib/types';
 
 // Note: Store only contains states that cannot be isolated in a single component
 
