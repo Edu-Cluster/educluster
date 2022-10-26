@@ -1,25 +1,25 @@
 import { TRPCError } from '@trpc/server';
 import { OptionsType } from 'cookies-next/lib/types';
-import { getCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { Context } from '../createContext';
-import { LoginUserInput } from '../schemata/user.schema';
+import { LoginUserInput, registerUserSchema } from '../schemata/user.schema';
 import { verifyJwt, signJwt } from '../utils/jwt';
 import { signTokens } from '../services/user.service';
 import customConfig from '../config/default';
 import WebUntis from 'webuntis';
-import { ContextWithUser } from '../../types';
+import { ContextWithUser } from '../../lib/types';
+import { statusCodes } from '../../lib/enums';
 
 // Options
 const cookieOptions: OptionsType = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax',
+  secure: process.env.NODE_ENV === 'production',
 };
 
 const accessTokenCookieOptions: OptionsType = {
   ...cookieOptions,
   expires: new Date(Date.now() + customConfig.accessTokenExpiresIn * 60 * 1000),
-  secure: process.env.NODE_ENV === 'production',
 };
 
 const refreshTokenCookieOptions: OptionsType = {
@@ -29,8 +29,10 @@ const refreshTokenCookieOptions: OptionsType = {
   ),
 };
 
+// TODO Denis: Throw more specific errors once failure cases can be tested
+
 /**
- * ?
+ * Refreshes the access token.
  *
  * @param req
  * @param res
@@ -60,23 +62,27 @@ export const refreshAccessTokenHandler = async ({
     }
 
     // Check if the user has a valid session
-    const session = ''; // TODO query for session with decoded.sub
+    const session = ''; // TODO Lara: Nach session suchen in der Datenbank mit userId (decoded.sub)
 
     if (!session) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
-    // Check if the user exist
-    const user = { id: '' }; // TODO query database for username and password with JSON.parse(session).id
+    // Check if the user with this session still exists
+    const user = { username: '' }; // TODO Lara: Nach user suchen in der Datenbank mit EduCluster username (decoded.sub)
 
-    if (!user) {
+    if (!user || user.username !== decoded.sub) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
     // Sign new access token
-    const access_token = signJwt({ sub: user.id }, 'accessTokenPrivateKey', {
-      expiresIn: `${customConfig.accessTokenExpiresIn}m`,
-    });
+    const access_token = signJwt(
+      { sub: user.username },
+      'accessTokenPrivateKey',
+      {
+        expiresIn: `${customConfig.accessTokenExpiresIn}m`,
+      },
+    );
 
     // Send the access token as cookie
     setCookie('access_token', access_token, {
@@ -84,7 +90,7 @@ export const refreshAccessTokenHandler = async ({
       res,
       ...accessTokenCookieOptions,
     });
-    setCookie('logged_in', 'true', {
+    setCookie('session', 'true', {
       req,
       res,
       ...accessTokenCookieOptions,
@@ -93,12 +99,49 @@ export const refreshAccessTokenHandler = async ({
 
     // Send response
     return {
-      status: 'success',
-      access_token,
+      status: statusCodes.SUCCESS,
+      data: {
+        access_token,
+      },
     };
   } catch (err: any) {
-    console.log(err);
-    throw err;
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+/**
+ * Handles the registration process.
+ *
+ * @param input
+ */
+export const registerHandler = async ({
+  input,
+}: {
+  input: registerUserSchema;
+}) => {
+  try {
+    const { username, email } = input;
+
+    // Check if username doesn't exist in the database
+    const user = ''; // TODO Lara
+
+    if (user) {
+      // User with this username/email already exists in the database
+      return { status: statusCodes.FAILURE };
+    }
+
+    // User with this username/email doesn't exist, so update this user with the provided input
+    // TODO Lara
+
+    return { status: statusCodes.SUCCESS };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
   }
 };
 
@@ -117,7 +160,7 @@ export const loginHandler = async ({
   ctx: Context;
 }) => {
   try {
-    const { username, password } = input;
+    const { username, password, persistentCookie } = input;
 
     // Check if we can find a user on the untis system with the provided credentials
     const untis = new WebUntis(
@@ -126,48 +169,56 @@ export const loginHandler = async ({
       password,
       customConfig.schoolBaseUrl,
     );
-    const loginResult = await untis.login();
 
-    await untis.logout();
+    try {
+      // Attempt login, then logout
+      await untis.login();
+      await untis.logout();
+    } catch (err: any) {
+      return { status: statusCodes.FAILURE };
+    }
 
-    return loginResult;
-    // TODO remove the above once you have an idea how to proceed
+    // Check if user with given untis username has EduCluster username in the database
+    const user = ''; // TODO Lara
 
-    // Create the access token and refresh tokens
-    const { access_token, refresh_token } = await signTokens({
-      username,
-      password,
-    });
+    if (!user) {
+      // No such user in the database yet, so we will need more information
+      return { status: statusCodes.TENTATIVE };
+    }
 
-    // TODO Create session and insert it into the database
+    // User already exists -> create the access and refresh tokens
+    const { access_token, refresh_token } = await signTokens(''); // TODO Lara: EduCluster username mitgeben (user.username?)
 
-    // Send access token in cookie
+    // Set browser cookies
     setCookie('access_token', access_token, {
       req,
       res,
       ...accessTokenCookieOptions,
     });
-
     setCookie('refresh_token', refresh_token, {
       req,
       res,
       ...refreshTokenCookieOptions,
     });
-
-    setCookie('logged_in', 'true', {
+    setCookie('session', 'true', {
       req,
       res,
-      ...accessTokenCookieOptions,
-      httpOnly: false,
+      ...cookieOptions,
+      maxAge: persistentCookie ? 60 * 60 * 24 * 999 : undefined,
     });
 
     // Send access token
     return {
-      status: 'success',
-      access_token,
+      status: statusCodes.SUCCESS,
+      data: {
+        access_token,
+      },
     };
   } catch (err: any) {
-    console.log(err);
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
   }
 };
 
@@ -180,18 +231,20 @@ export const loginHandler = async ({
 export const logoutHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const { req, res, user } = ctx;
-    console.log(user);
 
-    // TODO Delete session and credentials from database
+    // Delete session and credentials from database
+    // TODO Lara (user.id)
 
     // Reset browser cookies
-    setCookie('access_token', '', { req, res, maxAge: -1 });
-    setCookie('refresh_token', '', { req, res, maxAge: -1 });
-    setCookie('logged_in', '', { req, res, maxAge: -1 });
+    deleteCookie('access_token');
+    deleteCookie('refresh_token');
+    deleteCookie('session');
 
-    return { status: 'success' };
+    return { status: statusCodes.SUCCESS };
   } catch (err: any) {
-    console.log(err);
-    throw err;
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
   }
 };

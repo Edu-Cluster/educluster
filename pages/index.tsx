@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { getCookie } from 'cookies-next';
 import ItemList from '../components/Information/ItemList';
 import useStore from '../client/store';
-import type { User, Item } from '../types';
+import type { User, Item } from '../lib/types';
 import type { NextPage } from 'next';
 
 const learningUnits: Item[][] = [

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie } from 'cookies-next';
 import { useForm } from 'react-hook-form';
 import { trpc } from '../client/trpc';
 import useStore from '../client/store';
 import toast from 'react-hot-toast';
+import { statusCodes } from '../lib/enums';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -25,42 +26,38 @@ const LoginPage: NextPage = () => {
 
   const query = trpc.useQuery(['user.me'], {
     enabled: false,
-    onSuccess: (data) => {
+    onSuccess: ({ data }) => {
       store.setAuthUser(data.user);
-
-      // Set browser cookie
-      if (isSliderOn) {
-        // Persistent cookie
-        setCookie('session', data.user, { maxAge: 60 * 60 * 24 * 999 });
-      } else {
-        // Non-persistent cookie
-        setCookie('session', data.user);
-      }
     },
   });
 
   const { mutate: loginUser } = trpc.useMutation(['auth.login'], {
     async onSuccess(data) {
-      if (data) {
+      toast.dismiss();
+
+      if (data.data) {
         // Fetch user and set store state
         await query.refetch();
-
-        toast.dismiss();
 
         // Redirect to dashboard
         await router.push('./');
         return;
+      } else if (data.status === statusCodes.TENTATIVE) {
+        // TODO Denis Render prompt for Teams e-Mail and EduCluster username
+      } else if (data.status === statusCodes.FAILURE) {
+        toast.error('Der Benutzername oder das Passwort ist falsch!');
       }
-
-      toast.remove();
-      toast.error('Der Benutzername oder das Passwort ist falsch!');
     },
 
     onError(error: any) {
+      toast.dismiss();
+
       // Internal server error
       error.response.errors.forEach((err: any) => {
         console.error(err);
       });
+
+      toast.error('Internal Server Error!');
     },
   });
 
@@ -68,10 +65,10 @@ const LoginPage: NextPage = () => {
     // Get values from the input fields
     const { username, password } = getValues();
 
-    // Send login POST request to auth router
-    loginUser({ username, password });
-
     toast.loading('Es wird nach Ihrem Profil gesucht...');
+
+    // Send login POST request to auth router
+    loginUser({ username, password, persistentCookie: isSliderOn });
 
     // Reset input fields
     setValue('username', '');

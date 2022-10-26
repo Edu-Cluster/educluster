@@ -1,7 +1,10 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import useStore from '../../client/store';
-import { deleteCookie } from 'cookies-next';
+import { trpc } from '../../client/trpc';
+import toast from 'react-hot-toast';
+import { statusCodes } from '../../lib/enums';
+import { useRouter } from 'next/router';
 
 type Props = {
   children: ReactNode;
@@ -9,10 +12,38 @@ type Props = {
 };
 
 const ProfileBadge = (props: Props) => {
+  const router = useRouter();
   const store = useStore();
 
+  const { mutate: logoutUser } = trpc.useMutation(['auth.logout'], {
+    async onSuccess(data) {
+      toast.dismiss();
+
+      if (data.status === statusCodes.SUCCESS) {
+        // Redirect to login page
+        await router.push('./login');
+      } else {
+        toast.error('Oops: Irgendwas ist falsch gelaufen!');
+      }
+    },
+
+    onError(error: any) {
+      toast.dismiss();
+
+      // Internal server error
+      error.response.errors.forEach((err: any) => {
+        console.error(err);
+      });
+
+      toast.error('Internal Server Error!');
+    },
+  });
+
   const handleLogout = () => {
-    deleteCookie('session');
+    toast.loading('Sie werden ausgeloggt...');
+
+    logoutUser();
+
     store.setAuthUser(null);
     document.location.href = './';
   };

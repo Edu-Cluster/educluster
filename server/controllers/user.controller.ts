@@ -1,13 +1,16 @@
 import { TRPCError } from '@trpc/server';
-import { ContextWithUser } from '../../types';
+import { ContextWithUser } from '../../lib/types';
+import { statusCodes } from '../../lib/enums';
 
 export const getMeHandler = ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const user = ctx.user;
 
     return {
-      status: 'success',
-      user,
+      status: statusCodes.SUCCESS,
+      data: {
+        user,
+      },
     };
   } catch (err: any) {
     throw new TRPCError({

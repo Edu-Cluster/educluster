@@ -10,7 +10,7 @@ const customConfig: {
   school: string;
   schoolBaseUrl: string;
 } = {
-  port: 8000,
+  port: 3000,
   accessTokenExpiresIn: 15, // In minutes
   refreshTokenExpiresIn: 60, // In minutes
 

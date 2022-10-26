@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import type { Cluster, LearningUnit } from '../../types';
+import type { Cluster, LearningUnit } from '../../lib/types';
 import Link from 'next/link';
 
 type Props = {
