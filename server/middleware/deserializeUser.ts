@@ -2,20 +2,20 @@ import { TRPCError } from '@trpc/server';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyJwt } from '../utils/jwt';
 import { ContextWithUser } from '../../lib/types';
-
+import { readEduClusterUsername } from '../services/user.service';
 /**
  * Deserializes the user if a valid access token and session exist and if a user associated with those credentials can be found.
  *
  * @param req
  * @param res
  */
-export const deserializeUser = ({
+export const deserializeUser = async ({
   req,
   res,
 }: {
   req: NextApiRequest;
   res: NextApiResponse;
-}): ContextWithUser => {
+}): Promise<ContextWithUser> => {
   try {
     const { authorization } = req.headers;
     let access_token;
@@ -39,23 +39,18 @@ export const deserializeUser = ({
     }
 
     // Validate access token
-    const decoded = verifyJwt(access_token, 'accessTokenPublicKey');
+    const decoded = verifyJwt<{ sub: string }>(
+      access_token,
+      'accessTokenPublicKey',
+    );
 
     // If no such access token could be decoded, return with empty user
     if (!decoded) {
       return notAuthenticated;
     }
 
-    // Check if user has a valid session
-    const session = ''; // TODO Lara: Nach session suchen in der Datenbank mit userId (decoded.sub)
-
-    // If no valid session was found, return with empty user
-    if (!session) {
-      return notAuthenticated;
-    }
-
     // Check if user still exists in the database
-    const user = { id: 0, name: '' }; // TODO Lara: Nach user suchen in der Datenbank mit EduCluster username (decoded.sub)
+    const user = await readEduClusterUsername(decoded.sub);
 
     // If no user was found, return with empty user
     if (!user) {

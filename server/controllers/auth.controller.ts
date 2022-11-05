@@ -1,13 +1,17 @@
 import { TRPCError } from '@trpc/server';
 import { OptionsType } from 'cookies-next/lib/types';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
-import { Context } from '../createContext';
 import { LoginUserInput, registerUserSchema } from '../schemata/user.schema';
 import { verifyJwt, signJwt } from '../utils/jwt';
-import { signTokens } from '../services/user.service';
+import {
+  readEduClusterUsername,
+  signTokens,
+  teamsEmailAlreadyExists,
+  writeTeamsEmailToUser,
+} from '../services/user.service';
 import customConfig from '../config/default';
 import WebUntis from 'webuntis';
-import { ContextWithUser } from '../../lib/types';
+import type { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 
 // Options
@@ -40,7 +44,7 @@ const refreshTokenCookieOptions: OptionsType = {
 export const refreshAccessTokenHandler = async ({
   ctx: { req, res },
 }: {
-  ctx: Context;
+  ctx: ContextWithUser;
 }) => {
   try {
     // Get the refresh token from cookie
@@ -61,17 +65,10 @@ export const refreshAccessTokenHandler = async ({
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
-    // Check if the user has a valid session
-    const session = ''; // TODO Lara: Nach session suchen in der Datenbank mit userId (decoded.sub)
-
-    if (!session) {
-      throw new TRPCError({ code: 'FORBIDDEN', message });
-    }
-
     // Check if the user with this session still exists
-    const user = { username: '' }; // TODO Lara: Nach user suchen in der Datenbank mit EduCluster username (decoded.sub)
+    const user = await readEduClusterUsername(decoded.sub); // TODO Lara: Nach user suchen in der Datenbank mit EduCluster username (decoded.sub)
 
-    if (!user || user.username !== decoded.sub) {
+    if (!user || user.untis_username !== decoded.sub) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
@@ -123,18 +120,21 @@ export const registerHandler = async ({
   input: registerUserSchema;
 }) => {
   try {
-    const { username, email } = input;
+    const { email, password } = input;
 
     // Check if username doesn't exist in the database
-    const user = ''; // TODO Lara
+    const user: number = await teamsEmailAlreadyExists(email);
 
     if (user) {
       // User with this username/email already exists in the database
       return { status: statusCodes.FAILURE };
     }
 
+    // TODO Denis: Login in Teams mit email & password
+
+    const username = ''; //TODO Denis: irgendwoher untis_username übergeben
     // User with this username/email doesn't exist, so update this user with the provided input
-    // TODO Lara
+    await writeTeamsEmailToUser(username, email);
 
     return { status: statusCodes.SUCCESS };
   } catch (err: any) {
@@ -157,7 +157,7 @@ export const loginHandler = async ({
   ctx: { req, res },
 }: {
   input: LoginUserInput;
-  ctx: Context;
+  ctx: ContextWithUser;
 }) => {
   try {
     const { username, password, persistentCookie } = input;
@@ -178,16 +178,17 @@ export const loginHandler = async ({
       return { status: statusCodes.FAILURE };
     }
 
-    // Check if user with given untis username has EduCluster username in the database
-    const user = ''; // TODO Lara
-
-    if (!user) {
+    // Check if user with given untis username has MS Teams email address in the database
+    const user = await readEduClusterUsername(username);
+    if (!user?.teams_email) {
       // No such user in the database yet, so we will need more information
       return { status: statusCodes.TENTATIVE };
     }
 
     // User already exists -> create the access and refresh tokens
-    const { access_token, refresh_token } = await signTokens(''); // TODO Lara: EduCluster username mitgeben (user.username?)
+    const { access_token, refresh_token } = await signTokens(
+      user.untis_username,
+    );
 
     // Set browser cookies
     setCookie('access_token', access_token, {
@@ -231,9 +232,6 @@ export const loginHandler = async ({
 export const logoutHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const { req, res, user } = ctx;
-
-    // Delete session and credentials from database
-    // TODO Lara (user.id)
 
     // Reset browser cookies
     deleteCookie('access_token');

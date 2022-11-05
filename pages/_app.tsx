@@ -9,7 +9,7 @@ import superjson from 'superjson';
 import type { AppProps } from 'next/app';
 import type { AppRouter } from '../server/routers/app.routes';
 
-// TODO add global popups: intro, settings, etc
+// TODO Denis add global popups: intro, settings, etc
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

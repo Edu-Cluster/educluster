@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 
 type Props = {
-  // TODO if notification is an invitation, you should have buttons to accept/reject it
+  // TODO Denis: if notification is an invitation, you should have buttons to accept/reject it
   children: ReactNode;
   notifications: string[];
 };
