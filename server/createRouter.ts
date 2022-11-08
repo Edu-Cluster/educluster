@@ -1,9 +1,9 @@
 import { router } from '@trpc/server';
 import superjson from 'superjson';
-import { Context } from './createContext';
+import { ContextWithUser } from '../lib/types';
 
 export function createRouter() {
-  return router<Context>()
+  return router<ContextWithUser>()
     .transformer(superjson)
     .formatError(({ error, shape }) => {
       if (error.code === 'INTERNAL_SERVER_ERROR') {

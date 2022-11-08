@@ -7,7 +7,7 @@ import { deserializeUser } from './middleware/deserializeUser';
  * @param req
  * @param res
  */
-export function createContext({
+export async function createContext({
   req,
   res,
 }: {
@@ -15,7 +15,5 @@ export function createContext({
   res: NextApiResponse;
 }) {
   // Add context middleware
-  return deserializeUser({ req, res });
+  return await deserializeUser({ req, res });
 }
-
-export type Context = ReturnType<typeof createContext>;

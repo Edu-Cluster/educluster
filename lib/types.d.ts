@@ -1,15 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type User = {
-  // TODO Lara: Typ-Properties anpassen (muss mit der Person-Tabelle aus der DB übereinstimmen)
   id: number;
-  name: string;
+  username: string;
+  untis_username: string;
+  teams_email: string;
 };
 
 export type ContextWithUser = {
   req: NextApiRequest;
   res: NextApiResponse;
-  user: User | null;
+  user: person | null;
 };
 
 export type LearningUnit = {
