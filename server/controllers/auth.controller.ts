@@ -180,6 +180,7 @@ export const loginHandler = async ({
 
     // Check if user with given untis username has MS Teams email address in the database
     const user = await readEduClusterUsername(username);
+
     if (!user?.teams_email) {
       // No such user in the database yet, so we will need more information
       return { status: statusCodes.TENTATIVE };
@@ -205,7 +206,7 @@ export const loginHandler = async ({
       req,
       res,
       ...cookieOptions,
-      maxAge: persistentCookie ? 60 * 60 * 24 * 999 : undefined,
+      maxAge: persistentCookie ? 60 * 60 * 24 * 399 : undefined,
     });
 
     // Send access token
@@ -216,6 +217,7 @@ export const loginHandler = async ({
       },
     };
   } catch (err: any) {
+    console.error(err);
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
@@ -229,10 +231,8 @@ export const loginHandler = async ({
  *
  * @param ctx
  */
-export const logoutHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
+export const logoutHandler = async () => {
   try {
-    const { req, res, user } = ctx;
-
     // Reset browser cookies
     deleteCookie('access_token');
     deleteCookie('refresh_token');

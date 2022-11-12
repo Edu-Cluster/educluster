@@ -35,12 +35,13 @@ const LoginPage: NextPage = () => {
     async onSuccess(data) {
       toast.dismiss();
 
-      if (data.data) {
+      if (data.status === statusCodes.SUCCESS) {
         // Fetch user and set store state
         await query.refetch();
 
         // Redirect to dashboard
         await router.push('./');
+
         return;
       } else if (data.status === statusCodes.TENTATIVE) {
         // TODO Denis Render prompt for Teams e-Mail and EduCluster username

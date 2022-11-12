@@ -7,7 +7,7 @@ export const userRouter = createRouter()
     if (!ctx.user) {
       throw new trpc.TRPCError({
         code: 'UNAUTHORIZED',
-        message: 'You must be logged in to access this resource!',
+        message: 'Du musst eingeloggt sein um auf diese Ressource zuzugreifen!',
       });
     }
     return next();

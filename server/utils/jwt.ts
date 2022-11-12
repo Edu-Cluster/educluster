@@ -1,6 +1,13 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
 import customConfig from '../config/default';
 
+/**
+ * Signs token using private key.
+ *
+ * @param payload
+ * @param key
+ * @param options
+ */
 export const signJwt = (
   payload: Object,
   key: 'accessTokenPrivateKey' | 'refreshTokenPrivateKey',
@@ -13,6 +20,12 @@ export const signJwt = (
   });
 };
 
+/**
+ * Verifies token signature using public key.
+ *
+ * @param token
+ * @param key
+ */
 export const verifyJwt = <T>(
   token: string,
   key: 'accessTokenPublicKey' | 'refreshTokenPublicKey',

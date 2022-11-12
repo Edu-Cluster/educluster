@@ -2,6 +2,11 @@ import { TRPCError } from '@trpc/server';
 import { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 
+/**
+ * Returns the user object from the context.
+ *
+ * @param ctx
+ */
 export const getMeHandler = ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const user = ctx.user;
