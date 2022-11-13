@@ -10,6 +10,8 @@ import type { AppProps } from 'next/app';
 import type { AppRouter } from '../server/routers/app.routes';
 
 // TODO Denis: add global popups: intro, settings, etc
+// TODO Denis: Response Caching: https://trpc.io/docs/caching
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -63,5 +65,5 @@ export default withTRPC<AppRouter>({
       },
     };
   },
-  ssr: false,
+  ssr: true,
 })(MyApp);

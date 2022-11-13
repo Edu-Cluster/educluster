@@ -8,10 +8,118 @@ datasource db {
 }
 
 model person {
-  id             BigInt   @id @default(autoincrement())
-  inserted_at    DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
-  updated_at     DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
-  untis_username String   @unique
-  teams_email    String?  @unique
-  username       String   @unique
+  id             BigInt      @id @default(autoincrement())
+  inserted_at    DateTime    @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at     DateTime    @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  untis_username String      @unique @db.VarChar(30)
+  teams_email    String?     @unique @db.VarChar(50)
+  username       String      @unique @db.VarChar(30)
+  is_sysadmin    Boolean
+  admin_of       admin_of[]
+  cluster        cluster[]
+  member_of      member_of[]
+}
+
+model admin_of {
+  person_id  BigInt
+  cluster_id BigInt
+  cluster    cluster @relation(fields: [cluster_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  person     person  @relation(fields: [person_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([person_id, cluster_id])
+}
+
+model appointment {
+  id                           BigInt                   @id @default(autoincrement())
+  inserted_at                  DateTime                 @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at                   DateTime                 @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  teams_id                     String                   @unique @db.VarChar(30)
+  untis_id                     String?                  @unique @db.VarChar(30)
+  name                         String                   @db.VarChar(50)
+  description                  String?
+  date_from                    DateTime                 @db.Timestamptz(6)
+  date_until                   DateTime                 @db.Timestamptz(6)
+  roomname                     String?                  @db.VarChar(20)
+  cluster                      BigInt?
+  cluster_appointmentTocluster cluster?                 @relation(fields: [cluster], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  room                         room?                    @relation(fields: [roomname], references: [name], onDelete: NoAction, onUpdate: NoAction)
+  topics_for_appointment       topics_for_appointment[]
+}
+
+model cluster {
+  id          BigInt        @id @default(autoincrement())
+  inserted_at DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at  DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  teams_id    String        @unique @db.VarChar(30)
+  creator     BigInt
+  clustername String        @db.VarChar(50)
+  description String?
+  person      person        @relation(fields: [creator], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  admin_of    admin_of[]
+  appointment appointment[]
+  member_of   member_of[]
+}
+
+model equipment {
+  name               String               @id @db.VarChar(30)
+  inserted_at        DateTime             @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at         DateTime             @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  equipment_for_room equipment_for_room[]
+}
+
+model equipment_for_room {
+  room                                    String    @db.VarChar(30)
+  equipment                               String    @db.VarChar(30)
+  equipment_equipmentToequipment_for_room equipment @relation(fields: [equipment], references: [name], onDelete: NoAction, onUpdate: NoAction)
+  room_equipment_for_roomToroom           room      @relation(fields: [room], references: [name], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([room, equipment])
+}
+
+model member_of {
+  person_id  BigInt
+  cluster_id BigInt
+  is_active  Boolean
+  cluster    cluster @relation(fields: [cluster_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  person     person  @relation(fields: [person_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([person_id, cluster_id])
+}
+
+model room {
+  name               String               @id @db.VarChar(20)
+  inserted_at        DateTime             @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at         DateTime             @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  untis_id           String               @db.VarChar(30)
+  seats              Int?
+  is_active          Boolean?
+  appointment        appointment[]
+  equipment_for_room equipment_for_room[]
+}
+
+model subject {
+  name        String   @id @db.VarChar(30)
+  symbol      String   @unique @db.VarChar(5)
+  inserted_at DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at  DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  topic       topic[]
+}
+
+model topic {
+  name                   String                   @id @db.VarChar(30)
+  symbol                 String                   @unique @db.VarChar(5)
+  inserted_at            DateTime                 @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  updated_at             DateTime                 @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  subject                String                   @db.VarChar(30)
+  subject_subjectTotopic subject                  @relation(fields: [subject], references: [name], onDelete: NoAction, onUpdate: NoAction)
+  topics_for_appointment topics_for_appointment[]
+}
+
+model topics_for_appointment {
+  appointment                                     BigInt
+  topic                                           String      @db.VarChar(30)
+  appointment_appointmentTotopics_for_appointment appointment @relation(fields: [appointment], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  topic_topicTotopics_for_appointment             topic       @relation(fields: [topic], references: [name], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([appointment, topic])
 }

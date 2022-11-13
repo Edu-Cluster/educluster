@@ -9,8 +9,8 @@ export const loginUserSchema = object({
 export type LoginUserInput = TypeOf<typeof loginUserSchema>;
 
 export const registerUserSchema = object({
-  email: string({ required_error: 'MS Teams E-Mail ist erforderlich!' }),
-  password: string({ required_error: 'MS Teams Passwort ist erforderlich!' }),
+  code: string({ required_error: 'Authorisierungs-Code ist erforderlich!' }),
+  username: string({ required_error: 'Benutzername ist erforderlich!' }),
 });
 
 export type registerUserSchema = TypeOf<typeof registerUserSchema>;

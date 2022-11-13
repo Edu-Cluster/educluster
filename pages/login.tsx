@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { deleteCookie, getCookie } from 'cookies-next';
 import { useForm } from 'react-hook-form';
 import { trpc } from '../client/trpc';
-import useStore from '../client/store';
 import toast from 'react-hot-toast';
 import { statusCodes } from '../lib/enums';
+import useStore from '../client/store';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -14,14 +13,48 @@ const LoginPage: NextPage = () => {
   const { register, setValue, getValues, handleSubmit } = useForm();
   const [isSliderOn, setSliderOn] = useState(false);
 
-  useEffect(() => {
-    if (getCookie('session')) {
-      document.location.href = './';
-      return;
-    }
+  const { mutate: registerUser } = trpc.useMutation(['auth.register'], {
+    async onSuccess(data) {
+      if (data.status === statusCodes.FAILURE) {
+        toast.error(
+          'Ein Benutzer hat sich bereits mit dieser E-Mail registriert!',
+        );
+        return;
+      }
 
-    deleteCookie('session');
-    store.setAuthUser(null);
+      const username = sessionStorage.getItem('username') || '';
+      const password = sessionStorage.getItem('password') || '';
+      const persistentCookie = sessionStorage.getItem('persistentCookie');
+
+      sessionStorage.clear();
+
+      loginUser({
+        username,
+        password,
+        persistentCookie: persistentCookie === 'true',
+      });
+    },
+
+    onError(error: any) {
+      // Internal server error
+      error.response.errors.forEach((err: any) => {
+        console.error(err);
+      });
+
+      toast.error('Internal Server Error!');
+    },
+  });
+
+  useEffect(() => {
+    // @ts-ignore
+    const code: string = router.query.code;
+
+    if (code) {
+      // Retrieve login credentials from local storage
+      const username = sessionStorage.getItem('username') || '';
+
+      registerUser({ username, code });
+    }
   }, []);
 
   const query = trpc.useQuery(['user.me'], {
@@ -36,6 +69,10 @@ const LoginPage: NextPage = () => {
       toast.dismiss();
 
       if (data.status === statusCodes.SUCCESS) {
+        // Reset input fields
+        setValue('username', '');
+        setValue('password', '');
+
         // Fetch user and set store state
         await query.refetch();
 
@@ -44,7 +81,21 @@ const LoginPage: NextPage = () => {
 
         return;
       } else if (data.status === statusCodes.TENTATIVE) {
-        // TODO Denis Render prompt for Teams e-Mail and EduCluster username
+        const { username, password } = getValues();
+
+        // Save login credentials in local storage
+        sessionStorage.setItem('username', username);
+        sessionStorage.setItem('password', password);
+        sessionStorage.setItem('persistentCookie', String(isSliderOn));
+
+        // Redirect to microsoft login prompt TODO Lara/Denis: redirect_uri in development mode auf http://localhost:3000/login setzen!!!
+        document.location.href = `
+        https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize
+        ?client_id=f7c7c0f0-1f3e-4444-b003-6e3c118178d0
+        &response_type=code
+        &redirect_uri=https://educluster-theta.vercel.app/login
+        &response_mode=query
+        &scope=User.ReadWrite`; // https://learn.microsoft.com/en-us/graph/permissions-reference#user-permissions
       } else if (data.status === statusCodes.FAILURE) {
         toast.error('Der Benutzername oder das Passwort ist falsch!');
       }
@@ -70,10 +121,6 @@ const LoginPage: NextPage = () => {
 
     // Send login POST request to auth router
     loginUser({ username, password, persistentCookie: isSliderOn });
-
-    // Reset input fields
-    setValue('username', '');
-    setValue('password', '');
   });
 
   return (
