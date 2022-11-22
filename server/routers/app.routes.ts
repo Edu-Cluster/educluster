@@ -4,9 +4,8 @@ import { userRouter } from './user.routes';
 
 export const appRouter = createRouter()
   .query('test', {
-    resolve: async (ctx) => {
-      // Define main resolver
-      return { test: 'the test worked!' };
+    resolve: async () => {
+      return { data: 'the test worked!' };
     },
   })
   .merge('auth.', authRouter)

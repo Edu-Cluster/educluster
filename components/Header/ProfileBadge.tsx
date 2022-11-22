@@ -12,8 +12,8 @@ type Props = {
 };
 
 const ProfileBadge = (props: Props) => {
-  const router = useRouter();
   const store = useStore();
+  const router = useRouter();
 
   const { mutate: logoutUser } = trpc.useMutation(['auth.logout'], {
     async onSuccess(data) {
@@ -39,13 +39,14 @@ const ProfileBadge = (props: Props) => {
     },
   });
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     toast.loading('Sie werden ausgeloggt...');
 
     logoutUser();
 
     store.setAuthUser(null);
-    document.location.href = './';
+
+    await router.push('./');
   };
 
   return (

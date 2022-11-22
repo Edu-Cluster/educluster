@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { getCookie } from 'cookies-next';
 import ItemList from '../components/Information/ItemList';
-import useStore from '../client/store';
-import type { User, Item } from '../lib/types';
+import type { Item, User } from '../lib/types';
 import type { NextPage } from 'next';
+import { trpc } from '../client/trpc';
+import { useRouter } from 'next/router';
+import useStore from '../client/store';
 
 const learningUnits: Item[][] = [
   [
@@ -129,19 +130,23 @@ const clusters: Item[][] = [
 ];
 
 const DashboardPage: NextPage = () => {
+  const router = useRouter();
   const store = useStore();
 
-  useEffect(() => {
-    const cookie = getCookie('session');
+  const query = trpc.useQuery(['user.me'], {
+    enabled: false,
+    onSuccess: ({ data }) => {
+      store.setAuthUser(data.user as User);
+    },
+  });
 
-    if (!cookie) {
-      store.setAuthUser(null);
-      document.location.href = './login';
-    } else if (cookie && !store.authUser) {
-      if (typeof cookie === 'string') {
-        store.setAuthUser(JSON.parse(cookie) as User);
+  useEffect(() => {
+    // Fetch user and set store state
+    query.refetch().then(() => {
+      if (!store.authUser) {
+        router.push('./login');
       }
-    }
+    });
   }, []);
 
   return (

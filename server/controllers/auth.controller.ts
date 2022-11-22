@@ -13,6 +13,12 @@ import customConfig from '../config/default';
 import WebUntis from 'webuntis';
 import type { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
+import axios, { AxiosRequestConfig } from 'axios';
+import {
+  AuthProvider,
+  AuthProviderCallback,
+  Client,
+} from '@microsoft/microsoft-graph-client';
 
 // Options
 const cookieOptions: OptionsType = {
@@ -68,7 +74,7 @@ export const refreshAccessTokenHandler = async ({
     // Check if the user with this session still exists
     const user = await readEduClusterUsername(decoded.sub);
 
-    if (!user || user.untis_username !== decoded.sub) {
+    if (!user) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
@@ -81,17 +87,11 @@ export const refreshAccessTokenHandler = async ({
       },
     );
 
-    // Send the access token as cookie
+    // Set the access token as cookie
     setCookie('access_token', access_token, {
       req,
       res,
       ...accessTokenCookieOptions,
-    });
-    setCookie('session', 'true', {
-      req,
-      res,
-      ...accessTokenCookieOptions,
-      httpOnly: false,
     });
 
     // Send response
@@ -120,21 +120,43 @@ export const registerHandler = async ({
   input: registerUserSchema;
 }) => {
   try {
-    const { email, password } = input;
+    const { username, code } = input;
+    const config: AxiosRequestConfig = {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: `client_id=f7c7c0f0-1f3e-4444-b003-6e3c118178d0
+              &scope=User.ReadWrite
+              &code=${code}
+              &redirect_uri=${
+                process.env.NODE_ENV === 'production'
+                  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+                  : 'http://localhost:3000/login'
+              }
+              &grant_type=authorization_code
+              &client_secret=4yl8Q~Q8bJluD2hvXQLs9Jg.5tNd3WZUrO6C0drZ`,
+      url: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/token',
+      method: 'post',
+    };
+    const res = await axios(config); // Send token request with authorization code
+    const authProvider: AuthProvider = (callback: AuthProviderCallback) => {
+      callback(null, res?.data?.access_token);
+    };
+    const graph = Client.init({ authProvider });
+    const user = await graph.api('/me').get(); // Retrieve details of authenticated user
 
-    // Check if username doesn't exist in the database
-    const user: number = await teamsEmailAlreadyExists(email);
+    // If no user details found or user email missing, cannot continue
+    if (!user || !user.mail) {
+      throw new Error('No user found by MS Graph!');
+    }
 
-    if (user) {
-      // User with this username/email already exists in the database
+    const existingUserCount: number = await teamsEmailAlreadyExists(user.mail);
+
+    // Ensure this email isn't already in use on another account
+    if (existingUserCount) {
       return { status: statusCodes.FAILURE };
     }
 
-    // TODO Denis: Login in Teams mit email & password
-
-    const username = ''; //TODO Denis: irgendwoher untis_username übergeben
-    // User with this username/email doesn't exist, so update this user with the provided input
-    await writeTeamsEmailToUser(username, email);
+    // Update user with this new email
+    await writeTeamsEmailToUser(username, user.mail);
 
     return { status: statusCodes.SUCCESS };
   } catch (err: any) {
@@ -228,8 +250,6 @@ export const loginHandler = async ({
 /**
  * Handles the logout process.
  * Note: The logout process only concerns EduCluster and has no relation to the WebUntis logout process.
- *
- * @param ctx
  */
 export const logoutHandler = async () => {
   try {

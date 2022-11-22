@@ -26,15 +26,6 @@ const notifications = [
   'test8',
 ];
 
-// Menu Drawer
-const options = [
-  'Lerneinheit finden',
-  'Cluster finden',
-  'Cluster erstellen',
-  'Ausloggen',
-  'Einstellungen',
-];
-
 const Header = () => {
   const user = useStore().authUser;
 
@@ -43,12 +34,17 @@ const Header = () => {
       <Logo />
 
       <div className="mx-5 flex items-center space-x-3 text-white lg:inline-flex">
-        <HoverMenuOption options={['Lerneinheit suchen']}>
+        <HoverMenuOption options={[{ name: 'Lerneinheit suchen', link: '/' }]}>
           <AcademicCapIcon className="header-icon" />
           <p className="text">Lerneinheit</p>
         </HoverMenuOption>
 
-        <HoverMenuOption options={['Cluster suchen', 'Cluster erstellen']}>
+        <HoverMenuOption
+          options={[
+            { name: 'Cluster suchen', link: '/' },
+            { name: 'Cluster erstellen', link: '' },
+          ]}
+        >
           <CubeIcon className="header-icon" />
           <p className="text">Cluster</p>
         </HoverMenuOption>
@@ -65,7 +61,15 @@ const Header = () => {
 
         <SettingsCog />
 
-        <MenuDrawer options={options}>
+        <MenuDrawer
+          options={[
+            'Lerneinheit finden',
+            'Cluster finden',
+            'Cluster erstellen',
+            'Einstellungen',
+            'Ausloggen',
+          ]}
+        >
           <MenuIcon className="header-icon" />
         </MenuDrawer>
       </div>
