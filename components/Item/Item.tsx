@@ -37,6 +37,7 @@ const ListItem = ({
               <></>
             )}
           </div>
+
           <div>
             <p className="text-sm block">{`Ersteller: ${host}`}</p>
             {type.category && room ? (
@@ -50,6 +51,7 @@ const ListItem = ({
         </div>
         <div className="ml-4">###</div>
       </div>
+
       <div className="w-full flex justify-between items-start gap-[1.80rem]">
         <div className="w-48 md:w-[400px] overflow-hidden">
           <p className="text-sm">{description}</p>

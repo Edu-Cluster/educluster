@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import ItemList from '../components/Information/ItemList';
+import ItemList from '../components/Item/ItemList';
 import type { Item, User } from '../lib/types';
 import type { NextPage } from 'next';
 import { trpc } from '../client/trpc';
-import { useRouter } from 'next/router';
 import useStore from '../client/store';
 
 const learningUnits: Item[][] = [
@@ -130,7 +129,6 @@ const clusters: Item[][] = [
 ];
 
 const DashboardPage: NextPage = () => {
-  const router = useRouter();
   const store = useStore();
 
   const query = trpc.useQuery(['user.me'], {
@@ -138,19 +136,19 @@ const DashboardPage: NextPage = () => {
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
     },
+    onError: async (err) => {
+      console.error(err);
+      document.location.href = './login';
+    },
   });
 
   useEffect(() => {
     // Fetch user and set store state
-    query.refetch().then(() => {
-      if (!store.authUser) {
-        router.push('./login');
-      }
-    });
+    query.refetch();
   }, []);
 
   return (
-    <main className="h-auto flex w-full justify-center mt-5 screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
+    <main className="page-sizing flex justify-center screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
       <div className="w-full flex justify-center screen-xxl:justify-start gap-5 flex-wrap lg:w-auto screen-xxl:w-full screen-xxxl:flex-nowrap">
         <ItemList items={learningUnits} title="Lerneinheiten" />
         <ItemList items={clusters} title="Cluster" />
