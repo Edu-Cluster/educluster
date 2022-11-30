@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { trpc } from '../../client/trpc';
+import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import useStore from '../../client/store';
 
@@ -39,7 +39,7 @@ const CreateClusterPage: NextPage = () => {
 
     toast.loading('Ihr Cluster wird erstellt...');
 
-    // Send login POST request to items router to create cluster
+    // Send login POST request to items router
     // TODO Lara endpoint mit mutation aufrufen (isSliderOn = öffentliches oder privates Cluster)
   });
 

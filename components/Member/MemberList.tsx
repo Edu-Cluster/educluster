@@ -32,6 +32,7 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
                 username={username}
                 role={role}
                 isOnInvitationPage={isOnInvitationPage}
+                showMinusButton={isOnInvitationPage}
               />
             ))
           ) : (

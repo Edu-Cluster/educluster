@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { User } from '../lib/types';
+import { User, Member } from '../lib/types';
 
 // Note: Store only contains states that cannot be isolated in a single component
 
@@ -12,6 +12,11 @@ type Store = {
 
   editMode: boolean;
   setEditMode: (inEditMode: boolean) => void;
+
+  potentialMembers: Member[] | null;
+  setPotentialMembers: (members: Member[] | null) => void;
+  membersToInvite: Member[];
+  setMembersToInvite: (members: Member[]) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -25,6 +30,13 @@ const useStore = create<Store>((set) => ({
   editMode: false,
   setEditMode: (inEditMode) =>
     set((state) => ({ ...state, editMode: inEditMode })),
+
+  potentialMembers: null,
+  setPotentialMembers: (members) =>
+    set((state) => ({ ...state, potentialMembers: members })),
+  membersToInvite: [],
+  setMembersToInvite: (members) =>
+    set((state) => ({ ...state, membersToInvite: members })),
 }));
 
 export default useStore;
