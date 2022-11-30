@@ -5,10 +5,9 @@ import MemberList from '../../components/Member/MemberList';
 import { Item, Member, User } from '../../lib/types';
 import { roles } from '../../lib/enums';
 import { useRouter } from 'next/router';
-import Avatar from '../../components/Avatar';
-import ButtonGroup from '../../components/ButtonGroup';
 import { trpc } from '../../client/trpc';
 import useStore from '../../client/store';
+import ClusterBanner from '../../components/Cluster/ClusterBanner';
 
 const learningUnits: Item[][] = [
   [
@@ -57,6 +56,9 @@ const CreateClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Fetch cluster details, learning units and members
+      // TODO Lara
     },
     onError: async (err) => {
       console.error(err);
@@ -76,19 +78,11 @@ const CreateClusterPage: NextPage = () => {
         <ItemList items={learningUnits} title="Lerneinheiten" />
       </div>
 
-      <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
-        <div className="h-auto flex flex-col items-center mt-8">
-          <p className="text-md underline">CLUSTER</p>
-          <p className="uppercase text-2xl">{clustername}</p>
-          <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={clustername} bigger={true} />
-          </div>
-          <p className="mt-12 break-words break-all">
-            asdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasdfasdf
-          </p>
-        </div>
-        <ButtonGroup />
-      </div>
+      <ClusterBanner
+        name={clustername as string}
+        type="öffentlich/privat"
+        description="asdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasdfasdf"
+      />
     </main>
   );
 };

@@ -9,3 +9,9 @@ export enum roles {
   STUDENT = 'Schüler',
   TEACHER = 'Professor',
 }
+
+export enum resources {
+  USER = 'person',
+  CLUSTER = 'cluster',
+  APPOINTMENT = 'appointment',
+}
