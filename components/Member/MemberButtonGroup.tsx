@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDoubleUpIcon, XIcon } from '@heroicons/react/outline';
+import { ChevronDoubleUpIcon, UserRemoveIcon } from '@heroicons/react/outline';
 
 const MemberButtonGroup = () => {
   return (
@@ -8,7 +8,7 @@ const MemberButtonGroup = () => {
         <ChevronDoubleUpIcon height={25} width={25} />
       </div>
       <div className="secondary-button h-8 w-12 flex justify-center items-center text-red-500 transition-colors hover:bg-red-100">
-        <XIcon height={25} width={25} />
+        <UserRemoveIcon height={25} width={25} />
       </div>
     </div>
   );

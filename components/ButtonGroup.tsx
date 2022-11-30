@@ -4,6 +4,8 @@ import {
   TrashIcon,
   SaveIcon,
   XIcon,
+  UserAddIcon,
+  ArrowNarrowLeftIcon,
 } from '@heroicons/react/outline';
 import useStore from '../client/store';
 
@@ -14,29 +16,37 @@ const ButtonGroup = () => {
     <div className="flex flex-col gap-4">
       {!editMode ? (
         <>
+          <div className="cluster-button text-blue-500 hover:bg-blue-100">
+            <p className="mr-2 text-blue-500">Mitglieder einladen</p>
+            <UserAddIcon height={25} width={25} />
+          </div>
           <div
-            className="secondary-button h-12 w-52 flex justify-center items-center text-violet-500 transition-colors hover:bg-violet-100"
+            className="cluster-button text-violet-500 hover:bg-violet-100"
             onClick={() => setEditMode(!editMode)}
           >
-            <p className="mr-2 text-violet-500">Cluster Bearbeiten</p>
+            <p className="mr-2 text-violet-500">Cluster bearbeiten</p>
             <PencilIcon height={25} width={25} />
           </div>
-          <div className="secondary-button h-12 w-52 flex justify-center items-center text-red-500 transition-colors hover:bg-red-100">
-            <p className="mr-2 text-red-500">Cluster Löschen</p>
+          <div className="cluster-button text-orange-500 hover:bg-orange-100">
+            <p className="mr-2 text-orange-500">Cluster verlassen</p>
+            <ArrowNarrowLeftIcon height={25} width={25} />
+          </div>
+          <div className="cluster-button text-red-500 hover:bg-red-100">
+            <p className="mr-2 text-red-500">Cluster löschen</p>
             <TrashIcon height={25} width={25} />
           </div>
         </>
       ) : (
         <>
           <div
-            className="secondary-button h-12 w-52 flex justify-center items-center text-amber-500 transition-colors hover:bg-amber-100"
+            className="cluster-button text-amber-500 hover:bg-amber-100"
             onClick={() => setEditMode(false)}
           >
             <p className="mr-2 text-amber-500">Speichern</p>
             <SaveIcon height={25} width={25} />
           </div>
           <div
-            className="secondary-button h-12 w-52 flex justify-center items-center text-red-500 transition-colors hover:bg-red-100"
+            className="cluster-button text-red-500 hover:bg-red-100"
             onClick={() => setEditMode(false)}
           >
             <p className="mr-2 text-red-500">Abbrechen</p>

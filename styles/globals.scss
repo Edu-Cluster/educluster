@@ -43,6 +43,10 @@
         @apply rounded-md border-[1px] shadow-md hover:shadow-2xl slow-animate;
     }
 
+    .cluster-button {
+        @apply secondary-button h-12 w-52 flex justify-center items-center transition-colors text-center;
+    }
+
     /* Regular SCSS Classes */
 
     $primary-background: #f5f6fa;
