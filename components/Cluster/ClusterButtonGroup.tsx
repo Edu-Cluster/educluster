@@ -8,21 +8,30 @@ import {
   ArrowNarrowLeftIcon,
   MailIcon,
 } from '@heroicons/react/outline';
-import useStore from '../client/store';
+import useStore from '../../client/store';
 
 type Props = {
   clustername: string | undefined;
   isOnInvitationPage?: boolean;
 };
 
-const ButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
+const ClusterButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
   const { editMode, setEditMode, membersToInvite } = useStore();
 
-  // TODO Lara: Mutation definieren und bei onSuccess await router.push(`../../${clustername}`);
+  // TODO Denis: Nachdem es eindeutig ist ob authUser Clusteradmin ist oder nicht, EC-63 umsetzen
+
+  // TODO Lara: Invitation mutation definieren und bei onSuccess await router.push(`../../${clustername}`);
 
   const sendInvitations = () => {
     // Send invitation POST request to user router
     // TODO Lara
+  };
+
+  const saveSettings = () => {
+    // Send cluster change POST Request to item router
+    // TODO Lara
+
+    setEditMode(false); // TODO Lara: Das ins onSuccess vor dem router.push verschieben bitte
   };
 
   return (
@@ -42,7 +51,7 @@ const ButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
               </div>
               <div
                 className="cluster-button text-violet-500 hover:bg-violet-100"
-                onClick={() => setEditMode(!editMode)}
+                onClick={() => setEditMode(true)}
               >
                 <p className="mr-2 text-violet-500">Cluster bearbeiten</p>
                 <PencilIcon height={20} width={20} />
@@ -85,7 +94,7 @@ const ButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
         <>
           <div
             className="cluster-button text-amber-500 hover:bg-amber-100"
-            onClick={() => setEditMode(false)}
+            onClick={() => saveSettings()}
           >
             <p className="mr-2 text-amber-500">Speichern</p>
             <SaveIcon height={20} width={20} />
@@ -103,4 +112,4 @@ const ButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
   );
 };
 
-export default ButtonGroup;
+export default ClusterButtonGroup;

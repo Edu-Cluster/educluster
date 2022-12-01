@@ -80,8 +80,8 @@ const CreateClusterPage: NextPage = () => {
 
       <ClusterBanner
         name={clustername as string}
-        type="öffentlich/privat"
-        description="asdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasdfasdf"
+        isPrivate={false}
+        description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
       />
     </main>
   );

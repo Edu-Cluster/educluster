@@ -125,7 +125,7 @@ const LoginPage: NextPage = () => {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-20 h-screen bg-gray-100 pattern-bg">
-      <div className="w-[40%] min-w-[360px] h-[575px] lg:h-[500px] rounded-lg input-mask">
+      <div className="w-[40%] min-w-[360px] h-[575px] lg:h-[500px] rounded-lg input-mask input-mask-addons">
         <div className="flex items-center justify-center w-full">
           <span>LOGO Placeholder</span>
         </div>
