@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import ListItem from '../Information/Item';
-import Tag from '../Information/Tag';
-import type { Item } from '../../lib/types';
+import { Member } from '../../lib/types';
+import MemberButtonGroup from './MemberButtonGroup';
+import Avatar from '../Avatar';
 
 type Props = {
-  items: Item[][];
-  title?: string;
+  members: Member[][];
 };
 
-const ItemList = ({ items, title }: Props) => {
+const MemberList = ({ members }: Props) => {
   const [page, setPage] = useState(1);
 
   const loadNewPage = (e: any) => {
@@ -21,31 +20,28 @@ const ItemList = ({ items, title }: Props) => {
 
   return (
     <div className="h-[700px] w-full max-w-[800px] mt-8">
-      {title ? (
-        <p className="px-4 rounded-sm bg-gray-100 text-2xl">{title}</p>
-      ) : (
-        <></>
-      )}
+      <p className="px-4 rounded-sm bg-gray-100 text-2xl">Mitglieder</p>
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
-          {items[page - 1].map((item, idx) => (
-            <ListItem
+          {members[page - 1].map(({ username, role }, idx) => (
+            <div
+              className="flex justify-between items-center py-1 px-4 hover:bg-gray-100 fast-animate"
               key={idx}
-              type={item.type}
-              title={item.title}
-              description={item.description}
-              host={item.host}
-              room={item.room}
-              link={item.link}
             >
-              {item.type.category &&
-                item.tags &&
-                item.tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
-            </ListItem>
+              <div className="flex items-center">
+                <Avatar type="user" seed={username} />
+                <div className="flex flex-col items-center ml-12">
+                  <p>{username}</p>
+                  <p className="text-sm">{role}</p>
+                </div>
+              </div>
+              <MemberButtonGroup />
+            </div>
           ))}
         </div>
+
         <div className="py-3 flex justify-center items-center gap-2">
-          {items.map((item, idx) => (
+          {members.map((item, idx) => (
             <div
               key={idx + 1}
               className={`${page == idx + 1 ? 'text-white bg-blue-400' : ''}
@@ -61,4 +57,4 @@ const ItemList = ({ items, title }: Props) => {
   );
 };
 
-export default ItemList;
+export default MemberList;

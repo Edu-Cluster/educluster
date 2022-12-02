@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { roles } from './enums';
 
 export type User = {
   id: number;
@@ -19,6 +20,11 @@ export type LearningUnit = {
 
 export type Cluster = {
   category: 0;
+};
+
+export type Member = {
+  username: string;
+  role: roles.ADMINISTRATOR | roles.STUDENT | roles.TEACHER;
 };
 
 export type Item = {

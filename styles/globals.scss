@@ -27,8 +27,16 @@
         @apply h-9 w-6 cursor-pointer lg:w-9 lg:p-1 inline text-gray-700;
     }
 
+    .page-sizing {
+        @apply h-auto w-full mt-5;
+    }
+
     .primary-button {
-        @apply block rounded-lg bg-[#6a89cc] text-amber-50 uppercase text-lg transition-colors hover:bg-[#546de5];
+        @apply block rounded-lg bg-[#6a89cc] text-amber-50 uppercase text-lg transition-colors hover:bg-[#546de5] cursor-pointer text-center;
+    }
+
+    .secondary-button {
+        @apply block rounded-lg bg-white border border-gray-200 text-black text-lg cursor-pointer text-center;
     }
 
     .card {

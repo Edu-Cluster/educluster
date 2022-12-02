@@ -7,11 +7,11 @@ type Store = {
   authUser: User | null;
   setAuthUser: (user: User | null) => void;
 
-  introPopupOpen: boolean;
-  setIntroPopupOpen: (isOpen: boolean) => void;
-
   settingsPopupOpen: boolean;
   setSettingsPopupOpen: (isOpen: boolean) => void;
+
+  editMode: boolean;
+  setEditMode: (inEditMode: boolean) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -22,9 +22,9 @@ const useStore = create<Store>((set) => ({
   setSettingsPopupOpen: (isOpen) =>
     set((state) => ({ ...state, settingsPopupOpen: isOpen })),
 
-  introPopupOpen: false,
-  setIntroPopupOpen: (isOpen) =>
-    set((state) => ({ ...state, introPopupOpen: isOpen })),
+  editMode: false,
+  setEditMode: (inEditMode) =>
+    set((state) => ({ ...state, editMode: inEditMode })),
 }));
 
 export default useStore;
