@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ItemList from '../components/Item/ItemList';
 import type { Item, User } from '../lib/types';
 import type { NextPage } from 'next';
-import { trpc } from '../client/trpc';
+import trpc from '../client/trpc';
 import useStore from '../client/store';
 
 const learningUnits: Item[][] = [
@@ -148,8 +148,8 @@ const DashboardPage: NextPage = () => {
   }, []);
 
   return (
-    <main className="page-sizing flex justify-center screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
-      <div className="w-full flex justify-center screen-xxl:justify-start gap-5 flex-wrap lg:w-auto screen-xxl:w-full screen-xxxl:flex-nowrap">
+    <main className="page-default">
+      <div className="list-container">
         <ItemList items={learningUnits} title="Lerneinheiten" />
         <ItemList items={clusters} title="Cluster" />
       </div>

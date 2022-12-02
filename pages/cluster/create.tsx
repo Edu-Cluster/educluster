@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { trpc } from '../../client/trpc';
+import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import useStore from '../../client/store';
 
@@ -29,7 +29,7 @@ const CreateClusterPage: NextPage = () => {
     query.refetch();
   }, []);
 
-  // TODO Lara: Mutation definieren und bei onSuccess await router.push(`./${clusterName}`);
+  // TODO Lara: Login mutation definieren und bei onSuccess await router.push(`./${clusterName}`);
 
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields
@@ -39,13 +39,13 @@ const CreateClusterPage: NextPage = () => {
 
     toast.loading('Ihr Cluster wird erstellt...');
 
-    // Send login POST request to items router to create cluster
+    // Send login POST request to items router
     // TODO Lara endpoint mit mutation aufrufen (isSliderOn = öffentliches oder privates Cluster)
   });
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center px-5 md:px-20 mt-32">
-      <div className="h-[70%] w-full sm:w-[80%] lg:w-[50%] rounded-lg input-mask px-4">
+    <main className="flex w-full flex-1 flex-col items-center justify-center px-5 md:px-20 mt-12">
+      <div className="h-[800px] w-full sm:w-[80%] lg:w-[50%] rounded-lg input-mask input-mask-addons px-4">
         <div className="flex justify-center align-items mt-24 text-center">
           <h1 className="text-[40px] text-gray-700">Neues Cluster Erstellen</h1>
         </div>
@@ -61,12 +61,12 @@ const CreateClusterPage: NextPage = () => {
               />
               <span>Clustername</span>
             </div>
-            <div className="input-box mt-6">
-              <input
+            <div className="w-[80%] h-40 mt-6 input-text-area-box">
+              <textarea
                 {...register('description', { required: true })}
+                className="w-full h-full resize-none"
                 name="description"
-                type="text"
-                maxLength={80}
+                maxLength={100}
                 required
               />
               <span>Beschreibung</span>

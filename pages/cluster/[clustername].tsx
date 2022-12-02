@@ -5,10 +5,9 @@ import MemberList from '../../components/Member/MemberList';
 import { Item, Member, User } from '../../lib/types';
 import { roles } from '../../lib/enums';
 import { useRouter } from 'next/router';
-import Avatar from '../../components/Avatar';
-import ButtonGroup from '../../components/ButtonGroup';
-import { trpc } from '../../client/trpc';
+import trpc from '../../client/trpc';
 import useStore from '../../client/store';
+import ClusterBanner from '../../components/Cluster/ClusterBanner';
 
 const learningUnits: Item[][] = [
   [
@@ -57,6 +56,9 @@ const CreateClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Fetch cluster details, learning units and members
+      // TODO Lara
     },
     onError: async (err) => {
       console.error(err);
@@ -70,25 +72,17 @@ const CreateClusterPage: NextPage = () => {
   }, []);
 
   return (
-    <main className="page-sizing flex justify-center screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
-      <div className="w-full flex justify-center screen-xxl:justify-start gap-5 flex-wrap lg:w-auto screen-xxl:w-full screen-xxxl:flex-nowrap">
+    <main className="page-default">
+      <div className="list-container">
         <MemberList members={members} />
         <ItemList items={learningUnits} title="Lerneinheiten" />
       </div>
 
-      <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
-        <div className="h-auto flex flex-col items-center mt-8">
-          <p className="text-md underline">CLUSTER</p>
-          <p className="uppercase text-2xl">{clustername}</p>
-          <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={clustername} bigger={true} />
-          </div>
-          <p className="mt-12 break-words break-all">
-            asdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasdfasdf
-          </p>
-        </div>
-        <ButtonGroup />
-      </div>
+      <ClusterBanner
+        name={clustername as string}
+        isPrivate={false}
+        description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
+      />
     </main>
   );
 };

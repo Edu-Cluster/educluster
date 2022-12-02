@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import useStore from '../../client/store';
-import { trpc } from '../../client/trpc';
+import trpc from '../../client/trpc';
 import toast from 'react-hot-toast';
 import { statusCodes } from '../../lib/enums';
 import { useRouter } from 'next/router';
