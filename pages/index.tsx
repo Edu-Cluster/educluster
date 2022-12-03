@@ -147,25 +147,29 @@ const DashboardPage: NextPage = () => {
     query.refetch();
   }, []);
 
-  return (
-    <main className="page-default">
-      <div className="list-container">
-        <ItemList items={learningUnits} title="Lerneinheiten" />
-        <ItemList items={clusters} title="Cluster" />
-      </div>
-
-      <div className="h-[300px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16">
-        <div className="h-full w-full flex flex-col items-center">
-          <div className="w-full h-36 flex justify-center items-center gap-5">
-            <div className="h-20 w-20 border-2 rounded-[50%] text-black"></div>
-            <p className="uppercase text-4xl">Schüler</p>
-          </div>
-          <p className="text-xl mb-5">Nameanemanemaha</p>
-          <p className="text-xl">irgendeinuser@test.com</p>
+  if (query.isSuccess) {
+    return (
+      <main className="page-default">
+        <div className="list-container">
+          <ItemList items={learningUnits} title="Lerneinheiten" />
+          <ItemList items={clusters} title="Cluster" />
         </div>
-      </div>
-    </main>
-  );
+
+        <div className="h-[300px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16">
+          <div className="h-full w-full flex flex-col items-center">
+            <div className="w-full h-36 flex justify-center items-center gap-5">
+              <div className="h-20 w-20 border-2 rounded-[50%] text-black"></div>
+              <p className="uppercase text-4xl">Schüler</p>
+            </div>
+            <p className="text-xl mb-5">Nameanemanemaha</p>
+            <p className="text-xl">irgendeinuser@test.com</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  return <div>LOADING</div>;
 };
 
 export default DashboardPage;
