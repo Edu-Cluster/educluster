@@ -42,7 +42,7 @@ const InviteClusterPage: NextPage = () => {
     },
     onError: async (err) => {
       console.error(err);
-      document.location.href = '../../login';
+      document.location.href = '/login';
     },
   });
 
@@ -53,9 +53,9 @@ const InviteClusterPage: NextPage = () => {
 
   return (
     <main className="page-default">
-      <div className="list-container">
+      <div className="list-container flex-wrap-reverse">
         <MemberList members={members} isOnInvitationPage={true} />
-        <div className="md:min-w-[515px] mt-16 flex flex-col gap-4">
+        <div className="w-full lg:min-w-[515px] mt-16 flex flex-col gap-4">
           <MemberSearchField
             resource={resources.USER}
             placeholder="Nach Benutzern mit Benutzername oder E-Mail suchen"

@@ -20,7 +20,7 @@ const CreateClusterPage: NextPage = () => {
     },
     onError: async (err) => {
       console.error(err);
-      document.location.href = '../login';
+      document.location.href = '/login';
     },
   });
 
@@ -45,8 +45,8 @@ const CreateClusterPage: NextPage = () => {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-5 md:px-20 mt-12">
-      <div className="h-[800px] w-full sm:w-[80%] lg:w-[50%] rounded-lg input-mask input-mask-addons px-4">
-        <div className="flex justify-center align-items mt-24 text-center">
+      <div className="h-[650px] md:h-[600px] w-full sm:w-[80%] lg:w-[50%] rounded-lg input-mask input-mask-addons px-4">
+        <div className="flex justify-center align-items mt-12 mb-8 text-center">
           <h1 className="text-[40px] text-gray-700">Neues Cluster Erstellen</h1>
         </div>
         <form onSubmit={onSubmit} id="create-cluster-form">
@@ -73,7 +73,7 @@ const CreateClusterPage: NextPage = () => {
             </div>
             <div className="flex items-center text-center mt-6">
               <span
-                className={`text-md mr-5 ${
+                className={`text-md mr-5 flex-1 ${
                   isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
                 }`}
               >
@@ -87,7 +87,7 @@ const CreateClusterPage: NextPage = () => {
                 <span className="slider round"></span>
               </label>
               <span
-                className={`text-md ml-5 ${
+                className={`text-md ml-5 flex-1 ${
                   !isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
                 }`}
               >

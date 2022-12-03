@@ -17,7 +17,7 @@ export const authRouter = createRouter()
     resolve: async ({ input, ctx }) => await loginHandler({ input, ctx }),
   })
   .mutation('logout', {
-    resolve: () => logoutHandler(),
+    resolve: ({ ctx }) => logoutHandler({ ctx }),
   })
   .query('refresh', {
     resolve: ({ ctx }) => refreshAccessTokenHandler({ ctx }),

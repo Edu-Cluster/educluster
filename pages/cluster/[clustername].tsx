@@ -62,7 +62,7 @@ const CreateClusterPage: NextPage = () => {
     },
     onError: async (err) => {
       console.error(err);
-      document.location.href = '../login';
+      document.location.href = '/login';
     },
   });
 

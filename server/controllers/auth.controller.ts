@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { OptionsType } from 'cookies-next/lib/types';
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie, hasCookie } from 'cookies-next';
 import { LoginUserInput, registerUserSchema } from '../schemata/user.schema';
 import { verifyJwt, signJwt } from '../utils/jwt';
 import {
@@ -22,7 +22,6 @@ import {
 
 // Options
 const cookieOptions: OptionsType = {
-  httpOnly: true,
   sameSite: 'lax',
   secure: process.env.NODE_ENV === 'production',
 };
@@ -53,9 +52,15 @@ export const refreshAccessTokenHandler = async ({
   ctx: ContextWithUser;
 }) => {
   try {
+    const message = 'Could not refresh access token!';
+
+    // If session expired, the access token will not be refreshed
+    if (!hasCookie('session', { req, res })) {
+      throw new TRPCError({ code: 'FORBIDDEN', message });
+    }
+
     // Get the refresh token from cookie
     const refresh_token = getCookie('refresh_token', { req, res }) as string;
-    const message = 'Could not refresh access token!';
 
     if (!refresh_token) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
@@ -251,12 +256,16 @@ export const loginHandler = async ({
  * Handles the logout process.
  * Note: The logout process only concerns EduCluster and has no relation to the WebUntis logout process.
  */
-export const logoutHandler = async () => {
+export const logoutHandler = async ({
+  ctx: { req, res },
+}: {
+  ctx: ContextWithUser;
+}) => {
   try {
-    // Reset browser cookies
-    deleteCookie('access_token');
-    deleteCookie('refresh_token');
-    deleteCookie('session');
+    // Delete browser cookies
+    deleteCookie('access_token', { req, res });
+    deleteCookie('refresh_token', { req, res });
+    deleteCookie('session', { req, res });
 
     return { status: statusCodes.SUCCESS };
   } catch (err: any) {

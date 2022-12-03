@@ -21,9 +21,9 @@ const ProfileBadge = (props: Props) => {
 
       if (data.status === statusCodes.SUCCESS) {
         // Redirect to login page
-        await router.push('./login');
+        await router.push('/login');
       } else {
-        toast.error('Oops: Irgendwas ist falsch gelaufen!');
+        toast.error('Oops, Irgendwas ist falsch gelaufen!');
       }
     },
 
