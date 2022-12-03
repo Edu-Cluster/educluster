@@ -20,7 +20,7 @@ const ItemList = ({ items, title }: Props) => {
   };
 
   return (
-    <div className="h-[700px] w-full max-w-[800px] mt-8">
+    <div className="h-fit w-full max-w-[800px] mt-8">
       {title ? (
         <p className="px-4 rounded-sm bg-gray-100 text-2xl">{title}</p>
       ) : (
