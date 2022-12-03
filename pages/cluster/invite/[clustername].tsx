@@ -53,12 +53,12 @@ const InviteClusterPage: NextPage = () => {
 
   return (
     <main className="page-default">
-      <div className="list-container flex-wrap-reverse">
+      <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">
         <MemberList members={members} isOnInvitationPage={true} />
-        <div className="w-full lg:min-w-[515px] mt-16 flex flex-col gap-4">
+        <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
           <MemberSearchField
             resource={resources.USER}
-            placeholder="Nach Benutzern mit Benutzername oder E-Mail suchen"
+            placeholder="Nach Benutzern suchen"
           />
           <MemberSearchResultArea isOnInvitationPage={true} />
         </div>
