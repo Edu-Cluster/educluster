@@ -6,6 +6,7 @@ export type User = {
   username: string;
   untis_username: string;
   teams_email: string;
+  role: string;
 };
 
 export type ContextWithUser = {

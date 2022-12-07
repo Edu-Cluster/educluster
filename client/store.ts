@@ -17,6 +17,9 @@ type Store = {
   setPotentialMembers: (members: Member[] | null) => void;
   membersToInvite: Member[];
   setMembersToInvite: (members: Member[]) => void;
+
+  items: any;
+  setItems: (items: any) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -37,6 +40,9 @@ const useStore = create<Store>((set) => ({
   membersToInvite: [],
   setMembersToInvite: (members) =>
     set((state) => ({ ...state, membersToInvite: members })),
+
+  items: null,
+  setItems: (items) => set((state) => ({ ...state, items })),
 }));
 
 export default useStore;

@@ -40,9 +40,9 @@ const ListItem = ({
 
           <div>
             <p className="text-sm block">{`Ersteller: ${host}`}</p>
-            {type.category && room ? (
+            {type?.category && room ? (
               <p className="text-sm">{`Raum: ${room}`}</p>
-            ) : type.category && !room ? (
+            ) : type?.category && !room ? (
               <p className="text-sm">Raumlos</p>
             ) : (
               <p className="text-sm"></p>

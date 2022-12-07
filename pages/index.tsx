@@ -17,100 +17,6 @@ const learningUnits: Item[][] = [
       room: '1AHIF',
       link: '/',
     },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-  [
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-  [
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
   ],
 ];
 
@@ -131,10 +37,22 @@ const clusters: Item[][] = [
 const DashboardPage: NextPage = () => {
   const store = useStore();
 
-  const query = trpc.useQuery(['user.me'], {
+  const itemsQuery = trpc.useQuery(['item.mine'], {
     enabled: false,
-    onSuccess: ({ data }) => {
+    onSuccess: async ({ data }) => {
+      console.log(data);
+      store.setItems(data);
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  const userQuery = trpc.useQuery(['user.me'], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
+      await itemsQuery.refetch(data.user);
     },
     onError: async (err) => {
       console.error(err);
@@ -144,24 +62,23 @@ const DashboardPage: NextPage = () => {
 
   useEffect(() => {
     // Fetch user and set store state
-    query.refetch();
+    userQuery.refetch();
   }, []);
 
   return (
-    <main className="page-default">
-      <div className="list-container">
+    <main className="h-auto flex w-full justify-center mt-5 screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
+      <div className="w-full flex justify-center screen-xxl:justify-start gap-5 flex-wrap lg:w-auto screen-xxl:w-full screen-xxxl:flex-nowrap">
         <ItemList items={learningUnits} title="Lerneinheiten" />
-        <ItemList items={clusters} title="Cluster" />
+        <ItemList items={store?.items?.cluster} title="Cluster" />
       </div>
-
       <div className="h-[300px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16">
         <div className="h-full w-full flex flex-col items-center">
           <div className="w-full h-36 flex justify-center items-center gap-5">
             <div className="h-20 w-20 border-2 rounded-[50%] text-black"></div>
-            <p className="uppercase text-4xl">Schüler</p>
+            <p className="uppercase text-4xl">{store.authUser?.role}</p>
           </div>
-          <p className="text-xl mb-5">Nameanemanemaha</p>
-          <p className="text-xl">irgendeinuser@test.com</p>
+          <p className="text-xl mb-5">{store.authUser?.username}</p>
+          <p className="text-xl">{store.authUser?.teams_email}</p>
         </div>
       </div>
     </main>
