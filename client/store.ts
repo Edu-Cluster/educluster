@@ -18,8 +18,10 @@ type Store = {
   membersToInvite: Member[];
   setMembersToInvite: (members: Member[]) => void;
 
-  items: any;
-  setItems: (items: any) => void;
+  cluster: any;
+  setCluster: (items: any) => void;
+  appointments: any;
+  setAppointment: (items: any) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -41,8 +43,12 @@ const useStore = create<Store>((set) => ({
   setMembersToInvite: (members) =>
     set((state) => ({ ...state, membersToInvite: members })),
 
-  items: null,
-  setItems: (items) => set((state) => ({ ...state, items })),
+  cluster: null,
+  setCluster: (cluster) => set((state) => ({ ...state, cluster })),
+
+  appointments: null,
+  setAppointment: (appointments) =>
+    set((state) => ({ ...state, appointments })),
 }));
 
 export default useStore;

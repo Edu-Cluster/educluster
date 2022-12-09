@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
-import ItemList from '../../components/Item/ItemList';
+import ClusterList from '../../components/Item/ClusterList';
 import MemberList from '../../components/Member/MemberList';
 import { Item, Member, User } from '../../lib/types';
 import { roles } from '../../lib/enums';
@@ -75,7 +75,7 @@ const CreateClusterPage: NextPage = () => {
     <main className="page-default">
       <div className="list-container">
         <MemberList members={members} />
-        <ItemList items={learningUnits} title="Lerneinheiten" />
+        <ClusterList cluster={learningUnits} title="Lerneinheiten" />
       </div>
 
       <ClusterBanner

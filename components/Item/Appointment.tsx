@@ -12,7 +12,7 @@ type Props = {
   children: ReactNode;
 };
 
-const ListItem = ({
+const ListCluster = ({
   type,
   title,
   description,
@@ -62,4 +62,4 @@ const ListItem = ({
   );
 };
 
-export default ListItem;
+export default ListCluster;

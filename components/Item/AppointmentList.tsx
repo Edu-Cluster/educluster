@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import ListItem from './Item';
+import ListAppointment from './Appointment';
 import Tag from './Tag';
 import type { Item } from '../../lib/types';
 
 type Props = {
-  items: Item[][] | null;
+  appointments: Item[][] | null;
   title?: 'Lerneinheiten' | 'Cluster';
 };
 
-const ItemList = ({ items, title }: Props) => {
+const AppointmentList = ({ appointments, title }: Props) => {
   const [page, setPage] = useState(1);
 
   const loadNewPage = (e: any) => {
@@ -28,9 +28,9 @@ const ItemList = ({ items, title }: Props) => {
       )}
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
-          {items &&
-            items[page - 1].map((item, idx) => (
-              <ListItem
+          {appointments &&
+            appointments[page - 1].map((item, idx) => (
+              <ListAppointment
                 key={idx}
                 type={item.type}
                 title={item.title}
@@ -42,12 +42,12 @@ const ItemList = ({ items, title }: Props) => {
                 {item.type?.category &&
                   item.tags &&
                   item.tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
-              </ListItem>
+              </ListAppointment>
             ))}
         </div>
         <div className="py-3 flex justify-center items-center gap-2">
-          {items &&
-            items.map((item, idx) => (
+          {appointments &&
+            appointments.map((item, idx) => (
               <div
                 key={idx + 1}
                 className={`${page == idx + 1 ? 'text-white bg-blue-400' : ''}
@@ -62,5 +62,4 @@ const ItemList = ({ items, title }: Props) => {
     </div>
   );
 };
-
-export default ItemList;
+export default AppointmentList;

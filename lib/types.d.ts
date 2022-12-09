@@ -15,20 +15,28 @@ export type ContextWithUser = {
   user: person | null;
 };
 
-export type LearningUnit = {
-  category: 1;
-};
-
-export type Cluster = {
-  category: 0;
-};
-
 export type Member = {
   username: string;
   role: roles.ADMINISTRATOR | roles.STUDENT | roles.TEACHER;
 };
 
 export type Item = {
+  type: Cluster | LearningUnit;
+  tags: string[] | null;
+  title: string;
+  description: string;
+  host: string;
+  room: string | null;
+  link: string;
+};
+
+export type Cluster = {
+  clustername: string;
+  description: string;
+  person: { username: string };
+  id: number;
+};
+export type Appointment = {
   type: Cluster | LearningUnit;
   tags: string[] | null;
   title: string;
