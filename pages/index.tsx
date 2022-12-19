@@ -4,6 +4,7 @@ import type { Item, User } from '../lib/types';
 import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
+import { HashLoader } from 'react-spinners';
 
 const learningUnits: Item[][] = [
   [
@@ -133,6 +134,7 @@ const DashboardPage: NextPage = () => {
 
   const query = trpc.useQuery(['user.me'], {
     enabled: false,
+    retry: 0,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
     },
@@ -169,7 +171,11 @@ const DashboardPage: NextPage = () => {
     );
   }
 
-  return <div>LOADING</div>;
+  return (
+    <main className="h-screen flex items-center justify-center">
+      <HashLoader size={100} />
+    </main>
+  );
 };
 
 export default DashboardPage;

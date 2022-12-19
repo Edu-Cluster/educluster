@@ -59,6 +59,7 @@ const LoginPage: NextPage = () => {
 
   const query = trpc.useQuery(['user.me'], {
     enabled: false,
+    retry: 0,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user);
     },

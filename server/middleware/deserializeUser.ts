@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyJwt } from '../utils/jwt';
 import { ContextWithUser } from '../../lib/types';
 import { readEduClusterUsername } from '../services/user.service';
+import { refreshAccessTokenHandler } from '../controllers/auth.controller';
+import { getCookie } from 'cookies-next';
 
 /**
  * Deserializes the user if a valid access token and session exist and if a user associated with those credentials can be found.
@@ -36,12 +38,21 @@ export const deserializeUser = async ({
 
     // If there is no access token, return with empty user
     if (!access_token) {
+      try {
+        await refreshAccessTokenHandler({ ctx: { req, res } });
+        access_token = getCookie('access_token', { req, res });
+      } catch (err: any) {
+        return notAuthenticated;
+      }
+    }
+
+    if (!access_token) {
       return notAuthenticated;
     }
 
     // Validate access token
     const decoded = verifyJwt<{ sub: string }>(
-      access_token,
+      access_token as string,
       'accessTokenPublicKey',
     );
 

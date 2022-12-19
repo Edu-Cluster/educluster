@@ -15,6 +15,7 @@ const CreateClusterPage: NextPage = () => {
 
   const query = trpc.useQuery(['user.me'], {
     enabled: false,
+    retry: 0,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
     },
@@ -44,10 +45,12 @@ const CreateClusterPage: NextPage = () => {
   });
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center px-5 md:px-20 mt-12">
-      <div className="h-[650px] md:h-[600px] w-full sm:w-[80%] lg:w-[50%] rounded-lg input-mask input-mask-addons px-4">
+    <main className="flex w-full h-[90vh] mt-[-2rem] flex-1 flex-col items-center justify-center px-5 md:px-20 bg-gray-100">
+      <div className="h-full md:h-[600px] w-full sm:w-[80%] lg:w-[50%] input-mask px-4">
         <div className="flex justify-center align-items mt-12 mb-8 text-center">
-          <h1 className="text-[40px] text-gray-700">Neues Cluster Erstellen</h1>
+          <h1 className="text-[30px] md:text-[40px] screen-xxl:text-[60px] text-gray-700">
+            Neues Cluster Erstellen
+          </h1>
         </div>
         <form onSubmit={onSubmit} id="create-cluster-form">
           <div className="flex items-center justify-center w-full h-full flex-col">

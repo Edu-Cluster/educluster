@@ -19,6 +19,7 @@ import {
   AuthProviderCallback,
   Client,
 } from '@microsoft/microsoft-graph-client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 // Options
 const cookieOptions: OptionsType = {
@@ -49,22 +50,21 @@ const refreshTokenCookieOptions: OptionsType = {
 export const refreshAccessTokenHandler = async ({
   ctx: { req, res },
 }: {
-  ctx: ContextWithUser;
+  ctx: { req: NextApiRequest; res: NextApiResponse };
 }) => {
   try {
     const message = 'Could not refresh access token!';
 
     // If session expired, the access token will not be refreshed
-    if (!hasCookie('session', { req, res })) {
+    if (
+      !hasCookie('session', { req, res }) ||
+      !hasCookie('refresh_token', { req, res })
+    ) {
       throw new TRPCError({ code: 'FORBIDDEN', message });
     }
 
     // Get the refresh token from cookie
     const refresh_token = getCookie('refresh_token', { req, res }) as string;
-
-    if (!refresh_token) {
-      throw new TRPCError({ code: 'FORBIDDEN', message });
-    }
 
     // Validate the Refresh token
     const decoded = verifyJwt<{ sub: string }>(

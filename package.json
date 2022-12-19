@@ -25,6 +25,7 @@
     "react-hook-form": "^7.37.0",
     "react-hot-toast": "^2.4.0",
     "react-modern-drawer": "^1.1.2",
+    "react-spinners": "^0.13.7",
     "sass": "^1.55.0",
     "superjson": "^1.9.1",
     "webuntis": "^1.22.1",

@@ -34,6 +34,7 @@ const InviteClusterPage: NextPage = () => {
 
   const query = trpc.useQuery(['user.me'], {
     enabled: false,
+    retry: 0,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
 
