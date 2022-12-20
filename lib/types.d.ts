@@ -37,11 +37,10 @@ export type Cluster = {
   id: number;
 };
 export type Appointment = {
-  type: Cluster | LearningUnit;
-  tags: string[] | null;
+  topics: { child: string[] | null };
   title: string;
   description: string;
-  host: string;
-  room: string | null;
+  creator: string;
+  roomname: string | null;
   link: string;
 };

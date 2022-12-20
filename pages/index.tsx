@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import ClusterList from '../components/Item/ClusterList';
+import ItemList from '../components/Item/ItemList';
 import type { Item, User } from '../lib/types';
 import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
-import AppointmentList from '../components/Item/AppointmentList';
 
 const learningUnits: Item[][] = [
   [
@@ -38,11 +37,20 @@ const clusters: Item[][] = [
 const DashboardPage: NextPage = () => {
   const store = useStore();
 
-  const clusterQuery = trpc.useQuery(['item.mine'], {
+  const clusterQuery = trpc.useQuery(['cluster.mine'], {
     enabled: false,
     onSuccess: async ({ data }) => {
-      console.log(data);
       store.setCluster(data);
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  const appointmentQuery = trpc.useQuery(['appointment.mine'], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      store.setAppointment(data);
     },
     onError: async (err) => {
       console.error(err);
@@ -54,7 +62,7 @@ const DashboardPage: NextPage = () => {
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
       await clusterQuery.refetch(data.user);
-      // await appointmentQuery.refetch(data.user); TODO Lara
+      await appointmentQuery.refetch(data.user);
     },
     onError: async (err) => {
       console.error(err);
@@ -70,8 +78,11 @@ const DashboardPage: NextPage = () => {
   return (
     <main className="h-auto flex w-full justify-center mt-5 screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap">
       <div className="w-full flex justify-center screen-xxl:justify-start gap-5 flex-wrap lg:w-auto screen-xxl:w-full screen-xxxl:flex-nowrap">
-        <ClusterList cluster={store.cluster?.cluster} title="Cluster" />
-        <AppointmentList appointments={learningUnits} title="Lerneinheiten" />
+        <ItemList items={store.cluster?.cluster} title="Cluster" />
+        <ItemList
+          items={store.appointments?.appointments}
+          title="Lerneinheiten"
+        />
       </div>
       <div className="h-[300px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16">
         <div className="h-full w-full flex flex-col items-center">

@@ -2,7 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import {
-  // readAppointmentsFromUser,
+  readAppointmentsFromUser,
   readClusterFromUser,
 } from '../services/item.service';
 
@@ -16,11 +16,11 @@ export const getItemHandler = async ({ ctx }: { ctx: ContextWithUser }) => {
   try {
     const user = ctx.user;
     const cluster = await readClusterFromUser(user.username);
-    // const learningUnits = readAppointmentsFromUser(user);
+    const appointments = await readAppointmentsFromUser(user.username);
     return {
       status: statusCodes.SUCCESS,
       data: {
-        // learningUnits,
+        appointments,
         cluster,
       },
     };
