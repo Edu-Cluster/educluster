@@ -57,7 +57,7 @@ const LoginPage: NextPage = () => {
     }
   }, []);
 
-  const query = trpc.useQuery(['user.me'], {
+  const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
@@ -75,7 +75,7 @@ const LoginPage: NextPage = () => {
         setValue('password', '');
 
         // Fetch user and set store state
-        await query.refetch();
+        await userQuery.refetch();
 
         // Redirect to dashboard
         await router.push('./');

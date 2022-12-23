@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import trpc from '../../client/trpc';
 import useStore from '../../client/store';
 import ClusterBanner from '../../components/Cluster/ClusterBanner';
+import { MoonLoader } from 'react-spinners';
 
 const learningUnits: Item[][] = [
   [
@@ -52,7 +53,7 @@ const CreateClusterPage: NextPage = () => {
     clustername = clustername[0];
   }
 
-  const query = trpc.useQuery(['user.me'], {
+  const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
@@ -69,21 +70,29 @@ const CreateClusterPage: NextPage = () => {
 
   useEffect(() => {
     // Fetch user and set store state
-    query.refetch();
+    userQuery.refetch();
   }, []);
 
-  return (
-    <main className="page-default">
-      <div className="list-container">
-        <MemberList members={members} />
-        <ItemList items={learningUnits} title="Lerneinheiten" />
-      </div>
+  if (userQuery.isSuccess) {
+    return (
+      <main className="page-default">
+        <div className="list-container">
+          <MemberList members={members} />
+          <ItemList items={learningUnits} title="Lerneinheiten" />
+        </div>
 
-      <ClusterBanner
-        name={clustername as string}
-        isPrivate={false}
-        description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
-      />
+        <ClusterBanner
+          name={clustername as string}
+          isPrivate={false}
+          description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
+        />
+      </main>
+    );
+  }
+
+  return (
+    <main className="h-screen flex items-center justify-center">
+      <MoonLoader size={80} />
     </main>
   );
 };

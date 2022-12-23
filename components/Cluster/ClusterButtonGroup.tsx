@@ -43,7 +43,7 @@ const ClusterButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
               <div
                 className="cluster-button text-blue-500 hover:bg-blue-100"
                 onClick={() =>
-                  (document.location.href = `./invite/${clustername}`)
+                  (document.location.href = `./einladen/${clustername}`)
                 }
               >
                 <p className="mr-2 text-blue-500">Mitglieder einladen</p>

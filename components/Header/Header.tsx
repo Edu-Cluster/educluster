@@ -34,7 +34,9 @@ const Header = () => {
       <Logo />
 
       <div className="mx-5 flex items-center space-x-3 text-white lg:inline-flex">
-        <HoverMenuOption options={[{ name: 'Lerneinheit suchen', link: '/' }]}>
+        <HoverMenuOption
+          options={[{ name: 'Lerneinheit suchen', link: '/termin/suche' }]}
+        >
           <AcademicCapIcon className="header-icon" />
           <p className="text">Lerneinheit</p>
         </HoverMenuOption>
@@ -42,7 +44,7 @@ const Header = () => {
         <HoverMenuOption
           options={[
             { name: 'Cluster suchen', link: '/' },
-            { name: 'Cluster erstellen', link: '/cluster/create' },
+            { name: 'Cluster erstellen', link: '/cluster/erstellen' },
           ]}
         >
           <CubeIcon className="header-icon" />
@@ -50,7 +52,7 @@ const Header = () => {
         </HoverMenuOption>
 
         <ProfileBadge
-          options={[{ text: 'Ausloggen', isLogout: true, link: null }]}
+          options={[{ text: 'Ausloggen', isLogout: true, link: '/login' }]}
         >
           <UserCircleIcon className="header-icon" />
         </ProfileBadge>
