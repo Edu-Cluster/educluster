@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
-import type { Appointment, Cluster, Item } from '../../lib/types';
+import type { Appointment, Cluster } from '../../lib/types';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
-import { resources } from '../../lib/enums';
+import { conditionSatisfactionTypes, resources } from '../../lib/enums';
+import { Room } from 'webuntis';
+import RoomItemInList from '../Room/RoomItemInList';
+import { MoonLoader } from 'react-spinners';
 
 type Props = {
-  resource: resources.CLUSTER | resources.APPOINTMENT;
-  items: Cluster[][] | Appointment[][] | Item[][] | null;
+  resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
+  items: Cluster[][] | Appointment[][] | Room[][] | null;
   title?: 'Lerneinheiten' | 'Cluster';
   placeholder?: string;
 };
@@ -24,11 +27,88 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
   };
 
   if (!items || !items.length) {
+    if (placeholder) {
+      return (
+        <div className="text-center mt-24">
+          <p className="text-gray-400">{placeholder}</p>
+        </div>
+      );
+    }
+
     return (
-      <div className="text-center mt-24">
-        <p className="text-gray-400">{placeholder}</p>
+      <div className="h-fit w-full mt-8 border-2 border-sky-50">
+        {title ? (
+          <p className="px-4 rounded-sm bg-gray-100 text-2xl">{title}</p>
+        ) : (
+          <></>
+        )}
+        <div className="h-[500px] w-full flex justify-center items-center">
+          <MoonLoader size={50} />
+        </div>
       </div>
     );
+  }
+
+  let ItemsInList;
+
+  switch (resource) {
+    case resources.CLUSTER:
+      ItemsInList = (
+        <>
+          {(items as Cluster[][])[page - 1].map((item, idx) => (
+            <ClusterItemInList
+              key={idx}
+              clustername={item.clustername}
+              description={item.description}
+              creator={item.person.username}
+              link={'/cluster/' + item.clustername + '#' + item.id}
+            />
+          ))}
+        </>
+      );
+      break;
+    case resources.APPOINTMENT:
+      ItemsInList = (
+        <>
+          {(items as Appointment[][])[page - 1].map((item, idx) => (
+            <AppointmentItemInList
+              key={idx}
+              title={item.name}
+              description={item.description}
+              creator={item.creator}
+              roomname={item.roomname}
+              link={'/appointment/' + item.name + '#' + item.id}
+            >
+              {item.topics_for_appointment &&
+                item.topics_for_appointment.map((tag, idx) => {
+                  if (tag.topic_topicTotopics_for_appointment) {
+                    return (
+                      <Tag
+                        key={idx}
+                        name={tag.topic_topicTotopics_for_appointment.symbol}
+                      />
+                    );
+                  }
+                })}
+            </AppointmentItemInList>
+          ))}
+        </>
+      );
+      break;
+    case resources.ROOM:
+      ItemsInList = (
+        <>
+          {(items as Room[][])[page - 1].map((item, idx) => (
+            <RoomItemInList
+              key={idx}
+              name={item.name}
+              link={'/appointment/' + item.name + '#' + item.id}
+              conditionsSatisfied={conditionSatisfactionTypes.SATISFIED}
+            />
+          ))}
+        </>
+      );
+      break;
   }
 
   return (
@@ -39,47 +119,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
         <></>
       )}
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
-        <div className="h-fit divide-y">
-          {resource === resources.CLUSTER
-            ? // @ts-ignore
-              (items as Cluster)[page - 1].map((item, idx) => (
-                <ClusterItemInList
-                  key={idx}
-                  clustername={item.clustername}
-                  description={item.description}
-                  creator={item.person.username}
-                  link={'/cluster/' + item.clustername + '#' + item.id}
-                ></ClusterItemInList>
-              ))
-            : // @ts-ignore
-              (items as Appointment)[page - 1].map((item, idx) => (
-                <AppointmentItemInList
-                  key={idx}
-                  title={item.title}
-                  description={item.description}
-                  creator={item.creator}
-                  roomname={item.roomname}
-                  link={'/appointment/' + item.name + '#' + item.id}
-                >
-                  {item.topics_for_appointment &&
-                    item.topics_for_appointment.map(
-                      (
-                        tag: {
-                          topic_topicTotopics_for_appointment: {
-                            symbol: string;
-                          };
-                        },
-                        idx: React.Key | null | undefined,
-                      ) => (
-                        <Tag
-                          key={idx}
-                          name={tag.topic_topicTotopics_for_appointment.symbol}
-                        />
-                      ),
-                    )}
-                </AppointmentItemInList>
-              ))}
-        </div>
+        <div className="h-fit divide-y">{ItemsInList}</div>
         <div className="py-3 flex justify-center items-center gap-2">
           {items.map((item, idx) => (
             <div

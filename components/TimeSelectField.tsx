@@ -1,6 +1,6 @@
 import React from 'react';
-import RegisteredSelectField from './RegisteredSelectField';
 import { timeTypes } from '../lib/enums';
+import SelectField from './SelectField';
 
 type Props = {
   preselected: string;
@@ -56,7 +56,7 @@ const TimeSelectField = ({
   timeType,
 }: Props) => {
   return (
-    <RegisteredSelectField
+    <SelectField
       preselected={preselected}
       registerSelectName={registerSelectName}
     >
@@ -77,7 +77,7 @@ const TimeSelectField = ({
           ))}
         </>
       )}
-    </RegisteredSelectField>
+    </SelectField>
   );
 };
 

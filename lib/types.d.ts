@@ -20,25 +20,22 @@ export type Member = {
   role: roles.ADMINISTRATOR | roles.STUDENT | roles.TEACHER;
 };
 
-export type Item = {
-  type: Cluster | LearningUnit;
-  tags: string[] | null;
-  title: string;
-  description: string;
-  host: string;
-  room: string | null;
-  link: string;
-};
-
 export type Cluster = {
+  id: number;
   clustername: string;
   description: string;
   person: { username: string };
-  id: number;
 };
+
 export type Appointment = {
-  topics: { child: string[] | null };
-  title: string;
+  id: number;
+  topics_for_appointment: {
+    topic_topicTotopics_for_appointment: {
+      symbol: string;
+      is_visible: boolean;
+    } | null;
+  }[];
+  name: string;
   description: string;
   creator: string;
   roomname: string | null;

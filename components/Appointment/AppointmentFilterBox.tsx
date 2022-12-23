@@ -45,8 +45,8 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     [];
 
   const resetAll = () => {
-    setValue('timeFrom', '');
-    setValue('timeTo', '');
+    setValue('timeFrom', '-1');
+    setValue('timeTo', '-1');
     setValue('dateFrom', '');
     setValue('dateTo', '');
 
