@@ -43,7 +43,7 @@ const Header = () => {
 
         <HoverMenuOption
           options={[
-            { name: 'Cluster suchen', link: '/' },
+            { name: 'Cluster suchen', link: '/cluster/suche' },
             { name: 'Cluster erstellen', link: '/cluster/erstellen' },
           ]}
         >

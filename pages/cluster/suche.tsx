@@ -4,12 +4,12 @@ import { resources } from '../../lib/enums';
 import useStore from '../../client/store';
 import ItemSearchField from '../../components/Item/ItemSearchField';
 import ItemList from '../../components/Item/ItemList';
-import AppointmentFilterBox from '../../components/Appointment/AppointmentFilterBox';
+import ClusterFilterBox from '../../components/Cluster/ClusterFilterBox';
 import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
-const AppointmentSearchPage: NextPage = () => {
+const ClusterSearchPage: NextPage = () => {
   const store = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
@@ -34,15 +34,15 @@ const AppointmentSearchPage: NextPage = () => {
       <main className="page-default">
         <div className="w-full max-w-[800px] mt-16 flex flex-col gap-4">
           <ItemSearchField
-            resource={resources.APPOINTMENT}
-            placeholder="Nach Terminen suchen"
-            name="appointment-search"
+            resource={resources.CLUSTER}
+            placeholder="Nach Clustern suchen"
+            name="cluster-search"
           />
-          <AppointmentFilterBox showResetButton={!!store.appointments} />
+          <ClusterFilterBox showResetButton={!!store.cluster} />
           <ItemList
-            resource={resources.APPOINTMENT}
-            items={store.appointments}
-            placeholder="Benutze das Suchfeld oder die Filter um nach Lerneinheiten zu suchen"
+            resource={resources.CLUSTER}
+            items={store.cluster}
+            placeholder="Benutze das Suchfeld oder die Filter um nach Clustern zu suchen"
           />
         </div>
       </main>
@@ -51,9 +51,9 @@ const AppointmentSearchPage: NextPage = () => {
 
   return (
     <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
+      <MoonLoader size={100} />
     </main>
   );
 };
 
-export default AppointmentSearchPage;
+export default ClusterSearchPage;
