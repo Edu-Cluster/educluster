@@ -23,8 +23,6 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     setPage(nextPage);
   };
 
-  console.log(items);
-
   if (!items || !items.length) {
     return (
       <div className="text-center mt-24">

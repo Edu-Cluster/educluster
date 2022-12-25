@@ -51,7 +51,7 @@ const ClusterSearchPage: NextPage = () => {
 
   return (
     <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={100} />
+      <MoonLoader size={80} />
     </main>
   );
 };

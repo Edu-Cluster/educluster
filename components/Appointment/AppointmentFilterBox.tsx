@@ -6,6 +6,7 @@ import TimeSelectField from '../TimeSelectField';
 import SearchField from '../SearchField';
 import SubjectTopicComponent from '../SubjectTopic/SubjectTopicComponent';
 import FullTag from '../SubjectTopic/FullTag';
+import RegisteredSearchField from '../RegisteredSearchField';
 
 type Props = {
   showResetButton: boolean;
@@ -117,8 +118,8 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">
-      <FormProvider {...methods}>
-        <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5">
+        <FormProvider {...methods}>
           <form onSubmit={onSubmit} id="appointment-search-form">
             <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5">
               <TimeSelectField
@@ -131,105 +132,99 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
                 registerSelectName="timeTo"
                 timeType={timeTypes.TO}
               />
-              <SearchField
+              <RegisteredSearchField
                 noIcon={true}
                 type="date"
                 registerInputName="dateFrom"
               />
-              <SearchField
+              <RegisteredSearchField
                 noIcon={true}
                 type="date"
                 registerInputName="dateTo"
               />
             </div>
           </form>
-          <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5">
-            <div className="w-full flex flex-col">
-              <SearchField
-                placeholder="Fach eingeben"
-                noIcon={true}
-                name="subject-search"
-                onChangeHandler={searchForSubjects}
-              />
-              {potentialSubjects && (
-                <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
-                  {potentialSubjects.map((potentialSubject, idx) => (
-                    <SubjectTopicComponent
-                      key={idx}
-                      resource={resources.SUBJECT}
-                      name={potentialSubject}
-                      showPlusButton={
-                        !matchingSubjects.some(
-                          (subject) => subject === potentialSubject,
-                        )
-                      }
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="w-full flex flex-col">
-              <SearchField
-                placeholder="Thema eingeben"
-                noIcon={true}
-                name="topic-search"
-                onChangeHandler={searchForTopics}
-              />
-              {potentialTopics && (
-                <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
-                  {potentialTopics.map((potentialTopic, idx) => (
-                    <SubjectTopicComponent
-                      key={idx}
-                      resource={resources.TOPIC}
-                      name={potentialTopic}
-                      showPlusButton={
-                        !matchingTopics.some(
-                          (topic) => topic === potentialTopic,
-                        )
-                      }
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+        </FormProvider>
+        <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5">
+          <div className="w-full flex flex-col">
+            <SearchField
+              placeholder="Fach eingeben"
+              noIcon={true}
+              name="subject-search"
+              onChangeHandler={searchForSubjects}
+            />
+            {potentialSubjects && (
+              <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
+                {potentialSubjects.map((potentialSubject, idx) => (
+                  <SubjectTopicComponent
+                    key={idx}
+                    resource={resources.SUBJECT}
+                    name={potentialSubject}
+                    showPlusButton={
+                      !matchingSubjects.some(
+                        (subject) => subject === potentialSubject,
+                      )
+                    }
+                  />
+                ))}
+              </div>
+            )}
           </div>
-          {subjects && (
-            <div className="flex gap-2 w-full">
-              {subjects.map((subject, idx) => (
-                <FullTag
-                  key={idx}
-                  resource={resources.SUBJECT}
-                  name={subject}
-                />
-              ))}
-            </div>
-          )}
-          {topics && (
-            <div className="flex gap-2 w-full">
-              {topics.map((topic, idx) => (
-                <FullTag key={idx} resource={resources.TOPIC} name={topic} />
-              ))}
-            </div>
-          )}
-          <button
-            aria-label="Alle Filter übernehmen"
-            className="w-full h-16 primary-button"
-            type="submit"
-            form="appointment-search-form"
-          >
-            Alle Filter übernehmen
-          </button>
-          {showResetButton && (
-            <button
-              aria-label="Alles zurücksetzen"
-              className="w-full h-16 primary-button bg-red-400 hover:bg-red-500"
-              onClick={() => resetAll()}
-            >
-              Alles zurücksetzen
-            </button>
-          )}
+          <div className="w-full flex flex-col">
+            <SearchField
+              placeholder="Thema eingeben"
+              noIcon={true}
+              name="topic-search"
+              onChangeHandler={searchForTopics}
+            />
+            {potentialTopics && (
+              <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
+                {potentialTopics.map((potentialTopic, idx) => (
+                  <SubjectTopicComponent
+                    key={idx}
+                    resource={resources.TOPIC}
+                    name={potentialTopic}
+                    showPlusButton={
+                      !matchingTopics.some((topic) => topic === potentialTopic)
+                    }
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </FormProvider>
+        {subjects && (
+          <div className="flex gap-2 w-full">
+            {subjects.map((subject, idx) => (
+              <FullTag key={idx} resource={resources.SUBJECT} name={subject} />
+            ))}
+          </div>
+        )}
+        {topics && (
+          <div className="flex gap-2 w-full">
+            {topics.map((topic, idx) => (
+              <FullTag key={idx} resource={resources.TOPIC} name={topic} />
+            ))}
+          </div>
+        )}
+        <button
+          aria-label="Alle Filter übernehmen"
+          className="w-full h-16 primary-button"
+          type="submit"
+          form="appointment-search-form"
+        >
+          Alle Filter übernehmen
+        </button>
+        {showResetButton && (
+          <button
+            aria-label="Alles zurücksetzen"
+            className="w-full h-16 primary-button bg-red-400 hover:bg-red-500"
+            onClick={() => resetAll()}
+          >
+            Alles zurücksetzen
+          </button>
+        )}
+      </div>
     </div>
   );
 };
