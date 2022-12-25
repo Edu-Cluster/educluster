@@ -7,7 +7,11 @@ type Props = {
   registerSelectName: string;
 };
 
-const SelectField = ({ preselected, registerSelectName, children }: Props) => {
+const RegisteredSelectField = ({
+  preselected,
+  registerSelectName,
+  children,
+}: Props) => {
   const { register } = useFormContext();
 
   return (
@@ -22,4 +26,4 @@ const SelectField = ({ preselected, registerSelectName, children }: Props) => {
   );
 };
 
-export default SelectField;
+export default RegisteredSelectField;
