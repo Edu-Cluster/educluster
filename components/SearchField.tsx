@@ -19,9 +19,9 @@ const SearchField = ({
   type,
   registerInputName,
 }: Props) => {
-  if (registerInputName) {
-    const { register } = useFormContext();
+  const { register } = useFormContext();
 
+  if (registerInputName) {
     return (
       <div
         className="flex h-12 w-full items-center justify-between rounded-xl border border-2
