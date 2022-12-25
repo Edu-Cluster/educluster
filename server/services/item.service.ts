@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { prisma } from '../utils/prisma';
 
 export const readClusterFromUser = async (username: string) => {
