@@ -6,7 +6,7 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/outline';
 import { MenuIcon } from '@heroicons/react/solid';
-import Logo from './Logo';
+import Logo from '../Logo';
 import HoverMenuOption from './HoverMenuOption';
 import NotificationBell from './NotificationBell';
 import ProfileBadge from './ProfileBadge';

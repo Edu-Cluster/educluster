@@ -60,6 +60,7 @@ const ClusterBanner = ({
             <label className="switch">
               <input
                 type="checkbox"
+                checked={isSliderOn}
                 onChange={() => setSliderOn((prevState) => !prevState)}
               />
               <span className="slider round"></span>

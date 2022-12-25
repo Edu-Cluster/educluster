@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import Drawer from 'react-modern-drawer';
 import Link from 'next/link';
-import Logo from './Logo';
+import Logo from '../Logo';
 
 type Props = {
   children: ReactNode;
