@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import type { Appointment } from '../../lib/types';
 import Link from 'next/link';
 
 type Props = {

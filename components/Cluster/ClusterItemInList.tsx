@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import type { Cluster } from '../../lib/types';
+import React from 'react';
 import Link from 'next/link';
 
 type Props = {

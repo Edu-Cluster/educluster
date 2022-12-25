@@ -65,6 +65,7 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
 
     if (!appointments && !cluster) {
       // Save search result items as a state
+      // @ts-ignore
       setItems(searchResultItems);
     }
   };
