@@ -13,6 +13,6 @@ export const appRouter = createRouter()
   .merge('auth.', authRouter)
   .merge('user.', userRouter)
   .merge('cluster.', clusterRouter)
-  .merge('appointment.', clusterRouter);
+  .merge('appointment.', appointmentRouter);
 
 export type AppRouter = typeof appRouter;
