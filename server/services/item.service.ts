@@ -34,7 +34,7 @@ export const readClusterFromUser = async (username: string) => {
   let result = [];
   for (let i = 0; i * 5 < count._count.id; i++) {
     result[i] = await prisma.cluster.findMany({
-      where: { id: { in: clusterUserList.map((obj) => obj.cluster_id) } },
+      where: { id: { in: clusterUserList } },
       select: {
         id: true,
         clustername: true,
