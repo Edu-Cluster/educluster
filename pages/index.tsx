@@ -5,6 +5,7 @@ import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
 import { MoonLoader } from 'react-spinners';
+import { resources } from '../lib/enums';
 
 const DashboardPage: NextPage = () => {
   const store = useStore();
@@ -52,8 +53,13 @@ const DashboardPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container">
-          <ItemList items={store.cluster?.cluster} title="Cluster" />
           <ItemList
+            resource={resources.CLUSTER}
+            items={store.cluster?.cluster}
+            title="Cluster"
+          />
+          <ItemList
+            resource={resources.APPOINTMENT}
             items={store.appointments?.appointments}
             title="Lerneinheiten"
           />

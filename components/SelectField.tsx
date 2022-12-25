@@ -16,7 +16,7 @@ const SelectField = ({ preselected, registerSelectName, children }: Props) => {
       className="h-12 w-full rounded-xl border border-2
         border-gray-200 px-2 transition duration-300 ease-in-out hover:border-gray-400"
     >
-      <option selected>{preselected}</option>
+      <option defaultValue={preselected}>{preselected}</option>
       {children}
     </select>
   );

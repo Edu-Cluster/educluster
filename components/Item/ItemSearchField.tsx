@@ -28,26 +28,40 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
     }
 
     // TODO Lara GET request an den Backend schicken, um user zu finden
-    const searchResultItems: Appointment[][] = [
-      [
-        {
-          topics: { child: null },
-          title: 'random',
-          description: 'test',
-          creator: 'me',
-          roomname: '1AHIF',
-          link: 'lol',
-        },
-        {
-          topics: { child: null },
-          title: 'randomness',
-          description: 'test2',
-          creator: 'christopher',
-          roomname: '5AHIF',
-          link: 'lol',
-        },
-      ],
-    ];
+    let searchResultItems;
+    if (resource === resources.APPOINTMENT) {
+      searchResultItems = [
+        [
+          {
+            topics: { child: null },
+            title: 'random',
+            description: 'test',
+            creator: 'me',
+            roomname: '1AHIF',
+            link: 'lol',
+          },
+          {
+            topics: { child: null },
+            title: 'randomness',
+            description: 'test2',
+            creator: 'christopher',
+            roomname: '5AHIF',
+            link: 'lol',
+          },
+        ],
+      ];
+    } else if (resource === resources.CLUSTER) {
+      searchResultItems = [
+        [
+          {
+            clustername: 'test',
+            description: 'the most random description',
+            person: { username: 'yoyo' },
+            id: 1,
+          },
+        ],
+      ];
+    }
 
     if (!appointments && !cluster) {
       // Save search result items as a state

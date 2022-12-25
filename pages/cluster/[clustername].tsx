@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import ItemList from '../../components/Item/ItemList';
 import MemberList from '../../components/Member/MemberList';
 import { Item, Member, User } from '../../lib/types';
-import { roles } from '../../lib/enums';
+import { resources, roles } from '../../lib/enums';
 import { useRouter } from 'next/router';
 import trpc from '../../client/trpc';
 import useStore from '../../client/store';
@@ -78,7 +78,11 @@ const CreateClusterPage: NextPage = () => {
       <main className="page-default">
         <div className="list-container">
           <MemberList members={members} />
-          <ItemList items={learningUnits} title="Lerneinheiten" />
+          <ItemList
+            resource={resources.APPOINTMENT}
+            items={learningUnits}
+            title="Lerneinheiten"
+          />
         </div>
 
         <ClusterBanner

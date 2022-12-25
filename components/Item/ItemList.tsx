@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
-import type { Cluster, Appointment, Item } from '../../lib/types';
+import type { Appointment, Cluster, Item } from '../../lib/types';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
+import { resources } from '../../lib/enums';
 
 type Props = {
+  resource: resources.CLUSTER | resources.APPOINTMENT;
   items: Cluster[][] | Appointment[][] | Item[][] | null;
   title?: 'Lerneinheiten' | 'Cluster';
   placeholder?: string;
 };
 
-const ItemList = ({ items, title, placeholder }: Props) => {
+const ItemList = ({ resource, items, title, placeholder }: Props) => {
   const [page, setPage] = useState(1);
 
   const loadNewPage = (e: any) => {
@@ -21,7 +23,9 @@ const ItemList = ({ items, title, placeholder }: Props) => {
     setPage(nextPage);
   };
 
-  if (!items) {
+  console.log(items);
+
+  if (!items || !items.length) {
     return (
       <div className="text-center mt-24">
         <p className="text-gray-400">{placeholder}</p>
@@ -38,7 +42,7 @@ const ItemList = ({ items, title, placeholder }: Props) => {
       )}
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
-          {title === 'Cluster'
+          {resource === resources.CLUSTER
             ? // @ts-ignore
               (items as Cluster)[page - 1].map((item, idx) => (
                 <ClusterItemInList
@@ -55,7 +59,7 @@ const ItemList = ({ items, title, placeholder }: Props) => {
                   key={idx}
                   title={item.title}
                   description={item.description}
-                  creator={item.item.person.username}
+                  creator={item.creator}
                   roomname={item.roomname}
                   link={'/appointment/' + item.name + '#' + item.id}
                 >
