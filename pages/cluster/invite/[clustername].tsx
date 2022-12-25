@@ -6,14 +6,14 @@ import MemberSearchField from '../../../components/Member/MemberSearchField';
 import trpc from '../../../client/trpc';
 import useStore from '../../../client/store';
 import { User } from '../../../lib/types';
-import { resources } from '../../../lib/enums';
 import ClusterBanner from '../../../components/Cluster/ClusterBanner';
 import MemberSearchResultArea from '../../../components/Member/MemberSearchResultArea';
+import { MoonLoader } from 'react-spinners';
 
 const InviteClusterPage: NextPage = () => {
-  const { setAuthUser, membersToInvite } = useStore();
   const router = useRouter();
   let { clustername } = router.query;
+  const { setAuthUser, membersToInvite } = useStore();
 
   const pageLimit = 10;
   let members = [];
@@ -32,7 +32,7 @@ const InviteClusterPage: NextPage = () => {
     clustername = clustername[0];
   }
 
-  const query = trpc.useQuery(['user.me'], {
+  const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
@@ -49,28 +49,33 @@ const InviteClusterPage: NextPage = () => {
 
   useEffect(() => {
     // Fetch user and set store state
-    query.refetch();
+    userQuery.refetch();
   }, []);
 
-  return (
-    <main className="page-default">
-      <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">
-        <MemberList members={members} isOnInvitationPage={true} />
-        <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
-          <MemberSearchField
-            resource={resources.USER}
-            placeholder="Nach Benutzern suchen"
-          />
-          <MemberSearchResultArea isOnInvitationPage={true} />
+  if (userQuery.isSuccess) {
+    return (
+      <main className="page-default">
+        <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">
+          <MemberList members={members} isOnInvitationPage={true} />
+          <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
+            <MemberSearchField placeholder="Nach Benutzern suchen" />
+            <MemberSearchResultArea isOnInvitationPage={true} />
+          </div>
         </div>
-      </div>
 
-      <ClusterBanner
-        name={clustername as string}
-        isPrivate={false}
-        description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
-        isOnInvitationPage={true}
-      />
+        <ClusterBanner
+          name={clustername as string}
+          isPrivate={false}
+          description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
+          isOnInvitationPage={true}
+        />
+      </main>
+    );
+  }
+
+  return (
+    <main className="h-screen flex items-center justify-center">
+      <MoonLoader size={80} />
     </main>
   );
 };

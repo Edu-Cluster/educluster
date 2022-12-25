@@ -1,133 +1,10 @@
 import React, { useEffect } from 'react';
 import ItemList from '../components/Item/ItemList';
-import type { Item, User } from '../lib/types';
+import type { User } from '../lib/types';
 import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
-import { HashLoader } from 'react-spinners';
-
-const learningUnits: Item[][] = [
-  [
-    {
-      type: { category: 1 },
-      tags: ['M', 'POS'],
-      title: 'Eine Lerneinheit Eine Lerneinheit Eine Lerneinheit',
-      description:
-        'Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit',
-      host: 'Mr. Admin',
-      room: '1AHIF',
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-  [
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-  [
-    {
-      type: { category: 1 },
-      tags: ['M', 'D'],
-      title: 'Eine zweite Lerneinheit',
-      description: 'Meine zweite Lerneinheit',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-];
-
-const clusters: Item[][] = [
-  [
-    {
-      type: { category: 0 },
-      tags: null,
-      title: 'Ein Cluster',
-      description: 'Mein erster Cluster',
-      host: 'Mr. Admin',
-      room: null,
-      link: '/',
-    },
-  ],
-];
+import { MoonLoader } from 'react-spinners';
 
 const DashboardPage: NextPage = () => {
   const store = useStore();
@@ -197,7 +74,7 @@ const DashboardPage: NextPage = () => {
 
   return (
     <main className="h-screen flex items-center justify-center">
-      <HashLoader size={100} />
+      <MoonLoader size={80} />
     </main>
   );
 };

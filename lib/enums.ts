@@ -14,4 +14,11 @@ export enum resources {
   USER = 'person',
   CLUSTER = 'cluster',
   APPOINTMENT = 'appointment',
+  SUBJECT = 'subject',
+  TOPIC = 'topic',
+}
+
+export enum timeTypes {
+  FROM,
+  TO,
 }

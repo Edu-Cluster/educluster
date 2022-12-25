@@ -1,15 +1,14 @@
 import React from 'react';
-import { resources, roles } from '../../lib/enums';
+import { roles } from '../../lib/enums';
 import useStore from '../../client/store';
 import { Member } from '../../lib/types';
 import SearchField from '../SearchField';
 
 type Props = {
-  resource: resources.APPOINTMENT | resources.USER | resources.CLUSTER;
   placeholder?: string;
 };
 
-const MemberSearchField = ({ resource, placeholder }: Props) => {
+const MemberSearchField = ({ placeholder }: Props) => {
   const { potentialMembers, setPotentialMembers } = useStore();
 
   const searchForUser = (e: any) => {
@@ -18,7 +17,7 @@ const MemberSearchField = ({ resource, placeholder }: Props) => {
       return;
     }
 
-    // TODO Lara GET request an den Backend schicken (resource = Tabellenname = Ressourcentyp, der gebracht wird)
+    // TODO Lara GET request an den Backend schicken, um user zu finden
     const searchResultMembers: Member[] = [
       {
         username: 'RandomUser',
@@ -45,11 +44,7 @@ const MemberSearchField = ({ resource, placeholder }: Props) => {
   };
 
   return (
-    <SearchField
-      resource={resource}
-      placeholder={placeholder}
-      onChangeHandler={searchForUser}
-    />
+    <SearchField placeholder={placeholder} onChangeHandler={searchForUser} />
   );
 };
 
