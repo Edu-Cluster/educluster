@@ -132,7 +132,7 @@ const clusters: Item[][] = [
 const DashboardPage: NextPage = () => {
   const store = useStore();
 
-  const clusterQuery = trpc.useQuery(['user.me'], {
+  const clusterQuery = trpc.useQuery(['cluster.mine'], {
     enabled: false,
     onSuccess: async ({ data }) => {
       store.setCluster(data);
