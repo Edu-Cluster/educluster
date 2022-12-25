@@ -6,20 +6,13 @@ export type User = {
   username: string;
   untis_username: string;
   teams_email: string;
+  role: string;
 };
 
 export type ContextWithUser = {
   req: NextApiRequest;
   res: NextApiResponse;
   user: person | null;
-};
-
-export type LearningUnit = {
-  category: 1;
-};
-
-export type Cluster = {
-  category: 0;
 };
 
 export type Member = {
@@ -34,5 +27,20 @@ export type Item = {
   description: string;
   host: string;
   room: string | null;
+  link: string;
+};
+
+export type Cluster = {
+  clustername: string;
+  description: string;
+  person: { username: string };
+  id: number;
+};
+export type Appointment = {
+  topics: { child: string[] | null };
+  title: string;
+  description: string;
+  creator: string;
+  roomname: string | null;
   link: string;
 };
