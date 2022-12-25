@@ -1,14 +1,31 @@
 import { prisma } from '../utils/prisma';
 
 export const readClusterFromUser = async (username: string) => {
-  let clusterUserList = await prisma.person
-    .findUnique({ where: { username: username } })
-    .admin_of({ select: { cluster_id: true } });
-  clusterUserList = clusterUserList.concat(
-    await prisma.person
-      .findUnique({ where: { username: username } })
-      .member_of({ select: { cluster_id: true } }),
+  let clusterUserAdminList = await prisma.person.findUnique({
+    where: { username: username },
+    select: { admin_of: { select: { cluster_id: true } } },
+  });
+
+  let clusterUserMemberList = await prisma.person.findUnique({
+    where: { username: username },
+    select: { member_of: { select: { cluster_id: true } } },
+  });
+  let clusterUserList = clusterUserAdminList?.admin_of.map(
+    (obj) => obj.cluster_id,
   );
+  clusterUserList = clusterUserList?.concat(
+    // @ts-ignore
+    clusterUserMemberList?.member_of.map((obj) => obj.cluster_id),
+  );
+
+  // let clusterUserList = await prisma.person
+  //   .findUnique({ where: { username: username } })
+  //   .admin_of({ select: { cluster_id: true } });
+  // clusterUserList = clusterUserList.concat(
+  //   await prisma.person
+  //     .findUnique({ where: { username: username } })
+  //     .member_of({ select: { cluster_id: true } }),
+  // );
 
   let count = await prisma.cluster.aggregate({
     _count: { id: true },
