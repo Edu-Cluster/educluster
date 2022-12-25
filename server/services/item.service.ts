@@ -33,14 +33,31 @@ export const readClusterFromUser = async (username: string) => {
 };
 
 export const readAppointmentsFromUser = async (username: string) => {
-  let clusterUserList = await prisma.person
-    .findUnique({ where: { username: username } })
-    .admin_of({ select: { cluster_id: true } });
-  clusterUserList = clusterUserList.concat(
-    await prisma.person
-      .findUnique({ where: { username: username } })
-      .member_of({ select: { cluster_id: true } }),
+  let clusterUserAdminList = await prisma.person.findUnique({
+    where: { username: username },
+    select: { admin_of: { select: { cluster_id: true } } },
+  });
+
+  let clusterUserMemberList = await prisma.person.findUnique({
+    where: { username: username },
+    select: { member_of: { select: { cluster_id: true } } },
+  });
+  let clusterUserList = clusterUserAdminList?.admin_of.map(
+    (obj) => obj.cluster_id,
   );
+  clusterUserList = clusterUserList?.concat(
+    // @ts-ignore
+    clusterUserMemberList?.member_of.map((obj) => obj.cluster_id),
+  );
+
+  // let clusterUserList = await prisma.person
+  //   .findUnique({ where: { username: username } })
+  //   .admin_of({ select: { cluster_id: true } });
+  // clusterUserList = clusterUserList.concat(
+  //   await prisma.person
+  //     .findUnique({ where: { username: username } })
+  //     .member_of({ select: { cluster_id: true } }),
+  // );
 
   let count = await prisma.cluster.aggregate({
     _count: { id: true },
@@ -50,7 +67,7 @@ export const readAppointmentsFromUser = async (username: string) => {
   for (let i = 0; i * 5 < count._count.id; i++) {
     result[i] = await prisma.appointment.findMany({
       where: {
-        id: { in: clusterUserList.map((obj) => obj.cluster_id) },
+        id: { in: clusterUserList },
       },
       select: {
         description: true,
