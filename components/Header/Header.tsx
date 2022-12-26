@@ -13,6 +13,7 @@ import ProfileBadge from './ProfileBadge';
 import MenuDrawer from './MenuDrawer';
 import SettingsCog from './SettingsCog';
 import useStore from '../../client/store';
+import Avatar from '../Avatar';
 
 // Notification Bell
 const notifications = [
@@ -54,7 +55,11 @@ const Header = () => {
         <ProfileBadge
           options={[{ text: 'Ausloggen', isLogout: true, link: '/login' }]}
         >
-          <UserCircleIcon className="header-icon" />
+          {user?.username ? (
+            <Avatar type="user" rounded={true} seed={user?.username} />
+          ) : (
+            <UserCircleIcon className="header-icon" />
+          )}
         </ProfileBadge>
 
         <NotificationBell notifications={notifications}>

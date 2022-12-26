@@ -3,21 +3,25 @@ import { resources } from '../../lib/enums';
 import useStore from '../../client/store';
 import { Appointment, Cluster } from '../../lib/types';
 import SearchField from '../SearchField';
+import { Room } from 'webuntis';
 
 type Props = {
-  resource: resources.CLUSTER | resources.APPOINTMENT;
+  resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
   placeholder?: string;
   name?: string;
 };
 
 const ItemSearchField = ({ resource, placeholder, name }: Props) => {
-  const { cluster, appointments, setCluster, setAppointment } = useStore();
+  const { cluster, appointments, rooms, setCluster, setAppointment, setRooms } =
+    useStore();
 
-  const setItems = (items: Appointment[][] | Cluster[][] | null) => {
+  const setItems = (items: Appointment[][] | Cluster[][] | Room[][] | null) => {
     if (resource === resources.CLUSTER) {
       setCluster(items as Cluster[][]);
     } else if (resource === resources.APPOINTMENT) {
       setAppointment(items as Appointment[][]);
+    } else if (resource === resources.ROOM) {
+      setRooms(items as Room[][]);
     }
   };
 
@@ -33,16 +37,22 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
       searchResultItems = [
         [
           {
-            topics: { child: null },
-            title: 'random',
+            id: 1,
+            topics_for_appointment: [
+              { topic_topicTotopics_for_appointment: null },
+            ],
+            name: 'random',
             description: 'test',
             creator: 'me',
             roomname: '1AHIF',
             link: 'lol',
           },
           {
-            topics: { child: null },
-            title: 'randomness',
+            id: 2,
+            topics_for_appointment: [
+              { topic_topicTotopics_for_appointment: null },
+            ],
+            name: 'randomness',
             description: 'test2',
             creator: 'christopher',
             roomname: '5AHIF',
@@ -61,9 +71,23 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
           },
         ],
       ];
+    } else if (resource === resources.ROOM) {
+      searchResultItems = [
+        [
+          {
+            id: 1,
+            name: '1AHIF',
+            longName: '1AHIF',
+            alternateName: '1AHIF',
+            active: true,
+            foreColor: 'blue',
+            backColor: 'white',
+          },
+        ],
+      ];
     }
 
-    if (!appointments && !cluster) {
+    if (!appointments && !cluster && !rooms) {
       // Save search result items as a state
       // @ts-ignore
       setItems(searchResultItems);

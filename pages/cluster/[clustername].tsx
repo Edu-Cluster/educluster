@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 import ItemList from '../../components/Item/ItemList';
 import MemberList from '../../components/Member/MemberList';
-import { Item, Member, User } from '../../lib/types';
+import { Appointment, Member, User } from '../../lib/types';
 import { resources, roles } from '../../lib/enums';
 import { useRouter } from 'next/router';
 import trpc from '../../client/trpc';
@@ -10,26 +10,52 @@ import useStore from '../../client/store';
 import ClusterBanner from '../../components/Cluster/ClusterBanner';
 import { MoonLoader } from 'react-spinners';
 
-const learningUnits: Item[][] = [
+const learningUnits: Appointment[][] = [
   [
     {
-      type: { category: 1 },
-      tags: ['M', 'POS'],
-      title: 'Eine Lerneinheit Eine Lerneinheit Eine Lerneinheit',
+      id: 1,
+      topics_for_appointment: [
+        {
+          topic_topicTotopics_for_appointment: {
+            symbol: 'M',
+            is_visible: true,
+          },
+        },
+        {
+          topic_topicTotopics_for_appointment: {
+            symbol: 'POS',
+            is_visible: true,
+          },
+        },
+      ],
+      name: 'Eine Lerneinheit Eine Lerneinheit Eine Lerneinheit',
       description:
         'Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit',
-      host: 'Mr. Admin',
-      room: '1AHIF',
+      creator: 'Mr. Admin',
+      roomname: '1AHIF',
       link: '/',
     },
     {
-      type: { category: 1 },
-      tags: ['M', 'POS'],
-      title: 'Eine Lerneinheit',
+      id: 2,
+      topics_for_appointment: [
+        {
+          topic_topicTotopics_for_appointment: {
+            symbol: 'M',
+            is_visible: true,
+          },
+        },
+        {
+          topic_topicTotopics_for_appointment: {
+            symbol: 'POS',
+            is_visible: true,
+          },
+        },
+      ],
+      name: 'Eine Lerneinheit',
       description:
         'Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit',
-      host: 'Mr. Admin',
-      room: '1AHIF',
+      creator: 'Mr. Admin',
+      roomname: '1AHIF',
       link: '/',
     },
   ],
@@ -44,7 +70,7 @@ const members: Member[][] = [
   ],
 ];
 
-const CreateClusterPage: NextPage = () => {
+const ClusterPage: NextPage = () => {
   const store = useStore();
   const router = useRouter();
   let { clustername } = router.query;
@@ -101,4 +127,4 @@ const CreateClusterPage: NextPage = () => {
   );
 };
 
-export default CreateClusterPage;
+export default ClusterPage;

@@ -6,6 +6,7 @@ import trpc from '../client/trpc';
 import useStore from '../client/store';
 import { MoonLoader } from 'react-spinners';
 import { resources } from '../lib/enums';
+import Avatar from '../components/Avatar';
 
 const DashboardPage: NextPage = () => {
   const store = useStore();
@@ -67,7 +68,20 @@ const DashboardPage: NextPage = () => {
         <div className="h-[300px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16">
           <div className="h-full w-full flex flex-col items-center">
             <div className="w-full h-36 flex justify-center items-center gap-5">
-              <div className="h-20 w-20 border-2 rounded-[50%] text-black"></div>
+              <div
+                className={`h-20 ${
+                  store.authUser?.username
+                    ? 'w-40'
+                    : 'w-20 border-2 rounded-[50%] text-black'
+                } flex justify-center items-center`}
+              >
+                <Avatar
+                  type="user"
+                  seed={store.authUser?.username}
+                  bigger={true}
+                  rounded={true}
+                />
+              </div>
               <p className="uppercase text-4xl">{store.authUser?.role}</p>
             </div>
             <p className="text-xl mb-5">{store.authUser?.username}</p>

@@ -1,5 +1,6 @@
 import create from 'zustand';
 import { User, Member } from '../lib/types';
+import { Room } from 'webuntis';
 
 // Note: Store only contains states that cannot be isolated in a single component
 
@@ -17,6 +18,9 @@ type Store = {
   setPotentialMembers: (members: Member[] | null) => void;
   membersToInvite: Member[];
   setMembersToInvite: (members: Member[]) => void;
+
+  rooms: Room[][] | null;
+  setRooms: (rooms: Room[][] | null) => void;
 
   cluster: any;
   setCluster: (items: any) => void;
@@ -51,6 +55,9 @@ const useStore = create<Store>((set) => ({
   membersToInvite: [],
   setMembersToInvite: (members) =>
     set((state) => ({ ...state, membersToInvite: members })),
+
+  rooms: null,
+  setRooms: (rooms) => set((state) => ({ ...state, rooms })),
 
   cluster: null,
   setCluster: (cluster) => set((state) => ({ ...state, cluster })),

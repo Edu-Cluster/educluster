@@ -110,6 +110,7 @@ export const refreshAccessTokenHandler = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+      originalError: err,
     });
   }
 };
@@ -168,6 +169,7 @@ export const registerHandler = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+      originalError: err,
     });
   }
 };
@@ -248,6 +250,7 @@ export const loginHandler = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+      originalError: err,
     });
   }
 };
@@ -272,6 +275,7 @@ export const logoutHandler = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+      originalError: err,
     });
   }
 };

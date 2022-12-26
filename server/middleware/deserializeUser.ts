@@ -79,6 +79,7 @@ export const deserializeUser = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+      originalError: err,
     });
   }
 };

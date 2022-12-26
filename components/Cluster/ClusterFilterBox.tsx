@@ -15,10 +15,13 @@ const ClusterFilterBox = ({ showResetButton }: Props) => {
   const { setValue, getValues, handleSubmit } = methods;
 
   const resetAll = () => {
-    setValue('timeFrom', '');
-    setValue('timeTo', '');
+    setValue('timeFrom', '-1');
+    setValue('timeTo', '-1');
     setValue('dateFrom', '');
     setValue('dateTo', '');
+
+    // @ts-ignore
+    document.querySelector('[name="cluster-search"]').value = '';
 
     setCluster(null);
   };

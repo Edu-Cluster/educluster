@@ -55,7 +55,9 @@ const ProfileBadge = (props: Props) => {
       <div className="hidden absolute right-[-30%] bg-white w-40 overflow-auto shadow-2xl flex-col items-start dropdown-content">
         <div className="h-[55px] w-full pl-6 mb-2 border-b-[1px]">
           <p className="text-xs">Eingeloggt als</p>
-          <p className="text-xs block font-bold mt-1">Name</p>
+          <p className="text-xs block font-bold mt-1">
+            {store.authUser?.username}
+          </p>
         </div>
         <div className="w-full">
           {props.options.map((option, idx) => (
