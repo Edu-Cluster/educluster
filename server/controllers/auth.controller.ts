@@ -204,6 +204,7 @@ export const loginHandler = async ({
       await untis.login();
       await untis.logout();
     } catch (err: any) {
+      console.error(err);
       return { status: statusCodes.FAILURE };
     }
 
@@ -246,7 +247,6 @@ export const loginHandler = async ({
       },
     };
   } catch (err: any) {
-    console.error(err);
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
