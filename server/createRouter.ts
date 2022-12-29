@@ -10,6 +10,7 @@ export function createRouter() {
         return {
           ...shape,
           message: 'Internal server error',
+          originalError: error,
         };
       }
       return shape;
