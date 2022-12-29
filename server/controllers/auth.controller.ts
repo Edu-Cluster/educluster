@@ -204,8 +204,7 @@ export const loginHandler = async ({
       await untis.login();
       await untis.logout();
     } catch (err: any) {
-      console.error(err);
-      return { status: statusCodes.FAILURE };
+      return { status: statusCodes.FAILURE, error: err };
     }
 
     // Check if user with given untis username has MS Teams email address in the database

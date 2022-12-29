@@ -99,6 +99,7 @@ const LoginPage: NextPage = () => {
         &scope=User.ReadWrite`; // https://learn.microsoft.com/en-us/graph/permissions-reference#user-permissions
       } else if (data.status === statusCodes.FAILURE) {
         toast.error('Der Benutzername oder das Passwort ist falsch!');
+        console.error(data.error);
       }
     },
 
