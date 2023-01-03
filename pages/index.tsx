@@ -11,20 +11,11 @@ import Avatar from '../components/Avatar';
 const DashboardPage: NextPage = () => {
   const store = useStore();
 
-  const clusterQuery = trpc.useQuery(['cluster.mine'], {
+  const itemOfUserQuery = trpc.useQuery(['item.mine'], {
     enabled: false,
     onSuccess: async ({ data }) => {
-      store.setCluster(data);
-    },
-    onError: async (err) => {
-      console.error(err);
-    },
-  });
-
-  const appointmentQuery = trpc.useQuery(['appointment.mine'], {
-    enabled: false,
-    onSuccess: async ({ data }) => {
-      store.setAppointment(data);
+      store.setClusterOfUser(data.cluster);
+      store.setAppointmentOfUser(data.appointments);
     },
     onError: async (err) => {
       console.error(err);
@@ -36,8 +27,7 @@ const DashboardPage: NextPage = () => {
     retry: 0,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
-      await clusterQuery.refetch(data.user);
-      await appointmentQuery.refetch(data.user);
+      await itemOfUserQuery.refetch();
     },
     onError: async (err) => {
       console.error(err);
@@ -56,12 +46,12 @@ const DashboardPage: NextPage = () => {
         <div className="list-container">
           <ItemList
             resource={resources.CLUSTER}
-            items={store.cluster?.cluster}
+            items={store.clusterOfUser}
             title="Cluster"
           />
           <ItemList
             resource={resources.APPOINTMENT}
-            items={store.appointments?.appointments}
+            items={store.appointmentsOfUser}
             title="Lerneinheiten"
           />
         </div>
@@ -82,7 +72,6 @@ const DashboardPage: NextPage = () => {
                   rounded={true}
                 />
               </div>
-              <p className="uppercase text-4xl">{store.authUser?.role}</p>
             </div>
             <p className="text-xl mb-5">{store.authUser?.username}</p>
             <p className="text-xl">{store.authUser?.teams_email}</p>

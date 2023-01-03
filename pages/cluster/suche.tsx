@@ -10,13 +10,13 @@ import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const ClusterSearchPage: NextPage = () => {
-  const store = useStore();
+  const { setAuthUser, clusterOfUser } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
-      store.setAuthUser(data.user as User);
+      setAuthUser(data.user as User);
     },
     onError: async (err) => {
       console.error(err);
@@ -38,10 +38,10 @@ const ClusterSearchPage: NextPage = () => {
             placeholder="Nach Clustern suchen"
             name="cluster-search"
           />
-          <ClusterFilterBox showResetButton={!!store.cluster} />
+          <ClusterFilterBox showResetButton={!!clusterOfUser} />
           <ItemList
             resource={resources.CLUSTER}
-            items={store.cluster}
+            items={clusterOfUser}
             placeholder="Benutze das Suchfeld oder die Filter um nach Clustern zu suchen"
           />
         </div>

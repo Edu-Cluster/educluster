@@ -4,7 +4,6 @@ import MemberButtonGroup from './MemberButtonGroup';
 
 type Props = {
   username: string;
-  role: string;
   isOnInvitationPage?: boolean;
   showPlusButton?: boolean;
   showMinusButton?: boolean;
@@ -12,7 +11,6 @@ type Props = {
 
 const Member = ({
   username,
-  role,
   isOnInvitationPage,
   showPlusButton,
   showMinusButton,
@@ -23,7 +21,6 @@ const Member = ({
         <Avatar type="user" seed={username} />
         <div className="flex flex-col items-start ml-12">
           <p id="username">{username}</p>
-          <p className="text-sm">{role}</p>
         </div>
       </div>
       <MemberButtonGroup

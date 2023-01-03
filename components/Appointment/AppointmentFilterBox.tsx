@@ -14,7 +14,7 @@ type Props = {
 
 const AppointmentFilterBox = ({ showResetButton }: Props) => {
   const {
-    setAppointment,
+    setAppointmentOfCluster,
     potentialSubjects,
     setPotentialSubjects,
     subjects,
@@ -50,7 +50,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     setValue('dateFrom', '');
     setValue('dateTo', '');
 
-    setAppointment(null);
+    setAppointmentOfCluster(null);
     setPotentialSubjects(null);
     setPotentialTopics(null);
     setSubjects(null);

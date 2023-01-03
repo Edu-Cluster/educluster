@@ -10,7 +10,7 @@ type Props = {
 };
 
 const ClusterFilterBox = ({ showResetButton }: Props) => {
-  const { setCluster } = useStore();
+  const { setClusterOfUser } = useStore();
   const methods = useForm();
   const { setValue, getValues, handleSubmit } = methods;
 
@@ -23,7 +23,7 @@ const ClusterFilterBox = ({ showResetButton }: Props) => {
     // @ts-ignore
     document.querySelector('[name="cluster-search"]').value = '';
 
-    setCluster(null);
+    setClusterOfUser(null);
   };
 
   const onSubmit = handleSubmit(() => {

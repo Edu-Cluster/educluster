@@ -19,11 +19,10 @@ const MemberSearchResultArea = ({ isOnInvitationPage }: Props) => {
     <>
       {members && members.length && (
         <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto">
-          {members.map(({ username, role }, idx) => (
+          {members.map(({ username }, idx) => (
             <MemberComponent
               key={idx}
               username={username}
-              role={role}
               isOnInvitationPage={isOnInvitationPage || false}
               showPlusButton={
                 !matchingMembers.some((member) => member.username === username)
