@@ -1,0 +1,8 @@
+:sectnums:
+:sectnumlevels: 6
+
+= Diplomarbeit EduCluster
+
+TODO insert evaluation files
+
+:sectnums!:
