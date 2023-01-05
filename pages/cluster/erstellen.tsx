@@ -9,8 +9,6 @@ import { MoonLoader } from 'react-spinners';
 
 const CreateClusterPage: NextPage = () => {
   const store = useStore();
-
-  const [clusterName, setClusterName] = useState();
   const [isSliderOn, setSliderOn] = useState(false);
   const { register, setValue, getValues, handleSubmit } = useForm();
 
@@ -31,18 +29,18 @@ const CreateClusterPage: NextPage = () => {
     userQuery.refetch();
   }, []);
 
-  // TODO Lara: Login mutation definieren und bei onSuccess await router.push(`./${clusterName}`);
+  // TODO Lara: Login mutation definieren und bei onSuccess document.location.href = `./${clusterName}`;
 
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields
     const { clustername, description } = getValues();
 
-    setClusterName(clustername);
+    // TODO Denis oder Lara: Sonderzeichen verbieten, vor allem *
 
     toast.loading('Ihr Cluster wird erstellt...');
 
     // Send login POST request to items router
-    // TODO Lara endpoint mit mutation aufrufen (isSliderOn = öffentliches oder privates Cluster)
+    // TODO Lara: endpoint mit mutation aufrufen (isSliderOn = öffentliches (true) oder privates (false) Cluster)
   });
 
   if (userQuery.isSuccess) {

@@ -5,7 +5,6 @@ export enum statusCodes {
 }
 
 export enum resources {
-  USER = 'person',
   CLUSTER = 'cluster',
   APPOINTMENT = 'appointment',
   ROOM = 'room',

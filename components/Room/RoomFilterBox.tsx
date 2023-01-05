@@ -41,7 +41,10 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
     ).value;
 
     // Query the database for matches using the filters and the text in the search field
-    // TODO Lara
+    // TODO Lara (EC-239)
+
+    // Set the rooms state with the matches
+    // TODO Lara (EC-239)
   });
 
   return (

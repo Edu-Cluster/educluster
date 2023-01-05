@@ -23,6 +23,15 @@ export const readEduClusterUsername = async (untis_username: string) =>
     },
   });
 
+export const findUsersByEduClusterUsername = async (username: string) =>
+  await prisma.person.findMany({
+    where: {
+      username: {
+        contains: username,
+      },
+    },
+  });
+
 export const teamsEmailAlreadyExists = async (teams_email: string) =>
   await prisma.person.count({
     where: {

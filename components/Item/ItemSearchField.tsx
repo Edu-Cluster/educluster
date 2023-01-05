@@ -1,8 +1,8 @@
 import React from 'react';
 import { resources } from '../../lib/enums';
 import useStore from '../../client/store';
-import { Appointment, Cluster } from '../../lib/types';
 import SearchField from '../SearchField';
+import { AppointmentData, ClusterData } from '../../lib/types';
 import { Room } from 'webuntis';
 
 type Props = {
@@ -21,11 +21,13 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
     setRooms,
   } = useStore();
 
-  const setItems = (items: Appointment[][] | Cluster[][] | Room[][] | null) => {
+  const setItems = (
+    items: AppointmentData[][] | ClusterData[][] | Room[][] | null,
+  ) => {
     if (resource === resources.CLUSTER) {
-      setClusterOfUser(items as Cluster[][]);
+      setClusterOfUser(items as ClusterData[][]);
     } else if (resource === resources.APPOINTMENT) {
-      setAppointmentOfCluster(items as Appointment[][]);
+      setAppointmentOfCluster(items as AppointmentData[][]);
     } else if (resource === resources.ROOM) {
       setRooms(items as Room[][]);
     }
@@ -40,57 +42,11 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
     // TODO Lara GET request an den Backend schicken, um user zu finden
     let searchResultItems;
     if (resource === resources.APPOINTMENT) {
-      searchResultItems = [
-        [
-          {
-            id: 1,
-            topics_for_appointment: [
-              { topic_topicTotopics_for_appointment: null },
-            ],
-            name: 'random',
-            description: 'test',
-            creator: 'me',
-            roomname: '1AHIF',
-            link: 'lol',
-          },
-          {
-            id: 2,
-            topics_for_appointment: [
-              { topic_topicTotopics_for_appointment: null },
-            ],
-            name: 'randomness',
-            description: 'test2',
-            creator: 'christopher',
-            roomname: '5AHIF',
-            link: 'lol',
-          },
-        ],
-      ];
+      searchResultItems = [];
     } else if (resource === resources.CLUSTER) {
-      searchResultItems = [
-        [
-          {
-            clustername: 'test',
-            description: 'the most random description',
-            person: { username: 'yoyo' },
-            id: 1,
-          },
-        ],
-      ];
+      searchResultItems = [];
     } else if (resource === resources.ROOM) {
-      searchResultItems = [
-        [
-          {
-            id: 1,
-            name: '1AHIF',
-            longName: '1AHIF',
-            alternateName: '1AHIF',
-            active: true,
-            foreColor: 'blue',
-            backColor: 'white',
-          },
-        ],
-      ];
+      searchResultItems = [];
     }
 
     if (!appointmentsOfUser && !clusterOfUser && !rooms) {

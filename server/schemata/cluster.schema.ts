@@ -6,3 +6,9 @@ export const clusterSchema = object({
 });
 
 export type ClusterInput = TypeOf<typeof clusterSchema>;
+
+export const clusterIdSchema = number({
+  required_error: 'Cluster Id ist erforderlich!',
+});
+
+export type ClusterIdSchema = TypeOf<typeof clusterIdSchema>;

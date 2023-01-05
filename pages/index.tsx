@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import ItemList from '../components/Item/ItemList';
-import type { User } from '../lib/types';
 import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
 import { MoonLoader } from 'react-spinners';
-import { resources } from '../lib/enums';
+import { resources, statusCodes } from '../lib/enums';
 import Avatar from '../components/Avatar';
 
 const DashboardPage: NextPage = () => {
@@ -14,8 +13,10 @@ const DashboardPage: NextPage = () => {
   const itemOfUserQuery = trpc.useQuery(['item.mine'], {
     enabled: false,
     onSuccess: async ({ data }) => {
-      store.setClusterOfUser(data.cluster);
-      store.setAppointmentOfUser(data.appointments);
+      if (data) {
+        store.setClusterOfUser(data.cluster);
+        store.setAppointmentOfUser(data.appointments);
+      }
     },
     onError: async (err) => {
       console.error(err);
@@ -26,8 +27,11 @@ const DashboardPage: NextPage = () => {
     enabled: false,
     retry: 0,
     onSuccess: async ({ data }) => {
-      store.setAuthUser(data.user as User);
-      await itemOfUserQuery.refetch();
+      store.setAuthUser(data.user);
+
+      if (data.user) {
+        await itemOfUserQuery.refetch();
+      }
     },
     onError: async (err) => {
       console.error(err);

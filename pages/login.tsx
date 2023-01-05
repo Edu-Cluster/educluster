@@ -41,7 +41,7 @@ const LoginPage: NextPage = () => {
         console.error(err);
       });
 
-      toast.error('Internal Server Error!');
+      toast.error('Bei der Registrierung ist etwas falsch gelaufen!');
     },
   });
 
@@ -78,7 +78,7 @@ const LoginPage: NextPage = () => {
         await userQuery.refetch();
 
         // Redirect to dashboard
-        await router.push('./');
+        document.location.href = './';
 
         return;
       } else if (data.status === statusCodes.TENTATIVE) {
@@ -111,7 +111,7 @@ const LoginPage: NextPage = () => {
         console.error(err);
       });
 
-      toast.error('Internal Server Error!');
+      toast.error('Beim Einloggen ist etwas falsch gelaufen!');
     },
   });
 

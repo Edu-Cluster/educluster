@@ -13,22 +13,36 @@ import { MoonLoader } from 'react-spinners';
 const ClusterPage: NextPage = () => {
   const store = useStore();
   const router = useRouter();
-  let { clustername } = router.query;
-  if (Array.isArray(clustername)) {
-    clustername = clustername[0];
-  }
-  let clusterId = Number(clustername?.substring(clustername?.indexOf('*') + 1));
-  clustername = clustername?.substring(0, clustername?.indexOf('*'));
-  let input = {
-    clusterId: clusterId as number,
-    clustername: clustername as string,
-  };
+  let { clustername: clusterfullname } = router.query;
 
+  useEffect(() => {
+    // Fetch user and set store state
+    userQuery.refetch();
+
+    if (Array.isArray(clusterfullname)) {
+      clusterfullname = clusterfullname[0];
+    }
+
+    if (clusterfullname && !clusterfullname.includes('*')) {
+      document.location.href = '/404';
+    }
+  }, []);
+
+  const clusterId =
+    clusterfullname && Number((clusterfullname as string).split('*')[1]);
+  const clustername =
+    clusterfullname && (clusterfullname as string).split('*')[0];
+  const input = { clusterId, clustername };
+
+  // @ts-ignore
   const itemsOfClusterQuery = trpc.useQuery(['item.ofCluster', input], {
     enabled: false,
     onSuccess: async ({ data }) => {
-      store.setUserOfCluster(data.user);
-      store.setAppointmentOfCluster(data.appointments);
+      if (data) {
+        console.log(data);
+        store.setUserOfCluster(data.user);
+        store.setAppointmentOfCluster(data.appointments);
+      }
     },
     onError: async (err) => {
       console.error(err);
@@ -40,6 +54,8 @@ const ClusterPage: NextPage = () => {
     retry: 0,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Fetch cluster details, learning units and members
       await itemsOfClusterQuery.refetch();
     },
     onError: async (err) => {
@@ -47,11 +63,6 @@ const ClusterPage: NextPage = () => {
       document.location.href = '/login';
     },
   });
-
-  useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-  }, []);
 
   if (userQuery.isSuccess) {
     return (

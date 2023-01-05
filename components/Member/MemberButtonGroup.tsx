@@ -6,7 +6,7 @@ import {
   PlusIcon,
 } from '@heroicons/react/outline';
 import useStore from '../../client/store';
-import { Member } from '../../lib/types';
+import { User } from '../../lib/types';
 
 type Props = {
   isOnInvitationPage: boolean;
@@ -26,7 +26,7 @@ const MemberButtonGroup = ({
       e.currentTarget.parentElement.parentElement.querySelector(
         '#username',
       ).textContent;
-    const member = (potentialMembers as Member[]).filter(
+    const member = (potentialMembers as User[]).filter(
       (potentialMember) => potentialMember.username === username,
     )[0];
     const members = membersToInvite;
@@ -40,7 +40,7 @@ const MemberButtonGroup = ({
       e.currentTarget.parentElement.parentElement.querySelector(
         '#username',
       ).textContent;
-    const members = (membersToInvite as Member[]).filter(
+    const members = (membersToInvite as User[]).filter(
       (potentialMember) => potentialMember.username !== username,
     );
 
