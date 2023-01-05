@@ -21,6 +21,10 @@ type Store = {
 
   rooms: Room[][] | null;
   setRooms: (rooms: Room[][] | null) => void;
+  beginTimes: any;
+  setBeginTimes: (times: any) => void;
+  endTimes: any;
+  setEndTimes: (times: any) => void;
 
   clusterOfUser: any;
   setClusterOfUser: (items: any) => void;
@@ -62,6 +66,10 @@ const useStore = create<Store>((set) => ({
 
   rooms: null,
   setRooms: (rooms) => set((state) => ({ ...state, rooms })),
+  beginTimes: null,
+  setBeginTimes: (beginTimes) => set((state) => ({ ...state, beginTimes })),
+  endTimes: null,
+  setEndTimes: (endTimes) => set((state) => ({ ...state, endTimes })),
 
   clusterOfUser: null,
   setClusterOfUser: (clusterOfUser) =>

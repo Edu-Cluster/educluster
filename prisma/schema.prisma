@@ -127,3 +127,11 @@ model topics_for_appointment {
 
   @@id([appointment, topic])
 }
+
+model teaching_times {
+  teaching_hour BigInt    @id @default(autoincrement())
+  created_at    DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime? @default(now()) @db.Timestamptz(6)
+  begin         String?   @db.VarChar
+  end           String?   @db.VarChar
+}
