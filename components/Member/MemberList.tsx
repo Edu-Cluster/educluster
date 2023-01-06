@@ -25,23 +25,33 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
       </p>
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
-          {members.length ? (
-            members[page - 1].map(({ username, role }, idx) => (
-              <MemberComponent
-                key={idx}
-                username={username}
-                role={role}
-                isOnInvitationPage={isOnInvitationPage}
-                showMinusButton={isOnInvitationPage}
-              />
-            ))
+          {members && members.length ? (
+            members[page - 1].map(({ username, admin_of, member_of }, idx) =>
+              admin_of.length ? (
+                <MemberComponent
+                  key={idx}
+                  username={username}
+                  isOnInvitationPage={isOnInvitationPage}
+                  showMinusButton={isOnInvitationPage}
+                />
+              ) : member_of.length ? (
+                <MemberComponent
+                  key={idx}
+                  username={username}
+                  isOnInvitationPage={isOnInvitationPage}
+                  showMinusButton={isOnInvitationPage}
+                />
+              ) : (
+                <></>
+              ),
+            )
           ) : (
             <></>
           )}
         </div>
 
         <div className="py-3 flex justify-center items-center gap-2">
-          {members.length ? (
+          {members && members.length ? (
             members.map((item, idx) => (
               <div
                 key={idx + 1}

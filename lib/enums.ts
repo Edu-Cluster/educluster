@@ -4,12 +4,6 @@ export enum statusCodes {
   TENTATIVE,
 }
 
-export enum roles {
-  ADMINISTRATOR = 'Administrator',
-  STUDENT = 'Schüler',
-  TEACHER = 'Professor',
-}
-
 export enum resources {
   USER = 'person',
   CLUSTER = 'cluster',

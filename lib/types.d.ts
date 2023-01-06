@@ -1,12 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { roles } from './enums';
 
 export type User = {
   id: number;
   username: string;
   untis_username: string;
   teams_email: string;
-  role: string;
 };
 
 export type ContextWithUser = {
@@ -17,7 +15,8 @@ export type ContextWithUser = {
 
 export type Member = {
   username: string;
-  role: roles.ADMINISTRATOR | roles.STUDENT | roles.TEACHER;
+  admin_of: { length: number };
+  member_of: { length: number };
 };
 
 export type Cluster = {

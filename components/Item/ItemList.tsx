@@ -61,7 +61,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
               clustername={item.clustername}
               description={item.description}
               creator={item.person.username}
-              link={'/cluster/' + item.clustername + '#' + item.id}
+              link={'/cluster/' + item.clustername + '*' + item.id}
             />
           ))}
         </>
@@ -77,7 +77,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
               description={item.description}
               creator={item.creator}
               roomname={item.roomname}
-              link={'/appointment/' + item.name + '#' + item.id}
+              link={'/appointment/' + item.name + '*' + item.id}
             >
               {item.topics_for_appointment &&
                 item.topics_for_appointment.map((tag, idx) => {

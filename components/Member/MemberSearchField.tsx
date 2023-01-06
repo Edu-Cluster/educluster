@@ -1,5 +1,4 @@
 import React from 'react';
-import { roles } from '../../lib/enums';
 import useStore from '../../client/store';
 import { Member } from '../../lib/types';
 import SearchField from '../SearchField';
@@ -18,24 +17,7 @@ const MemberSearchField = ({ placeholder }: Props) => {
     }
 
     // TODO Lara GET request an den Backend schicken, um user zu finden
-    const searchResultMembers: Member[] = [
-      {
-        username: 'RandomUser',
-        role: roles.STUDENT,
-      },
-      {
-        username: 'RandomUser99',
-        role: roles.STUDENT,
-      },
-      {
-        username: 'RandomTeacher',
-        role: roles.TEACHER,
-      },
-      {
-        username: 'AAAAAAAAAAAAAAAAAAAA',
-        role: roles.TEACHER,
-      },
-    ];
+    const searchResultMembers: Member[] = [];
 
     if (!potentialMembers) {
       // Save search result potential members as a state

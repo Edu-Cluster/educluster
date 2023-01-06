@@ -2,91 +2,45 @@ import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 import ItemList from '../../components/Item/ItemList';
 import MemberList from '../../components/Member/MemberList';
-import { Appointment, Member, User } from '../../lib/types';
-import { resources, roles } from '../../lib/enums';
+import { User } from '../../lib/types';
+import { resources } from '../../lib/enums';
 import { useRouter } from 'next/router';
 import trpc from '../../client/trpc';
 import useStore from '../../client/store';
 import ClusterBanner from '../../components/Cluster/ClusterBanner';
 import { MoonLoader } from 'react-spinners';
 
-const learningUnits: Appointment[][] = [
-  [
-    {
-      id: 1,
-      topics_for_appointment: [
-        {
-          topic_topicTotopics_for_appointment: {
-            symbol: 'M',
-            is_visible: true,
-          },
-        },
-        {
-          topic_topicTotopics_for_appointment: {
-            symbol: 'POS',
-            is_visible: true,
-          },
-        },
-      ],
-      name: 'Eine Lerneinheit Eine Lerneinheit Eine Lerneinheit',
-      description:
-        'Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit',
-      creator: 'Mr. Admin',
-      roomname: '1AHIF',
-      link: '/',
-    },
-    {
-      id: 2,
-      topics_for_appointment: [
-        {
-          topic_topicTotopics_for_appointment: {
-            symbol: 'M',
-            is_visible: true,
-          },
-        },
-        {
-          topic_topicTotopics_for_appointment: {
-            symbol: 'POS',
-            is_visible: true,
-          },
-        },
-      ],
-      name: 'Eine Lerneinheit',
-      description:
-        'Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit Meine erste Lerneinheit',
-      creator: 'Mr. Admin',
-      roomname: '1AHIF',
-      link: '/',
-    },
-  ],
-];
-
-const members: Member[][] = [
-  [
-    {
-      username: 'KiesseseWetter',
-      role: roles.ADMINISTRATOR,
-    },
-  ],
-];
-
 const ClusterPage: NextPage = () => {
   const store = useStore();
   const router = useRouter();
   let { clustername } = router.query;
-
   if (Array.isArray(clustername)) {
     clustername = clustername[0];
   }
+  let clusterId = Number(clustername?.substring(clustername?.indexOf('*') + 1));
+  clustername = clustername?.substring(0, clustername?.indexOf('*'));
+  let input = {
+    clusterId: clusterId as number,
+    clustername: clustername as string,
+  };
+
+  const itemsOfClusterQuery = trpc.useQuery(['item.ofCluster', input], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      store.setUserOfCluster(data.user);
+      store.setAppointmentOfCluster(data.appointments);
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
-    onSuccess: ({ data }) => {
+    onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
-
-      // Fetch cluster details, learning units and members
-      // TODO Lara
+      await itemsOfClusterQuery.refetch();
     },
     onError: async (err) => {
       console.error(err);
@@ -103,10 +57,10 @@ const ClusterPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container">
-          <MemberList members={members} />
+          <MemberList members={store.userOfCluster} />
           <ItemList
             resource={resources.APPOINTMENT}
-            items={learningUnits}
+            items={store.appointmentOfCluster}
             title="Lerneinheiten"
           />
         </div>

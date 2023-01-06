@@ -12,14 +12,20 @@ type Props = {
 };
 
 const ItemSearchField = ({ resource, placeholder, name }: Props) => {
-  const { cluster, appointments, rooms, setCluster, setAppointment, setRooms } =
-    useStore();
+  const {
+    clusterOfUser,
+    appointmentsOfUser,
+    rooms,
+    setClusterOfUser,
+    setAppointmentOfCluster,
+    setRooms,
+  } = useStore();
 
   const setItems = (items: Appointment[][] | Cluster[][] | Room[][] | null) => {
     if (resource === resources.CLUSTER) {
-      setCluster(items as Cluster[][]);
+      setClusterOfUser(items as Cluster[][]);
     } else if (resource === resources.APPOINTMENT) {
-      setAppointment(items as Appointment[][]);
+      setAppointmentOfCluster(items as Appointment[][]);
     } else if (resource === resources.ROOM) {
       setRooms(items as Room[][]);
     }
@@ -87,7 +93,7 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
       ];
     }
 
-    if (!appointments && !cluster && !rooms) {
+    if (!appointmentsOfUser && !clusterOfUser && !rooms) {
       // Save search result items as a state
       // @ts-ignore
       setItems(searchResultItems);

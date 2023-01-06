@@ -10,13 +10,13 @@ import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const AppointmentSearchPage: NextPage = () => {
-  const store = useStore();
+  const { setAuthUser, appointmentsOfUser } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
-      store.setAuthUser(data.user as User);
+      setAuthUser(data.user as User);
     },
     onError: async (err) => {
       console.error(err);
@@ -38,10 +38,10 @@ const AppointmentSearchPage: NextPage = () => {
             placeholder="Nach Terminen suchen"
             name="appointment-search"
           />
-          <AppointmentFilterBox showResetButton={!!store.appointments} />
+          <AppointmentFilterBox showResetButton={!!appointmentsOfUser} />
           <ItemList
             resource={resources.APPOINTMENT}
-            items={store.appointments}
+            items={appointmentsOfUser}
             placeholder="Benutze das Suchfeld oder die Filter um nach Lerneinheiten zu suchen"
           />
         </div>

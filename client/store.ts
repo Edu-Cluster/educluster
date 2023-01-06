@@ -22,10 +22,14 @@ type Store = {
   rooms: Room[][] | null;
   setRooms: (rooms: Room[][] | null) => void;
 
-  cluster: any;
-  setCluster: (items: any) => void;
-  appointments: any;
-  setAppointment: (items: any) => void;
+  clusterOfUser: any;
+  setClusterOfUser: (items: any) => void;
+  appointmentsOfUser: any;
+  setAppointmentOfUser: (items: any) => void;
+  userOfCluster: any;
+  setUserOfCluster: (items: any) => void;
+  appointmentOfCluster: any;
+  setAppointmentOfCluster: (items: any) => void;
 
   potentialTopics: string[] | null;
   setPotentialTopics: (topics: string[] | null) => void;
@@ -59,11 +63,19 @@ const useStore = create<Store>((set) => ({
   rooms: null,
   setRooms: (rooms) => set((state) => ({ ...state, rooms })),
 
-  cluster: null,
-  setCluster: (cluster) => set((state) => ({ ...state, cluster })),
-  appointments: null,
-  setAppointment: (appointments) =>
-    set((state) => ({ ...state, appointments })),
+  clusterOfUser: null,
+  setClusterOfUser: (clusterOfUser) =>
+    set((state) => ({ ...state, clusterOfUser })),
+  appointmentsOfUser: null,
+  setAppointmentOfUser: (appointmentsOfUser) =>
+    set((state) => ({ ...state, appointmentsOfUser })),
+
+  userOfCluster: null,
+  setUserOfCluster: (userOfCluster) =>
+    set((state) => ({ ...state, userOfCluster })),
+  appointmentOfCluster: null,
+  setAppointmentOfCluster: (appointmentOfCluster) =>
+    set((state) => ({ ...state, appointmentOfCluster })),
 
   potentialTopics: null,
   setPotentialTopics: (potentialTopics) =>
