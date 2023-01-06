@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { timeTypes } from '../lib/enums';
 import SelectField from './SelectField';
+import trpc from '../client/trpc';
+import useStore from '../client/store';
 
 type Props = {
   preselected: string;
@@ -8,53 +10,27 @@ type Props = {
   timeType: timeTypes.FROM | timeTypes.TO;
 };
 
-const fromTimes = [
-  '07:25',
-  '08:15',
-  '09:10',
-  '10:00',
-  '11:05',
-  '11:55',
-  '13:10',
-  '14:00',
-  '14:50',
-  '15:50',
-  '16:40',
-  '17:30',
-  '18:20',
-  '19:10',
-  '20:00',
-  '20:50',
-  '21:40',
-  '22:30',
-];
-
-const toTimes = [
-  '08:15',
-  '09:05',
-  '10:00',
-  '10:50',
-  '11:55',
-  '12:45',
-  '14:00',
-  '14:50',
-  '15:40',
-  '16:40',
-  '17:30',
-  '18:20',
-  '19:10',
-  '20:00',
-  '20:50',
-  '21:40',
-  '22:30',
-  '23:30',
-];
-
 const TimeSelectField = ({
   preselected,
   registerSelectName,
   timeType,
 }: Props) => {
+  const store = useStore();
+  const teachingTimesQuery = trpc.useQuery(['catalog.times'], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      store.setBeginTimes(data.times.map((obj: { begin: any }) => obj.begin));
+      store.setEndTimes(data.times.map((obj: { end: any }) => obj.end));
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  useEffect(() => {
+    teachingTimesQuery.refetch();
+  }, []);
+
   return (
     <SelectField
       preselected={preselected}
@@ -62,19 +38,21 @@ const TimeSelectField = ({
     >
       {timeType === timeTypes.FROM ? (
         <>
-          {fromTimes.map((time, idx) => (
-            <option key={idx} value={time}>
-              {time}
-            </option>
-          ))}
+          {store.beginTimes &&
+            store.beginTimes.map((time: any, idx: any) => (
+              <option key={idx} value={time}>
+                {time}
+              </option>
+            ))}
         </>
       ) : (
         <>
-          {toTimes.map((time, idx) => (
-            <option key={idx} value={time}>
-              {time}
-            </option>
-          ))}
+          {store.endTimes &&
+            store.endTimes.map((time: any, idx: any) => (
+              <option key={idx} value={time}>
+                {time}
+              </option>
+            ))}
         </>
       )}
     </SelectField>
