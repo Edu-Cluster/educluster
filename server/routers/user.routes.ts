@@ -1,6 +1,7 @@
 import { createRouter } from '../createRouter';
-import { getMeHandler } from '../controllers/user.controller';
+import { getMeHandler, getUsersHandler } from '../controllers/user.controller';
 import * as trpc from '@trpc/server';
+import { userSchema } from '../schemata/user.schema';
 
 export const userRouter = createRouter()
   .middleware(async ({ ctx, next }) => {
@@ -14,4 +15,8 @@ export const userRouter = createRouter()
   })
   .query('me', {
     resolve: ({ ctx }) => getMeHandler({ ctx }),
+  })
+  .query('users', {
+    input: userSchema,
+    resolve: ({ input }) => getUsersHandler({ input }),
   });

@@ -10,13 +10,16 @@ import { MoonLoader } from 'react-spinners';
 import RoomFilterBox from '../../components/Room/RoomFilterBox';
 
 const RoomSearchPage: NextPage = () => {
-  const store = useStore();
+  const { setAuthUser, setRooms, rooms } = useStore();
+
+  // TODO Lara (EC-115): Zeitfelder aus der Datenbank holen und ein global state setzen
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
-      store.setAuthUser(data.user as User);
+      setAuthUser(data.user as User);
+      setRooms(null);
     },
     onError: async (err) => {
       console.error(err);
@@ -38,10 +41,10 @@ const RoomSearchPage: NextPage = () => {
             placeholder="Nach Räumen suchen"
             name="room-search"
           />
-          <RoomFilterBox showResetButton={!!store.rooms} />
+          <RoomFilterBox showResetButton={!!rooms} />
           <ItemList
             resource={resources.ROOM}
-            items={store.rooms}
+            items={rooms}
             placeholder="Benutze das Suchfeld oder die Filter um nach Räumen zu suchen"
           />
         </div>

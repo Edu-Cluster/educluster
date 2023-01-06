@@ -4,7 +4,6 @@ import useStore from '../../client/store';
 import trpc from '../../client/trpc';
 import toast from 'react-hot-toast';
 import { statusCodes } from '../../lib/enums';
-import { useRouter } from 'next/router';
 
 type Props = {
   children: ReactNode;
@@ -13,7 +12,6 @@ type Props = {
 
 const ProfileBadge = (props: Props) => {
   const store = useStore();
-  const router = useRouter();
 
   const { mutate: logoutUser } = trpc.useMutation(['auth.logout'], {
     async onSuccess(data) {
@@ -21,7 +19,7 @@ const ProfileBadge = (props: Props) => {
 
       if (data.status === statusCodes.SUCCESS) {
         // Redirect to login page
-        await router.push('/login');
+        document.location.href = '/login';
       } else {
         toast.error('Oops, Irgendwas ist falsch gelaufen!');
       }
@@ -35,7 +33,7 @@ const ProfileBadge = (props: Props) => {
         console.error(err);
       });
 
-      toast.error('Internal Server Error!');
+      toast.error('Beim Ausloggen ist etwas falsch gelaufen!');
     },
   });
 
@@ -46,7 +44,7 @@ const ProfileBadge = (props: Props) => {
 
     store.setAuthUser(null);
 
-    await router.push('./');
+    document.location.href = './';
   };
 
   return (

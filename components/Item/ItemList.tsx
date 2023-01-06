@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
+import type { AppointmentData, ClusterData } from '../../lib/types';
+import { conditionSatisfactionTypes, resources } from '../../lib/enums';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
-import type { Appointment, Cluster } from '../../lib/types';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
-import { conditionSatisfactionTypes, resources } from '../../lib/enums';
 import { Room } from 'webuntis';
 import RoomItemInList from '../Room/RoomItemInList';
 import { MoonLoader } from 'react-spinners';
 
 type Props = {
   resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
-  items: Cluster[][] | Appointment[][] | Room[][] | null;
+  items: ClusterData[][] | AppointmentData[][] | Room[][] | null;
   title?: 'Lerneinheiten' | 'Cluster';
   placeholder?: string;
 };
@@ -55,7 +55,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     case resources.CLUSTER:
       ItemsInList = (
         <>
-          {(items as Cluster[][])[page - 1].map((item, idx) => (
+          {(items as ClusterData[][])[page - 1].map((item, idx) => (
             <ClusterItemInList
               key={idx}
               clustername={item.clustername}
@@ -70,12 +70,12 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     case resources.APPOINTMENT:
       ItemsInList = (
         <>
-          {(items as Appointment[][])[page - 1].map((item, idx) => (
+          {(items as AppointmentData[][])[page - 1].map((item, idx) => (
             <AppointmentItemInList
               key={idx}
               title={item.name}
               description={item.description}
-              creator={item.creator}
+              creator={item.person.username}
               roomname={item.roomname}
               link={'/appointment/' + item.name + '*' + item.id}
             >

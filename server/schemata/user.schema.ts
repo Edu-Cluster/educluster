@@ -13,4 +13,10 @@ export const registerUserSchema = object({
   username: string({ required_error: 'Benutzername ist erforderlich!' }),
 });
 
-export type registerUserSchema = TypeOf<typeof registerUserSchema>;
+export type RegisterUserSchema = TypeOf<typeof registerUserSchema>;
+
+export const userSchema = string({
+  required_error: 'Benutzername ist erforderlich!',
+});
+
+export type UserSchema = TypeOf<typeof userSchema>;

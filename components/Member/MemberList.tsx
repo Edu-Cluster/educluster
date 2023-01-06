@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Member } from '../../lib/types';
 import MemberComponent from '../Member/Member';
+import { Member } from '../../lib/types';
 
 type Props = {
   members: Member[][];

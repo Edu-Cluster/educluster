@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   PencilIcon,
   TrashIcon,
@@ -9,29 +9,52 @@ import {
   MailIcon,
 } from '@heroicons/react/outline';
 import useStore from '../../client/store';
+import toast from 'react-hot-toast';
+import trpc from '../../client/trpc';
 
 type Props = {
-  clustername: string | undefined;
+  clusterfullname: string | undefined;
   isOnInvitationPage?: boolean;
 };
 
-const ClusterButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
+const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
+  const [invitationsSent, setInvitationsSent] = useState(false);
   const { editMode, setEditMode, membersToInvite } = useStore();
+  const clusterId = clusterfullname && Number(clusterfullname.split('*')[1]);
+
+  const { mutate: invite } = trpc.useMutation(['item.inviteToCluster'], {
+    async onSuccess() {
+      setInvitationsSent(false);
+      toast.success('Einladungen wurden versendet!');
+
+      setTimeout(() => {
+        document.location.href = `/cluster/${clusterfullname}`;
+      }, 1300);
+    },
+
+    onError(error: any) {
+      console.error(error);
+      setInvitationsSent(false);
+      toast.error('Leider konnten die Einladungen nicht versendet werden!');
+    },
+  });
 
   // TODO Denis: Nachdem es eindeutig ist ob authUser Clusteradmin ist oder nicht, EC-63 umsetzen
 
-  // TODO Lara: Invitation mutation definieren und bei onSuccess await router.push(`../../${clustername}`);
+  const sendInvitations = async () => {
+    if (!invitationsSent) {
+      setInvitationsSent(true);
 
-  const sendInvitations = () => {
-    // Send invitation POST request to user router
-    // TODO Lara
+      // Invoke the invite mutation
+      invite(clusterId as number);
+    }
   };
 
   const saveSettings = () => {
     // Send cluster change POST Request to item router
     // TODO Lara
 
-    setEditMode(false); // TODO Lara: Das ins onSuccess vor dem router.push verschieben bitte
+    setEditMode(false); // TODO Lara: Diese Zeile bitte ins onSuccess verschieben
   };
 
   return (
@@ -43,7 +66,7 @@ const ClusterButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
               <div
                 className="cluster-button text-blue-500 hover:bg-blue-100"
                 onClick={() =>
-                  (document.location.href = `./einladen/${clustername}`)
+                  (document.location.href = `./einladen/${clusterfullname}`)
                 }
               >
                 <p className="mr-2 text-blue-500">Mitglieder einladen</p>
@@ -81,7 +104,7 @@ const ClusterButtonGroup = ({ clustername, isOnInvitationPage }: Props) => {
               <div
                 className="cluster-button text-orange-500 hover:bg-orange-100"
                 onClick={() =>
-                  (document.location.href = `../../cluster/${clustername}`)
+                  (document.location.href = `../../cluster/${clusterfullname}`)
                 }
               >
                 <p className="mr-2 text-orange-500">Zurück zum Cluster</p>

@@ -10,7 +10,9 @@ import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const AppointmentSearchPage: NextPage = () => {
-  const { setAuthUser, appointmentsOfUser } = useStore();
+  const { setAuthUser, appointmentsOfUser, setAppointmentOfUser } = useStore();
+
+  // TODO Lara (EC-94): Zeitfelder aus der Datenbank holen und ein global state setzen
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -27,6 +29,7 @@ const AppointmentSearchPage: NextPage = () => {
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
+    setAppointmentOfUser(null);
   }, []);
 
   if (userQuery.isSuccess) {

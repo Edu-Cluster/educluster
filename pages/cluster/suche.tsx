@@ -10,7 +10,7 @@ import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const ClusterSearchPage: NextPage = () => {
-  const { setAuthUser, clusterOfUser } = useStore();
+  const { setAuthUser, clusterOfUser, setClusterOfUser } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -27,6 +27,7 @@ const ClusterSearchPage: NextPage = () => {
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
+    setClusterOfUser(null);
   }, []);
 
   if (userQuery.isSuccess) {

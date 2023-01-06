@@ -12,8 +12,21 @@ import { MoonLoader } from 'react-spinners';
 
 const InviteClusterPage: NextPage = () => {
   const router = useRouter();
-  let { clustername } = router.query;
   const { setAuthUser, membersToInvite } = useStore();
+  let { clustername } = router.query;
+
+  useEffect(() => {
+    // Fetch user and set store state
+    userQuery.refetch();
+
+    if (Array.isArray(clustername)) {
+      clustername = clustername[0];
+    }
+
+    if (clustername && !clustername.includes('*')) {
+      document.location.href = '/404';
+    }
+  }, []);
 
   const pageLimit = 10;
   let members = [];
@@ -26,10 +39,6 @@ const InviteClusterPage: NextPage = () => {
 
     start += 10;
     end += 10;
-  }
-
-  if (Array.isArray(clustername)) {
-    clustername = clustername[0];
   }
 
   const userQuery = trpc.useQuery(['user.me'], {
@@ -47,15 +56,11 @@ const InviteClusterPage: NextPage = () => {
     },
   });
 
-  useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-  }, []);
-
   if (userQuery.isSuccess) {
     return (
       <main className="page-default">
         <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">
+          {/* @ts-ignore TODO Denis/Lara Type-Problem */}
           <MemberList members={members} isOnInvitationPage={true} />
           <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
             <MemberSearchField placeholder="Nach Benutzern suchen" />

@@ -176,3 +176,19 @@ export const readUsersOfCluster = async (clusterid: Number | undefined) => {
   }
   return result;
 };
+
+export const provisionallyInviteUser = async (
+  person_id: bigint,
+  cluster_id: number,
+) => {
+  return prisma.member_of.create({
+    data: {
+      person_id,
+      cluster_id,
+      is_active: false,
+    },
+  });
+};
+
+// TODO Denis
+export const officiallyInviteUser = () => {};

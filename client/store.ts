@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { User, Member } from '../lib/types';
+import { AppointmentData, ClusterData, User } from '../lib/types';
 import { Room } from 'webuntis';
 
 // Note: Store only contains states that cannot be isolated in a single component
@@ -14,10 +14,10 @@ type Store = {
   editMode: boolean;
   setEditMode: (inEditMode: boolean) => void;
 
-  potentialMembers: Member[] | null;
-  setPotentialMembers: (members: Member[] | null) => void;
-  membersToInvite: Member[];
-  setMembersToInvite: (members: Member[]) => void;
+  potentialMembers: User[] | null;
+  setPotentialMembers: (members: User[] | null) => void;
+  membersToInvite: User[];
+  setMembersToInvite: (members: User[]) => void;
 
   rooms: Room[][] | null;
   setRooms: (rooms: Room[][] | null) => void;
@@ -43,6 +43,9 @@ type Store = {
   setPotentialSubjects: (subjects: string[] | null) => void;
   subjects: string[] | null;
   setSubjects: (subjects: string[] | null) => void;
+
+  searchPotentialMembersLoading: boolean;
+  setSearchPotentialMembersLoading: (status: boolean) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -95,6 +98,10 @@ const useStore = create<Store>((set) => ({
     set((state) => ({ ...state, potentialSubjects })),
   subjects: null,
   setSubjects: (subjects) => set((state) => ({ ...state, subjects })),
+
+  searchPotentialMembersLoading: false,
+  setSearchPotentialMembersLoading: (status) =>
+    set((state) => ({ ...state, searchPotentialMembersLoading: status })),
 }));
 
 export default useStore;

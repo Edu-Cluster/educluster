@@ -83,7 +83,10 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     ).value;
 
     // Query the database for matches using the filters and the text in the search field
-    // TODO Lara
+    // TODO Lara (EC-96)
+
+    // Set the appointments state with the matches
+    // TODO Lara (EC-96)
   });
 
   const searchForSubjects = (e: any) => {

@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { OptionsType } from 'cookies-next/lib/types';
 import { deleteCookie, getCookie, setCookie, hasCookie } from 'cookies-next';
-import { LoginUserInput, registerUserSchema } from '../schemata/user.schema';
+import { LoginUserInput, RegisterUserSchema } from '../schemata/user.schema';
 import { verifyJwt, signJwt } from '../utils/jwt';
 import {
   readEduClusterUsername,
@@ -38,8 +38,6 @@ const refreshTokenCookieOptions: OptionsType = {
     Date.now() + customConfig.refreshTokenExpiresIn * 60 * 1000,
   ),
 };
-
-// TODO Denis: Throw more specific errors once failure cases can be tested
 
 /**
  * Refreshes the access token.
@@ -123,7 +121,7 @@ export const refreshAccessTokenHandler = async ({
 export const registerHandler = async ({
   input,
 }: {
-  input: registerUserSchema;
+  input: RegisterUserSchema;
 }) => {
   try {
     const { username, code } = input;

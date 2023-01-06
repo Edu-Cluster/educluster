@@ -1,9 +1,6 @@
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { timeTypes } from '../../lib/enums';
+import { useForm } from 'react-hook-form';
 import useStore from '../../client/store';
-import TimeSelectField from '../TimeSelectField';
-import RegisteredSearchField from '../RegisteredSearchField';
 
 type Props = {
   showResetButton: boolean;
@@ -15,11 +12,6 @@ const ClusterFilterBox = ({ showResetButton }: Props) => {
   const { setValue, getValues, handleSubmit } = methods;
 
   const resetAll = () => {
-    setValue('timeFrom', '-1');
-    setValue('timeTo', '-1');
-    setValue('dateFrom', '');
-    setValue('dateTo', '');
-
     // @ts-ignore
     document.querySelector('[name="cluster-search"]').value = '';
 
@@ -38,37 +30,14 @@ const ClusterFilterBox = ({ showResetButton }: Props) => {
 
     // Query the database for matches using the filters and the text in the search field
     // TODO Lara
+
+    // Set the cluster state with the matches
+    // TODO Lara
   });
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">
       <div className="flex flex-col gap-5">
-        <FormProvider {...methods}>
-          <form onSubmit={onSubmit} id="cluster-search-form">
-            <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5">
-              <TimeSelectField
-                preselected="-"
-                registerSelectName="timeFrom"
-                timeType={timeTypes.FROM}
-              />
-              <TimeSelectField
-                preselected="-"
-                registerSelectName="timeTo"
-                timeType={timeTypes.TO}
-              />
-              <RegisteredSearchField
-                noIcon={true}
-                type="date"
-                registerInputName="dateFrom"
-              />
-              <RegisteredSearchField
-                noIcon={true}
-                type="date"
-                registerInputName="dateTo"
-              />
-            </div>
-          </form>
-        </FormProvider>
         <button
           aria-label="Alle Filter übernehmen"
           className="w-full h-16 primary-button"

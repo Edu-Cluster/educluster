@@ -18,15 +18,16 @@ const ClusterBanner = ({
 }: Props) => {
   const { editMode } = useStore();
   const [isSliderOn, setSliderOn] = useState(isPrivate);
+  const clustername = name && name.split('*')[0];
 
   return (
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
       {!editMode ? (
         <div className="h-auto flex flex-col items-center mt-2">
           <p className="text-md underline">CLUSTER</p>
-          <p className="text-2xl">{name}</p>
+          <p className="text-2xl">{clustername}</p>
           <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={name} bigger={true} />
+            <Avatar type="cluster" seed={clustername} bigger={true} />
           </div>
           <p className="mt-12 uppercase">
             {isPrivate ? 'PRIVAT' : 'ÖFFENTLICH'}
@@ -43,11 +44,11 @@ const ClusterBanner = ({
               name="clustername"
               type="text"
               maxLength={20}
-              placeholder={name}
+              placeholder={clustername}
             />
           </div>
           <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={name} bigger={true} />
+            <Avatar type="cluster" seed={clustername} bigger={true} />
           </div>
           <div className="flex items-center text-center mt-6 mb-6">
             <span
@@ -84,7 +85,7 @@ const ClusterBanner = ({
         </form>
       )}
       <ClusterButtonGroup
-        clustername={name}
+        clusterfullname={name}
         isOnInvitationPage={isOnInvitationPage}
       />
     </div>
