@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NextPage } from 'next';
 import { resources } from '../../lib/enums';
 import useStore from '../../client/store';
@@ -8,9 +8,11 @@ import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 import RoomFilterBox from '../../components/Room/RoomFilterBox';
+import { SocketContext } from '../_app';
 
 const RoomSearchPage: NextPage = () => {
   const { setAuthUser, setRooms, rooms } = useStore();
+  const socket = useContext(SocketContext);
 
   // TODO Lara (EC-115): Zeitfelder aus der Datenbank holen und ein global state setzen
 
@@ -20,6 +22,10 @@ const RoomSearchPage: NextPage = () => {
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
       setRooms(null);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
     },
     onError: async (err) => {
       console.error(err);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   PencilIcon,
   TrashIcon,
@@ -11,6 +11,7 @@ import {
 import useStore from '../../client/store';
 import toast from 'react-hot-toast';
 import trpc from '../../client/trpc';
+import { SocketContext } from '../../pages/_app';
 
 type Props = {
   clusterfullname: string | undefined;
@@ -18,13 +19,25 @@ type Props = {
 };
 
 const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
+  const socket = useContext(SocketContext);
+  const { editMode, setEditMode, membersToInvite, authUser } = useStore();
   const [invitationsSent, setInvitationsSent] = useState(false);
-  const { editMode, setEditMode, membersToInvite } = useStore();
   const clusterId = clusterfullname && Number(clusterfullname.split('*')[1]);
 
   const { mutate: invite } = trpc.useMutation(['item.inviteToCluster'], {
     async onSuccess() {
       setInvitationsSent(false);
+
+      // Send notifications to users
+      membersToInvite.forEach((memberToInvite) => {
+        // @ts-ignore
+        socket?.emit('sendNotification', {
+          senderName: authUser && authUser.username,
+          receiverName: memberToInvite.username,
+          type: 'notificationTypes.CLUSTER_INVITE',
+        });
+      });
+
       toast.success('Einladungen wurden versendet!');
 
       setTimeout(() => {
@@ -46,7 +59,12 @@ const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
       setInvitationsSent(true);
 
       // Invoke the invite mutation
-      invite(clusterId as number);
+      membersToInvite.forEach((memberToInvite) => {
+        invite({
+          clusterId: clusterId as number,
+          userId: memberToInvite.id,
+        });
+      });
     }
   };
 

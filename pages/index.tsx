@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ItemList from '../components/Item/ItemList';
 import type { NextPage } from 'next';
 import trpc from '../client/trpc';
 import useStore from '../client/store';
 import { MoonLoader } from 'react-spinners';
-import { resources, statusCodes } from '../lib/enums';
+import { resources } from '../lib/enums';
 import Avatar from '../components/Avatar';
+import { SocketContext } from './_app';
 
 const DashboardPage: NextPage = () => {
   const store = useStore();
+  const socket = useContext(SocketContext);
 
   const itemOfUserQuery = trpc.useQuery(['item.mine'], {
     enabled: false,
@@ -28,6 +30,10 @@ const DashboardPage: NextPage = () => {
     retry: 0,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
 
       if (data.user) {
         await itemOfUserQuery.refetch();

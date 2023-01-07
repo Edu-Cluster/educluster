@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -6,9 +6,11 @@ import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import useStore from '../../client/store';
 import { MoonLoader } from 'react-spinners';
+import { SocketContext } from '../_app';
 
 const CreateClusterPage: NextPage = () => {
   const store = useStore();
+  const socket = useContext(SocketContext);
   const [isSliderOn, setSliderOn] = useState(false);
   const { register, setValue, getValues, handleSubmit } = useForm();
 
@@ -17,6 +19,10 @@ const CreateClusterPage: NextPage = () => {
     retry: 0,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
     },
     onError: async (err) => {
       console.error(err);

@@ -6,7 +6,7 @@ import { catalogRouter } from './catalog.routes';
 
 export const appRouter = createRouter()
   .query('test', {
-    resolve: async () => {
+    resolve: () => {
       return { data: 'the test worked!' };
     },
   })

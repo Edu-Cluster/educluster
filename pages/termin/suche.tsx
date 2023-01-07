@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NextPage } from 'next';
 import { resources } from '../../lib/enums';
 import useStore from '../../client/store';
@@ -8,9 +8,11 @@ import AppointmentFilterBox from '../../components/Appointment/AppointmentFilter
 import trpc from '../../client/trpc';
 import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
+import { SocketContext } from '../_app';
 
 const AppointmentSearchPage: NextPage = () => {
   const { setAuthUser, appointmentsOfUser, setAppointmentOfUser } = useStore();
+  const socket = useContext(SocketContext);
 
   // TODO Lara (EC-94): Zeitfelder aus der Datenbank holen und ein global state setzen
 
@@ -19,6 +21,10 @@ const AppointmentSearchPage: NextPage = () => {
     retry: 0,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
     },
     onError: async (err) => {
       console.error(err);

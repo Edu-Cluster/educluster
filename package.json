@@ -27,6 +27,8 @@
     "react-modern-drawer": "^1.1.2",
     "react-spinners": "^0.13.7",
     "sass": "^1.55.0",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
     "superjson": "^1.9.1",
     "webuntis": "^1.22.1",
     "zod": "^3.18.0",

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import MemberList from '../../../components/Member/MemberList';
@@ -9,9 +9,11 @@ import { User } from '../../../lib/types';
 import ClusterBanner from '../../../components/Cluster/ClusterBanner';
 import MemberSearchResultArea from '../../../components/Member/MemberSearchResultArea';
 import { MoonLoader } from 'react-spinners';
+import { SocketContext } from '../../_app';
 
 const InviteClusterPage: NextPage = () => {
   const router = useRouter();
+  const socket = useContext(SocketContext);
   const { setAuthUser, membersToInvite } = useStore();
   let { clustername } = router.query;
 
@@ -46,6 +48,10 @@ const InviteClusterPage: NextPage = () => {
     retry: 0,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
 
       // Fetch cluster details
       // TODO Lara

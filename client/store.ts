@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { AppointmentData, ClusterData, User } from '../lib/types';
+import { User } from '../lib/types';
 import { Room } from 'webuntis';
 
 // Note: Store only contains states that cannot be isolated in a single component

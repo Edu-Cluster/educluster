@@ -9,7 +9,7 @@ import {
   readClusternameOfCluster,
   readUsersOfCluster,
 } from '../services/item.service';
-import { ClusterIdSchema, ClusterInput } from '../schemata/cluster.schema';
+import { ClusterInput, ClusterInviteSchema } from '../schemata/cluster.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -76,22 +76,13 @@ export const getItemOfClusterHandler = async ({
 
 export const sendMemberInvitation = async ({
   input,
-  ctx,
 }: {
-  input: ClusterIdSchema;
-  ctx: ContextWithUser;
+  input: ClusterInviteSchema;
 }) => {
+  const { clusterId, userId } = input;
+
   try {
-    const user = ctx.user;
-
-    if (!user) {
-      return {
-        status: statusCodes.FAILURE,
-      };
-    }
-
-    const id = user.id;
-    const result = await provisionallyInviteUser(id, input);
+    const result = await provisionallyInviteUser(userId, clusterId);
 
     if (result) {
       return {

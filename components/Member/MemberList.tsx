@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import MemberComponent from '../Member/Member';
-import { Member } from '../../lib/types';
+import { User } from '../../lib/types';
 
 type Props = {
-  members: Member[][];
+  members: User[][];
   isOnInvitationPage?: boolean;
 };
 
@@ -26,25 +26,14 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
           {members && members.length ? (
-            members[page - 1].map(({ username, admin_of, member_of }, idx) =>
-              admin_of.length ? (
-                <MemberComponent
-                  key={idx}
-                  username={username}
-                  isOnInvitationPage={isOnInvitationPage}
-                  showMinusButton={isOnInvitationPage}
-                />
-              ) : member_of.length ? (
-                <MemberComponent
-                  key={idx}
-                  username={username}
-                  isOnInvitationPage={isOnInvitationPage}
-                  showMinusButton={isOnInvitationPage}
-                />
-              ) : (
-                <></>
-              ),
-            )
+            members[page - 1].map(({ username }, idx) => (
+              <MemberComponent
+                key={idx}
+                username={username}
+                isOnInvitationPage={isOnInvitationPage}
+                showMinusButton={isOnInvitationPage}
+              />
+            ))
           ) : (
             <></>
           )}

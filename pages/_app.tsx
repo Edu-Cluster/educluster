@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 import 'react-modern-drawer/dist/index.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header/Header';
 import { withTRPC } from '@trpc/next';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
@@ -8,14 +8,33 @@ import { Toaster } from 'react-hot-toast';
 import superjson from 'superjson';
 import type { AppProps } from 'next/app';
 import type { AppRouter } from '../server/routers/app.routes';
+import io from 'socket.io-client';
+
+export const SocketContext = React.createContext({});
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const socket = io().connect();
+
+  useEffect(() => {
+    fetch('/api/socket').then(() => {
+      socket.on('getNotification', (data) => {
+        // TODO Lara: Mutation mit neuer Notification
+      });
+    });
+
+    /*
+    * socket.on('connect', () => {
+      console.log('connected');
+    });
+    * */
+  }, [socket]);
+
   return (
-    <>
+    <SocketContext.Provider value={socket}>
       <Toaster position="top-center" reverseOrder={false} />
       <Header />
       <Component {...pageProps} />
-    </>
+    </SocketContext.Provider>
   );
 }
 

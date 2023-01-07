@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import type { NextPage } from 'next';
 import ItemList from '../../components/Item/ItemList';
 import MemberList from '../../components/Member/MemberList';
@@ -9,9 +9,11 @@ import trpc from '../../client/trpc';
 import useStore from '../../client/store';
 import ClusterBanner from '../../components/Cluster/ClusterBanner';
 import { MoonLoader } from 'react-spinners';
+import { SocketContext } from '../_app';
 
 const ClusterPage: NextPage = () => {
   const store = useStore();
+  const socket = useContext(SocketContext);
   const router = useRouter();
   let { clustername: clusterfullname } = router.query;
 
@@ -39,7 +41,6 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        console.log(data);
         store.setUserOfCluster(data.user);
         store.setAppointmentOfCluster(data.appointments);
       }
@@ -54,6 +55,10 @@ const ClusterPage: NextPage = () => {
     retry: 0,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Emit new user event to socket server
+      // @ts-ignore
+      socket?.emit('newUser', data.user?.username);
 
       // Fetch cluster details, learning units and members
       await itemsOfClusterQuery.refetch();
@@ -77,7 +82,7 @@ const ClusterPage: NextPage = () => {
         </div>
 
         <ClusterBanner
-          name={clustername as string}
+          name={clusterfullname as string}
           isPrivate={false}
           description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
         />

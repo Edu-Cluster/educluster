@@ -2,12 +2,13 @@ import React, { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 
 type Props = {
-  // TODO Denis: if notification is an invitation, you should have buttons to accept/reject it
   children: ReactNode;
-  notifications: string[];
 };
 
-const NotificationBell = (props: Props) => {
+const NotificationBell = ({ children }: Props) => {
+  const notifications = [''];
+  // TODO Lara: Datenbankabfrage machen um die aktuellsten Notifications zu holen
+
   useEffect(() => {
     document.addEventListener('click', ({ target }: any) => {
       const targetDropdown = target && target.closest('div');
@@ -44,14 +45,14 @@ const NotificationBell = (props: Props) => {
         className="header-option block dropdown-click"
         onClick={toggleDropdownBell}
       >
-        {props.children}
+        {children}
       </div>
       <div
         id="dropdown-bell-content"
         className="hidden absolute right-[-50%] bg-white w-[400px] h-[500px] overflow-auto shadow-2xl flex-col items-start dropdown-content-click rounded-md"
       >
         <div className="w-full divide-y mt-2">
-          {props.notifications.map((notification, idx) => (
+          {notifications.map((notification, idx) => (
             <Link key={idx} href="/">
               <div className="w-full hover:bg-gray-100 px-4 py-2 flex justify-around">
                 <div className="w-full break-words">

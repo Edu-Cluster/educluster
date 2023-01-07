@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   AcademicCapIcon,
   CubeIcon,
@@ -12,23 +12,11 @@ import NotificationBell from './NotificationBell';
 import ProfileBadge from './ProfileBadge';
 import MenuDrawer from './MenuDrawer';
 import SettingsCog from './SettingsCog';
-import useStore from '../../client/store';
 import Avatar from '../Avatar';
-
-// Notification Bell
-const notifications = [
-  'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
-  'test2',
-  'test3',
-  'test4',
-  'test5',
-  'test6',
-  'test7',
-  'test8',
-];
+import useStore from '../../client/store';
 
 const Header = () => {
-  const user = useStore().authUser;
+  const { authUser: user } = useStore();
 
   return user ? (
     <div className="sticky top-0 z-50 mb-8 flex h-20 items-center justify-between bg-white px-12 lg:px-36 shadow-lg">
@@ -62,7 +50,7 @@ const Header = () => {
           )}
         </ProfileBadge>
 
-        <NotificationBell notifications={notifications}>
+        <NotificationBell>
           <BellIcon className="header-icon" />
         </NotificationBell>
 

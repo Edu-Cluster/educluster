@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import trpc from '../client/trpc';
 import toast from 'react-hot-toast';
-import { statusCodes } from '../lib/enums';
+import trpc from '../client/trpc';
 import useStore from '../client/store';
+import { statusCodes } from '../lib/enums';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
-  const store = useStore();
+  const { setAuthUser } = useStore();
   const { register, setValue, getValues, handleSubmit } = useForm();
   const [isSliderOn, setSliderOn] = useState(false);
 
@@ -61,7 +61,7 @@ const LoginPage: NextPage = () => {
     enabled: false,
     retry: 0,
     onSuccess: ({ data }) => {
-      store.setAuthUser(data.user);
+      setAuthUser(data.user);
     },
   });
 

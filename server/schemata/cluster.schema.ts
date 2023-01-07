@@ -1,14 +1,15 @@
-import { number, object, string, TypeOf } from 'zod';
+import { bigint, number, object, string, TypeOf } from 'zod';
 
 export const clusterSchema = object({
-  clustername: string(),
+  clustername: string({ required_error: 'Clustername ist erforderlich!' }),
   clusterId: number({ required_error: 'ClusterID ist erforderlich!' }),
 });
 
 export type ClusterInput = TypeOf<typeof clusterSchema>;
 
-export const clusterIdSchema = number({
-  required_error: 'Cluster Id ist erforderlich!',
+export const clusterInviteSchema = object({
+  clusterId: number({ required_error: 'ClusterID ist erforderlich!' }),
+  userId: bigint({ required_error: 'BenutzerId ist erforderlich!' }),
 });
 
-export type ClusterIdSchema = TypeOf<typeof clusterIdSchema>;
+export type ClusterInviteSchema = TypeOf<typeof clusterInviteSchema>;
