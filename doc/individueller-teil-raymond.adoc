@@ -6,14 +6,14 @@
 
 Der individuelle Teil gliedert sich in drei Teilbereiche.
 
-Der erste Teil befasst sich mit der Evaluierung eines bewährten Technologie-Stacks, der die Anforderungen des Projekts „EduCluster“ erfüllt. Darin werden verschiedene Technologie-Stacks bewertet und der am besten geeigneter Stapel ermittelt.
+Der erste Teil des individuellen Teils befasst sich mit der Evaluierung bewährter Technologie-Stacks, die die Anforderungen des Projekts „EduCluster“ erfüllen. Darin werden verschiedene Technologie-Stacks bewertet und der am besten geeignete Stapel ermittelt.
 
 Folglich wird im zweiten Abschnitt die technische Umsetzung erklärt. Dabei wird auf den Aufbau des Grundgerüsts der Applikation gezielt. Es werden die einzelnen Schritte des Aufbaus und der Konfiguration erläutert und mit konkreten Beispielen ergänzt.
 
 Zu guter Letzt wird im dritten Teil eine kurze Zusammenfassung der erreichten Ziele, die Reflexion der eigenen Arbeit sowie eine Zukunftsaussicht des vorgeschlagenen Lösungsansatzes erarbeitet.
 
 === Evaluierung der Technologie-Stacks
-Eine Evaluierung der verschiedenen Technologie-Stacks für die Entwicklung der Webapplikation „EduCluster“ bedeutet eine Analyse und Bewertung der zur Verfügung stehenden Möglichkeiten. Zur Erfüllung dieser Aufgabe werden die bekanntesten Stacks ausgesucht, damit die Qualität der gruppierten Technologien nicht nur theoretisch, sondern auch praktisch bewiesen werden kann.
+Eine Evaluierung der verschiedenen potentiellen Technologie-Stacks für die Entwicklung der Webapplikation „EduCluster“ bedeutet eine Analyse und Bewertung der zur Verfügung stehenden Möglichkeiten. Zur Erfüllung dieser Aufgabe werden die bekanntesten Stacks ausgesucht, damit die Qualität der gruppierten Technologien nicht nur theoretisch, sondern auch praktisch bewiesen werden kann.
 
 Im Laufe dieses Abschnitts werden die ausgewählten Stacks vorgestellt und anhand von Beurteilungskriterien bewertet. Die Bewertung wird sich an den Anforderungen richten und anschließend einen Sieger ankündigen, der für die technische Umsetzung benutzt werden soll.
 
@@ -23,15 +23,15 @@ Bei der Evaluierung eines Technologie-Stacks sollen die Interessen verschiedener
 TODO: Erweitern
 
 ==== Zieldefinition
-Das Ziel dieser Evaluierung ist die Wahl des richtigen Technologie-Stacks für die Webapplikation „EduCluster“ unter Berücksichtigung der Anforderungen des Projekts. Es wird darauf hingewiesen, dass die Ermittlung einer geeigneten Datenbank nicht inkludiert wird, da dieser Teil von einem anderen Teammitglied übernommen wird.
+Das Ziel dieser Evaluierung ist die Wahl des richtigen Technologie-Stacks für die Webapplikation „EduCluster“ unter Berücksichtigung der Anforderungen des Projekts. Es wird darauf hingewiesen, dass die Ermittlung einer geeigneten Datenbank nicht inkludiert wird, da dieser Teil von Lara Kammerer übernommen wird.
 
 ===== Was ist ein Technologie-Stack?
 Ein Technologie-Stack ist ein Stapel von Technologien, der sich aus Frameworks und Libraries zusammensetzt. Darin können entweder alle oder nur die auschlaggebendsten Technologien aufgefasst werden, die in dem Projekt ihren Einsatz finden. Da ersteres den vorgesehenen Zeitrahmen sprengen würde, wird die zweite Variante aufgenommen.
 
 Der Stapel kann konzeptionell in vier Teilen gespalten werden:
 
-* •	Frontend, worin der GUI-Entwurf implementiert wird
-* •	Backend, in dem die serverseitige Logik implementiert wird
+* •	Frontend, worin der GUI-Entwurf und die clientseitige Logik implementiert wird
+* •	Backend, in dem die serverseitige Logik und die Anbindung an die Datenbank implementiert wird
 * •	API, die eine Verbindung zwischen Frontend und Backend aufbaut
 * •	Datenbank, wo die relevanten Daten gespeichert und abgerufen werden
 
@@ -55,7 +55,7 @@ Abgesehen davon, dass sie die bekannteste JavaScript Bibliothek ist, bietet Reac
 
 Zum einen besitzt sie ein virtuelles DOM footnote:[Vgl. https://reactjs.org/docs/faq-internals.html, abgerufen am 29.10.2022], das zwischengespeichert und mit dem tatsächlichen DOM synchronisiert wird, um nur diejenigen Komponenten zu rendern, die sich geändert haben. Damit erzielt React eine Erhöhung der Performanz und ermöglicht eine deklarative API. Das bedeutet, dass der Entwickler den erwünschten UI-Zustand definieren kann und React führt im Hintergrund die benötigte Arbeit durch, damit das DOM diesen Zustand entspricht.
 
-Obwohl das Programmieren mit React sich an die Prinzipien des deklarativen Paradigmas hält, ermöglicht die Bibliothek beim Erstellen von Komponenten eine Wahl wischen funktionelle und klassenbasierte Komponente. Damit kann sich der Entwickler für eine bestimmte JSX-basierte Syntax entscheiden.
+Obwohl das Programmieren mit React sich an die Prinzipien des deklarativen Paradigmas hält, ermöglicht die Bibliothek beim Erstellen von Komponenten eine Wahl wischen funktionelle und klassenbasierte Komponenten. Damit kann sich der Entwickler für eine bestimmte JSX-basierte Syntax entscheiden.
 
 Zu guter Letzt gibt es zumindest für funktionelle Komponente die Möglichkeit, sogenannte „Hooks“ footnote:[Vgl. https://reactjs.org/docs/hooks-intro.html, abgerufen am 29.10.2022] selbst zu definieren oder von einem Package Manager zu installieren. Diese Konstrukte ermöglichen einen direkten Zugriff auf Zustands- und Lebenszyklus-Features in Form einer Funktion.
 
@@ -67,7 +67,7 @@ Vue ist ebenso wie React auf Komponenten und deklarativem Rendering basiert, und
 Ein weiteres Merkmal von Vue sind die „directives“ footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in der HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
 
 ===== Angular
-Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar nicht so bekannt wie React und Vue, aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreich. Dafür gibt es gute Gründe.
+Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt wie React und Vue footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreich footnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
 
 Angular hat ein System entwickelt, das ein hierarchisches „Dependency Injection“ Konzept beinhaltet. Dank dieses Features können Klassen mit Angular-Decorators ihre Abhängigkeiten konfigurieren. Unter diesen Angular-Decorators gibt es Komponente und Directives, die teils auch in React bzw. Vue existieren, aber auch sogenannte „Pipes“ und „Injectables“, die endemisch für das Angular-Framework sind.
 
@@ -77,7 +77,7 @@ In weiterer Folge ist anzumerken, dass Angular aus der Kiste typensicher ist. Ty
 In diesem Abschnitt werden die drei bekanntesten Backend-Technologien stand 2022 footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 30.10.2022] präsentiert, inklusiv eine moderne vierte Option, die sich sowohl als Frontend- als auch als Backend-Technologie kategorisieren lässt.
 
 ===== Express.js
-Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Drei der berühmtesten Tech-Stacks in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
+Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei berühmtesten Tech-Stacks footnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
 
 Mit Express werden Funktionalitäten von Node.js vereinfacht und weitere Features angeboten, wie beispielsweise ein Routing-System oder eine Middleware-Schicht.
 
@@ -88,7 +88,7 @@ Abschließend ist anzumerken, dass ein Express-Backend auch den Vorteil einer ei
 ===== ASP .NET Core
 ASP.NET Core ist ein plattformübergreifendes Framework zum Erstellen von Applikationen, das 2016 von Microsoft als Nachfolger von ASP.NET veröffentlicht wurde. Das Framework ermöglicht nicht nur die Entwicklung von Webapplikationen, sondern auch die Erstellung von Webdiensten, IoT-Apps und mobilen Backends sowie ihre Bereitstellung in der Cloud.
 
-Applikationen, die mit ASP.NET Core entwickelt werden sollen, können eine von drei möglichen Programmiersprachen nutzen: C#, F# und Visual Basic. Die beliebteste von diesen ist C#.
+Applikationen, die mit ASP.NET Core entwickelt werden, können eine von drei möglichen Programmiersprachen nutzen: C#, F# und Visual Basic. Die beliebteste von diesen ist C#.
 
 Das Framework bietet eine große Liste an Features footnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
 
@@ -97,11 +97,9 @@ Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Dj
 
 Ein großer Vorteil von Django ist die Möglichkeit, das Datenmodell der Applikation in Python statt in SQL aufzubauen. Dieses Feature wird von Djangos ORM ermöglicht, indem es Datenstrukturen in Python-Klassen übersetzt.footnote:[Vgl. https://www.ibm.com/cloud/learn/django-explained#:~:text=Starting%20a%20Django%20project%20allows,within%20a%20fully%20Python%20environment., abgerufen am 30.11.2022]
 
-In weiterer Folge stellt es eine CRUD-Funktionalität bereit, womit die Applikation mit der Datenbank direkt gekoppelt wird. Auch bietet das Framework Cross-Site Scripting, Software-Administrierungsfeatures und übernimmt das Management der Nutzer-Sessions. Das letzte Feature ist vor allem für die effiziente Skalierung von Django-Webapplikationen relevant, da es ermöglicht, mehrere Instanzen der Applikation zu erzeugen und die Session-Daten von Benutzern einfach auf neue Instanzen zu transferieren.
+In weiterer Folge stellt Django eine CRUD-Funktionalität bereit, womit die Applikation mit der Datenbank direkt gekoppelt wird. Auch bietet das Framework Cross-Site Scripting, Software-Administrierungsfeatures und übernimmt das Management der Nutzer-Sessions. Das letzte Feature ist vor allem für die effiziente Skalierung von Django-Webapplikationen relevant, da es ermöglicht, mehrere Instanzen der Applikation zu erzeugen und die Session-Daten von Benutzern einfach auf neue Instanzen zu transferieren.
 
 Django kann rein als Backend genutzt werden und durch eines der beliebten Frontend-Frameworks ergänzt werden, aber es bietet auch die Möglichkeit, die Django Templating-Sprache für die Erzeugung dynamischer HTML-Inhalte zu nutzen. Diese eignet sich für eine Applikation mit MVC-Architektur besonders gut.
-
-Zusammenfassend bietet Django einen Komplettpaket für die Webentwicklung und ist aus diesem Grund eines der beliebtesten Web-Frameworks.
 
 ===== Ausnahmefall: Next.js
 Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Framework footnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes Web-Framework beschrieben.
@@ -114,18 +112,18 @@ Es gibt drei Arten von Rendering footnote:[Vgl. https://nextjs.org/learn/foundat
 * •	Server Side Rendering, wo das HTML der Seite für jeden Request auf den Server generiert wird
 * •	Static Site Generation, wodurch eine Generierung der Seite während dem Build-Prozess der Applikation durchgeführt wird
 
-SSR und SSG sind eine moderne Art des Rendering, das sich „pre-rendering“ nennt. Darin wird das Abrufen von Daten und die Transformierung der React-Komponente in HTML vor dem Absenden der Response an den Client durchgeführt.
+SSR und SSG sind eine moderne Art des Rendering, das sich „Pre-Rendering“ nennt. Darin wird das Abrufen von Daten und die Transformierung der React-Komponente in HTML vor dem Absenden der Response an den Client durchgeführt.
 
 Next.js bietet nicht nur performante Arten von Rendering, sondern auch eine Lösung zur Authentifizierung durch NextAuth und ein effizientes Routing-System, das aus Dateien und Ordnern automatisch Routen generiert. Das Framework bietet auch Packages zur weiteren Optimierung der Performance, wie „next/image“ und „next/link“.
 
-Zu guter Letzt wird allen Next.js Webapplikationen die Möglichkeit angeboten, die Cloud-Hosting Plattform von Vercel zu nutzen. Das Hosting kommt auch mit einer integrierten CI/CD Pipeline und Edge Functions, Funktionen zur effizienten Lieferung der Seiten-Inhalte vom nächstgelegenen CDN Server.
+Zu guter Letzt wird allen Next.js Webapplikationen die Möglichkeit angeboten, die Cloud-Hosting Plattform von Vercel zu nutzen. Das Hosting kommt auch mit einer integrierten CI/CD Pipeline und Edge Functions, Funktionen zur effizienten Lieferung der Seiten-Inhalte vom nächstgelegenen CDN Server. Für Hobby-Projekte ist das Hosting kostenlos.
 
 ==== Ermittlung der möglichen API-Architekturen
 
 Es gibt vier bekannte API-Architekturen, die heutzutage eingesetzt werden.footnote:[Vgl. https://www.altexsoft.com/blog/soap-vs-rest-vs-graphql-vs-rpc/, abgerufen am 04.11.2022]
 
 ===== RPC
-RPC steht für “Remote Procedure Call” und ist ein Kommunikationssystem für Client-Server basierende Applikationen, das Prozeduren aus anderen Adressräumen aufrufen kann als den Adressraum, in dem die aufrufende Prozedur ausgeführt wird. Dabei findet die Ausführung der Logik einmal am Client, dann am Server und anschließend wieder am Client statt.
+RPC steht für “Remote Procedure Call” und ist ein Kommunikationssystem für Client-Server-basierende Applikationen, das Prozeduren aus anderen Adressräumen aufrufen kann als den Adressraum, in dem die aufrufende Prozedur ausgeführt wird. Dabei findet die Ausführung der Logik einmal am Client, dann am Server und anschließend wieder am Client statt.
 
 Das älteste RPC-Protokoll – XML-RPC – wurde vor SOAP und REST entwickelt, aber mittlerweile gibt es moderne Alternativen. In 2016 veröffentlichte Google ein plattformübergreifendes und höchst performantes RPC-Framework, den sogenannten gRPC. Dieses eignet sich besonders gut für den Einsatz in einer Microservice-Architektur.
 
@@ -134,14 +132,14 @@ Für Node.js und insbesondere in Kombination mit Next.js gibt es ein weiteres Fr
 ===== SOAP
 “Simple Object Access Protocol”, oder kurz SOAP, ist ein XML-basiertes Protokoll, das zur Verbreitung der sogenannten „Web Services“ geführt hat. Das XML-Format legt die Struktur der Request- und Response-Nachrichten fest.footnote:[Vgl. https://stoplight.io/api-types/soap-api, abgerufen am 06.11.2022]
 
-Im Hintergrund nutzt SOAP das RPC-Muster, um die Parameter von Funktionen und Methoden zu befüllen und das entsprechende Return-Ergebnis zurückzuliefern. Jedoch waren RPC-Lösungen vor der Einführung auf einer einzigen Programmiersprache limitiert, die von beiden Seiten benutzt werden musste. Mit SOAP wurde auch eine Entkopplung eingeführt, wodurch die Nutzung verschiedener Programmiersprachen ermöglicht wurde.
+Im Hintergrund nutzt SOAP das RPC-Muster, um die Parameter von Funktionen und Methoden zu befüllen und das entsprechende Return-Ergebnis zurückzuliefern. Jedoch waren RPC-Lösungen vor der Einführung auf einer einzigen Programmiersprache limitiert, die von beiden Seiten benutzt werden musste. Mit SOAP wurde eine Entkopplung eingeführt, wodurch die Nutzung verschiedener Programmiersprachen ermöglicht wurde.
 
 Obwohl es immer noch weit verbreitet ist, verliert SOAP in letzter Zeit an Beliebtheit.footnote:[Vgl. https://www.researchgate.net/figure/Trend-of-SOAP-and-REST-in-Google-searches_fig1_296702598, abgerufen am 06.11.2022]
 
 ===== REST
-REST ist ein Akronym für „Representational State Transfer“ und beschreibt ein Architekturstil für verteilte Hypermedia-Systeme.footnote:[ Vgl. https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm, abgerufen am 06.11.2022] Eine REST-API ist eine API, die den Beschränkungen des REST-Architekturstils entsprechen.
+REST ist ein Akronym für „Representational State Transfer“ und beschreibt ein Architekturstil für verteilte Hypermedia-Systeme.footnote:[ Vgl. https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm, abgerufen am 06.11.2022] Eine REST-API ist eine API, die sich an den Beschränkungen des REST-Architekturstils halten.
 
-Mit Rest wird bei jeder Client-Anfrage die Repräsentation des Ressourcenzustands an einem entsprechenden Endpoint weitergeleitet. Diese Information kann in verschiedenen Formaten übermittelt werden, aber das beliebteste Format ist derzeit JSON. Sobald die Anfrage ankommt wird eine dem Endpoint entsprechende Logik ausgeführt und die erwartete Information im selben Format zurückgeschickt.
+Mit REST wird bei jeder Client-Anfrage die Repräsentation des Ressourcenzustands an einem entsprechenden Endpoint weitergeleitet. Diese Information kann in verschiedenen Formaten übermittelt werden, aber das beliebteste Format ist derzeit JSON. Sobald die Anfrage ankommt wird eine dem Endpoint entsprechende Logik ausgeführt und die erwartete Information im selben Format zurückgeschickt.
 
 Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Kriterien erfüllen footnote:[Vgl. https://www.redhat.com/en/topics/api/what-is-a-rest-api, abgerufen am 06.11.2022]:
 
@@ -149,9 +147,7 @@ Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Krit
 * •	„Statelessness“, die Trennung von Anfragen, sodass keine Client-Informationen zwischen zwei Anfragen gespeichert werden
 * •	Cachebare Daten, die Client-Server-Interaktionen vereinfachen
 * •	Eine Uniforme Schnittstelle damit Informationen in standardisierte Form übermittelt werden
-* •	Ein hierarchisches System, die jedem Server-Typ richtig einordnet, das für den Client unsichtbar ist
-
-Bei Erfüllung aller obigen Voraussetzungen spricht man von einer REST-API.
+* •	Ein hierarchisches System, die jedem Server-Typ richtig einordnet und das für den Client unsichtbar ist
 
 ===== GraphQL
 TODO
@@ -182,7 +178,11 @@ TODO
 ==== Beurteilung
 Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriterien bewertet werden. Anschließend wird ein Sieger angekündigt, der bei der technischen Umsetzung benutzt werden soll.
 
+TODO
+
 ==== Entscheidung und Begründung der Auswahl
+
+TODO
 
 === Technische Umsetzung
 
