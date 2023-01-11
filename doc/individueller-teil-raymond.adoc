@@ -153,29 +153,42 @@ Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Krit
 TODO
 
 ==== Beurteilungsverfahren
-In diesem Abschnitt werden die einzelnen Beurteilungskriterien, die sich aus den bereits genannten Anforderungen ableiten, vorgestellt und erklärt.
+In diesem Abschnitt werden die einzelnen Beurteilungskriterien, die sich aus den bereits genannten Anforderungen ableiten, vorgestellt und erklärt. Im Anschluss daran wird die Beurteilung durchgeführt.
 
-===== Beurteilung
+===== Beurteilungskriterien
 
 Zunächst werden die Beurteilungskriterien vorgestellt.
 
 ====== Persönliche Erfahrung
-Angesichts des großen Ökosystems von Technologien im Bereich der Webentwicklung ist die Auswahl eines geeigneten Stacks in erster Linie von der persönlichen Erfahrung der einzelnen Projektmitglieder abhängig. Die Vertrautheit mit Frameworks steigert die Geschwindigkeit des Entwicklungsprozesses und vermindert die Chancen von Programmfehlern und Bugs. Persönliche Erfahrung ist ein großer Vorteil und gilt als wichtigstes Kriterium bei der Auswahl.
+Angesichts des großen Ökosystems von Technologien im Bereich der Webentwicklung ist die Auswahl eines geeigneten Stacks in erster Linie von der persönlichen Erfahrung der einzelnen Projektmitglieder abhängig. Die Vertrautheit mit Frameworks steigert die Geschwindigkeit des Entwicklungsprozesses und vermindert die Chancen von Programmfehlern und Bugs. 
+
+Persönliche Erfahrung ist ein großer Vorteil und gilt als wichtigstes Kriterium bei der Auswahl. Daher wird eine Gewichtung von 40% vergeben.
 
 ====== Vereinfachung der Komplexität
-Frameworks dienen in erster Linie die Aufgabe, den
-TODO
+Frameworks dienen in erster Linie die Aufgabe, den Programmieraufwand zu reduzieren und die Effizienz des Programmierers zu steigern. Je besser ein Frameworks diese Aufgabe erfüllt, desto besser schneidet es auch ab im Vergleich zu anderen Frameworks. Der Programmieraufwand wird generell durch Automatisierung von Prozessen und "Out-of-the-box"-Bereitstellung von Strukturen reduziert. Bei der Steigerung der Effizienz trägt eine intuitive Syntax am meisten bei.
 
-====== Typensicherheit
-Die Programmiersprache JavaScript unterstützt keine Typensicherheit, da es lediglich eine interpretierte Sprache ist. Allerdings kann TypeScript diese Anforderung mit seinem Compiler erfüllen. Das würde sowohl den Frontend als auch den Backend individuell typensicher machen. Darüber hinaus soll sichergestellt werden, dass bei der Kommunikation zwischen diesen beiden Seiten kein Missverständnis passiert, weshalb auch die Schnittstellen typensicher sein soll.
+Die Vereinfachung der Komplexität bekommt eine Gewichtung von 25% aufgrund ihrer Wichtigkeit.
 
 ====== Modernheit
 Es soll eine Applikation entwickelt werden, die nicht schon in den nächsten paar Monaten nach der Entwicklung auf veraltete Technologien basiert. Das ist vor allem deswegen wichtig, weil sich in der Webentwicklung sehr schnell neue Frameworks etablieren. EduCluster benötigt Frameworks und eine API-Architektur, die auf dem neuesten Stand sind und den Test der Zeit bestehen können.
 
-====== Popularität und Beliebtheit
-TODO
+Für die Modernheit wird eine 20%ige-Gewichtung vergeben.
 
-==== Beurteilung
+====== Typensicherheit
+Die Programmiersprache JavaScript unterstützt keine Typensicherheit, da es lediglich eine interpretierte Sprache ist. Allerdings kann TypeScript diese Anforderung mit seinem Compiler erfüllen. Das würde sowohl den Frontend als auch den Backend individuell typensicher machen. Darüber hinaus soll sichergestellt werden, dass bei der Kommunikation zwischen diesen beiden Seiten kein Missverständnis passiert, weshalb auch die Schnittstellen typensicher sein soll.
+
+Typensicherheit bekommt eine Gewichtung von 10%.
+
+====== Beliebtheit
+Beliebte Frameworks haben eine größere Anzahl an Anhänger. Dementsprechend stehen auf Foren wie StackOverflow mehr Fragen und Antworten, die einem bei Schwierigkeiten schnell aushelfen können. Auch wenn eine Frage noch nicht gestellt wurde ist aufgrund der hohen Anzahl an Experten mit einer niedrigen Reaktionszeit zu rechnen. Das ist insofern ein Vorteil, dass die Dokumentation eines Frameworks allein meistens nicht ausreicht um alle Fragen abzudecken, die während der Entwicklung auftauchen.
+
+Diesem Kriterium wird eine Gewichtung von 5% vergeben, da die Anzahl von Fragen großteils schon durch die persönliche Erfahrung der Teammitglieder reduziert werden soll.
+
+===== Überblick der Beurteilungskriterien und deren Gewichtung
+
+TODO Tabelle aufbauen
+
+===== Beurteilung
 Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriterien bewertet werden. Anschließend wird ein Sieger angekündigt, der bei der technischen Umsetzung benutzt werden soll.
 
 TODO
