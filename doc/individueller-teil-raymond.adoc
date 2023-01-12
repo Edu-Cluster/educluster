@@ -30,10 +30,10 @@ Ein Technologie-Stack ist ein Stapel von Technologien, der sich aus Frameworks u
 
 Der Stapel kann konzeptionell in vier Teilen gespalten werden:
 
-* •	Frontend, worin der GUI-Entwurf und die clientseitige Logik implementiert wird
-* •	Backend, in dem die serverseitige Logik und die Anbindung an die Datenbank implementiert wird
-* •	API, die eine Verbindung zwischen Frontend und Backend aufbaut
-* •	Datenbank, wo die relevanten Daten gespeichert und abgerufen werden
+•	Frontend, worin der GUI-Entwurf und die clientseitige Logik implementiert wird
+•	Backend, in dem die serverseitige Logik und die Anbindung an die Datenbank implementiert wird
+•	API, die eine Verbindung zwischen Frontend und Backend aufbaut
+•	Datenbank, wo die relevanten Daten gespeichert und abgerufen werden
 
 Wie bereits erwähnt wird die Datenbankschicht aus dieser Evaluierung ausgeschlossen. Somit liegt der Fokus auf den Frontend, den Backend und die Programmierungsschnittstelle.
 
@@ -43,7 +43,15 @@ Um die Gestaltung einer umfangreichen Webapplikation wie „EduCluster“ sicher
 Der Einsatz mehrerer Technologien und deren Auffassung in Form eines Technologiestapels hat sich vor allem durch den Einfluss großer Technologie-Konzernen wie Meta (vormals Facebook), Netflix und Amazon als Standard durchgesetzt. Um den Umsetzungserfolg gewährleisten zu können ist es strategisch sinnvoll, diesem Trend zu folgen.
 
 ===== Anforderungen an den Technologie-Stack
-TODO
+Der Technologiestapel muss in erster Linie Technologien enthalten, mit denen die Entwickler bereits Erfahrung gesammelt haben. Es ist natürlich unmlöglich einen Stapel zu finden, in dem alle Technologien von allen Entwicklern bereits genutzt wurden. Allerdings soll im Allgemeinen auf Technologien verzichtet werden, mit denen keiner der Entwickler Erfahrung hat, da sonst ein großer Schnitt der zur Verfügung stehenden Zeit unproduktiv genutzt wird.
+
+Außerdem sollen nur die Technologien ausgewählt werden, die den Entwicklungsaufwand am meisten reduzieren und den schnellsten Entwicklungsprozess fördern. Hier wird nochmals darauf hingewiesen, dass eine effiziente Nutzung der verfügbaren Zeit der wichtigste Faktor ist, um ein Projekt der Größe von EduCluster erfolgreich abschließen zu können.
+
+Die laufende Innovation im Bereich der Webentwicklung bewirkt eine ständige Änderung der Technologie-Trends. Dies bedeutet, dass viele Technologien im Laufe der Zeit von besseren Varianten ersetzt werden. Um zu verhindern, dass sich die Applikation EduCluster von Technologien abhängig macht, die in kürzester Zeit durch neue Stars ersetzt werden, soll auf eine möglichst moderne Austattung gezielt werden.
+
+Um unnötige Bugs auszuschließen und die Entwicklererfahrung möglichst gut zu gestalten ist es sinnvoll auf eine vollständige Typensicherheit der Aplikation zu zielen. Typensicherheit ist ein wesentlicher Schutz vor Programmfehlern, die von dem Kompiler vor der Ausführung des Programms bereits gefangen werden.
+
+Zu guter Letzt soll auf die Beliebtheit der jeweiligen Technologien geachtet werden, um die sicherste Wette auf einen dauerhaften Technologiestapel zu setzen.
 
 ==== Ermittlung der möglichen Frontend-Technologien
 Dieser Abschnitt umfasst die drei bekanntesten Frontend-Technologien stand 2022. footnote:[Vgl. https://technostacks.com/blog/best-frontend-frameworks/, abgerufen am 29.10.2022]
@@ -108,9 +116,9 @@ Mit Next ist ein React-Frontend und ein Node-Backend vorausgesetzt. Dadurch ist 
 
 Es gibt drei Arten von Rendering footnote:[Vgl. https://nextjs.org/learn/foundations/how-nextjs-works/rendering, abgerufen am 30.11.2022], die von Next.js unterstützt werden:
 
-* •	Client Side Rendering, das standardmäßig von allen anderen Frameworks benutzt wird
-* •	Server Side Rendering, wo das HTML der Seite für jeden Request auf den Server generiert wird
-* •	Static Site Generation, wodurch eine Generierung der Seite während dem Build-Prozess der Applikation durchgeführt wird
+•	Client Side Rendering, das standardmäßig von allen anderen Frameworks benutzt wird
+•	Server Side Rendering, wo das HTML der Seite für jeden Request auf den Server generiert wird
+•	Static Site Generation, wodurch eine Generierung der Seite während dem Build-Prozess der Applikation durchgeführt wird
 
 SSR und SSG sind eine moderne Art des Rendering, das sich „Pre-Rendering“ nennt. Darin wird das Abrufen von Daten und die Transformierung der React-Komponente in HTML vor dem Absenden der Response an den Client durchgeführt.
 
@@ -201,7 +209,7 @@ Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriter
 
 TODO
 
-==== Entscheidung und Begründung der Auswahl
+===== Entscheidung und Begründung der Auswahl
 
 TODO
 
