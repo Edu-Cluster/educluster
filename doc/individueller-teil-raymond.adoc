@@ -143,14 +143,22 @@ Mit REST wird bei jeder Client-Anfrage die Repräsentation des Ressourcenzustand
 
 Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Kriterien erfüllen footnote:[Vgl. https://www.redhat.com/en/topics/api/what-is-a-rest-api, abgerufen am 06.11.2022]:
 
-* •	Client-Server-Architektur mit HTTP-Anfragen muss vorhanden sein
-* •	„Statelessness“, die Trennung von Anfragen, sodass keine Client-Informationen zwischen zwei Anfragen gespeichert werden
-* •	Cachebare Daten, die Client-Server-Interaktionen vereinfachen
-* •	Eine Uniforme Schnittstelle damit Informationen in standardisierte Form übermittelt werden
-* •	Ein hierarchisches System, die jedem Server-Typ richtig einordnet und das für den Client unsichtbar ist
+•	Client-Server-Architektur mit HTTP-Anfragen muss vorhanden sein
+•	„Statelessness“, die Trennung von Anfragen, sodass keine Client-Informationen zwischen zwei Anfragen gespeichert werden
+•	Cachebare Daten, die Client-Server-Interaktionen vereinfachen
+•	Eine Uniforme Schnittstelle damit Informationen in standardisierte Form übermittelt werden
+•	Ein hierarchisches System, die jedem Server-Typ richtig einordnet und das für den Client unsichtbar ist
 
 ===== GraphQL
-TODO
+GraphQL ist eine Abfragesprache und eine serverseitige Laufzeitumgebung zum Ausführen von Abfragen, die vom damaligen Facebook entwickelt und in 2012 veröffentlicht wurde. 
+
+GraphQL ist Datenbankunabhängig und ermöglicht die Definierung von Typen und von zwei Arten von Abfragen: Mutations und Queries. Mutations sind datenändernde Abfragen wie Create, Update und Delete. Queries hingegen sind Read-Only-Abfragen.
+
+Entwickelt wurde GraphQL als Reaktion auf Probleme, die mit der Nutzung einer REST-API auftauchen. Deswegen ist der größte Vorteil von GraphQL auch das größte Nachteil von REST: Under- und Overfetching. REST-Endpunkte können nur fixe Datenstrukturen zurückliefern, was dazu führt, dass in vielen Fällen entweder zu wenige Daten oder zu viele Daten geliefert werden. Ersteres kann nur mit mehreren Abfragen gelöst werden, während letzteres zwangsläufig mit Leistungsabfälle verbunden ist.
+
+Mit GraphQL ist es möglich, höchst spezifische Abfragen clientseitig zu definieren, ohne dafür serverseitig einen entsprechenden Endpoint aufbauen zu müssen, der diese Abfragen behandelt. GraphQL hat nur einen einzigen Endpoint. Dieser kann mit allen Arten von Abfragen umgehen. Diese Kapazität von GraphQL löst das Problem des Under- und Overfetching.footnote:[Vgl. https://www.howtographql.com/basics/1-graphql-is-the-better-rest/, aufgerufen am 06.11.2022]
+
+Eine GraphQL-API implementiert GraphQL serverseitig und clientseitig. Es gibt bereits mehrere Bibliotheken, die eine vollständige Implementierung bereitstellen, wie beispielsweise Apollo Client/Server.footnote:[Vgl. https://graphql.org/code/, aufgerufen am 06.11.2022]
 
 ==== Beurteilungsverfahren
 In diesem Abschnitt werden die einzelnen Beurteilungskriterien, die sich aus den bereits genannten Anforderungen ableiten, vorgestellt und erklärt. Im Anschluss daran wird die Beurteilung durchgeführt.
