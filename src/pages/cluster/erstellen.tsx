@@ -13,8 +13,7 @@ const CreateClusterPage: NextPage = () => {
   const { register, setValue, getValues, handleSubmit } = useForm();
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
     },
@@ -23,11 +22,6 @@ const CreateClusterPage: NextPage = () => {
       document.location.href = '/login';
     },
   });
-
-  useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-  }, []);
 
   // TODO Lara: Login mutation definieren und bei onSuccess document.location.href = `./${clusterName}`;
 

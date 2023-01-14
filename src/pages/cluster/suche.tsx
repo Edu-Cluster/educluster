@@ -13,8 +13,7 @@ const ClusterSearchPage: NextPage = () => {
   const { setAuthUser, clusterOfUser, setClusterOfUser } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
     },
@@ -26,7 +25,6 @@ const ClusterSearchPage: NextPage = () => {
 
   useEffect(() => {
     // Fetch user and set store state
-    userQuery.refetch();
     setClusterOfUser(null);
   }, []);
 

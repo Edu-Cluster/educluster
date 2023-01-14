@@ -39,7 +39,6 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        console.log(data);
         store.setUserOfCluster(data.user);
         store.setAppointmentOfCluster(data.appointments);
       }
@@ -50,8 +49,7 @@ const ClusterPage: NextPage = () => {
   });
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
 

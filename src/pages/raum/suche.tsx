@@ -15,8 +15,7 @@ const RoomSearchPage: NextPage = () => {
   // TODO Lara (EC-115): Zeitfelder aus der Datenbank holen und ein global state setzen
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
       setRooms(null);
@@ -26,11 +25,6 @@ const RoomSearchPage: NextPage = () => {
       document.location.href = '/login';
     },
   });
-
-  useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-  }, []);
 
   if (userQuery.isSuccess) {
     return (

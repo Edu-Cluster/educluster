@@ -17,7 +17,6 @@ const TimeSelectField = ({
 }: Props) => {
   const store = useStore();
   const teachingTimesQuery = trpc.useQuery(['catalog.times'], {
-    enabled: false,
     onSuccess: async ({ data }) => {
       store.setBeginTimes(data.times.map((obj: { begin: any }) => obj.begin));
       store.setEndTimes(data.times.map((obj: { end: any }) => obj.end));
@@ -26,10 +25,6 @@ const TimeSelectField = ({
       console.error(err);
     },
   });
-
-  useEffect(() => {
-    teachingTimesQuery.refetch();
-  }, []);
 
   return (
     <SelectField

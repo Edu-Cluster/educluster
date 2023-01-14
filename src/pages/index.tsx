@@ -24,8 +24,7 @@ const DashboardPage: NextPage = () => {
   });
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user);
 
@@ -38,11 +37,6 @@ const DashboardPage: NextPage = () => {
       document.location.href = '/login';
     },
   });
-
-  useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-  }, []);
 
   if (userQuery.isSuccess) {
     return (

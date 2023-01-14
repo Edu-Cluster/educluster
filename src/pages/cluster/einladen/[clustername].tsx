@@ -16,9 +16,6 @@ const InviteClusterPage: NextPage = () => {
   let { clustername } = router.query;
 
   useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-
     if (Array.isArray(clustername)) {
       clustername = clustername[0];
     }
@@ -42,8 +39,7 @@ const InviteClusterPage: NextPage = () => {
   }
 
   const userQuery = trpc.useQuery(['user.me'], {
-    enabled: false,
-    retry: 0,
+    retry: 1,
     onSuccess: ({ data }) => {
       setAuthUser(data.user as User);
 
