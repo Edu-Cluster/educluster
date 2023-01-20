@@ -18,6 +18,8 @@ const ProfileBadge = (props: Props) => {
       toast.dismiss();
 
       if (data.status === statusCodes.SUCCESS) {
+        store.setAuthUser(null);
+
         // Redirect to login page
         document.location.href = '/login';
       } else {
@@ -41,10 +43,6 @@ const ProfileBadge = (props: Props) => {
     toast.loading('Sie werden ausgeloggt...');
 
     logoutUser();
-
-    store.setAuthUser(null);
-
-    document.location.href = './';
   };
 
   return (

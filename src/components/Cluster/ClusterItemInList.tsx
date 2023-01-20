@@ -26,10 +26,10 @@ const ClusterItemInList = ({
             </Link>
           </div>
           <div>
-            <p className="text-sm block">
+            <span className="text-sm block">
               erstellt von
               <p className="text-sm ml-1 text-cyan-700">{creator}</p>
-            </p>
+            </span>
           </div>
         </div>
       </div>
