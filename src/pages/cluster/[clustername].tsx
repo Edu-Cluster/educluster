@@ -77,7 +77,7 @@ const ClusterPage: NextPage = () => {
         </div>
 
         <ClusterBanner
-          name={clustername as string}
+          name={clusterfullname as string}
           isPrivate={false}
           description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
         />
