@@ -37,10 +37,7 @@ const LoginPage: NextPage = () => {
 
     onError(error: any) {
       // Internal server error
-      error.response.errors.forEach((err: any) => {
-        console.error(err);
-      });
-
+      console.error(error);
       toast.error('Bei der Registrierung ist etwas falsch gelaufen!');
     },
   });

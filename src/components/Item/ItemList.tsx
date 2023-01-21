@@ -26,13 +26,15 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     setPage(nextPage);
   };
 
-  if (!items) {
+  if (!items || !items.length) {
     if (placeholder) {
       return (
         <div className="text-center mt-24">
           <p className="text-gray-400">{placeholder}</p>
         </div>
       );
+    } else if (items && !items.length) {
+      return;
     }
 
     return (
