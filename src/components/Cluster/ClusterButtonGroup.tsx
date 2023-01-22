@@ -14,9 +14,10 @@ import trpc from '../../lib/trpc';
 
 type Props = {
   isOnInvitationPage?: boolean;
+  isPrivate?: boolean;
 };
 
-const ClusterButtonGroup = ({ isOnInvitationPage }: Props) => {
+const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
   const [invitationsSent, setInvitationsSent] = useState(false);
   const { editMode, setEditMode, membersToInvite, clusterDetails } = useStore();
   const clusterfullname = `${clusterDetails.clustername}*${clusterDetails.id}`;
@@ -38,6 +39,26 @@ const ClusterButtonGroup = ({ isOnInvitationPage }: Props) => {
     },
   });
 
+  const { mutate: updateCluster } = trpc.useMutation(['item.updateCluster'], {
+    async onSuccess() {
+      const newClustername = document.querySelector(
+        'input[name="clustername"]',
+        // @ts-ignore
+      )?.value;
+
+      setEditMode(false);
+      document.location.href = `./${
+        newClustername || clusterDetails.clustername
+      }*${clusterDetails.id}`;
+    },
+
+    onError(error: any) {
+      console.error(error);
+      setEditMode(false);
+      toast.error('Leider konnten die Einstellungen nicht gespeichert werden!');
+    },
+  });
+
   // TODO Denis: Nachdem es eindeutig ist ob authUser Clusteradmin ist oder nicht, EC-63 umsetzen
 
   const sendInvitations = async () => {
@@ -50,11 +71,22 @@ const ClusterButtonGroup = ({ isOnInvitationPage }: Props) => {
   };
 
   const saveSettings = () => {
-    // Send cluster change POST Request to item router
-    // TODO Lara
+    const newClustername = document.querySelector(
+      'input[name="clustername"]',
+      // @ts-ignore
+    )?.value;
+    const newDescription = document.querySelector(
+      'textarea[name="description"]',
+      // @ts-ignore
+    )?.value;
 
-    toast.success('Einstellungen wurden gespeichert!');
-    setEditMode(false); // TODO Lara: Diese Zeile bitte ins onSuccess verschieben
+    // Send cluster change POST Request to item router
+    updateCluster({
+      clusterId: clusterDetails.id,
+      clustername: newClustername,
+      description: newDescription,
+      isPrivate: isPrivate as boolean,
+    });
   };
 
   return (

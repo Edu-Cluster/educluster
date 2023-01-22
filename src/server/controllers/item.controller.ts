@@ -8,8 +8,13 @@ import {
   readClusterFromUser,
   readClusterById,
   readUsersOfCluster,
+  updateClusterById,
 } from '../services/item.service';
-import { ClusterIdSchema, ClusterInput } from '../schemata/cluster.schema';
+import {
+  ClusterIdSchema,
+  ClusterInput,
+  ClusterEditSchema,
+} from '../schemata/cluster.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -104,6 +109,23 @@ export const sendMemberInvitation = async ({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
       originalError: err,
+    });
+  }
+};
+
+export const updateCluster = async ({
+  input,
+}: {
+  input: ClusterEditSchema;
+}) => {
+  try {
+    const { isPrivate, clustername, clusterId, description } = input;
+
+    await updateClusterById(clusterId, clustername, description, isPrivate);
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
     });
   }
 };
