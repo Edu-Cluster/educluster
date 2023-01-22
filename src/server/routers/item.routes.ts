@@ -4,11 +4,13 @@ import {
   getItemOfClusterHandler,
   sendMemberInvitation,
   updateCluster,
+  createCluster,
 } from '../controllers/item.controller';
 import {
   clusterIdSchema,
   clusterSchema,
   clusterEditSchema,
+  clusterCreateSchema,
 } from '../schemata/cluster.schema';
 
 export const itemRouter = createRouter()
@@ -27,4 +29,8 @@ export const itemRouter = createRouter()
   .mutation('updateCluster', {
     input: clusterEditSchema,
     resolve: async ({ input }) => await updateCluster({ input }),
+  })
+  .mutation('createCluster', {
+    input: clusterCreateSchema,
+    resolve: async ({ input, ctx }) => await createCluster({ input, ctx }),
   });

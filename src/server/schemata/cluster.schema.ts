@@ -19,3 +19,11 @@ export const clusterEditSchema = object({
 });
 
 export type ClusterEditSchema = TypeOf<typeof clusterEditSchema>;
+
+export const clusterCreateSchema = object({
+  clustername: string(),
+  description: string(),
+  isPrivate: boolean(),
+});
+
+export type ClusterCreateSchema = TypeOf<typeof clusterCreateSchema>;

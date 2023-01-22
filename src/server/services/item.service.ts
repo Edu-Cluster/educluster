@@ -95,6 +95,9 @@ export const readAppointmentsFromUser = async (username: string) => {
 export const readClusterById = async (clusterid: number | undefined) =>
   await prisma.cluster.findUnique({ where: { id: clusterid } });
 
+export const readClusterByClustername = async (clustername: string) =>
+  await prisma.cluster.findUnique({ where: { clustername } });
+
 export const updateClusterById = async (
   clusterid: bigint,
   clustername: string,
@@ -109,6 +112,31 @@ export const updateClusterById = async (
     data: { clustername, description, is_private: isPrivate },
   });
 };
+
+export const createNewCluster = async ({
+  creator,
+  clustername,
+  description,
+  isPrivate,
+  teamsId,
+}) =>
+  await prisma.cluster.create({
+    data: {
+      creator,
+      clustername,
+      description,
+      is_private: isPrivate,
+      teams_id: teamsId,
+    },
+  });
+
+export const addNewClusterAdmin = async (personId, clusterId) =>
+  await prisma.admin_of.create({
+    data: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
 
 export const readAppointmentsOfCluster = async (
   clusterid: number | undefined,
