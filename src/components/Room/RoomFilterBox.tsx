@@ -23,9 +23,6 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
     setValue('personCount', '-1');
     setValue('equipment', '-1');
 
-    // @ts-ignore
-    document.querySelector('[name="room-search"]').value = '';
-
     setRooms(null);
   };
 

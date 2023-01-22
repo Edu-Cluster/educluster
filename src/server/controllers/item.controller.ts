@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server';
-import { ContextWithUser } from '../../lib/types';
+import { Appointment, Cluster, ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import {
   provisionallyInviteUser,
@@ -12,6 +12,8 @@ import {
   createNewCluster,
   addNewClusterAdmin,
   readClusterByClustername,
+  readPublicClusters,
+  readPublicAppointments,
 } from '../services/item.service';
 import {
   ClusterIdSchema,
@@ -49,6 +51,30 @@ export const getItemOfUserHandler = async ({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
       originalError: err,
+    });
+  }
+};
+
+export const getClusterDetails = async ({ input }: { input: number }) => {
+  try {
+    const clusterDetails = await readClusterById(input);
+
+    if (!clusterDetails) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        clusterDetails,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
     });
   }
 };
@@ -159,7 +185,7 @@ export const createCluster = async ({
       clustername,
       description,
       isPrivate,
-      teamsId: 'test',
+      teamsId: `teams_${clustername}`, // TODO Denis: teamsId holen
       creator: user?.id,
     });
 
@@ -176,6 +202,98 @@ export const createCluster = async ({
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
+    });
+  }
+};
+
+export const getPublicAppointments = async ({ input }: { input: string }) => {
+  try {
+    const appointments: any[][] = [];
+    const publicAppointments = await readPublicAppointments(input);
+
+    let page = 0;
+    let pageClusters: Appointment[] = [];
+    publicAppointments.forEach((appointment) => {
+      if (pageClusters.length === 10) {
+        page++;
+        appointments.push(pageClusters);
+        pageClusters = [];
+      } else {
+        pageClusters.push(appointment);
+      }
+    });
+
+    if (!appointments.length) {
+      appointments.push(pageClusters);
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        appointments,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const getPublicClusters = async ({ input }: { input: string }) => {
+  try {
+    const clusters: any[][] = [];
+    const publicClusters = await readPublicClusters(input);
+
+    let page = 0;
+    let pageClusters: Cluster[] = [];
+    publicClusters.forEach((cluster) => {
+      if (pageClusters.length === 10) {
+        page++;
+        clusters.push(pageClusters);
+        pageClusters = [];
+      } else {
+        pageClusters.push(cluster);
+      }
+    });
+
+    if (!clusters.length) {
+      clusters.push(pageClusters);
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        clusters,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const getRooms = async ({ input }: { input: string }) => {
+  try {
+    // TODO Denis: read available rooms from webuntis
+    // TODO Denis: Auch mit input funktional machen
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        rooms: null,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
     });
   }
 };

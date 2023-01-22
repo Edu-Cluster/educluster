@@ -92,11 +92,51 @@ export const readAppointmentsFromUser = async (username: string) => {
   return result;
 };
 
+export const readPublicAppointments = async (name?: string) => {
+  if (name && name !== '') {
+    return await prisma.appointment.findMany({
+      where: {
+        cluster_appointmentTocluster: {
+          is_private: false,
+        },
+        name: { contains: name },
+      },
+      include: { person: true },
+    });
+  }
+
+  return await prisma.appointment.findMany({
+    where: {
+      cluster_appointmentTocluster: {
+        is_private: false,
+      },
+    },
+    include: { person: true },
+  });
+};
+
 export const readClusterById = async (clusterid: number | undefined) =>
   await prisma.cluster.findUnique({ where: { id: clusterid } });
 
 export const readClusterByClustername = async (clustername: string) =>
   await prisma.cluster.findUnique({ where: { clustername } });
+
+export const readPublicClusters = async (clustername?: string) => {
+  if (clustername && clustername !== '') {
+    return await prisma.cluster.findMany({
+      where: {
+        is_private: false,
+        clustername: { contains: clustername },
+      },
+      include: { person: true },
+    });
+  }
+
+  return await prisma.cluster.findMany({
+    where: { is_private: false },
+    include: { person: true },
+  });
+};
 
 export const updateClusterById = async (
   clusterid: bigint,

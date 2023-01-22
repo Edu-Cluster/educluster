@@ -11,8 +11,9 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
   const { editMode, clusterDetails } = useStore();
   const isPrivate = clusterDetails.is_private;
   const description = clusterDetails.description;
-  const [isSliderOn, setSliderOn] = useState(isPrivate);
   const clustername = clusterDetails.clustername;
+
+  const [isSliderOn, setSliderOn] = useState(isPrivate);
 
   return (
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">

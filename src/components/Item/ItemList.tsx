@@ -7,6 +7,7 @@ import Tag from '../SubjectTopic/Tag';
 import { Room } from 'webuntis';
 import RoomItemInList from '../Room/RoomItemInList';
 import { MoonLoader } from 'react-spinners';
+import useStore from '../../lib/store';
 
 type Props = {
   resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const ItemList = ({ resource, items, title, placeholder }: Props) => {
+  const { searchItemsLoading } = useStore();
   const [page, setPage] = useState(1);
 
   const loadNewPage = (e: any) => {
@@ -27,14 +29,16 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
   };
 
   if (!items || !items.length) {
-    if (placeholder) {
-      return (
-        <div className="text-center mt-24">
-          <p className="text-gray-400">{placeholder}</p>
-        </div>
-      );
-    } else if (items && !items.length) {
-      return <></>;
+    if (!searchItemsLoading) {
+      if (placeholder) {
+        return (
+          <div className="text-center mt-24">
+            <p className="text-gray-400">{placeholder}</p>
+          </div>
+        );
+      } else if (items && !items.length) {
+        return <></>;
+      }
     }
 
     return (
