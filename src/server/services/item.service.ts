@@ -92,11 +92,26 @@ export const readAppointmentsFromUser = async (username: string) => {
   return result;
 };
 
-export const readClusterById = async (clusterid: Number | undefined) =>
+export const readClusterById = async (clusterid: number | undefined) =>
   await prisma.cluster.findUnique({ where: { id: clusterid } });
 
+export const updateClusterById = async (
+  clusterid: bigint,
+  clustername: string,
+  description: string,
+  isPrivate: boolean,
+) => {
+  clustername = clustername || undefined;
+  description = description || undefined;
+
+  await prisma.cluster.update({
+    where: { id: clusterid },
+    data: { clustername, description, is_private: isPrivate },
+  });
+};
+
 export const readAppointmentsOfCluster = async (
-  clusterid: Number | undefined,
+  clusterid: number | undefined,
 ) => {
   let count = await prisma.appointment.aggregate({
     where: {
@@ -132,7 +147,7 @@ export const readAppointmentsOfCluster = async (
   return result;
 };
 
-export const readUsersOfCluster = async (clusterid: Number | undefined) => {
+export const readUsersOfCluster = async (clusterid: number | undefined) => {
   let useridadmin = await prisma.admin_of.findMany({
     where: { cluster_id: clusterid },
     select: { person_id: true },

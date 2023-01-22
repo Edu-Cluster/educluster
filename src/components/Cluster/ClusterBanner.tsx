@@ -78,7 +78,10 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           </div>
         </form>
       )}
-      <ClusterButtonGroup isOnInvitationPage={isOnInvitationPage} />
+      <ClusterButtonGroup
+        isOnInvitationPage={isOnInvitationPage}
+        isPrivate={isSliderOn}
+      />
     </div>
   );
 };
