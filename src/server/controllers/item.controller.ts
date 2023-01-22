@@ -9,11 +9,15 @@ import {
   readClusterById,
   readUsersOfCluster,
   updateClusterById,
+  createNewCluster,
+  addNewClusterAdmin,
+  readClusterByClustername,
 } from '../services/item.service';
 import {
   ClusterIdSchema,
   ClusterInput,
   ClusterEditSchema,
+  ClusterCreateSchema,
 } from '../schemata/cluster.schema';
 
 export const getItemOfUserHandler = async ({
@@ -122,6 +126,52 @@ export const updateCluster = async ({
     const { isPrivate, clustername, clusterId, description } = input;
 
     await updateClusterById(clusterId, clustername, description, isPrivate);
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const createCluster = async ({
+  input,
+  ctx,
+}: {
+  input: ClusterCreateSchema;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const { user } = ctx;
+    const { isPrivate, clustername, description } = input;
+
+    if (await readClusterByClustername(clustername)) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    await createNewCluster({
+      clustername,
+      description,
+      isPrivate,
+      teamsId: 'test',
+      creator: user?.id,
+    });
+
+    const result = await readClusterByClustername(clustername);
+    await addNewClusterAdmin(user?.id, result?.id);
+
+    return {
+      data: {
+        id: result?.id,
+      },
+      status: statusCodes.SUCCESS,
+    };
   } catch (err: any) {
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',

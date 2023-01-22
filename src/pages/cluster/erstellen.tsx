@@ -6,6 +6,7 @@ import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
 import useStore from '../../lib/store';
 import { MoonLoader } from 'react-spinners';
+import { statusCodes } from '../../lib/enums';
 
 const CreateClusterPage: NextPage = () => {
   const store = useStore();
@@ -18,29 +19,50 @@ const CreateClusterPage: NextPage = () => {
     onSuccess: ({ data }) => {
       store.setAuthUser(data.user as User);
     },
-    onError: async (err) => {
+    onError: (err) => {
       console.error(err);
       document.location.href = '/login';
     },
   });
+
+  const { mutate: createClusterMutation } = trpc.useMutation(
+    ['item.createCluster'],
+    {
+      onSuccess: ({ data, status }) => {
+        if (status === statusCodes.SUCCESS && data) {
+          const { clustername } = getValues();
+          document.location.href = `./${clustername}*${data.id}`;
+        } else if (status === statusCodes.FAILURE) {
+          toast.error('Ein Cluster mit diesen Namen existiert bereits!');
+        }
+      },
+      onError: (err) => {
+        console.error(err);
+        setValue('clustername', '');
+        setValue('description', '');
+      },
+    },
+  );
 
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
   }, []);
 
-  // TODO Lara: Login mutation definieren und bei onSuccess document.location.href = `./${clusterName}`;
-
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields
     const { clustername, description } = getValues();
 
-    // TODO Denis oder Lara: Sonderzeichen verbieten, vor allem *
+    // Block the use of special characters
+    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-    toast.loading('Ihr Cluster wird erstellt...');
+    if (format.test(clustername)) {
+      toast.error('Clustername darf nur alphanumerische Zeichen enthalten!');
+      return;
+    }
 
-    // Send login POST request to items router
-    // TODO Lara: endpoint mit mutation aufrufen (isSliderOn = öffentliches (true) oder privates (false) Cluster)
+    // Call mutation to create new cluster
+    createClusterMutation({ clustername, description, isPrivate: isSliderOn });
   });
 
   if (userQuery.isSuccess) {
