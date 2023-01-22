@@ -13,14 +13,13 @@ import toast from 'react-hot-toast';
 import trpc from '../../lib/trpc';
 
 type Props = {
-  clusterfullname: string | undefined;
   isOnInvitationPage?: boolean;
 };
 
-const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
+const ClusterButtonGroup = ({ isOnInvitationPage }: Props) => {
   const [invitationsSent, setInvitationsSent] = useState(false);
-  const { editMode, setEditMode, membersToInvite } = useStore();
-  const clusterId = clusterfullname && Number(clusterfullname.split('*')[1]);
+  const { editMode, setEditMode, membersToInvite, clusterDetails } = useStore();
+  const clusterfullname = `${clusterDetails.clustername}*${clusterDetails.id}`;
 
   const { mutate: invite } = trpc.useMutation(['item.inviteToCluster'], {
     async onSuccess() {
@@ -46,7 +45,7 @@ const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
       setInvitationsSent(true);
 
       // Invoke the invite mutation
-      invite(clusterId as number);
+      invite(clusterDetails.id as number);
     }
   };
 
@@ -54,6 +53,7 @@ const ClusterButtonGroup = ({ clusterfullname, isOnInvitationPage }: Props) => {
     // Send cluster change POST Request to item router
     // TODO Lara
 
+    toast.success('Einstellungen wurden gespeichert!');
     setEditMode(false); // TODO Lara: Diese Zeile bitte ins onSuccess verschieben
   };
 

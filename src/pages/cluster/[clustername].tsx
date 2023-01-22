@@ -39,7 +39,7 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        console.log(data);
+        store.setClusterDetails(data.clusterDetails);
         store.setUserOfCluster(data.user);
         store.setAppointmentOfCluster(data.appointments);
       }
@@ -64,7 +64,7 @@ const ClusterPage: NextPage = () => {
     },
   });
 
-  if (userQuery.isSuccess) {
+  if (itemsOfClusterQuery.isSuccess) {
     return (
       <main className="page-default">
         <div className="list-container">
@@ -76,11 +76,7 @@ const ClusterPage: NextPage = () => {
           />
         </div>
 
-        <ClusterBanner
-          name={clusterfullname as string}
-          isPrivate={false}
-          description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
-        />
+        <ClusterBanner />
       </main>
     );
   }

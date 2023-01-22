@@ -92,7 +92,7 @@ export const readAppointmentsFromUser = async (username: string) => {
   return result;
 };
 
-export const readClusternameOfCluster = async (clusterid: Number | undefined) =>
+export const readClusterById = async (clusterid: Number | undefined) =>
   await prisma.cluster.findUnique({ where: { id: clusterid } });
 
 export const readAppointmentsOfCluster = async (

@@ -6,7 +6,7 @@ import {
   readAppointmentsFromUser,
   readAppointmentsOfCluster,
   readClusterFromUser,
-  readClusternameOfCluster,
+  readClusterById,
   readUsersOfCluster,
 } from '../services/item.service';
 import { ClusterIdSchema, ClusterInput } from '../schemata/cluster.schema';
@@ -50,9 +50,9 @@ export const getItemOfClusterHandler = async ({
   input: ClusterInput;
 }) => {
   try {
-    const clustercheck = await readClusternameOfCluster(input.clusterId);
+    const clusterDetails = await readClusterById(input.clusterId);
 
-    if (clustercheck?.clustername !== input.clustername) {
+    if (clusterDetails?.clustername !== input.clustername) {
       return { status: statusCodes.FAILURE };
     }
 
@@ -64,6 +64,7 @@ export const getItemOfClusterHandler = async ({
       data: {
         user,
         appointments,
+        clusterDetails,
       },
     };
   } catch (err: any) {

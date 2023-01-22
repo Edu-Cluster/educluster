@@ -4,21 +4,15 @@ import ClusterButtonGroup from './ClusterButtonGroup';
 import useStore from '../../lib/store';
 
 type Props = {
-  name: string;
-  isPrivate: boolean;
-  description: string;
   isOnInvitationPage?: boolean;
 };
 
-const ClusterBanner = ({
-  name,
-  isPrivate,
-  description,
-  isOnInvitationPage,
-}: Props) => {
-  const { editMode } = useStore();
+const ClusterBanner = ({ isOnInvitationPage }: Props) => {
+  const { editMode, clusterDetails } = useStore();
+  const isPrivate = clusterDetails.is_private;
+  const description = clusterDetails.description;
   const [isSliderOn, setSliderOn] = useState(isPrivate);
-  const clustername = name && name.split('*')[0];
+  const clustername = clusterDetails.clustername;
 
   return (
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
@@ -62,7 +56,7 @@ const ClusterBanner = ({
               <input
                 type="checkbox"
                 checked={isSliderOn}
-                onChange={() => setSliderOn((prevState) => !prevState)}
+                onChange={() => setSliderOn((prevState: any) => !prevState)}
               />
               <span className="slider round"></span>
             </label>
@@ -84,10 +78,7 @@ const ClusterBanner = ({
           </div>
         </form>
       )}
-      <ClusterButtonGroup
-        clusterfullname={name}
-        isOnInvitationPage={isOnInvitationPage}
-      />
+      <ClusterButtonGroup isOnInvitationPage={isOnInvitationPage} />
     </div>
   );
 };
