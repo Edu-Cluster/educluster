@@ -43,6 +43,7 @@ model cluster {
   creator     BigInt
   clustername String        @db.VarChar(50)
   description String?
+  is_private  Boolean?      @default(false)
   person      person        @relation(fields: [creator], references: [id], onDelete: NoAction, onUpdate: NoAction)
   admin_of    admin_of[]
   appointment appointment[]

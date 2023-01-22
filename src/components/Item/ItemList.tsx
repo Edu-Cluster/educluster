@@ -34,7 +34,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
         </div>
       );
     } else if (items && !items.length) {
-      return;
+      return <></>;
     }
 
     return (

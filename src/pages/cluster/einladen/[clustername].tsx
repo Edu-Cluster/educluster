@@ -68,12 +68,7 @@ const InviteClusterPage: NextPage = () => {
           </div>
         </div>
 
-        <ClusterBanner
-          name={clustername as string}
-          isPrivate={false}
-          description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
-          isOnInvitationPage={true}
-        />
+        <ClusterBanner isOnInvitationPage={true} />
       </main>
     );
   }
