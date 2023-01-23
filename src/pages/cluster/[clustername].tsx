@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import ItemList from '../../components/Item/ItemList';
 import MemberList from '../../components/Member/MemberList';
 import { User } from '../../lib/types';
-import { resources } from '../../lib/enums';
+import { resources, statusCodes } from '../../lib/enums';
 import { useRouter } from 'next/router';
 import trpc from '../../lib/trpc';
 import useStore from '../../lib/store';
@@ -16,9 +16,6 @@ const ClusterPage: NextPage = () => {
   let { clustername: clusterfullname } = router.query;
 
   useEffect(() => {
-    // Fetch user and set store state
-    userQuery.refetch();
-
     if (Array.isArray(clusterfullname)) {
       clusterfullname = clusterfullname[0];
     }
@@ -26,6 +23,9 @@ const ClusterPage: NextPage = () => {
     if (clusterfullname && !clusterfullname.includes('*')) {
       document.location.href = '/404';
     }
+
+    // Fetch user and set store state
+    userQuery.refetch();
   }, []);
 
   const clusterId =
@@ -39,7 +39,7 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        console.log(data);
+        store.setClusterDetails(data.clusterDetails);
         store.setUserOfCluster(data.user);
         store.setAppointmentOfCluster(data.appointments);
       }
@@ -64,7 +64,12 @@ const ClusterPage: NextPage = () => {
     },
   });
 
-  if (userQuery.isSuccess) {
+  if (itemsOfClusterQuery.isSuccess) {
+    if (itemsOfClusterQuery.data.status === statusCodes.FAILURE) {
+      document.location.href = '/404';
+      return <></>;
+    }
+
     return (
       <main className="page-default">
         <div className="list-container">
@@ -76,11 +81,7 @@ const ClusterPage: NextPage = () => {
           />
         </div>
 
-        <ClusterBanner
-          name={clusterfullname as string}
-          isPrivate={false}
-          description="Eine generische Beschreibung eines Clusters mit dem Zweck zu demonstrieren."
-        />
+        <ClusterBanner />
       </main>
     );
   }

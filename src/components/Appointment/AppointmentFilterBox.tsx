@@ -57,8 +57,6 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     setTopics(null);
 
     // @ts-ignore
-    document.querySelector('[name="appointment-search"]').value = '';
-    // @ts-ignore
     document.querySelector('[name="subject-search"]').value = '';
     // @ts-ignore
     document.querySelector('[name="topic-search"]').value = '';

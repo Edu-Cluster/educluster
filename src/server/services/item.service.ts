@@ -92,12 +92,93 @@ export const readAppointmentsFromUser = async (username: string) => {
   return result;
 };
 
-export const readClusternameOfCluster = async (clusterid: Number | undefined) =>
+export const readPublicAppointments = async (name?: string) => {
+  if (name && name !== '') {
+    return await prisma.appointment.findMany({
+      where: {
+        cluster_appointmentTocluster: {
+          is_private: false,
+        },
+        name: { contains: name },
+      },
+      include: { person: true },
+    });
+  }
+
+  return await prisma.appointment.findMany({
+    where: {
+      cluster_appointmentTocluster: {
+        is_private: false,
+      },
+    },
+    include: { person: true },
+  });
+};
+
+export const readClusterById = async (clusterid: number) =>
   await prisma.cluster.findUnique({ where: { id: clusterid } });
 
-export const readAppointmentsOfCluster = async (
-  clusterid: Number | undefined,
+export const readClusterByClustername = async (clustername: string) =>
+  await prisma.cluster.findUnique({ where: { clustername } });
+
+export const readPublicClusters = async (clustername?: string) => {
+  if (clustername && clustername !== '') {
+    return await prisma.cluster.findMany({
+      where: {
+        is_private: false,
+        clustername: { contains: clustername },
+      },
+      include: { person: true },
+    });
+  }
+
+  return await prisma.cluster.findMany({
+    where: { is_private: false },
+    include: { person: true },
+  });
+};
+
+export const updateClusterById = async (
+  clusterid: number,
+  clustername: string,
+  description: string,
+  isPrivate: boolean,
 ) => {
+  clustername = clustername || undefined;
+  description = description || undefined;
+
+  await prisma.cluster.update({
+    where: { id: clusterid },
+    data: { clustername, description, is_private: isPrivate },
+  });
+};
+
+export const createNewCluster = async ({
+  creator,
+  clustername,
+  description,
+  isPrivate,
+  teamsId,
+}) =>
+  await prisma.cluster.create({
+    data: {
+      creator,
+      clustername,
+      description,
+      is_private: isPrivate,
+      teams_id: teamsId,
+    },
+  });
+
+export const addNewClusterAdmin = async (personId, clusterId) =>
+  await prisma.admin_of.create({
+    data: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+
+export const readAppointmentsOfCluster = async (clusterid: number) => {
   let count = await prisma.appointment.aggregate({
     where: {
       cluster: clusterid,
@@ -132,53 +213,41 @@ export const readAppointmentsOfCluster = async (
   return result;
 };
 
-export const readUsersOfCluster = async (clusterid: Number | undefined) => {
-  let useridadmin = await prisma.admin_of.findMany({
-    where: { cluster_id: clusterid },
-    select: { person_id: true },
-  });
-  let useridmember = await prisma.member_of.findMany({
-    where: { cluster_id: clusterid },
-    select: { person_id: true },
-  });
-  let count = await prisma.person.aggregate({
+export const readUsersOfCluster = async (clusterid: number) =>
+  await prisma.person.findMany({
     where: {
       OR: [
-        { id: { in: useridadmin.map((obj) => obj.person_id) } },
-        { id: { in: useridmember.map((obj) => obj.person_id) } },
+        {
+          admin_of: {
+            some: {
+              cluster_id: clusterid,
+            },
+          },
+        },
+        {
+          member_of: {
+            some: {
+              cluster_id: clusterid,
+            },
+          },
+        },
       ],
     },
-    _count: { id: true },
+    select: {
+      username: true,
+      teams_email: true,
+      is_sysadmin: true,
+      member_of: {
+        select: {
+          cluster_id: true,
+          is_active: true,
+        },
+      },
+    },
   });
-  let result = [];
-  for (let i = 0; i * maxCountForPage < count._count.id; i++) {
-    result[i] = await prisma.person.findMany({
-      where: {
-        OR: [
-          { admin_of: { some: { cluster_id: clusterid } } },
-          { member_of: { some: { cluster_id: clusterid } } },
-        ],
-      },
-      select: {
-        username: true,
-        admin_of: {
-          select: { person_id: true },
-          where: { cluster_id: clusterid },
-        },
-        member_of: {
-          select: { person_id: true },
-          where: { cluster_id: clusterid },
-        },
-      },
-      skip: i * maxCountForPage,
-      take: i * maxCountForPage + maxCountForPage,
-    });
-  }
-  return result;
-};
 
 export const provisionallyInviteUser = async (
-  person_id: bigint,
+  person_id: number,
   cluster_id: number,
 ) => {
   return prisma.member_of.create({

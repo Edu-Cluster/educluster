@@ -10,7 +10,7 @@ import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const AppointmentSearchPage: NextPage = () => {
-  const { setAuthUser, appointmentsOfUser, setAppointmentOfUser } = useStore();
+  const { setAuthUser, appointments } = useStore();
 
   // TODO Lara (EC-94): Zeitfelder aus der Datenbank holen und ein global state setzen
 
@@ -29,7 +29,6 @@ const AppointmentSearchPage: NextPage = () => {
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
-    setAppointmentOfUser(null);
   }, []);
 
   if (userQuery.isSuccess) {
@@ -41,10 +40,10 @@ const AppointmentSearchPage: NextPage = () => {
             placeholder="Nach Terminen suchen"
             name="appointment-search"
           />
-          <AppointmentFilterBox showResetButton={!!appointmentsOfUser} />
+          <AppointmentFilterBox showResetButton={!!appointments} />
           <ItemList
             resource={resources.APPOINTMENT}
-            items={appointmentsOfUser}
+            items={appointments}
             placeholder="Benutze das Suchfeld oder die Filter um nach Lerneinheiten zu suchen"
           />
         </div>

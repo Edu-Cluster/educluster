@@ -1,15 +1,26 @@
 import { TRPCError } from '@trpc/server';
-import { ContextWithUser } from '../../lib/types';
+import { Cluster, ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import {
   provisionallyInviteUser,
   readAppointmentsFromUser,
   readAppointmentsOfCluster,
   readClusterFromUser,
-  readClusternameOfCluster,
+  readClusterById,
   readUsersOfCluster,
+  updateClusterById,
+  createNewCluster,
+  addNewClusterAdmin,
+  readClusterByClustername,
+  readPublicClusters,
+  readPublicAppointments,
 } from '../services/item.service';
-import { ClusterIdSchema, ClusterInput } from '../schemata/cluster.schema';
+import {
+  ClusterIdSchema,
+  ClusterInput,
+  ClusterEditSchema,
+  ClusterCreateSchema,
+} from '../schemata/cluster.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -44,19 +55,68 @@ export const getItemOfUserHandler = async ({
   }
 };
 
+export const getClusterDetails = async ({ input }: { input: number }) => {
+  try {
+    const clusterDetails = await readClusterById(input);
+
+    if (!clusterDetails) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        clusterDetails,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
 export const getItemOfClusterHandler = async ({
   input,
+  ctx,
 }: {
   input: ClusterInput;
+  ctx: ContextWithUser;
 }) => {
   try {
-    const clustercheck = await readClusternameOfCluster(input.clusterId);
+    const clusterDetails = await readClusterById(input.clusterId);
 
-    if (clustercheck?.clustername !== input.clustername) {
+    if (clusterDetails?.clustername !== input.clustername) {
       return { status: statusCodes.FAILURE };
     }
 
-    const user = await readUsersOfCluster(input.clusterId);
+    const fetchedUsers = await readUsersOfCluster(input.clusterId);
+    fetchedUsers.map((fetchedUser) => {
+      const isMember = fetchedUser.member_of.some(
+        ({ cluster_id }) => cluster_id === BigInt(input.clusterId),
+      );
+
+      // @ts-ignore
+      delete fetchedUser.member_of;
+
+      if (isMember) {
+        if (fetchedUser.username === ctx?.user?.username) {
+          // @ts-ignore
+          fetchedUser.isMe = true;
+        }
+
+        // @ts-ignore
+        return (fetchedUser.isAdmin = false);
+      }
+
+      // @ts-ignore
+      return (fetchedUser.isAdmin = true);
+    });
+
+    const user = arrayOfArrayTransformer(fetchedUsers);
     const appointments = await readAppointmentsOfCluster(input.clusterId);
 
     return {
@@ -64,6 +124,7 @@ export const getItemOfClusterHandler = async ({
       data: {
         user,
         appointments,
+        clusterDetails,
       },
     };
   } catch (err: any) {
@@ -91,6 +152,7 @@ export const sendMemberInvitation = async ({
     }
 
     const id = user.id;
+    // @ts-ignore
     const result = await provisionallyInviteUser(id, input);
 
     if (result) {
@@ -106,3 +168,148 @@ export const sendMemberInvitation = async ({
     });
   }
 };
+
+export const updateCluster = async ({
+  input,
+}: {
+  input: ClusterEditSchema;
+}) => {
+  try {
+    const { isPrivate, clustername, clusterId, description } = input;
+
+    await updateClusterById(clusterId, clustername, description, isPrivate);
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const createCluster = async ({
+  input,
+  ctx,
+}: {
+  input: ClusterCreateSchema;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const { user } = ctx;
+    const { isPrivate, clustername, description } = input;
+
+    if (await readClusterByClustername(clustername)) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    await createNewCluster({
+      clustername,
+      description,
+      isPrivate,
+      teamsId: `teams_${clustername}`, // TODO Denis: teamsId holen
+      creator: user?.id,
+    });
+
+    const result = await readClusterByClustername(clustername);
+    await addNewClusterAdmin(user?.id, result?.id);
+
+    return {
+      data: {
+        id: result?.id,
+      },
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const getPublicAppointments = async ({ input }: { input: string }) => {
+  try {
+    const publicAppointments = await readPublicAppointments(input);
+    const appointments = arrayOfArrayTransformer(publicAppointments);
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        appointments,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const getPublicClusters = async ({ input }: { input: string }) => {
+  try {
+    const publicClusters = await readPublicClusters(input);
+    const clusters = arrayOfArrayTransformer(publicClusters);
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        clusters,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const getRooms = async ({ input }: { input: string }) => {
+  try {
+    // TODO Denis: read available rooms from webuntis
+    // TODO Denis: Auch mit input funktional machen
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        rooms: null,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+function arrayOfArrayTransformer(arr: any[]) {
+  const arrOfArr: any[][] = [];
+
+  let page = 0;
+  let singleArr: Cluster[] = [];
+  arr.forEach((entry) => {
+    if (singleArr.length === 10) {
+      page++;
+      entry.push(singleArr);
+      singleArr = [];
+    } else {
+      singleArr.push(entry);
+    }
+  });
+
+  if (!arrOfArr.length) {
+    arrOfArr.push(singleArr);
+  }
+
+  return arrOfArr;
+}
