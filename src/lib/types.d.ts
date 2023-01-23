@@ -5,8 +5,8 @@ export type User = person;
 
 export type Member = {
   username: string;
-  admin_of: { length: number };
-  member_of: { length: number };
+  isAdmin: boolean;
+  isMe?: boolean;
 };
 
 export type ContextWithUser = {

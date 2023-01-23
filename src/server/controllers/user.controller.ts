@@ -30,9 +30,14 @@ export const getMeHandler = ({ ctx }: { ctx: ContextWithUser }) => {
 
 export const getUsersHandler = async ({ input }: { input: UserSchema }) => {
   try {
+    const users = await findUsersByEduClusterUsername(
+      input.username,
+      input.clusterId,
+    );
+
     return {
       data: {
-        users: await findUsersByEduClusterUsername(input),
+        users,
       },
     };
   } catch (err: any) {

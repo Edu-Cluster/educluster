@@ -1,4 +1,4 @@
-import { bigint, boolean, number, object, string, TypeOf } from 'zod';
+import { boolean, number, object, string, TypeOf } from 'zod';
 
 export const clusterSchema = object({
   clustername: string(),
@@ -12,7 +12,7 @@ export const clusterIdSchema = number();
 export type ClusterIdSchema = TypeOf<typeof clusterIdSchema>;
 
 export const clusterEditSchema = object({
-  clusterId: bigint(),
+  clusterId: number(),
   clustername: string(),
   description: string(),
   isPrivate: boolean(),

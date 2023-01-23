@@ -40,12 +40,14 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
           {members && members.length ? (
-            members[page - 1].map(({ username, admin_of, member_of }, idx) => (
+            members[page - 1].map(({ username, isAdmin, isMe }, idx) => (
               <MemberComponent
                 key={idx}
                 username={username}
                 isOnInvitationPage={isOnInvitationPage}
                 showMinusButton={isOnInvitationPage}
+                isAdmin={isAdmin}
+                isMe={isMe}
               />
             ))
           ) : (

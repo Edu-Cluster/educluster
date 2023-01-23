@@ -28,7 +28,8 @@ export const itemRouter = createRouter()
   })
   .query('ofCluster', {
     input: clusterSchema,
-    resolve: async ({ input }) => await getItemOfClusterHandler({ input }),
+    resolve: async ({ input, ctx }) =>
+      await getItemOfClusterHandler({ input, ctx }),
   })
   .mutation('inviteToCluster', {
     input: clusterIdSchema,

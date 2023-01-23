@@ -1,4 +1,4 @@
-import { object, string, boolean, TypeOf } from 'zod';
+import { object, string, boolean, TypeOf, number } from 'zod';
 
 export const loginUserSchema = object({
   username: string({ required_error: 'Benutzername ist erforderlich!' }),
@@ -15,8 +15,11 @@ export const registerUserSchema = object({
 
 export type RegisterUserSchema = TypeOf<typeof registerUserSchema>;
 
-export const userSchema = string({
-  required_error: 'Benutzername ist erforderlich!',
+export const userSchema = object({
+  username: string({
+    required_error: 'Benutzername ist erforderlich!',
+  }),
+  clusterId: number(),
 });
 
 export type UserSchema = TypeOf<typeof userSchema>;

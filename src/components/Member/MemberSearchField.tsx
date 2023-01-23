@@ -5,9 +5,10 @@ import trpc from '../../lib/trpc';
 
 type Props = {
   placeholder?: string;
+  clusterId: number;
 };
 
-const MemberSearchField = ({ placeholder }: Props) => {
+const MemberSearchField = ({ placeholder, clusterId }: Props) => {
   const {
     potentialMembers,
     setPotentialMembers,
@@ -25,23 +26,24 @@ const MemberSearchField = ({ placeholder }: Props) => {
     [debouncedSearchTerm], // Only call effect if debounced search term changes
   );
 
-  const usersQuery = trpc.useQuery(['user.users', textInput], {
-    enabled: false,
-    retry: 0,
-    onSuccess: ({ data }) => {
-      if (!potentialMembers) {
-        // TODO Denis: exkludiere cluster members und admins von users
-
-        // Save search result potential members as a state
-        setPotentialMembers(data.users);
+  const usersQuery = trpc.useQuery(
+    ['user.users', { username: textInput, clusterId }],
+    {
+      enabled: false,
+      retry: 0,
+      onSuccess: ({ data }) => {
+        if (!potentialMembers) {
+          // Save search result potential members as a state
+          setPotentialMembers(data.users);
+          setSearchPotentialMembersLoading(false);
+        }
+      },
+      onError: async (err) => {
         setSearchPotentialMembersLoading(false);
-      }
+        console.error(err);
+      },
     },
-    onError: async (err) => {
-      setSearchPotentialMembersLoading(false);
-      console.error(err);
-    },
-  });
+  );
 
   const setNewTextInput = async (e: any) => {
     const val = e.currentTarget.value;
