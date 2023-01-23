@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { Cluster, ContextWithUser } from '../../lib/types';
-import { statusCodes } from '../../lib/enums';
+import { clusterAssociations, statusCodes } from '../../lib/enums';
 import {
   provisionallyInviteUser,
   readAppointmentsFromUser,
@@ -14,6 +14,8 @@ import {
   readClusterByClustername,
   readPublicClusters,
   readPublicAppointments,
+  isClusterAdmin,
+  isClusterMember,
 } from '../services/item.service';
 import {
   ClusterIdSchema,
@@ -102,12 +104,12 @@ export const getItemOfClusterHandler = async ({
       // @ts-ignore
       delete fetchedUser.member_of;
 
-      if (isMember) {
-        if (fetchedUser.username === ctx?.user?.username) {
-          // @ts-ignore
-          fetchedUser.isMe = true;
-        }
+      if (fetchedUser.username === ctx?.user?.username) {
+        // @ts-ignore
+        fetchedUser.isMe = true;
+      }
 
+      if (isMember) {
         // @ts-ignore
         return (fetchedUser.isAdmin = false);
       }
@@ -125,6 +127,51 @@ export const getItemOfClusterHandler = async ({
         user,
         appointments,
         clusterDetails,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const getClusterAssociation = async ({
+  input,
+  ctx,
+}: {
+  input: number;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const { user } = ctx;
+    const isAdmin = await isClusterAdmin(user?.id, input);
+
+    if (isAdmin) {
+      return {
+        status: statusCodes.SUCCESS,
+        data: {
+          association: clusterAssociations.IS_ADMIN,
+        },
+      };
+    }
+
+    const isMember = await isClusterMember(user?.id, input);
+
+    if (isMember) {
+      return {
+        status: statusCodes.SUCCESS,
+        data: {
+          association: clusterAssociations.IS_MEMBER,
+        },
+      };
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        association: clusterAssociations.IS_FOREIGNER,
       },
     };
   } catch (err: any) {

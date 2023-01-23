@@ -1,6 +1,8 @@
 import React from 'react';
 import Avatar from '../Avatar';
 import MemberButtonGroup from './MemberButtonGroup';
+import useStore from '../../lib/store';
+import { clusterAssociations } from '../../lib/enums';
 
 type Props = {
   username: string;
@@ -19,6 +21,8 @@ const Member = ({
   isAdmin,
   isMe,
 }: Props) => {
+  const { clusterAssociation } = useStore();
+
   return (
     <div className="flex justify-between items-center py-1 px-4 hover:bg-gray-100 fast-animate">
       <div className="flex w-full justify-between">
@@ -29,12 +33,12 @@ const Member = ({
           </div>
         </div>
         {isAdmin && (
-          <div className="flex items-center mr-5">
+          <div className={`flex items-center mr-5${isMe ? ' mr-[132px]' : ''}`}>
             <p className="text-sm text-green-500">ADMIN</p>
           </div>
         )}
       </div>
-      {!isMe && (
+      {clusterAssociation === clusterAssociations.IS_ADMIN && !isMe && (
         <MemberButtonGroup
           isOnInvitationPage={isOnInvitationPage || false}
           showPlusButton={showPlusButton}

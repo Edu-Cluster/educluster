@@ -49,11 +49,29 @@ const ClusterPage: NextPage = () => {
     },
   });
 
+  const clusterAssociationQuery = trpc.useQuery(
+    ['item.clusterAssociation', clusterId as number],
+    {
+      enabled: false,
+      onSuccess: async ({ data }) => {
+        if (data) {
+          store.setClusterAssociation(data.association);
+        }
+      },
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
+
+      // Fetch cluster association
+      await clusterAssociationQuery.refetch();
 
       // Fetch cluster details, learning units and members
       await itemsOfClusterQuery.refetch();

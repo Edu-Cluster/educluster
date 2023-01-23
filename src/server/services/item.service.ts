@@ -116,7 +116,10 @@ export const readPublicAppointments = async (name?: string) => {
 };
 
 export const readClusterById = async (clusterid: number) =>
-  await prisma.cluster.findUnique({ where: { id: clusterid } });
+  await prisma.cluster.findUnique({
+    where: { id: clusterid },
+    include: { person: true },
+  });
 
 export const readClusterByClustername = async (clustername: string) =>
   await prisma.cluster.findUnique({ where: { clustername } });
@@ -170,7 +173,10 @@ export const createNewCluster = async ({
     },
   });
 
-export const addNewClusterAdmin = async (personId, clusterId) =>
+export const addNewClusterAdmin = async (
+  personId: number | bigint | undefined,
+  clusterId: number | bigint | undefined,
+) =>
   await prisma.admin_of.create({
     data: {
       person_id: personId,
@@ -243,6 +249,28 @@ export const readUsersOfCluster = async (clusterid: number) =>
           is_active: true,
         },
       },
+    },
+  });
+
+export const isClusterAdmin = async (
+  personId: number | bigint | undefined,
+  clusterId: number,
+) =>
+  await prisma.admin_of.findFirst({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+
+export const isClusterMember = async (
+  personId: number | bigint | undefined,
+  clusterId: number,
+) =>
+  await prisma.member_of.findFirst({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
     },
   });
 

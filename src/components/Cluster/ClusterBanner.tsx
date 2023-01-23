@@ -12,6 +12,7 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
   const isPrivate = clusterDetails.is_private;
   const description = clusterDetails.description;
   const clustername = clusterDetails.clustername;
+  const person = clusterDetails.person;
 
   const [isSliderOn, setSliderOn] = useState(isPrivate);
 
@@ -27,6 +28,10 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           <p className="mt-12 uppercase">
             {isPrivate ? 'PRIVAT' : 'ÖFFENTLICH'}
           </p>
+          <span className="mt-6 text-sm">
+            erstellt von{' '}
+            <p className="align-baseline underline">{person.username}</p>
+          </span>
           <p className="mt-4 break-words break-word text-[16px]">
             {description}
           </p>
