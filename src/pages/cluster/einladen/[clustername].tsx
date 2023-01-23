@@ -9,10 +9,16 @@ import { User } from '../../../lib/types';
 import ClusterBanner from '../../../components/Cluster/ClusterBanner';
 import MemberSearchResultArea from '../../../components/Member/MemberSearchResultArea';
 import { MoonLoader } from 'react-spinners';
+import { clusterAssociations } from '../../../lib/enums';
 
 const InviteClusterPage: NextPage = () => {
   const router = useRouter();
-  const { setAuthUser, membersToInvite, setClusterDetails } = useStore();
+  const {
+    setAuthUser,
+    membersToInvite,
+    setClusterDetails,
+    setClusterAssociation,
+  } = useStore();
   let { clustername } = router.query;
 
   useEffect(() => {
@@ -59,11 +65,33 @@ const InviteClusterPage: NextPage = () => {
     },
   );
 
+  const clusterAssociationQuery = trpc.useQuery(
+    ['item.clusterAssociation', clusterId as number],
+    {
+      enabled: false,
+      onSuccess: async ({ data }) => {
+        if (data) {
+          if (data.association !== clusterAssociations.IS_ADMIN) {
+            document.location.href = './';
+          }
+
+          setClusterAssociation(data.association);
+        }
+      },
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
     onSuccess: async ({ data }) => {
       setAuthUser(data.user as User);
+
+      // Fetch cluster association
+      await clusterAssociationQuery.refetch();
 
       // Fetch cluster details
       await clusterDetailsQuery.refetch();

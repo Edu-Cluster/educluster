@@ -9,6 +9,7 @@ import {
   getRooms,
   getClusterDetails,
   getPublicAppointments,
+  getClusterAssociation,
 } from '../controllers/item.controller';
 import {
   clusterIdSchema,
@@ -30,6 +31,11 @@ export const itemRouter = createRouter()
     input: clusterSchema,
     resolve: async ({ input, ctx }) =>
       await getItemOfClusterHandler({ input, ctx }),
+  })
+  .query('clusterAssociation', {
+    input: number(),
+    resolve: async ({ input, ctx }) =>
+      await getClusterAssociation({ input, ctx }),
   })
   .mutation('inviteToCluster', {
     input: clusterIdSchema,

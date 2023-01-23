@@ -22,3 +22,9 @@ export enum conditionSatisfactionTypes {
   SEMISATISFIED,
   UNSATISFIED,
 }
+
+export enum clusterAssociations {
+  IS_ADMIN,
+  IS_MEMBER,
+  IS_FOREIGNER,
+}
