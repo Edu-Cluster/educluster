@@ -12,7 +12,7 @@ import { MoonLoader } from 'react-spinners';
 
 const InviteClusterPage: NextPage = () => {
   const router = useRouter();
-  const { setAuthUser, membersToInvite } = useStore();
+  const { setAuthUser, membersToInvite, setClusterDetails } = useStore();
   let { clustername } = router.query;
 
   useEffect(() => {
@@ -41,14 +41,32 @@ const InviteClusterPage: NextPage = () => {
     end += 10;
   }
 
+  const clusterId =
+    clustername && Number((clustername as string).split('*')[1]);
+  const clusterDetailsQuery = trpc.useQuery(
+    // @ts-ignore
+    ['item.clusterDetails', clusterId],
+    {
+      enabled: false,
+      onSuccess: async ({ data }) => {
+        if (data) {
+          setClusterDetails(data.clusterDetails);
+        }
+      },
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
-    onSuccess: ({ data }) => {
+    onSuccess: async ({ data }) => {
       setAuthUser(data.user as User);
 
       // Fetch cluster details
-      // TODO Lara
+      await clusterDetailsQuery.refetch();
     },
     onError: async (err) => {
       console.error(err);
@@ -56,7 +74,7 @@ const InviteClusterPage: NextPage = () => {
     },
   });
 
-  if (userQuery.isSuccess) {
+  if (clusterDetailsQuery.isSuccess) {
     return (
       <main className="page-default">
         <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">

@@ -19,8 +19,15 @@ type Store = {
   membersToInvite: User[];
   setMembersToInvite: (members: User[]) => void;
 
+  clusters: ClusterData[][] | null;
+  setClusters: (clusters: ClusterData[][] | null) => void;
+  appointments: AppointmentData[][] | null;
+  setAppointments: (appointments: AppointmentData[][] | null) => void;
   rooms: Room[][] | null;
   setRooms: (rooms: Room[][] | null) => void;
+  searchItemsLoading: boolean;
+  setSearchItemsLoading: (status: boolean) => void;
+
   beginTimes: any;
   setBeginTimes: (times: any) => void;
   endTimes: any;
@@ -69,8 +76,18 @@ const useStore = create<Store>((set) => ({
   setMembersToInvite: (members) =>
     set((state) => ({ ...state, membersToInvite: members })),
 
+  clusters: null,
+  setClusters: (clusters) => set((state) => ({ ...state, clusters })),
+  appointments: null,
+  setAppointments: (appointments) =>
+    set((state) => ({ ...state, appointments })),
   rooms: null,
+  // @ts-ignore
   setRooms: (rooms) => set((state) => ({ ...state, rooms })),
+  searchItemsLoading: false,
+  setSearchItemsLoading: (status) =>
+    set((state) => ({ ...state, searchItemsLoading: status })),
+
   beginTimes: null,
   setBeginTimes: (beginTimes) => set((state) => ({ ...state, beginTimes })),
   endTimes: null,

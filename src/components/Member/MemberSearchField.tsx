@@ -8,12 +8,12 @@ type Props = {
 };
 
 const MemberSearchField = ({ placeholder }: Props) => {
-  const [textInput, setTextInput] = useState('');
   const {
     potentialMembers,
     setPotentialMembers,
     setSearchPotentialMembersLoading,
   } = useStore();
+  const [textInput, setTextInput] = useState('');
   const debouncedSearchTerm = useDebounce(textInput, 500);
 
   useEffect(
@@ -46,14 +46,11 @@ const MemberSearchField = ({ placeholder }: Props) => {
   const setNewTextInput = async (e: any) => {
     const val = e.currentTarget.value;
 
-    if (val.length < 3) {
-      setSearchPotentialMembersLoading(false);
-      setPotentialMembers(null);
+    setSearchPotentialMembersLoading(false);
+    setPotentialMembers(null);
 
-      if (val === '') {
-        setTextInput(val);
-      }
-
+    if (val === '') {
+      setTextInput(val);
       return;
     }
 

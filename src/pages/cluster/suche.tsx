@@ -4,13 +4,12 @@ import { resources } from '../../lib/enums';
 import useStore from '../../lib/store';
 import ItemSearchField from '../../components/Item/ItemSearchField';
 import ItemList from '../../components/Item/ItemList';
-import ClusterFilterBox from '../../components/Cluster/ClusterFilterBox';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
 import { MoonLoader } from 'react-spinners';
 
 const ClusterSearchPage: NextPage = () => {
-  const { setAuthUser, clusterOfUser, setClusterOfUser } = useStore();
+  const { setAuthUser, clusters } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -27,7 +26,6 @@ const ClusterSearchPage: NextPage = () => {
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
-    setClusterOfUser(null);
   }, []);
 
   if (userQuery.isSuccess) {
@@ -39,11 +37,10 @@ const ClusterSearchPage: NextPage = () => {
             placeholder="Nach Clustern suchen"
             name="cluster-search"
           />
-          <ClusterFilterBox showResetButton={!!clusterOfUser} />
           <ItemList
             resource={resources.CLUSTER}
-            items={clusterOfUser}
-            placeholder="Benutze das Suchfeld oder die Filter um nach Clustern zu suchen"
+            items={clusters}
+            placeholder="Benutze das Suchfeld um nach Clustern zu suchen"
           />
         </div>
       </main>
