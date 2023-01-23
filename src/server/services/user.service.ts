@@ -23,12 +23,35 @@ export const readEduClusterUsername = async (untis_username: string) =>
     },
   });
 
-export const findUsersByEduClusterUsername = async (username: string) =>
+export const findUsersByEduClusterUsername = async (
+  username: string,
+  clusterId: number,
+) =>
   await prisma.person.findMany({
     where: {
       username: {
         contains: username,
       },
+      AND: [
+        {
+          NOT: {
+            member_of: {
+              some: {
+                cluster_id: clusterId,
+              },
+            },
+          },
+        },
+        {
+          NOT: {
+            admin_of: {
+              some: {
+                cluster_id: clusterId,
+              },
+            },
+          },
+        },
+      ],
     },
   });
 

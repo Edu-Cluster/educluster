@@ -81,7 +81,10 @@ const InviteClusterPage: NextPage = () => {
           {/* @ts-ignore TODO Denis/Lara Type-Problem */}
           <MemberList members={members} isOnInvitationPage={true} />
           <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
-            <MemberSearchField placeholder="Nach Benutzern suchen" />
+            <MemberSearchField
+              placeholder="Nach Benutzern suchen"
+              clusterId={clusterId as number}
+            />
             <MemberSearchResultArea isOnInvitationPage={true} />
           </div>
         </div>

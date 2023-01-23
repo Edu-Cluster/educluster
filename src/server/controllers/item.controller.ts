@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server';
-import { Appointment, Cluster, ContextWithUser } from '../../lib/types';
+import { Cluster, ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import {
   provisionallyInviteUser,
@@ -81,8 +81,10 @@ export const getClusterDetails = async ({ input }: { input: number }) => {
 
 export const getItemOfClusterHandler = async ({
   input,
+  ctx,
 }: {
   input: ClusterInput;
+  ctx: ContextWithUser;
 }) => {
   try {
     const clusterDetails = await readClusterById(input.clusterId);
@@ -91,7 +93,30 @@ export const getItemOfClusterHandler = async ({
       return { status: statusCodes.FAILURE };
     }
 
-    const user = await readUsersOfCluster(input.clusterId);
+    const fetchedUsers = await readUsersOfCluster(input.clusterId);
+    fetchedUsers.map((fetchedUser) => {
+      const isMember = fetchedUser.member_of.some(
+        ({ cluster_id }) => cluster_id === BigInt(input.clusterId),
+      );
+
+      // @ts-ignore
+      delete fetchedUser.member_of;
+
+      if (isMember) {
+        if (fetchedUser.username === ctx?.user?.username) {
+          // @ts-ignore
+          fetchedUser.isMe = true;
+        }
+
+        // @ts-ignore
+        return (fetchedUser.isAdmin = false);
+      }
+
+      // @ts-ignore
+      return (fetchedUser.isAdmin = true);
+    });
+
+    const user = arrayOfArrayTransformer(fetchedUsers);
     const appointments = await readAppointmentsOfCluster(input.clusterId);
 
     return {
@@ -127,6 +152,7 @@ export const sendMemberInvitation = async ({
     }
 
     const id = user.id;
+    // @ts-ignore
     const result = await provisionallyInviteUser(id, input);
 
     if (result) {
@@ -208,24 +234,8 @@ export const createCluster = async ({
 
 export const getPublicAppointments = async ({ input }: { input: string }) => {
   try {
-    const appointments: any[][] = [];
     const publicAppointments = await readPublicAppointments(input);
-
-    let page = 0;
-    let pageClusters: Appointment[] = [];
-    publicAppointments.forEach((appointment) => {
-      if (pageClusters.length === 10) {
-        page++;
-        appointments.push(pageClusters);
-        pageClusters = [];
-      } else {
-        pageClusters.push(appointment);
-      }
-    });
-
-    if (!appointments.length) {
-      appointments.push(pageClusters);
-    }
+    const appointments = arrayOfArrayTransformer(publicAppointments);
 
     return {
       status: statusCodes.SUCCESS,
@@ -244,24 +254,8 @@ export const getPublicAppointments = async ({ input }: { input: string }) => {
 
 export const getPublicClusters = async ({ input }: { input: string }) => {
   try {
-    const clusters: any[][] = [];
     const publicClusters = await readPublicClusters(input);
-
-    let page = 0;
-    let pageClusters: Cluster[] = [];
-    publicClusters.forEach((cluster) => {
-      if (pageClusters.length === 10) {
-        page++;
-        clusters.push(pageClusters);
-        pageClusters = [];
-      } else {
-        pageClusters.push(cluster);
-      }
-    });
-
-    if (!clusters.length) {
-      clusters.push(pageClusters);
-    }
+    const clusters = arrayOfArrayTransformer(publicClusters);
 
     return {
       status: statusCodes.SUCCESS,
@@ -297,3 +291,25 @@ export const getRooms = async ({ input }: { input: string }) => {
     });
   }
 };
+
+function arrayOfArrayTransformer(arr: any[]) {
+  const arrOfArr: any[][] = [];
+
+  let page = 0;
+  let singleArr: Cluster[] = [];
+  arr.forEach((entry) => {
+    if (singleArr.length === 10) {
+      page++;
+      entry.push(singleArr);
+      singleArr = [];
+    } else {
+      singleArr.push(entry);
+    }
+  });
+
+  if (!arrOfArr.length) {
+    arrOfArr.push(singleArr);
+  }
+
+  return arrOfArr;
+}
