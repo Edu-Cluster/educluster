@@ -10,12 +10,16 @@ import {
   getClusterDetails,
   getPublicAppointments,
   getClusterAssociation,
+  getMembersOfCluster,
+  updateMemberOfCluster,
+  removeMemberFromCluster,
 } from '../controllers/item.controller';
 import {
-  clusterIdSchema,
   clusterSchema,
   clusterEditSchema,
   clusterCreateSchema,
+  updateMemberSchema,
+  clusterInvitationSchema,
 } from '../schemata/cluster.schema';
 import { number, string } from 'zod';
 
@@ -32,15 +36,27 @@ export const itemRouter = createRouter()
     resolve: async ({ input, ctx }) =>
       await getItemOfClusterHandler({ input, ctx }),
   })
+  .query('membersOfCluster', {
+    input: number(),
+    resolve: async ({ input, ctx }) =>
+      await getMembersOfCluster({ input, ctx }),
+  })
+  .mutation('updateMemberOfCluster', {
+    input: updateMemberSchema,
+    resolve: async ({ input }) => await updateMemberOfCluster({ input }),
+  })
+  .mutation('removeMemberFromCluster', {
+    input: updateMemberSchema,
+    resolve: async ({ input }) => await removeMemberFromCluster({ input }),
+  })
   .query('clusterAssociation', {
     input: number(),
     resolve: async ({ input, ctx }) =>
       await getClusterAssociation({ input, ctx }),
   })
   .mutation('inviteToCluster', {
-    input: clusterIdSchema,
-    resolve: async ({ input, ctx }) =>
-      await sendMemberInvitation({ input, ctx }),
+    input: clusterInvitationSchema,
+    resolve: async ({ input }) => await sendMemberInvitation({ input }),
   })
   .mutation('updateCluster', {
     input: clusterEditSchema,

@@ -29,7 +29,9 @@ const Member = ({
         <div className="flex items-center">
           <Avatar type="user" seed={username} />
           <div className="flex flex-col items-center ml-12">
-            <p id="username">{username}</p>
+            <p id="username" className={isAdmin ? 'admin' : ''}>
+              {username}
+            </p>
           </div>
         </div>
         {isAdmin && (
@@ -43,6 +45,7 @@ const Member = ({
           isOnInvitationPage={isOnInvitationPage || false}
           showPlusButton={showPlusButton}
           showMinusButton={showMinusButton}
+          isAdmin={isAdmin}
         />
       )}
     </div>

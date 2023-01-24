@@ -33,7 +33,7 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
   }
 
   return (
-    <div className="h-[700px] w-full max-w-[800px] mt-8">
+    <div className="h-[700px] w-full max-w-[800px] mt-8 member-list">
       <p className="px-4 rounded-sm bg-gray-100 text-2xl">
         {isOnInvitationPage ? 'Mitglieder zum Einladen' : 'Mitglieder'}
       </p>
