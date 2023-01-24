@@ -47,6 +47,22 @@ const CreateClusterPage: NextPage = () => {
     },
   );
 
+  const { mutate: createChannelMutation } = trpc.useMutation(
+    ['graph.createChannel'],
+    {
+      onSuccess: ({ status }) => {
+        if (status === statusCodes.SUCCESS) {
+          // TODO
+        } else if (status === statusCodes.FAILURE) {
+          // TODO
+        }
+      },
+      onError: (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
@@ -64,8 +80,11 @@ const CreateClusterPage: NextPage = () => {
       return;
     }
 
+    // Call mutation to create new channel
+    createChannelMutation(clustername);
+
     // Call mutation to create new cluster
-    createClusterMutation({ clustername, description, isPrivate: isSliderOn });
+    // createClusterMutation({ clustername, description, isPrivate: isSliderOn });
   });
 
   if (userQuery.isSuccess) {
