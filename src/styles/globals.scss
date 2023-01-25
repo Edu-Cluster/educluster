@@ -55,6 +55,10 @@
         @apply secondary-button h-8 w-52 flex justify-center items-center transition-colors text-center;
     }
 
+    .settings-button {
+        @apply secondary-button h-12 w-32 flex justify-center items-center transition-colors text-center text-[#546de5] hover:bg-[#6a89cc];
+    }
+
     /* Regular SCSS Classes */
 
     $primary-background: #f5f6fa;

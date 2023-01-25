@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import trpc from '../lib/trpc';
 import useStore from '../lib/store';
 import { MoonLoader } from 'react-spinners';
-import { resources, statusCodes } from '../lib/enums';
+import { resources } from '../lib/enums';
 import Avatar from '../components/Avatar';
 
 const DashboardPage: NextPage = () => {

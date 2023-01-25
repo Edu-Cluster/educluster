@@ -20,7 +20,6 @@ type Props = {
 };
 
 const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
-  const [invitationsSent, setInvitationsSent] = useState(false);
   const {
     editMode,
     setEditMode,
@@ -34,7 +33,6 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
 
   const { mutate: invite } = trpc.useMutation(['item.inviteToCluster'], {
     async onSuccess() {
-      setInvitationsSent(false);
       toast.success('Einladungen wurden versendet!');
 
       setTimeout(() => {
@@ -44,7 +42,6 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
 
     onError(error: any) {
       console.error(error);
-      setInvitationsSent(false);
       toast.error('Leider konnten die Einladungen nicht versendet werden!');
     },
   });
