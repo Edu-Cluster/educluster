@@ -4,6 +4,7 @@ import trpc from '../lib/trpc';
 import useStore from '../lib/store';
 import Avatar from '../components/Avatar';
 import { ChevronRightIcon } from '@heroicons/react/outline';
+import { setCookie } from 'cookies-next';
 
 const SettingsPage: NextPage = () => {
   const { setAuthUser, authUser } = useStore();
@@ -25,6 +26,14 @@ const SettingsPage: NextPage = () => {
     // Fetch user and set store state
     userQuery.refetch();
   }, []);
+
+  const switchMode = () => {
+    setCookie('experience', !isSliderOn ? 'dark' : 'white', {
+      maxAge: 60 * 60 * 24 * 399,
+    });
+
+    setSliderOn((prevState: any) => !prevState);
+  };
 
   const renameUser = () => {
     // TODO Denis
@@ -48,11 +57,7 @@ const SettingsPage: NextPage = () => {
           </div>
           <p className="text-xl mt-12">Dark/Light Mode</p>
           <label className="switch mt-4">
-            <input
-              type="checkbox"
-              checked={isSliderOn}
-              onChange={() => setSliderOn((prevState: any) => !prevState)}
-            />
+            <input type="checkbox" checked={isSliderOn} onChange={switchMode} />
             <span className="slider round"></span>
           </label>
         </form>
