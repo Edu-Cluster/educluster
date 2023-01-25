@@ -73,7 +73,7 @@ const Header = () => {
             { name: 'Lerneinheit finden', link: '/termin/suche' },
             { name: 'Cluster finden', link: '/cluster/suche' },
             { name: 'Cluster erstellen', link: '/cluster/erstellen' },
-            { name: 'Einstellungen', link: '/' },
+            { name: 'Einstellungen', link: '/einstellungen' },
             { name: 'Ausloggen', link: '/login', isLogout: true },
           ]}
         >

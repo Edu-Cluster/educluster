@@ -1,17 +1,14 @@
 import React from 'react';
 import { CogIcon } from '@heroicons/react/outline';
-import useStore from '../../lib/store';
+import Link from 'next/link';
 
 const SettingsCog = () => {
-  const { setSettingsPopupOpen, settingsPopupOpen } = useStore();
-
   return (
-    <div
-      className="header-option"
-      onClick={() => setSettingsPopupOpen(!settingsPopupOpen)}
-    >
-      <CogIcon className="header-icon" />
-    </div>
+    <Link href={'/einstellungen'}>
+      <div className="header-option">
+        <CogIcon className="header-icon" />
+      </div>
+    </Link>
   );
 };
 
