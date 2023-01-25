@@ -72,12 +72,19 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
   // TODO Denis: Nachdem es eindeutig ist ob authUser Clusteradmin ist oder nicht, EC-63 umsetzen
 
   const sendInvitations = async () => {
-    if (!invitationsSent) {
-      setInvitationsSent(true);
+    const foundUsernames = document.querySelectorAll('.member-list #username');
 
-      // Invoke the invite mutation
-      invite(clusterDetails.id as number);
-    }
+    let usernames: any[] = [];
+    Array.from(foundUsernames).forEach((username) => {
+      // @ts-ignore
+      usernames.push(username.innerText);
+    });
+
+    // Invoke the invite mutation
+    invite({
+      usernames,
+      clusterId: clusterDetails.id,
+    });
   };
 
   const saveSettings = () => {

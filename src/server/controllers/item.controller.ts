@@ -16,13 +16,19 @@ import {
   readPublicAppointments,
   isClusterAdmin,
   isClusterMember,
+  transformMemberToAdmin,
+  transformAdminToMember,
+  deleteMember,
+  deleteAdmin,
 } from '../services/item.service';
 import {
-  ClusterIdSchema,
   ClusterInput,
   ClusterEditSchema,
   ClusterCreateSchema,
+  UpdateMemberSchema,
+  ClusterInvitationSchema,
 } from '../schemata/cluster.schema';
+import { findUserByEduClusterUsername } from '../services/user.service';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -137,6 +143,121 @@ export const getItemOfClusterHandler = async ({
   }
 };
 
+export const getMembersOfCluster = async ({
+  input,
+  ctx,
+}: {
+  input: number;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const fetchedMembers = await readUsersOfCluster(input);
+    fetchedMembers.map((fetchedMember) => {
+      const isMember = fetchedMember.member_of.some(
+        ({ cluster_id }) => cluster_id === BigInt(input),
+      );
+
+      // @ts-ignore
+      delete fetchedMember.member_of;
+
+      if (fetchedMember.username === ctx?.user?.username) {
+        // @ts-ignore
+        fetchedMember.isMe = true;
+      }
+
+      if (isMember) {
+        // @ts-ignore
+        return (fetchedMember.isAdmin = false);
+      }
+
+      // @ts-ignore
+      return (fetchedMember.isAdmin = true);
+    });
+
+    const members = arrayOfArrayTransformer(fetchedMembers);
+
+    if (members) {
+      return {
+        status: statusCodes.SUCCESS,
+        data: {
+          members,
+        },
+      };
+    }
+
+    return {
+      status: statusCodes.FAILURE,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const updateMemberOfCluster = async ({
+  input,
+}: {
+  input: UpdateMemberSchema;
+}) => {
+  try {
+    const user = await findUserByEduClusterUsername(input.username);
+
+    if (!user) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    const personId = user.id;
+
+    if (input.type === clusterAssociations.IS_ADMIN) {
+      await transformMemberToAdmin(personId, input.clusterId);
+    } else if (input.type === clusterAssociations.IS_MEMBER) {
+      await transformAdminToMember(personId, input.clusterId);
+    }
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const removeMemberFromCluster = async ({
+  input,
+}: {
+  input: UpdateMemberSchema;
+}) => {
+  try {
+    const user = await findUserByEduClusterUsername(input.username);
+
+    if (!user) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    const personId = user.id;
+
+    if (input.type === clusterAssociations.IS_MEMBER) {
+      await deleteMember(personId, input.clusterId);
+    } else if (input.type === clusterAssociations.IS_ADMIN) {
+      await deleteAdmin(personId, input.clusterId);
+    }
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
 export const getClusterAssociation = async ({
   input,
   ctx,
@@ -184,29 +305,25 @@ export const getClusterAssociation = async ({
 
 export const sendMemberInvitation = async ({
   input,
-  ctx,
 }: {
-  input: ClusterIdSchema;
-  ctx: ContextWithUser;
+  input: ClusterInvitationSchema;
 }) => {
   try {
-    const user = ctx.user;
+    for (const username of input.usernames) {
+      const user = await findUserByEduClusterUsername(username);
 
-    if (!user) {
-      return {
-        status: statusCodes.FAILURE,
-      };
+      if (!user) {
+        continue;
+      }
+
+      const personId = user.id;
+
+      await provisionallyInviteUser(personId, input.clusterId);
     }
 
-    const id = user.id;
-    // @ts-ignore
-    const result = await provisionallyInviteUser(id, input);
-
-    if (result) {
-      return {
-        status: statusCodes.SUCCESS,
-      };
-    }
+    return {
+      status: statusCodes.SUCCESS,
+    };
   } catch (err: any) {
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',

@@ -14,9 +14,14 @@ const MemberSearchResultArea = ({ isOnInvitationPage }: Props) => {
     searchPotentialMembersLoading,
   } = useStore();
 
-  const matchingMembers = membersToInvite.filter((member) => {
+  let matchFound = false;
+  membersToInvite.forEach((member) => {
     if (members) {
-      return members.indexOf(member) !== -1;
+      members.forEach((someMember) => {
+        if (someMember.username === member.username) {
+          matchFound = true;
+        }
+      });
     }
   });
 
@@ -37,9 +42,7 @@ const MemberSearchResultArea = ({ isOnInvitationPage }: Props) => {
           key={idx}
           username={username}
           isOnInvitationPage={isOnInvitationPage || false}
-          showPlusButton={
-            !matchingMembers.some((member) => member.username === username)
-          }
+          showPlusButton={!matchFound}
         />
       ))}
     </div>

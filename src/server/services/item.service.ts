@@ -234,6 +234,7 @@ export const readUsersOfCluster = async (clusterid: number) =>
           member_of: {
             some: {
               cluster_id: clusterid,
+              is_active: true,
             },
           },
         },
@@ -246,7 +247,6 @@ export const readUsersOfCluster = async (clusterid: number) =>
       member_of: {
         select: {
           cluster_id: true,
-          is_active: true,
         },
       },
     },
@@ -275,17 +275,75 @@ export const isClusterMember = async (
   });
 
 export const provisionallyInviteUser = async (
-  person_id: number,
-  cluster_id: number,
-) => {
-  return prisma.member_of.create({
+  person_id: number | bigint,
+  cluster_id: number | bigint,
+) =>
+  prisma.member_of.create({
     data: {
       person_id,
       cluster_id,
       is_active: false,
     },
   });
-};
 
 // TODO Denis
 export const officiallyInviteUser = () => {};
+
+export const transformMemberToAdmin = async (
+  personId: number | bigint,
+  clusterId: number,
+) => {
+  await prisma.member_of.deleteMany({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+  await prisma.admin_of.create({
+    data: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+};
+
+export const transformAdminToMember = async (
+  personId: number | bigint,
+  clusterId: number,
+) => {
+  await prisma.admin_of.deleteMany({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+  await prisma.member_of.create({
+    data: {
+      person_id: personId,
+      cluster_id: clusterId,
+      is_active: true,
+    },
+  });
+};
+
+export const deleteMember = async (
+  personId: number | bigint,
+  clusterId: number,
+) =>
+  await prisma.member_of.deleteMany({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+
+export const deleteAdmin = async (
+  personId: number | bigint,
+  clusterId: number,
+) =>
+  await prisma.admin_of.deleteMany({
+    where: {
+      person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
