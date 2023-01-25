@@ -23,6 +23,13 @@ export const readEduClusterUsername = async (untis_username: string) =>
     },
   });
 
+export const findUserByEduClusterUsername = async (username: string) =>
+  await prisma.person.findUnique({
+    where: {
+      username,
+    },
+  });
+
 export const findUsersByEduClusterUsername = async (
   username: string,
   clusterId: number,

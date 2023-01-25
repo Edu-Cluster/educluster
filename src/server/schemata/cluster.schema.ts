@@ -1,4 +1,4 @@
-import { boolean, number, object, string, TypeOf } from 'zod';
+import { boolean, number, object, string, array, TypeOf, bigint } from 'zod';
 
 export const clusterSchema = object({
   clustername: string(),
@@ -7,9 +7,12 @@ export const clusterSchema = object({
 
 export type ClusterInput = TypeOf<typeof clusterSchema>;
 
-export const clusterIdSchema = number();
+export const clusterInvitationSchema = object({
+  clusterId: bigint(),
+  usernames: array(string()),
+});
 
-export type ClusterIdSchema = TypeOf<typeof clusterIdSchema>;
+export type ClusterInvitationSchema = TypeOf<typeof clusterInvitationSchema>;
 
 export const clusterEditSchema = object({
   clusterId: number(),
@@ -27,3 +30,11 @@ export const clusterCreateSchema = object({
 });
 
 export type ClusterCreateSchema = TypeOf<typeof clusterCreateSchema>;
+
+export const updateMemberSchema = object({
+  username: string(),
+  clusterId: number(),
+  type: number(),
+});
+
+export type UpdateMemberSchema = TypeOf<typeof updateMemberSchema>;
