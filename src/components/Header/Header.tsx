@@ -70,11 +70,11 @@ const Header = () => {
 
         <MenuDrawer
           options={[
-            'Lerneinheit finden',
-            'Cluster finden',
-            'Cluster erstellen',
-            'Einstellungen',
-            'Ausloggen',
+            { name: 'Lerneinheit finden', link: '/termin/suche' },
+            { name: 'Cluster finden', link: '/cluster/suche' },
+            { name: 'Cluster erstellen', link: '/cluster/erstellen' },
+            { name: 'Einstellungen', link: '/' },
+            { name: 'Ausloggen', link: '/login', isLogout: true },
           ]}
         >
           <MenuIcon className="header-icon" />
