@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import trpc from '../../lib/trpc';
 import useStore from '../../lib/store';
 import ClusterBanner from '../../components/Cluster/ClusterBanner';
-import { MoonLoader } from 'react-spinners';
+import Loader from '../../components/Loader';
 
 const ClusterPage: NextPage = () => {
   const store = useStore();
@@ -104,11 +104,7 @@ const ClusterPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
-    </main>
-  );
+  return <Loader type="main" size={80} />;
 };
 
 export default ClusterPage;

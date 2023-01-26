@@ -6,8 +6,8 @@ import ItemSearchField from '../../components/Item/ItemSearchField';
 import ItemList from '../../components/Item/ItemList';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
-import { MoonLoader } from 'react-spinners';
 import RoomFilterBox from '../../components/Room/RoomFilterBox';
+import Loader from '../../components/Loader';
 
 const RoomSearchPage: NextPage = () => {
   const { setAuthUser, setRooms, rooms } = useStore();
@@ -52,11 +52,7 @@ const RoomSearchPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={100} />
-    </main>
-  );
+  return <Loader type="main" size={100} />;
 };
 
 export default RoomSearchPage;

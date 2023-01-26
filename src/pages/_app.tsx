@@ -8,14 +8,15 @@ import { Toaster } from 'react-hot-toast';
 import superjson from 'superjson';
 import type { AppProps } from 'next/app';
 import type { AppRouter } from '../server/routers/app.routes';
+import { ThemeProvider } from 'next-themes';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider attribute="class">
       <Toaster position="top-center" reverseOrder={false} />
       <Header />
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   );
 }
 
