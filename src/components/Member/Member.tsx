@@ -24,7 +24,7 @@ const Member = ({
   const { clusterAssociation } = useStore();
 
   return (
-    <div className="flex justify-between items-center py-1 px-4 hover:bg-gray-100 fast-animate">
+    <div className="flex justify-between items-center py-1 px-4 hover:bg-gray-100 dark:hover:bg-slate-800 fast-animate">
       <div className="flex w-full justify-between">
         <div className="flex items-center">
           <Avatar type="user" seed={username} />
@@ -36,7 +36,7 @@ const Member = ({
         </div>
         {isAdmin && (
           <div className={`flex items-center mr-5${isMe ? ' mr-[132px]' : ''}`}>
-            <p className="text-sm text-green-500">ADMIN</p>
+            <p className="text-sm text-green-500 dark:text-green-500">ADMIN</p>
           </div>
         )}
       </div>

@@ -31,12 +31,12 @@ const RoomItemInList = ({ name, link, conditionsSatisfied }: Props) => {
   }
 
   return (
-    <div className="py-1 px-4 hover:bg-gray-100 fast-animate">
+    <div className="py-1 px-4 hover:bg-gray-100 dark:hover:bg-slate-800 fast-animate">
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center">
           {ConditionSatisfaction}
           <Link href={link}>
-            <p className="text text-xl cursor-pointer text-cyan-700 hover:text-cyan-500 hover:underline fast-animate ml-2">
+            <p className="text text-xl cursor-pointer text-cyan-700 dark:text-cyan-700 hover:text-cyan-500 hover:underline fast-animate ml-2">
               {name}
             </p>
           </Link>

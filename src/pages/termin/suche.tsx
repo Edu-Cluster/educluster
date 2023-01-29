@@ -7,7 +7,7 @@ import ItemList from '../../components/Item/ItemList';
 import AppointmentFilterBox from '../../components/Appointment/AppointmentFilterBox';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
-import { MoonLoader } from 'react-spinners';
+import Loader from '../../components/Loader';
 
 const AppointmentSearchPage: NextPage = () => {
   const { setAuthUser, appointments } = useStore();
@@ -51,11 +51,7 @@ const AppointmentSearchPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
-    </main>
-  );
+  return <Loader type="main" size={80} />;
 };
 
 export default AppointmentSearchPage;

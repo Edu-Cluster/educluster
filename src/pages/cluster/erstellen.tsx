@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
 import useStore from '../../lib/store';
-import { MoonLoader } from 'react-spinners';
 import { statusCodes } from '../../lib/enums';
+import Loader from '../../components/Loader';
+import RegisteredSearchField from '../../components/RegisteredSearchField';
+import RegisteredTextArea from '../../components/RegisteredTextArea';
 
 const CreateClusterPage: NextPage = () => {
   const store = useStore();
   const [isSliderOn, setSliderOn] = useState(false);
-  const { register, setValue, getValues, handleSubmit } = useForm();
+  const methods = useForm();
+  const { setValue, getValues, handleSubmit } = methods;
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -67,62 +70,63 @@ const CreateClusterPage: NextPage = () => {
 
   if (userQuery.isSuccess) {
     return (
-      <main className="flex w-full h-[90vh] mt-[-2rem] flex-1 flex-col items-center justify-center px-5 md:px-20 bg-gray-100">
+      <main className="flex w-full h-[90vh] mt-[-2rem] flex-1 flex-col items-center justify-center px-5 md:px-20">
         <div className="h-full md:h-[600px] w-full sm:w-[80%] lg:w-[50%] input-mask px-4">
           <div className="flex justify-center align-items mt-12 mb-8 text-center">
-            <h1 className="text-[30px] md:text-[40px] screen-xxl:text-[60px] text-gray-700">
+            <h1 className="text-[30px] md:text-[40px] screen-xxl:text-[60px] text-gray-700 dark:text-gray-100">
               Neues Cluster Erstellen
             </h1>
           </div>
-          <form onSubmit={onSubmit} id="create-cluster-form">
-            <div className="flex items-center justify-center w-full h-full flex-col">
-              <div className="input-box">
-                <input
-                  {...register('clustername', { required: true })}
+          <FormProvider {...methods}>
+            <form onSubmit={onSubmit} id="create-cluster-form">
+              <div className="flex items-center justify-center w-full h-full flex-col gap-8">
+                <RegisteredSearchField
+                  registerInputName="clustername"
                   name="clustername"
                   type="text"
                   maxLength={20}
-                  required
+                  minLength={5}
+                  required={true}
+                  placeholder="Clustername"
+                  noIcon={true}
                 />
-                <span>Clustername</span>
-              </div>
-              <div className="w-[80%] h-40 mt-6 input-text-area-box">
-                <textarea
-                  {...register('description', { required: true })}
-                  className="w-full h-full resize-none"
+                <RegisteredTextArea
+                  registerInputName="description"
                   name="description"
                   maxLength={100}
-                  required
+                  placeholder="Beschreibung"
+                  height="40"
                 />
-                <span>Beschreibung</span>
+                <div className="flex items-center text-center mt-6">
+                  <span
+                    className={`text-md mr-5 flex-1 ${
+                      isSliderOn
+                        ? 'text-gray-400 line-through'
+                        : 'text-[#546de5]'
+                    }`}
+                  >
+                    Öffentlich
+                  </span>
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      onChange={() => setSliderOn((prevState) => !prevState)}
+                    />
+                    <span className="slider round"></span>
+                  </label>
+                  <span
+                    className={`text-md ml-5 flex-1 ${
+                      !isSliderOn
+                        ? 'text-gray-400 line-through'
+                        : 'text-[#546de5]'
+                    }`}
+                  >
+                    Privat
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center text-center mt-6">
-                <span
-                  className={`text-md mr-5 flex-1 ${
-                    isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
-                  }`}
-                >
-                  Öffentliches Cluster
-                </span>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setSliderOn((prevState) => !prevState)}
-                  />
-                  <span className="slider round"></span>
-                </label>
-                <span
-                  className={`text-md ml-5 flex-1 ${
-                    !isSliderOn
-                      ? 'text-gray-400 line-through'
-                      : 'text-[#546de5]'
-                  }`}
-                >
-                  Privates Cluster
-                </span>
-              </div>
-            </div>
-          </form>
+            </form>
+          </FormProvider>
           <div className="flex justify-center align-items mt-12">
             <button
               aria-label="Cluster erstellen"
@@ -138,11 +142,7 @@ const CreateClusterPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={100} />
-    </main>
-  );
+  return <Loader type="main" size={100} />;
 };
 
 export default CreateClusterPage;

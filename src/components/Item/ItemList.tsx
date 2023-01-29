@@ -6,8 +6,8 @@ import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
 import { Room } from 'webuntis';
 import RoomItemInList from '../Room/RoomItemInList';
-import { MoonLoader } from 'react-spinners';
 import useStore from '../../lib/store';
+import Loader from '../Loader';
 
 type Props = {
   resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
@@ -44,13 +44,13 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     return (
       <div className="h-fit w-full mt-8 border-2 border-sky-50">
         {title ? (
-          <p className="px-4 rounded-sm bg-gray-100 text-2xl">{title}</p>
+          <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
+            {title}
+          </p>
         ) : (
           <></>
         )}
-        <div className="h-[500px] w-full flex justify-center items-center">
-          <MoonLoader size={50} />
-        </div>
+        <Loader type="div" size={50} />
       </div>
     );
   }
@@ -120,7 +120,9 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">
       {title ? (
-        <p className="px-4 rounded-sm bg-gray-100 text-2xl">{title}</p>
+        <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
+          {title}
+        </p>
       ) : (
         <></>
       )}

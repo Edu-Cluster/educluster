@@ -3,9 +3,9 @@ import ItemList from '../components/Item/ItemList';
 import type { NextPage } from 'next';
 import trpc from '../lib/trpc';
 import useStore from '../lib/store';
-import { MoonLoader } from 'react-spinners';
 import { resources } from '../lib/enums';
 import Avatar from '../components/Avatar';
+import Loader from '../components/Loader';
 
 const DashboardPage: NextPage = () => {
   const store = useStore();
@@ -85,11 +85,7 @@ const DashboardPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
-    </main>
-  );
+  return <Loader type="main" size={80} />;
 };
 
 export default DashboardPage;

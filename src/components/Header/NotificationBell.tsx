@@ -5,6 +5,7 @@ type Props = {
   // TODO Denis: if notification is an invitation, you should have buttons to accept/reject it
   children: ReactNode;
   notifications: string[];
+  darkMode?: boolean;
 };
 
 const NotificationBell = (props: Props) => {
@@ -41,7 +42,9 @@ const NotificationBell = (props: Props) => {
     <div className="inline-block relative">
       <div
         id="dropdown-bell"
-        className="header-option block dropdown-click"
+        className={`header-option block dropdown-click${
+          props.darkMode ? ' hover:bg-slate-400' : ''
+        }`}
         onClick={toggleDropdownBell}
       >
         {props.children}

@@ -19,12 +19,12 @@ const AppointmentItemInList = ({
   children,
 }: Props) => {
   return (
-    <div className="flex flex-col justify-center items-center py-1 px-4 hover:bg-gray-100 fast-animate">
+    <div className="flex flex-col justify-center items-center py-1 px-4 hover:bg-gray-100 dark:hover:bg-slate-800 fast-animate">
       <div className="w-full flex justify-between items-start mb-2">
         <div className="w-full flex justify-between flex-wrap">
           <div className="mr-4">
             <Link href={link}>
-              <p className="text cursor-pointer text-cyan-700 hover:text-cyan-500 hover:underline fast-animate">
+              <p className="cursor-pointer text-cyan-700 dark:text-cyan-700 hover:text-cyan-500 hover:underline fast-animate">
                 {title}
               </p>
             </Link>
@@ -38,7 +38,9 @@ const AppointmentItemInList = ({
           <div>
             <span className="text-sm block">
               erstellt von
-              <p className="text-sm ml-1 text-cyan-700">{creator}</p>
+              <p className="text-sm ml-1 text-cyan-700 dark:text-cyan-700">
+                {creator}
+              </p>
             </span>
             {roomname ? (
               <p className="text-sm">{`Raum: ${roomname}`}</p>
