@@ -7,6 +7,9 @@ import toast from 'react-hot-toast';
 import { statusCodes } from '../lib/enums';
 import useStore from '../lib/store';
 import RegisteredSearchField from '../components/RegisteredSearchField';
+import Image from 'next/image';
+import LoginPicture from '../../public/assets/LoginPicture.png';
+import Logo from '../components/Logo';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -125,10 +128,13 @@ const LoginPage: NextPage = () => {
   });
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center px-20 h-screen bg-gray-100 pattern-bg">
-      <div className="w-[40%] min-w-[360px] h-[575px] lg:h-[500px] rounded-lg input-mask grid grid-rows-3 bg-gray-300">
+    <main className="w-full h-screen flex justify-center screen-xxl:justify-between items-center overflow-y-hidden">
+      <div className="hidden screen-xxl:block">
+        <Image src={LoginPicture} width={1024} height={1024} />
+      </div>
+      <div className="w-[50%] h-full lg:h-[500px] input-mask grid grid-rows-3">
         <div className="flex items-center justify-center w-full">
-          <span>LOGO Placeholder</span>
+          <Logo />
         </div>
         <FormProvider {...methods}>
           <form onSubmit={onSubmit} id="login-form">
