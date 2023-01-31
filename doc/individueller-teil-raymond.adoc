@@ -202,7 +202,7 @@ Diesem Kriterium wird eine Gewichtung von 5% vergeben, da die Anzahl von Fragen 
 
 ===== Überblick der Beurteilungskriterien und deren Gewichtung
 
-TODO Tabelle aufbauen
+TODO: Tabelle aufbauen
 
 ===== Beurteilung
 Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriterien bewertet werden. Anschließend wird ein Sieger angekündigt, der bei der technischen Umsetzung benutzt werden soll.
@@ -210,31 +210,40 @@ Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriter
 TODO
 
 ===== Entscheidung und Begründung der Auswahl
-
 TODO
 
 === Technische Umsetzung
+In diesem Kapitel wird die technische Umsetzung dokumentiert und mithilfe von Screenshots und Diagramme demonstriert.
 
 ==== Einleitung
+https://create.t3.gg/en/folder-structure
+(Sich nach dieser Vorlage und nach der Prinzipien des t3 Stacks halten)
 
-==== Anforderungen an den Projektaufbau
+==== Bootstrapping und Konfiguration
+https://create.t3.gg/
+(Inhalte der Konfigurationsdateien erklären und in Bilder darstellen)
 
-===== Bootstrapping
+==== Aufbau der API
+https://create.t3.gg/en/usage/trpc
+https://www.javatpoint.com/spring-boot-architecture
+(Architektur erklären und bildlich darstellen)
 
-===== Aufbau der API
-
-===== Konfiguration
+=== Integration der Untis-Schnittstelle
+https://webuntis.noim.me/
 
 === Reflexion der eigenen Arbeit
+In diesem Kapitel wird über die eigene Arbeit reflektiert.
 
-===== Persönlicher Verantwortungsgebiet
+===== Persönlicher Verantwortungsbereich
+(Softwarearchitektur planen, Projekt aufsetzen, API aufbauen, Untis Schnittstelle integrieren, Frontend implementieren)
 
 ====== Erreichte Ziele
-
-====== Zukunftsaussicht des ausgewählten Lösungsansatzes
+(Was wurde geschafft und funktioniert gut? Was wurde nicht geschafft und warum?)
 
 ===== Stundenübersicht
+TODO: Tortendiagramm einfügen
 
 ===== Persönliches Fazit
+TODO
 
 :sectnums!:
