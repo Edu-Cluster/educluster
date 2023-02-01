@@ -4,7 +4,7 @@
 
 @layer base {
     p {
-        @apply inline align-bottom leading-relaxed text-gray-700 text-lg;
+        @apply inline align-bottom leading-relaxed text-gray-700 dark:text-gray-100 text-lg;
     }
 }
 
@@ -44,7 +44,7 @@
     }
 
     .secondary-button {
-        @apply block rounded-lg bg-white border border-gray-200 text-black text-lg cursor-pointer text-center;
+        @apply block rounded-lg bg-white dark:bg-black border border-gray-200 text-black text-lg cursor-pointer text-center;
     }
 
     .card {
@@ -61,9 +61,7 @@
 
     /* Regular SCSS Classes */
 
-    $primary-background: #f5f6fa;
     $primary-color: #6a89cc;
-    $secondary-color: #546de5;
 
     * {
         font-family: "Optima", sans-serif;
@@ -71,10 +69,6 @@
 
     .dropdown:hover .dropdown-content {
         display: flex;
-    }
-
-    .pattern-bg {
-        background-image: url('../../public/assets/pattern.svg');
     }
 
     .input-mask {
@@ -133,107 +127,6 @@
                     }
                 }
             }
-        }
-    }
-
-    .input-mask-addons {
-        background-color: $primary-background;
-        box-shadow: rgba(100, 100, 111, 0.3) 0 7px 29px 0;
-        display: grid;
-        grid-template-rows: repeat(3, 3fr);
-    }
-
-    .input-box {
-        width: 80%;
-        position: relative;
-
-        & > input:-webkit-autofill,
-        & > input:-webkit-autofill:hover,
-        & > input:-webkit-autofill:focus,
-        & > input:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 1000px $primary-background inset;
-        }
-
-        & > input {
-            outline: none;
-            padding: 10px;
-            border: 1px solid $primary-color;
-            height: 48px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 1.3em;
-            background-color: $primary-background;
-            color: black;
-            transition: .1s;
-            -webkit-transition: .1s;
-
-            &:focus,
-            &:valid {
-                border: 2px solid $secondary-color;
-            }
-
-            &:focus ~ span,
-            &:valid ~ span {
-                color: $secondary-color;
-                transform: translateX(10px) translateY(-7px);
-                font-size: 0.65em;
-                padding: 0 10px;
-                background: $primary-background;
-            }
-        }
-
-        & > span {
-            position: absolute;
-            left: 0;
-            padding: 10px;
-            pointer-events: none;
-            font-size: 1em;
-            color: $primary-color;
-            text-transform: uppercase;
-            transition: .2s;
-            -webkit-transition: .2s;
-        }
-    }
-
-    .input-text-area-box {
-        position: relative;
-
-        & > textarea {
-            outline: none;
-            padding: 10px;
-            border: 1px solid $primary-color;
-            border-radius: 5px;
-            font-size: 1.3em;
-            background-color: $primary-background;
-            color: black;
-            transition: .1s;
-            -webkit-transition: .1s;
-
-            &:focus,
-            &:valid {
-                border: 2px solid $secondary-color;
-            }
-
-            &:focus ~ span,
-            &:valid ~ span {
-                color: $secondary-color;
-                transform: translateX(10px) translateY(-7px);
-                font-size: 0.65em;
-                padding: 0 10px;
-                background: $primary-background;
-            }
-        }
-
-        & > span {
-            position: absolute;
-            left: 0;
-            padding: 10px;
-            pointer-events: none;
-            font-size: 1em;
-            color: $primary-color;
-            text-transform: uppercase;
-            transition: .2s;
-            -webkit-transition: .2s;
         }
     }
 }

@@ -6,7 +6,7 @@ import ItemSearchField from '../../components/Item/ItemSearchField';
 import ItemList from '../../components/Item/ItemList';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
-import { MoonLoader } from 'react-spinners';
+import Loader from '../../components/Loader';
 
 const ClusterSearchPage: NextPage = () => {
   const { setAuthUser, clusters } = useStore();
@@ -47,11 +47,7 @@ const ClusterSearchPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
-    </main>
-  );
+  return <Loader type="main" size={80} />;
 };
 
 export default ClusterSearchPage;

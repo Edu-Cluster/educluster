@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MemberComponent from './Member';
 import { Member } from '../../lib/types';
-import { MoonLoader } from 'react-spinners';
+import Loader from '../Loader';
 
 type Props = {
   members: Member[][];
@@ -22,19 +22,17 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
   if (!members) {
     return (
       <div className="h-fit w-full mt-8 border-2 border-sky-50">
-        <p className="px-4 rounded-sm bg-gray-100 text-2xl">
+        <p className="px-4 rounded-sm bg-gray-100 dark:hover:bg-slate-800 text-2xl">
           {isOnInvitationPage ? 'Mitglieder zum Einladen' : 'Mitglieder'}
         </p>
-        <div className="h-[500px] w-full flex justify-center items-center">
-          <MoonLoader size={50} />
-        </div>
+        <Loader type="div" size={50} />
       </div>
     );
   }
 
   return (
     <div className="h-[700px] w-full max-w-[800px] mt-8 member-list">
-      <p className="px-4 rounded-sm bg-gray-100 text-2xl">
+      <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
         {isOnInvitationPage ? 'Mitglieder zum Einladen' : 'Mitglieder'}
       </p>
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">

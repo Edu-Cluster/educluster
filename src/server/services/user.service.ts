@@ -82,3 +82,16 @@ export const writeTeamsEmailToUser = async (
     },
   });
 };
+
+export const updateUserUsername = async (
+  username: string,
+  newUsername: string,
+) =>
+  await prisma.person.update({
+    where: {
+      username,
+    },
+    data: {
+      username: newUsername,
+    },
+  });

@@ -11,7 +11,7 @@ import { User } from '../../lib/types';
 import { useRouter } from 'next/router';
 import trpc from '../../lib/trpc';
 import { clusterAssociations } from '../../lib/enums';
-import { MoonLoader } from 'react-spinners';
+import Loader from '../Loader';
 
 type Props = {
   isOnInvitationPage: boolean;
@@ -157,7 +157,7 @@ const MemberButtonGroup = ({
   };
 
   if (isLoading) {
-    return <MoonLoader size={20} />;
+    return <Loader type="simple" size={20} />;
   }
 
   return (

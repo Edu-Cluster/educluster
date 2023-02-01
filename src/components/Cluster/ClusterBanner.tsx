@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Avatar from '../Avatar';
 import ClusterButtonGroup from './ClusterButtonGroup';
 import useStore from '../../lib/store';
+import { FormProvider, useForm } from 'react-hook-form';
+import RegisteredSearchField from '../RegisteredSearchField';
+import RegisteredTextArea from '../RegisteredTextArea';
 
 type Props = {
   isOnInvitationPage?: boolean;
@@ -9,6 +12,9 @@ type Props = {
 
 const ClusterBanner = ({ isOnInvitationPage }: Props) => {
   const { editMode, clusterDetails } = useStore();
+  const methods = useForm();
+  const { setValue, getValues, handleSubmit } = methods;
+
   const isPrivate = clusterDetails.is_private;
   const description = clusterDetails.description;
   const clustername = clusterDetails.clustername;
@@ -37,52 +43,58 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           </p>
         </div>
       ) : (
-        <form className="h-auto flex flex-col items-center mt-2 input-mask">
-          <p className="text-md underline">CLUSTER</p>
-          <div className="input-box mt-4">
-            <input
-              name="clustername"
-              type="text"
-              maxLength={20}
-              placeholder={clustername}
-            />
-          </div>
-          <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={clustername} bigger={true} />
-          </div>
-          <div className="flex items-center text-center mt-6 mb-6">
-            <span
-              className={`text-md w-[130px] mr-5 ${
-                isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
-              }`}
-            >
-              Öffentliches Cluster
-            </span>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={isSliderOn}
-                onChange={() => setSliderOn((prevState: any) => !prevState)}
+        <FormProvider {...methods}>
+          <form className="h-auto flex flex-col items-center mt-2 input-mask">
+            <p className="text-md underline">CLUSTER</p>
+            <div className="mt-4">
+              <RegisteredSearchField
+                registerInputName="clustername"
+                name="clustername"
+                type="text"
+                placeholder={clustername}
+                maxLength={20}
+                minLength={5}
+                required
+                noIcon={true}
               />
-              <span className="slider round"></span>
-            </label>
-            <span
-              className={`text-md w-[130px] ml-5 ${
-                !isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
-              }`}
-            >
-              Privates Cluster
-            </span>
-          </div>
-          <div className="w-full h-40 input-text-area-box">
-            <textarea
-              className="w-full h-full resize-none"
+            </div>
+            <div className="mt-12 w-full h-24 flex justify-center items-center">
+              <Avatar type="cluster" seed={clustername} bigger={true} />
+            </div>
+            <div className="flex items-center text-center mt-6 mb-6">
+              <span
+                className={`text-md w-[130px] mr-5 ${
+                  isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
+                }`}
+              >
+                Öffentlich
+              </span>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={isSliderOn}
+                  onChange={() => setSliderOn((prevState: any) => !prevState)}
+                />
+                <span className="slider round"></span>
+              </label>
+              <span
+                className={`text-md w-[130px] ml-5 ${
+                  !isSliderOn ? 'text-gray-400 line-through' : 'text-[#546de5]'
+                }`}
+              >
+                Privat
+              </span>
+            </div>
+            <RegisteredTextArea
+              registerInputName="description"
               name="description"
+              height="40"
               maxLength={100}
+              required
               placeholder={description}
             />
-          </div>
-        </form>
+          </form>
+        </FormProvider>
       )}
       <ClusterButtonGroup
         isOnInvitationPage={isOnInvitationPage}

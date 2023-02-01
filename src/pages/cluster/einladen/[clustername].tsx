@@ -8,8 +8,8 @@ import useStore from '../../../lib/store';
 import { User } from '../../../lib/types';
 import ClusterBanner from '../../../components/Cluster/ClusterBanner';
 import MemberSearchResultArea from '../../../components/Member/MemberSearchResultArea';
-import { MoonLoader } from 'react-spinners';
 import { clusterAssociations } from '../../../lib/enums';
+import Loader from '../../../components/Loader';
 
 const InviteClusterPage: NextPage = () => {
   const router = useRouter();
@@ -122,11 +122,7 @@ const InviteClusterPage: NextPage = () => {
     );
   }
 
-  return (
-    <main className="h-screen flex items-center justify-center">
-      <MoonLoader size={80} />
-    </main>
-  );
+  return <Loader type="main" size={80} />;
 };
 
 export default InviteClusterPage;

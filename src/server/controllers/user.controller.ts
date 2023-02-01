@@ -2,7 +2,10 @@ import { TRPCError } from '@trpc/server';
 import { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import { UserSchema } from '../schemata/user.schema';
-import { findUsersByEduClusterUsername } from '../services/user.service';
+import {
+  findUsersByEduClusterUsername,
+  updateUserUsername,
+} from '../services/user.service';
 
 /**
  * Returns the user object from the context.
@@ -38,6 +41,32 @@ export const getUsersHandler = async ({ input }: { input: UserSchema }) => {
     return {
       data: {
         users,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const updateUsername = async ({
+  input,
+  ctx,
+}: {
+  input: string;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const username = ctx?.user?.username || '';
+
+    await updateUserUsername(username, input);
+
+    return {
+      data: {
+        status: statusCodes.SUCCESS,
       },
     };
   } catch (err: any) {

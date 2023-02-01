@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import trpc from '../lib/trpc';
 import toast from 'react-hot-toast';
 import { statusCodes } from '../lib/enums';
 import useStore from '../lib/store';
+import RegisteredSearchField from '../components/RegisteredSearchField';
+import Image from 'next/image';
+import LoginPicture from '../../public/assets/LoginPicture.png';
+import Logo from '../components/Logo';
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
   const store = useStore();
-  const { register, setValue, getValues, handleSubmit } = useForm();
+  const methods = useForm();
+  const { setValue, getValues, handleSubmit } = methods;
   const [isSliderOn, setSliderOn] = useState(false);
 
   const { mutate: registerUser } = trpc.useMutation(['auth.register'], {
@@ -123,35 +128,40 @@ const LoginPage: NextPage = () => {
   });
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center px-20 h-screen bg-gray-100 pattern-bg">
-      <div className="w-[40%] min-w-[360px] h-[575px] lg:h-[500px] rounded-lg input-mask input-mask-addons">
+    <main className="w-full h-screen flex justify-center screen-xxl:justify-between items-center overflow-y-hidden">
+      <div className="hidden screen-xxl:block">
+        <Image src={LoginPicture} width={1024} height={1024} />
+      </div>
+      <div className="w-[50%] h-full lg:h-[500px] input-mask grid grid-rows-3">
         <div className="flex items-center justify-center w-full">
-          <span>LOGO Placeholder</span>
+          <Logo />
         </div>
-        <form onSubmit={onSubmit} id="login-form">
-          <div className="flex items-center justify-center w-full h-full flex-col">
-            <div className="input-box">
-              <input
-                {...register('username', { required: true })}
-                name="username"
-                type="text"
-                autoComplete="username"
-                required
-              />
-              <span>Benutzername</span>
+        <FormProvider {...methods}>
+          <form onSubmit={onSubmit} id="login-form">
+            <div className="flex items-center justify-center w-full h-full flex-col gap-5">
+              <div className="w-[80%]">
+                <RegisteredSearchField
+                  registerInputName="username"
+                  name="username"
+                  type="text"
+                  noIcon={true}
+                  required={true}
+                  placeholder="Benutzername"
+                />
+              </div>
+              <div className="w-[80%]">
+                <RegisteredSearchField
+                  registerInputName="password"
+                  name="password"
+                  type="password"
+                  noIcon={true}
+                  required={true}
+                  placeholder="Password"
+                />
+              </div>
             </div>
-            <div className="input-box mt-6">
-              <input
-                {...register('password', { required: true })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-              />
-              <span>Passwort</span>
-            </div>
-          </div>
-        </form>
+          </form>
+        </FormProvider>
         <div className="flex justify-around items-center lg:justify-around w-full flex-col flex-wrap lg:flex-row mb-5 lg:mb-0">
           <div className="flex flex-col items-center">
             <span className="text-xs mb-2">Angemeldet bleiben</span>
