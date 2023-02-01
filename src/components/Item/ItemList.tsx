@@ -8,6 +8,7 @@ import { Room } from 'webuntis';
 import RoomItemInList from '../Room/RoomItemInList';
 import useStore from '../../lib/store';
 import Loader from '../Loader';
+import ItemListHeader from './ItemListHeader';
 
 type Props = {
   resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
@@ -43,13 +44,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
 
     return (
       <div className="h-fit w-full mt-8 border-2 border-sky-50">
-        {title ? (
-          <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
-            {title}
-          </p>
-        ) : (
-          <></>
-        )}
+        {title ? <ItemListHeader title={title} /> : <></>}
         <Loader type="div" size={50} />
       </div>
     );
@@ -119,13 +114,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">
-      {title ? (
-        <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
-          {title}
-        </p>
-      ) : (
-        <></>
-      )}
+      {title ? <ItemListHeader title={title} /> : <></>}
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">{ItemsInList}</div>
         <div className="py-3 flex justify-center items-center gap-2">

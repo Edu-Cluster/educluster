@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MemberComponent from './Member';
 import { Member } from '../../lib/types';
 import Loader from '../Loader';
+import ItemListHeader from '../Item/ItemListHeader';
 
 type Props = {
   members: Member[][];
@@ -32,9 +33,9 @@ const MemberList = ({ members, isOnInvitationPage }: Props) => {
 
   return (
     <div className="h-[700px] w-full max-w-[800px] mt-8 member-list">
-      <p className="px-4 rounded-sm bg-gray-100 dark:bg-gray-800 text-2xl">
-        {isOnInvitationPage ? 'Mitglieder zum Einladen' : 'Mitglieder'}
-      </p>
+      <ItemListHeader
+        title={isOnInvitationPage ? 'Mitglieder zum Einladen' : 'Mitglieder'}
+      />
       <div className="h-full w-full overflow-y-auto card flex flex-col justify-between divide-y">
         <div className="h-fit divide-y">
           {members && members.length ? (

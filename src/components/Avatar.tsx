@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 type Props = {
-  type: 'user' | 'cluster';
+  type: 'user' | 'thing';
   bigger?: boolean;
   seed?: string;
   rounded?: boolean;
