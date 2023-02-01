@@ -35,7 +35,9 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           </p>
           <span className="mt-6 text-sm">
             erstellt von{' '}
-            <p className="align-baseline underline">{person.username}</p>
+            <p className="align-baseline text-sm text-cyan-700 dark:text-cyan-700">
+              {person.username}
+            </p>
           </span>
           <p className="mt-4 break-words break-word text-[16px]">
             {description}
