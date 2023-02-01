@@ -142,7 +142,7 @@ export const readPublicClusters = async (clustername?: string) => {
 };
 
 export const updateClusterById = async (
-  clusterid: number,
+  clusterid: number | bigint,
   clustername: string,
   description: string,
   isPrivate: boolean,
