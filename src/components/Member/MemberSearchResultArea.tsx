@@ -8,39 +8,41 @@ type Props = {
 };
 
 const MemberSearchResultArea = ({ isOnInvitationPage }: Props) => {
-  const {
-    potentialMembers: members,
-    membersToInvite,
-    searchPotentialMembersLoading,
-  } = useStore();
+  const { potentialMembers, membersToInvite, searchPotentialMembersLoading } =
+    useStore();
 
-  let matchFound = false;
-  membersToInvite.forEach((member) => {
-    if (members) {
-      members.forEach((someMember) => {
-        if (someMember.username === member.username) {
+  const shouldHideAddButton = (username: string) => {
+    let matchFound = false;
+
+    if (membersToInvite) {
+      membersToInvite.forEach((someMember) => {
+        if (someMember.username === username) {
           matchFound = true;
         }
       });
+    } else {
+      return true;
     }
-  });
+
+    return matchFound;
+  };
 
   if (searchPotentialMembersLoading) {
     return (
       <Loader type="div" size={50} extraClasses="h-40 bg-gray-50 h-auto" />
     );
-  } else if (!members || !members.length) {
+  } else if (!potentialMembers || !potentialMembers.length) {
     return <div></div>;
   }
 
   return (
     <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 dark:bg-gray-800 overflow-y-auto">
-      {members.map(({ username }, idx) => (
+      {potentialMembers.map(({ username }, idx) => (
         <MemberComponent
           key={idx}
           username={username}
           isOnInvitationPage={isOnInvitationPage || false}
-          showPlusButton={!matchFound}
+          showPlusButton={!shouldHideAddButton(username)}
         />
       ))}
     </div>

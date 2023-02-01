@@ -139,6 +139,7 @@ const MemberButtonGroup = ({
       (potentialMember) => potentialMember.username === username,
     )[0];
     const members = membersToInvite;
+
     members.push(member);
 
     setMembersToInvite(members);
