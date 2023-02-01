@@ -129,8 +129,12 @@ const LoginPage: NextPage = () => {
 
   return (
     <main className="w-full h-screen flex justify-center screen-xxl:justify-between items-center overflow-y-hidden">
-      <div className="hidden screen-xxl:block">
-        <Image src={LoginPicture} width={1024} height={1024} />
+      <div className="h-full hidden screen-xxl:block">
+        <Image
+          alt="Ein Stapel von Büchern"
+          priority={true}
+          src={LoginPicture}
+        />
       </div>
       <div className="w-[50%] h-full lg:h-[500px] input-mask grid grid-rows-3">
         <div className="flex items-center justify-center w-full">
