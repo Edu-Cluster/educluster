@@ -16,6 +16,10 @@ const AppointmentBanner = () => {
   };
   const isRoomless = false;
 
+  const enterAppointment = () => {
+    // TODO Denis: Implementieren mit EC-87
+  };
+
   return (
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
       <div className="h-auto flex flex-col items-center mt-2">
@@ -30,18 +34,34 @@ const AppointmentBanner = () => {
               {cluster.clustername}
             </p>
           </Link>{' '}
-          / {isRoomless ? 'Raumlos' : 'V_101'}
+          <p className="text-xl">/</p> {isRoomless ? 'Raumlos' : 'V_101'}
         </span>
         <span className="mt-3 text-sm">
           erstellt von{' '}
-          <p className="align-baseline underline">{person.username}</p>
+          <p className="align-baseline text-sm text-cyan-700 dark:text-cyan-700">
+            {person.username}
+          </p>
         </span>
         <p className="mt-4 break-words break-word text-[16px]">{description}</p>
       </div>
       <div className="flex flex-col gap-4">
-        <div className="cluster-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100">
+        <div
+          onClick={enterAppointment}
+          className="cluster-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100"
+        >
           <p className="mr-2 dark:hover:text-black text-emerald-500">
             Termin beitreten
+          </p>
+          <ArrowRightIcon height={20} width={20} />
+        </div>
+        <div
+          onClick={() =>
+            (document.location.href = `/cluster/${cluster.clustername}*${cluster.clusterId}`)
+          }
+          className="cluster-button text-yellow-500 dark:hover:text-black hover:bg-yellow-100"
+        >
+          <p className="mr-2 dark:hover:text-black text-yellow-500">
+            Zum Cluster
           </p>
           <ArrowRightIcon height={20} width={20} />
         </div>
