@@ -15,7 +15,7 @@ export const clusterInvitationSchema = object({
 export type ClusterInvitationSchema = TypeOf<typeof clusterInvitationSchema>;
 
 export const clusterEditSchema = object({
-  clusterId: number(),
+  clusterId: bigint(),
   clustername: string(),
   description: string(),
   isPrivate: boolean(),

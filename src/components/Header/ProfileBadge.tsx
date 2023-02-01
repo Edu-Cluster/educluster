@@ -70,8 +70,8 @@ const ProfileBadge = (props: Props) => {
           {props.options.map((option, idx) => (
             <Link key={idx} href={option.link || ''}>
               <div
-                className={`w-full p-2 pl-6 cursor-pointer${
-                  props.darkMode ? ' hover:bg-slate-400' : 'hover:bg-gray-200'
+                className={`w-full p-2 pl-6 cursor-pointer ${
+                  props.darkMode ? 'hover:bg-slate-400' : 'hover:bg-gray-200'
                 }`}
                 onClick={option.isLogout ? handleLogout : undefined}
               >
