@@ -13,7 +13,6 @@ type Props = {
 const ClusterBanner = ({ isOnInvitationPage }: Props) => {
   const { editMode, clusterDetails } = useStore();
   const methods = useForm();
-  const { setValue, getValues, handleSubmit } = methods;
 
   const isPrivate = clusterDetails.is_private;
   const description = clusterDetails.description;
@@ -29,7 +28,7 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           <p className="text-md underline">CLUSTER</p>
           <p className="text-2xl">{clustername}</p>
           <div className="mt-12 w-full h-24 flex justify-center items-center">
-            <Avatar type="cluster" seed={clustername} bigger={true} />
+            <Avatar type="thing" seed={clustername} bigger={true} />
           </div>
           <p className="mt-12 uppercase">
             {isPrivate ? 'PRIVAT' : 'ÖFFENTLICH'}
@@ -59,7 +58,7 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
               />
             </div>
             <div className="mt-12 w-full h-24 flex justify-center items-center">
-              <Avatar type="cluster" seed={clustername} bigger={true} />
+              <Avatar type="thing" seed={clustername} bigger={true} />
             </div>
             <div className="flex items-center text-center mt-6 mb-6">
               <span
