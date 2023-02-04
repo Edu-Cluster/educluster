@@ -57,7 +57,7 @@ const CreateClusterPage: NextPage = () => {
     const { clustername, description } = getValues();
 
     // Block the use of special characters
-    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~´]/;
 
     if (format.test(clustername)) {
       toast.error('Clustername darf nur alphanumerische Zeichen enthalten!');

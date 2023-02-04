@@ -7,6 +7,8 @@ import { ChevronRightIcon } from '@heroicons/react/outline';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTheme } from 'next-themes';
 import RegisteredSearchField from '../components/RegisteredSearchField';
+import toast from 'react-hot-toast';
+import { statusCodes } from '../lib/enums';
 
 const SettingsPage: NextPage = () => {
   const { setAuthUser, authUser } = useStore();
@@ -30,8 +32,12 @@ const SettingsPage: NextPage = () => {
   const { mutate: updateUsernameMutation } = trpc.useMutation(
     ['user.updateUsername'],
     {
-      onSuccess: async () => {
-        await userQuery.refetch();
+      onSuccess: async ({ data }) => {
+        if (data.status === statusCodes.SUCCESS) {
+          await userQuery.refetch();
+        } else if (data.status === statusCodes.FAILURE) {
+          toast.error('Dieser Benutzername ist leider in Verwendung!');
+        }
       },
       onError: async (err) => {
         console.error(err);
@@ -55,6 +61,14 @@ const SettingsPage: NextPage = () => {
     const { username } = getValues();
 
     setValue('username', '');
+
+    // Block the use of special characters
+    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~´]/;
+
+    if (format.test(username)) {
+      toast.error('Benutzername darf nur alphanumerische Zeichen enthalten!');
+      return;
+    }
 
     await updateUsernameMutation(username);
   });

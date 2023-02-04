@@ -3,6 +3,7 @@ import { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import { UserSchema } from '../schemata/user.schema';
 import {
+  findUserByEduClusterUsername,
   findUsersByEduClusterUsername,
   updateUserUsername,
 } from '../services/user.service';
@@ -61,6 +62,16 @@ export const updateUsername = async ({
 }) => {
   try {
     const username = ctx?.user?.username || '';
+
+    const alreadyTaken = await findUserByEduClusterUsername(input);
+
+    if (alreadyTaken) {
+      return {
+        data: {
+          status: statusCodes.FAILURE,
+        },
+      };
+    }
 
     await updateUserUsername(username, input);
 
