@@ -1,0 +1,84 @@
+:sectnums:
+:sectnumlevels: 3
+== Inhalt des Diplomarbeitsantrages
+Die nachfolgenden Punkte umfassen den Inhalt des Diplomarbeitsantrages für das Projekt „EduCluster“.
+
+=== Schule
+Höhere technische Bundeslehr- und Versuchsanstalt PINKAFELD
+
+=== Abteilung
+Hauptverantwortlich: Informatik
+
+=== AV
+Hauptverantwortlich: Thomas Gabriel
+
+=== Abschließende prüfung
+xx.05.2023
+
+=== Betreuer/innen
+Technisch: Prof. Dipl.-Inf. David Zach
+Fachlich: Prof. MMag. Bernd Hochwarter
+
+=== Ausgangslage (ca. 400 Zeichen)
+Bis dato werden Raumreservierungen in der HTL Pinkafeld ausschließlich über WebUntis und nur von Professoren abgewickelt. Schüler können sich einzig zu Lerneinheiten außerhalb der Klassenräume verabreden oder vor Ort nach freien Klassenräumen suchen, in welchen sie möglicherweise nicht ausreichend lange bleiben können aufgrund einer später dort stattfindenden Unterrichtseinheit.
+
+=== Projektteam (Arbeitsaufwand)
+[%header,format=csv]
+|===
+Name, Individuelle Themenstellung, Klasse, Arbeitsaufwand
+Lara Kammerer, "Konzeption, Design und Implementierung des Backends", 7YCIF, 180 Stunden
+Christoph Kiessewetter, Konzeption und Durchführung der Integration von externer Software zur Unterstützung des Lernerfolges, 7YBIF, 180 Stunden
+Raymond Denis Vladu, Konzeption der gesamten Frontend-Applikation unter Berücksichtigung der aktuellen UX und UI-Designvoraben, 7YBIF, 180 Stunden
+|===
+
+=== Projektpartner
+HTL Pinkafeld, Abteilung Informatik
+Meierhofplatz 1
+7423 Pinkafeld
+
+=== Untersuchungsanliegen der individuellen Themenstellungen (ca. 800 Zeichen)
+Folgende Untersuchungsanliegen sind für die einzelnen Teammitglieder vorgesehen:
+
+Lara Kammerer: Evaluierung der zu verwendenden Datenbank sowie deren Bereitstellung. Konzeption und Implementierung der Backend-Logik in Kooperation mit den bereitgestellten Anbindungen. Datenerhebung zusätzlicher Informationen zur Unterstützung des Terminerstellungsprozesses.
+
+Christoph Kiessewetter: Evaluierung der anzuwendenden Testing-Techniken bzw. der automatisierten Testing-Tools. Integration von MS Teams und Untis zur Unterstützung des Lernerfolges.
+
+Raymond Denis Vladu: Evaluierung der Frameworks und Libraries unter Berücksichtigung der aktuellen Standards. Designen der GUI nach Erkenntnissen aufgrund der UX-Evaluierung.
+
+=== Zielsetzung (ca. 400 Zeichen)
+Das Projektteam hat sich dazu entschieden, der HTL Pinkafeld ein zentrales System zur Raumreservierung und Lerngruppenbildung bereitzustellen. In weiterer Folge könnte dieses System auf weitere Lehrstätten ausgeweitet werden.
+
+=== Geplantes Ergebnis der Prüfungskandidatin/des Prüfungskandidaten (ca. 400 Zeichen)
+Lara Kammerer: Abnahmefähiges Backend mit erfolgreicher Unterstützung geplanter Funktionalitäten
+
+Christoph Kiessewetter: Erfolgreiche Eingliederung von MS Teams und Untis
+
+Raymond Denis Vladu: Abnahmefähige Frontend-Applikation
+
+=== Meilensteine
+26.09.2022 Projektantrag eingereicht
+
+10.10.2022 Requirements Engineering abgeschlossen
+
+31.10.2022 Datenbank- und Tech-Stack-Evaluierungen abgeschlossen
+
+14.11.2022 Datenbankmodell entworfen und Test-Datenbank aufgesetzt
+
+01.12.2022 Testing-Evaluierung abgeschlossen
+
+31.01.2023 Implementierung des Prototyps abgeschlossen
+
+15.02.2023 Tests des Prototyps abgeschlossen
+
+01.03.2023 Implementierung abgeschlossen
+
+01.03.2023 Beginn der Abschlussarbeiten der Diplomarbeitsdokumentation
+
+15.03.2023 Tests abgeschlossen
+
+31.03.2023 Fertiges Diplomarbeitsdokument an Druckerei versandt
+
+=== Rechtliche Reglung (mit dem/den Projektpartner/n erfolgt durch)
+Gesonderte Reglung
+
+:sectnums!:
