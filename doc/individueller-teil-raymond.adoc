@@ -234,16 +234,16 @@ https://webuntis.noim.me/
 === Reflexion der eigenen Arbeit
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
 
-===== Persönlicher Verantwortungsbereich
+==== Persönlicher Verantwortungsbereich
 (Softwarearchitektur planen, Projekt aufsetzen, API aufbauen, Untis Schnittstelle integrieren, Frontend implementieren)
 
-====== Erreichte Ziele
+==== Erreichte Ziele
 (Was wurde geschafft und funktioniert gut? Was wurde nicht geschafft und warum?)
 
-===== Stundenübersicht
+==== Stundenübersicht
 TODO: Tortendiagramm einfügen
 
-===== Persönliches Fazit
+==== Persönliches Fazit
 TODO
 
 :sectnums!:

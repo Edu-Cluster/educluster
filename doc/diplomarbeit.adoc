@@ -1,8 +1,31 @@
+= Diplomarbeit EduCluster
+
+[discrete]
+=== Kurzfassung
+// TODO
+
+[discrete]
+=== Abstract
+// TODO
+
+[discrete]
+=== Vorwort
+// TODO
+
 :sectnums:
 :sectnumlevels: 6
 
-= Diplomarbeit EduCluster
+== Einleitung
+// TODO
 
-TODO insert evaluation files
+include::projektantrag.adoc[]
+
+// TODO Vorstudie
+
+// TODO Evaluierung Lara
+
+include::individueller-teil-raymond.adoc[]
+
+// TODO Evaluierung Christoph
 
 :sectnums!:
