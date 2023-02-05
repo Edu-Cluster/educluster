@@ -94,7 +94,13 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     }
 
     // TODO Lara GET request an den Backend schicken, um user zu finden
-    const searchResultSubjects: string[] = ['Mathematik', 'Deutsch'];
+    const searchResultSubjects: string[] = [
+      'Mathematik',
+      'Deutsch',
+      'Programmieren',
+      'Statik',
+      'Chimie',
+    ];
 
     if (!potentialSubjects) {
       // Save search result potential subjects as a state
@@ -109,7 +115,12 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     }
 
     // TODO Lara GET request an den Backend schicken, um user zu finden
-    const searchResultTopics: string[] = ['Vektoren', 'Grammatik'];
+    const searchResultTopics: string[] = [
+      'Vektoren',
+      'Grammatik',
+      'Lineare Algebra',
+      'Hibernate',
+    ];
 
     if (!potentialTopics) {
       // Save search result potential topics as a state
@@ -118,31 +129,43 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
   };
 
   return (
-    <div className="h-fit w-full max-w-[800px] mt-8">
+    <div className="h-fit w-full max-w-[800px] mt-2">
       <div className="flex flex-col gap-5">
         <FormProvider {...methods}>
           <form onSubmit={onSubmit} id="appointment-search-form">
             <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5">
-              <TimeSelectField
-                preselected="-"
-                registerSelectName="timeFrom"
-                timeType={timeTypes.FROM}
-              />
-              <TimeSelectField
-                preselected="-"
-                registerSelectName="timeTo"
-                timeType={timeTypes.TO}
-              />
-              <RegisteredSearchField
-                noIcon={true}
-                type="date"
-                registerInputName="dateFrom"
-              />
-              <RegisteredSearchField
-                noIcon={true}
-                type="date"
-                registerInputName="dateTo"
-              />
+              <div className="flex flex-col w-full">
+                <span className="text-xs ml-1">Zeit von</span>
+                <TimeSelectField
+                  preselected="-"
+                  registerSelectName="timeFrom"
+                  timeType={timeTypes.FROM}
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <span className="text-xs ml-1">Zeit bis</span>
+                <TimeSelectField
+                  preselected="-"
+                  registerSelectName="timeTo"
+                  timeType={timeTypes.TO}
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <span className="text-xs ml-1">Datum von</span>
+                <RegisteredSearchField
+                  noIcon={true}
+                  type="date"
+                  registerInputName="dateFrom"
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <span className="text-xs ml-1">Datum bis</span>
+                <RegisteredSearchField
+                  noIcon={true}
+                  type="date"
+                  registerInputName="dateTo"
+                />
+              </div>
             </div>
           </form>
         </FormProvider>
@@ -194,19 +217,25 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
             )}
           </div>
         </div>
-        {subjects && (
-          <div className="flex gap-2 w-full">
+        {subjects && subjects.length ? (
+          <div className="flex flex-wrap gap-2 w-full">
+            <p className="mr-2 text-cyan-700">Fächer</p>
             {subjects.map((subject, idx) => (
               <FullTag key={idx} resource={resources.SUBJECT} name={subject} />
             ))}
           </div>
+        ) : (
+          <></>
         )}
-        {topics && (
-          <div className="flex gap-2 w-full">
+        {topics && topics.length ? (
+          <div className="flex flex-wrap gap-2 w-full">
+            <p className="text-cyan-700">Themen</p>
             {topics.map((topic, idx) => (
               <FullTag key={idx} resource={resources.TOPIC} name={topic} />
             ))}
           </div>
+        ) : (
+          <></>
         )}
         <button
           aria-label="Alle Filter übernehmen"
