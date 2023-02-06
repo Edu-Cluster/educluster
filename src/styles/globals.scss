@@ -71,6 +71,10 @@
         display: flex;
     }
 
+    .drawer * {
+        background-color: black;
+    }
+
     .input-mask {
         & .switch {
             position: relative;

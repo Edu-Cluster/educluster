@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { AppointmentData, ClusterData, User } from './types';
+import { AppointmentData, ClusterData, Notifications, User } from './types';
 import { Room } from 'webuntis';
 import { clusterAssociations } from './enums';
 
@@ -11,6 +11,11 @@ type Store = {
 
   settingsPopupOpen: boolean;
   setSettingsPopupOpen: (isOpen: boolean) => void;
+
+  notifications: Notifications[] | null;
+  setNotifications: (notifications: Notifications[] | null) => void;
+  newNotificationsAvailable: boolean;
+  setNewNotificationsAvailable: (newAvailable: boolean) => void;
 
   editMode: boolean;
   setEditMode: (inEditMode: boolean) => void;
@@ -78,6 +83,13 @@ const useStore = create<Store>((set) => ({
   settingsPopupOpen: false,
   setSettingsPopupOpen: (isOpen) =>
     set((state) => ({ ...state, settingsPopupOpen: isOpen })),
+
+  notifications: null,
+  setNotifications: (notifications) =>
+    set((state) => ({ ...state, notifications })),
+  newNotificationsAvailable: false,
+  setNewNotificationsAvailable: (newAvailable) =>
+    set((state) => ({ ...state, newNotificationsAvailable: newAvailable })),
 
   editMode: false,
   setEditMode: (inEditMode) =>

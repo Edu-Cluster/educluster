@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ArrowRightIcon,
   ArrowNarrowLeftIcon,
@@ -12,7 +12,7 @@ import {
 import useStore from '../../lib/store';
 import toast from 'react-hot-toast';
 import trpc from '../../lib/trpc';
-import { clusterAssociations } from '../../lib/enums';
+import { clusterAssociations, notificationTypes } from '../../lib/enums';
 
 type Props = {
   isOnInvitationPage?: boolean;
@@ -66,20 +66,17 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
     },
   });
 
-  // TODO Denis: Nachdem es eindeutig ist ob authUser Clusteradmin ist oder nicht, EC-63 umsetzen
-
   const sendInvitations = async () => {
-    const foundUsernames = document.querySelectorAll('.member-list #username');
+    const userIds: bigint[] = [];
 
-    let usernames: any[] = [];
-    Array.from(foundUsernames).forEach((username) => {
-      // @ts-ignore
-      usernames.push(username.innerText);
+    membersToInvite.forEach((member) => {
+      userIds.push(member.id);
     });
 
     // Invoke the invite mutation
     invite({
-      usernames,
+      type: notificationTypes.INVITATION,
+      userIds,
       clusterId: clusterDetails.id,
     });
   };
@@ -111,12 +108,12 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
             <>
               {isAdmin && (
                 <div
-                  className="cluster-button text-blue-500 dark:hover:text-black hover:bg-blue-100"
+                  className="cluster-button text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-100"
                   onClick={() =>
                     (document.location.href = `./einladen/${clusterfullname}`)
                   }
                 >
-                  <p className="mr-2 dark:hover:text-black text-blue-500">
+                  <p className="mr-2 dark:text-blue-500 text-blue-500">
                     Mitglieder einladen
                   </p>
                   <UserAddIcon height={20} width={20} />
@@ -124,33 +121,33 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
               )}
               {isAdmin && (
                 <div
-                  className="cluster-button text-violet-500 dark:hover:text-black hover:bg-violet-100"
+                  className="cluster-button text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-100"
                   onClick={() => setEditMode(true)}
                 >
-                  <p className="mr-2 dark:hover:text-black text-violet-500">
+                  <p className="mr-2 dark:text-violet-500 text-violet-500">
                     Cluster bearbeiten
                   </p>
                   <PencilIcon height={20} width={20} />
                 </div>
               )}
               {isAdmin || isMember ? (
-                <div className="cluster-button text-orange-500 dark:hover:text-black hover:bg-orange-100">
-                  <p className="mr-2 dark:hover:text-black text-orange-500">
+                <div className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
+                  <p className="mr-2 dark:text-orange-500 text-orange-500">
                     Cluster verlassen
                   </p>
                   <ArrowNarrowLeftIcon height={20} width={20} />
                 </div>
               ) : (
-                <div className="cluster-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100">
-                  <p className="mr-2 dark:hover:text-black text-emerald-500">
+                <div className="cluster-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
+                  <p className="mr-2 dark:text-emerald-500 text-emerald-500">
                     Cluster beitreten
                   </p>
                   <ArrowRightIcon height={20} width={20} />
                 </div>
               )}
               {isAdmin && (
-                <div className="cluster-button text-red-500 dark:hover:text-black hover:bg-red-100">
-                  <p className="mr-2 dark:hover:text-black text-red-500">
+                <div className="cluster-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100">
+                  <p className="mr-2 dark:text-red-500 text-red-500">
                     Cluster löschen
                   </p>
                   <TrashIcon height={20} width={20} />
@@ -161,10 +158,10 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
             <>
               {membersToInvite.length ? (
                 <div
-                  className="cluster-button text-fuchsia-500 dark:hover:text-black hover:bg-fuchsia-100"
+                  className="cluster-button text-fuchsia-500 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-100"
                   onClick={() => sendInvitations()}
                 >
-                  <p className="mr-2 dark:hover:text-black text-fuchsia-500">
+                  <p className="mr-2 dark:text-fuchsia-500 text-fuchsia-500">
                     Anfragen versenden
                   </p>
                   <MailIcon height={20} width={20} />
@@ -173,12 +170,12 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
                 <></>
               )}
               <div
-                className="cluster-button text-orange-500 dark:hover:text-black hover:bg-orange-100"
+                className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100"
                 onClick={() =>
                   (document.location.href = `../../cluster/${clusterfullname}`)
                 }
               >
-                <p className="mr-2 dark:hover:text-black text-orange-500">
+                <p className="mr-2 dark:text-orange-500 text-orange-500">
                   Zurück zum Cluster
                 </p>
                 <ArrowNarrowLeftIcon height={20} width={20} />
@@ -189,19 +186,17 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
       ) : (
         <>
           <div
-            className="cluster-button text-amber-500 dark:hover:text-black hover:bg-amber-100"
+            className="cluster-button text-amber-500 hover:bg-amber-100 dark:hover:bg-amber-100"
             onClick={() => saveSettings()}
           >
-            <p className="mr-2 dark:hover:text-black text-amber-500">
-              Speichern
-            </p>
+            <p className="mr-2 dark:text-amber-500 text-amber-500">Speichern</p>
             <SaveIcon height={20} width={20} />
           </div>
           <div
-            className="cluster-button text-red-500 dark:hover:text-black hover:bg-red-100"
+            className="cluster-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100"
             onClick={() => setEditMode(false)}
           >
-            <p className="mr-2 dark:hover:text-black text-red-500">Abbrechen</p>
+            <p className="mr-2 dark:text-red-500 text-red-500">Abbrechen</p>
             <XIcon height={20} width={20} />
           </div>
         </>
