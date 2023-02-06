@@ -76,7 +76,7 @@ const NotificationBell = (props: Props) => {
     onSuccess: async ({ data }) => {
       if (data && data.status === statusCodes.SUCCESS) {
         const allViewed = !data.notifications.every(
-          (notification) => notification.viewed === true,
+          (notification: any) => notification.viewed === true,
         );
 
         setNotifications(data.notifications);
