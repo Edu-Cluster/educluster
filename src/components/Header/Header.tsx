@@ -16,18 +16,6 @@ import useStore from '../../lib/store';
 import Avatar from '../Avatar';
 import { useTheme } from 'next-themes';
 
-// Notification Bell
-const notifications = [
-  'test1sdafsfasfdasdfasdfasfdasfasfasfdasdfasfdasdfasfasdfasfdasdfasdfasdfasdasdf',
-  'test2',
-  'test3',
-  'test4',
-  'test5',
-  'test6',
-  'test7',
-  'test8',
-];
-
 const Header = () => {
   const user = useStore().authUser;
   const { resolvedTheme } = useTheme();
@@ -76,7 +64,7 @@ const Header = () => {
           )}
         </ProfileBadge>
 
-        <NotificationBell darkMode={darkMode} notifications={notifications}>
+        <NotificationBell darkMode={darkMode}>
           <BellIcon className={`header-icon${darkMode ? ' text-white' : ''}`} />
         </NotificationBell>
 

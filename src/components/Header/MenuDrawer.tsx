@@ -60,7 +60,7 @@ const MenuDrawer = (props: Props) => {
       {props.children}
       <div>
         <Drawer
-          className="flex flex-col justify-between"
+          className="flex flex-col justify-between drawer"
           open={isOpen}
           onClose={toggleDrawer}
           direction="right"
@@ -78,7 +78,8 @@ const MenuDrawer = (props: Props) => {
               </Link>
             ))}
           </div>
-          <div className="m-5 flex justify-center items-center">
+          <div className="h-full"></div>
+          <div className="pb-5 flex justify-center items-center">
             <Logo />
           </div>
         </Drawer>

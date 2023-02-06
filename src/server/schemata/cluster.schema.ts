@@ -8,8 +8,9 @@ export const clusterSchema = object({
 export type ClusterInput = TypeOf<typeof clusterSchema>;
 
 export const clusterInvitationSchema = object({
+  type: number(),
   clusterId: bigint(),
-  usernames: array(string()),
+  userIds: array(bigint()),
 });
 
 export type ClusterInvitationSchema = TypeOf<typeof clusterInvitationSchema>;

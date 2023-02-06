@@ -1,6 +1,10 @@
 import { TRPCError } from '@trpc/server';
 import { Cluster, ContextWithUser } from '../../lib/types';
-import { clusterAssociations, statusCodes } from '../../lib/enums';
+import {
+  clusterAssociations,
+  notificationTypes,
+  statusCodes,
+} from '../../lib/enums';
 import {
   provisionallyInviteUser,
   readAppointmentsFromUser,
@@ -29,6 +33,7 @@ import {
   ClusterInvitationSchema,
 } from '../schemata/cluster.schema';
 import { findUserByEduClusterUsername } from '../services/user.service';
+import { insertNewNotification } from '../services/notification.service';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -305,20 +310,27 @@ export const getClusterAssociation = async ({
 
 export const sendMemberInvitation = async ({
   input,
+  ctx,
 }: {
   input: ClusterInvitationSchema;
+  ctx: ContextWithUser;
 }) => {
   try {
-    for (const username of input.usernames) {
-      const user = await findUserByEduClusterUsername(username);
+    const username = ctx?.user?.username || '';
 
-      if (!user) {
-        continue;
+    for (const id of input.userIds) {
+      await provisionallyInviteUser(id, input.clusterId);
+
+      if (input.type === notificationTypes.INVITATION) {
+        await insertNewNotification(
+          'Einladung',
+          `Sie wurden zu einem Cluster eingeladen`,
+          id,
+          username,
+        );
+      } else if (input.type === notificationTypes.WARNING) {
+        // TODO Denis
       }
-
-      const personId = user.id;
-
-      await provisionallyInviteUser(personId, input.clusterId);
     }
 
     return {

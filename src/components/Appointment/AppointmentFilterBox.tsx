@@ -219,7 +219,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
         </div>
         {subjects && subjects.length ? (
           <div className="flex flex-wrap gap-2 w-full">
-            <p className="mr-2 text-cyan-700">Fächer</p>
+            <p className="mr-2 text-cyan-700 dark:text-cyan-700">Fächer</p>
             {subjects.map((subject, idx) => (
               <FullTag key={idx} resource={resources.SUBJECT} name={subject} />
             ))}
@@ -229,7 +229,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
         )}
         {topics && topics.length ? (
           <div className="flex flex-wrap gap-2 w-full">
-            <p className="text-cyan-700">Themen</p>
+            <p className="text-cyan-700 dark:text-cyan-700">Themen</p>
             {topics.map((topic, idx) => (
               <FullTag key={idx} resource={resources.TOPIC} name={topic} />
             ))}

@@ -1,4 +1,9 @@
-import type { person, cluster, appointment } from '@prisma/client';
+import type {
+  person,
+  cluster,
+  appointment,
+  notifications,
+} from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type User = person;
@@ -17,6 +22,7 @@ export type ContextWithUser = {
 
 export type Cluster = cluster;
 export type Appointment = appointment;
+export type Notifications = notifications;
 
 export type ClusterData = Cluster & {
   person: { username: string };

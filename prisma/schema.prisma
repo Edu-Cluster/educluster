@@ -86,7 +86,7 @@ model person {
   username                                      String          @unique @db.VarChar(30)
   is_sysadmin                                   Boolean
   admin_of                                      admin_of[]
-  appointment    appointment[]
+  appointment                                   appointment[]
   cluster                                       cluster[]
   member_of                                     member_of[]
   notifications_notifications_person_idToperson notifications[] @relation("notifications_person_idToperson")

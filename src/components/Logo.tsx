@@ -6,9 +6,7 @@ const Logo = () => {
     <div>
       <Link href="/">
         <div className="cursor-pointer">
-          <h1 className="text-[22px] text-gray-700 searchbox-md:text-[18px]">
-            EduCluster
-          </h1>
+          <h1 className="text-[22px] searchbox-md:text-[18px]">EduCluster</h1>
         </div>
       </Link>
     </div>

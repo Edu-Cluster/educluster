@@ -28,3 +28,8 @@ export enum clusterAssociations {
   IS_MEMBER,
   IS_FOREIGNER,
 }
+
+export enum notificationTypes {
+  INVITATION,
+  WARNING,
+}

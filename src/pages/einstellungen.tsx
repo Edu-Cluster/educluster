@@ -84,7 +84,7 @@ const SettingsPage: NextPage = () => {
             className="h-auto flex flex-col items-center mt-2 input-mask"
           >
             <p className="text-xl mt-5">Neuer Benutzername</p>
-            <div className="mt-4 flex justify-center">
+            <div className="mt-4 flex justify-center p-2">
               <RegisteredSearchField
                 registerInputName="username"
                 name="username"

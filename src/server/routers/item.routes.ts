@@ -56,7 +56,8 @@ export const itemRouter = createRouter()
   })
   .mutation('inviteToCluster', {
     input: clusterInvitationSchema,
-    resolve: async ({ input }) => await sendMemberInvitation({ input }),
+    resolve: async ({ input, ctx }) =>
+      await sendMemberInvitation({ input, ctx }),
   })
   .mutation('updateCluster', {
     input: clusterEditSchema,
