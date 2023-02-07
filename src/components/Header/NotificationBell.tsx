@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import useStore from '../../lib/store';
-import { statusCodes } from '../../lib/enums';
+import { clusterAssociations, statusCodes } from '../../lib/enums';
 import trpc from '../../lib/trpc';
 import { useTheme } from 'next-themes';
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
@@ -14,6 +14,7 @@ type Props = {
 
 const NotificationBell = (props: Props) => {
   const {
+    authUser,
     notifications,
     setNotifications,
     newNotificationsAvailable,
@@ -94,11 +95,38 @@ const NotificationBell = (props: Props) => {
   const { mutate: markAsViewedMutation } = trpc.useMutation(
     ['notification.setAllViewed'],
     {
-      onSuccess: async ({ data }) => {
-        if (data && data.status === statusCodes.SUCCESS) {
-          // TODO
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
+  const { mutate: deleteNotification } = trpc.useMutation(
+    ['notification.deleteOne'],
+    {
+      onSuccess: async (data) => {
+        if (data.status === statusCodes.SUCCESS) {
+          await getNotificationsQuery.refetch();
         }
       },
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
+  const { mutate: addMemberToClusterMutation } = trpc.useMutation(
+    ['item.addMemberToCluster'],
+    {
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
+
+  const { mutate: removeMemberMutation } = trpc.useMutation(
+    ['item.removeMemberFromCluster'],
+    {
       onError: async (err) => {
         console.error(err);
       },
@@ -123,8 +151,37 @@ const NotificationBell = (props: Props) => {
     }
   };
 
-  const respondToInvitation = (response: boolean) => {
-    // TODO Denis: EC-87
+  const respondToInvitation = async (response: boolean, idx: number) => {
+    if (!notifications) {
+      return;
+    }
+
+    const targetNotification = notifications[idx];
+    const { body, id } = targetNotification;
+
+    // @ts-ignore
+    const regMatch = body.match(/#.*/);
+
+    if (!Array.isArray(regMatch)) {
+      return;
+    }
+
+    const clusterId = Number(regMatch[0].split(' ')[0].substring(1));
+
+    if (response) {
+      // User accepted the invitation -> officially add him to the cluster
+      await addMemberToClusterMutation(clusterId);
+    } else {
+      // User rejected the invitation -> remove him as provisional member of the cluster
+      await removeMemberMutation({
+        clusterId,
+        username: authUser?.username || '',
+        type: clusterAssociations.IS_MEMBER,
+      });
+    }
+
+    // Now remove the notification
+    await deleteNotification(id);
   };
 
   return (
@@ -150,7 +207,10 @@ const NotificationBell = (props: Props) => {
         }`}
       >
         <div className="w-full divide-y mt-2">
-          {getNotificationsQuery.isSuccess && notifications ? (
+          {getNotificationsQuery.isLoading ? (
+            <Loader type="div" size={50} />
+          ) : (
+            notifications &&
             notifications.map((notification, idx) => (
               <div
                 key={idx}
@@ -185,7 +245,7 @@ const NotificationBell = (props: Props) => {
                     <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-4 mb-2">
                       <div
                         className="cluster-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
-                        onClick={() => respondToInvitation(true)}
+                        onClick={() => respondToInvitation(true, idx)}
                       >
                         <p className="mr-2 text-emerald-500 dark:text-emerald-500">
                           Annehmen
@@ -194,7 +254,7 @@ const NotificationBell = (props: Props) => {
                       </div>
                       <div
                         className="cluster-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
-                        onClick={() => respondToInvitation(true)}
+                        onClick={() => respondToInvitation(false, idx)}
                       >
                         <p className="mr-2 text-red-500 dark:text-red-500">
                           Ablehnen
@@ -208,8 +268,6 @@ const NotificationBell = (props: Props) => {
                 </div>
               </div>
             ))
-          ) : (
-            <Loader type="main" size={50} />
           )}
         </div>
       </div>

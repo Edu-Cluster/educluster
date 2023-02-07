@@ -10,7 +10,7 @@ import useStore from '../../lib/store';
 import { User } from '../../lib/types';
 import { useRouter } from 'next/router';
 import trpc from '../../lib/trpc';
-import { clusterAssociations } from '../../lib/enums';
+import { clusterAssociations, statusCodes } from '../../lib/enums';
 import Loader from '../Loader';
 
 type Props = {
@@ -73,8 +73,10 @@ const MemberButtonGroup = ({
   const { mutate: removeMemberMutation } = trpc.useMutation(
     ['item.removeMemberFromCluster'],
     {
-      onSuccess: async () => {
-        await membersOfClusterQuery.refetch();
+      onSuccess: async (data) => {
+        if (data.status === statusCodes.SUCCESS) {
+          await membersOfClusterQuery.refetch();
+        }
       },
       onError: async (err) => {
         console.error(err);

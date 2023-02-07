@@ -32,7 +32,7 @@ const SettingsPage: NextPage = () => {
   const { mutate: updateUsernameMutation } = trpc.useMutation(
     ['user.updateUsername'],
     {
-      onSuccess: async ({ data }) => {
+      onSuccess: async (data) => {
         if (data.status === statusCodes.SUCCESS) {
           await userQuery.refetch();
         } else if (data.status === statusCodes.FAILURE) {

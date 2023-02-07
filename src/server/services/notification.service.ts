@@ -32,3 +32,10 @@ export const updateNotificationsOfUser = async (id: bigint) =>
       person_id: id,
     },
   });
+
+export const deleteNotification = async (id: bigint) =>
+  prisma.notifications.delete({
+    where: {
+      id,
+    },
+  });

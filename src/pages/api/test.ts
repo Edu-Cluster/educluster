@@ -9,8 +9,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
-  console.log(req.body, req.query);
-  setCookie('notification', req.query, {
+  setCookie('notification', req.body, {
     req,
     res,
     expires: new Date(Date.now() + 60 * 1000),

@@ -24,6 +24,7 @@ import {
   transformAdminToMember,
   deleteMember,
   deleteAdmin,
+  officiallyInviteUser,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -255,6 +256,10 @@ export const removeMemberFromCluster = async ({
     } else if (input.type === clusterAssociations.IS_ADMIN) {
       await deleteAdmin(personId, input.clusterId);
     }
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
   } catch (err: any) {
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
@@ -317,6 +322,13 @@ export const sendMemberInvitation = async ({
 }) => {
   try {
     const username = ctx?.user?.username || '';
+    const cluster = await readClusterById(input.clusterId);
+
+    if (!cluster) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
 
     for (const id of input.userIds) {
       await provisionallyInviteUser(id, input.clusterId);
@@ -324,7 +336,7 @@ export const sendMemberInvitation = async ({
       if (input.type === notificationTypes.INVITATION) {
         await insertNewNotification(
           'Einladung',
-          `Sie wurden zu einem Cluster eingeladen`,
+          `Sie wurden zum Cluster "${cluster.clustername}#${cluster.id}" eingeladen!`,
           id,
           username,
         );
@@ -341,6 +353,35 @@ export const sendMemberInvitation = async ({
       code: 'INTERNAL_SERVER_ERROR',
       message: err.message,
       originalError: err,
+    });
+  }
+};
+
+export const addMemberToCluster = async ({
+  input,
+  ctx,
+}: {
+  input: number;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const id = ctx?.user?.id;
+
+    if (!id) {
+      return {
+        status: statusCodes.FAILURE,
+      };
+    }
+
+    await officiallyInviteUser(id, input);
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
     });
   }
 };

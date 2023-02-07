@@ -115,7 +115,7 @@ export const readPublicAppointments = async (name?: string) => {
   });
 };
 
-export const readClusterById = async (clusterid: number) =>
+export const readClusterById = async (clusterid: number | bigint) =>
   await prisma.cluster.findUnique({
     where: { id: clusterid },
     include: { person: true },
@@ -286,8 +286,19 @@ export const provisionallyInviteUser = async (
     },
   });
 
-// TODO Denis
-export const officiallyInviteUser = () => {};
+export const officiallyInviteUser = (
+  person_id: number | bigint,
+  cluster_id: number | bigint,
+) =>
+  prisma.member_of.updateMany({
+    data: {
+      is_active: true,
+    },
+    where: {
+      person_id,
+      cluster_id,
+    },
+  });
 
 export const transformMemberToAdmin = async (
   personId: number | bigint,
