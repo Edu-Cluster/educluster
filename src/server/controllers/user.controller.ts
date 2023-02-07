@@ -67,18 +67,14 @@ export const updateUsername = async ({
 
     if (alreadyTaken) {
       return {
-        data: {
-          status: statusCodes.FAILURE,
-        },
+        status: statusCodes.FAILURE,
       };
     }
 
     await updateUserUsername(username, input);
 
     return {
-      data: {
-        status: statusCodes.SUCCESS,
-      },
+      status: statusCodes.SUCCESS,
     };
   } catch (err: any) {
     throw new TRPCError({

@@ -1,8 +1,10 @@
 import { createRouter } from '../createRouter';
 import {
+  deleteOneNotification,
   getNotifications,
   markAllNotificationsAsViewed,
 } from '../controllers/notification.controller';
+import { bigint } from 'zod';
 
 export const notificationRouter = createRouter()
   .query('getAll', {
@@ -10,4 +12,8 @@ export const notificationRouter = createRouter()
   })
   .mutation('setAllViewed', {
     resolve: ({ ctx }) => markAllNotificationsAsViewed({ ctx }),
+  })
+  .mutation('deleteOne', {
+    input: bigint(),
+    resolve: ({ input }) => deleteOneNotification({ input }),
   });

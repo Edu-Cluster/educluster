@@ -1,6 +1,7 @@
 import { ContextWithUser } from '../../lib/types';
 import { statusCodes } from '../../lib/enums';
 import {
+  deleteNotification,
   readNotificationsOfUser,
   updateNotificationsOfUser,
 } from '../services/notification.service';
@@ -50,9 +51,23 @@ export const markAllNotificationsAsViewed = async ({
     await updateNotificationsOfUser(id);
 
     return {
-      data: {
-        status: statusCodes.SUCCESS,
-      },
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const deleteOneNotification = async ({ input }: { input: bigint }) => {
+  try {
+    await deleteNotification(input);
+
+    return {
+      status: statusCodes.SUCCESS,
     };
   } catch (err: any) {
     throw new TRPCError({

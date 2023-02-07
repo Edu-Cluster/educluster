@@ -13,6 +13,7 @@ import {
   getMembersOfCluster,
   updateMemberOfCluster,
   removeMemberFromCluster,
+  addMemberToCluster,
 } from '../controllers/item.controller';
 import {
   clusterSchema,
@@ -21,7 +22,7 @@ import {
   updateMemberSchema,
   clusterInvitationSchema,
 } from '../schemata/cluster.schema';
-import { number, string } from 'zod';
+import { bigint, number, string } from 'zod';
 
 export const itemRouter = createRouter()
   .query('mine', {
@@ -58,6 +59,10 @@ export const itemRouter = createRouter()
     input: clusterInvitationSchema,
     resolve: async ({ input, ctx }) =>
       await sendMemberInvitation({ input, ctx }),
+  })
+  .mutation('addMemberToCluster', {
+    input: number(),
+    resolve: async ({ input, ctx }) => await addMemberToCluster({ input, ctx }),
   })
   .mutation('updateCluster', {
     input: clusterEditSchema,
