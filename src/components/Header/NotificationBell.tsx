@@ -4,7 +4,7 @@ import { clusterAssociations, statusCodes } from '../../lib/enums';
 import trpc from '../../lib/trpc';
 import { useTheme } from 'next-themes';
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
-import { deleteCookie, setCookie } from 'cookies-next';
+import { deleteCookie } from 'cookies-next';
 import Loader from '../Loader';
 
 type Props = {
@@ -209,8 +209,7 @@ const NotificationBell = (props: Props) => {
         <div className="w-full divide-y mt-2">
           {getNotificationsQuery.isLoading ? (
             <Loader type="div" size={50} />
-          ) : (
-            notifications &&
+          ) : notifications && notifications.length ? (
             notifications.map((notification, idx) => (
               <div
                 key={idx}
@@ -263,11 +262,15 @@ const NotificationBell = (props: Props) => {
                       </div>
                     </div>
                   ) : (
-                    <></>
+                    <div>TEST</div>
                   )}
                 </div>
               </div>
             ))
+          ) : (
+            <div className="h-[500px] w-full flex justify-center items-center">
+              <p>Keine Benachrichtigungen 🥱</p>
+            </div>
           )}
         </div>
       </div>
