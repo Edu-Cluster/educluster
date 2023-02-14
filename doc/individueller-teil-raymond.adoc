@@ -85,7 +85,7 @@ In weiterer Folge ist anzumerken, dass Angular aus der Kiste typensicher ist. Ty
 In diesem Abschnitt werden die drei bekanntesten Backend-Technologien stand 2022 footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 30.10.2022] präsentiert, inklusiv eine moderne vierte Option, die sich sowohl als Frontend- als auch als Backend-Technologie kategorisieren lässt.
 
 ===== Express.js
-Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei berühmtesten Tech-Stacks footnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
+Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei beliebtesten Tech-Stacks footnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
 
 Mit Express werden Funktionalitäten von Node.js vereinfacht und weitere Features angeboten, wie beispielsweise ein Routing-System oder eine Middleware-Schicht.
 
@@ -135,7 +135,7 @@ RPC steht für “Remote Procedure Call” und ist ein Kommunikationssystem für
 
 Das älteste RPC-Protokoll – XML-RPC – wurde vor SOAP und REST entwickelt, aber mittlerweile gibt es moderne Alternativen. In 2016 veröffentlichte Google ein plattformübergreifendes und höchst performantes RPC-Framework, den sogenannten gRPC. Dieses eignet sich besonders gut für den Einsatz in einer Microservice-Architektur.
 
-Für Node.js und insbesondere in Kombination mit Next.js gibt es ein weiteres Framework, das auch Typensicherheit anbietet. Es nennt sich tRPC und ist ein vitaler Bestandteil des t3-Stacks.footnote:[Vgl. https://create.t3.gg/, abgerufen am 04.11.2022]
+Im Jahr 2021 wurde tRPC veröffentlicht, ein RPC-Framework, das auf TypeScript basiert und als Konkurrent gegen GraphQL bei der Popularisierung von typensicheren APIs gilt. tRPC ist ein vitaler Bestandteil des t3-Stacks.footnote:[Vgl. https://create.t3.gg/, abgerufen am 04.11.2022]
 
 ===== SOAP
 “Simple Object Access Protocol”, oder kurz SOAP, ist ein XML-basiertes Protokoll, das zur Verbreitung der sogenannten „Web Services“ geführt hat. Das XML-Format legt die Struktur der Request- und Response-Nachrichten fest.footnote:[Vgl. https://stoplight.io/api-types/soap-api, abgerufen am 06.11.2022]
@@ -168,48 +168,124 @@ Mit GraphQL ist es möglich, höchst spezifische Abfragen clientseitig zu defini
 
 Eine GraphQL-API implementiert GraphQL serverseitig und clientseitig. Es gibt bereits mehrere Bibliotheken, die eine vollständige Implementierung bereitstellen, wie beispielsweise Apollo Client/Server.footnote:[Vgl. https://graphql.org/code/, aufgerufen am 06.11.2022]
 
-==== Beurteilungsverfahren
-In diesem Abschnitt werden die einzelnen Beurteilungskriterien, die sich aus den bereits genannten Anforderungen ableiten, vorgestellt und erklärt. Im Anschluss daran wird die Beurteilung durchgeführt.
-
-===== Beurteilungskriterien
+==== Beurteilungskriterien
 
 Zunächst werden die Beurteilungskriterien vorgestellt.
 
-====== Persönliche Erfahrung
+===== Persönliche Erfahrung
 Angesichts des großen Ökosystems von Technologien im Bereich der Webentwicklung ist die Auswahl eines geeigneten Stacks in erster Linie von der persönlichen Erfahrung der einzelnen Projektmitglieder abhängig. Die Vertrautheit mit Frameworks steigert die Geschwindigkeit des Entwicklungsprozesses und vermindert die Chancen von Programmfehlern und Bugs. 
 
 Persönliche Erfahrung ist ein großer Vorteil und gilt als wichtigstes Kriterium bei der Auswahl. Daher wird eine Gewichtung von 40% vergeben.
 
-====== Vereinfachung der Komplexität
-Frameworks dienen in erster Linie die Aufgabe, den Programmieraufwand zu reduzieren und die Effizienz des Programmierers zu steigern. Je besser ein Frameworks diese Aufgabe erfüllt, desto besser schneidet es auch ab im Vergleich zu anderen Frameworks. Der Programmieraufwand wird generell durch Automatisierung von Prozessen und "Out-of-the-box"-Bereitstellung von Strukturen reduziert. Bei der Steigerung der Effizienz trägt eine intuitive Syntax am meisten bei.
+===== Vereinfachung der Komplexität
+Frameworks dienen in erster Linie die Aufgabe, den Programmieraufwand zu reduzieren und die Effizienz des Programmierers zu steigern. Je besser ein Framework diese Aufgabe erfüllt, desto besser schneidet es auch ab im Vergleich zu anderen Frameworks. Der Programmieraufwand wird generell durch Automatisierung von Prozessen und "Out-of-the-box"-Bereitstellung von Strukturen reduziert. Bei der Steigerung der Effizienz trägt eine intuitive Syntax am meisten bei.
 
 Die Vereinfachung der Komplexität bekommt eine Gewichtung von 25% aufgrund ihrer Wichtigkeit.
 
-====== Modernheit
+===== Modernheit
 Es soll eine Applikation entwickelt werden, die nicht schon in den nächsten paar Monaten nach der Entwicklung auf veraltete Technologien basiert. Das ist vor allem deswegen wichtig, weil sich in der Webentwicklung sehr schnell neue Frameworks etablieren. EduCluster benötigt Frameworks und eine API-Architektur, die auf dem neuesten Stand sind und den Test der Zeit bestehen können.
 
 Für die Modernheit wird eine 20%ige-Gewichtung vergeben.
 
-====== Typensicherheit
-Die Programmiersprache JavaScript unterstützt keine Typensicherheit, da es lediglich eine interpretierte Sprache ist. Allerdings kann TypeScript diese Anforderung mit seinem Compiler erfüllen. Das würde sowohl den Frontend als auch den Backend individuell typensicher machen. Darüber hinaus soll sichergestellt werden, dass bei der Kommunikation zwischen diesen beiden Seiten kein Missverständnis passiert, weshalb auch die Schnittstellen typensicher sein soll.
-
-Typensicherheit bekommt eine Gewichtung von 10%.
-
-====== Beliebtheit
+===== Beliebtheit
 Beliebte Frameworks haben eine größere Anzahl an Anhänger. Dementsprechend stehen auf Foren wie StackOverflow mehr Fragen und Antworten, die einem bei Schwierigkeiten schnell aushelfen können. Auch wenn eine Frage noch nicht gestellt wurde ist aufgrund der hohen Anzahl an Experten mit einer niedrigen Reaktionszeit zu rechnen. Das ist insofern ein Vorteil, dass die Dokumentation eines Frameworks allein meistens nicht ausreicht um alle Fragen abzudecken, die während der Entwicklung auftauchen.
 
-Diesem Kriterium wird eine Gewichtung von 5% vergeben, da die Anzahl von Fragen großteils schon durch die persönliche Erfahrung der Teammitglieder reduziert werden soll.
+Diesem Kriterium wird eine Gewichtung von 15% vergeben, da die Anzahl von Fragen großteils schon durch die persönliche Erfahrung der Teammitglieder reduziert werden soll.
 
 ===== Überblick der Beurteilungskriterien und deren Gewichtung
+Zusammenfassend werden folgende Beurteilungskriterien mit ihrer entsprechenden Gewichtung bei der Beurteilung verwendet:
+[%header,format=csv]
+|===
+Beurteilungskriterium, Gewichtung
+Persönliche Erfahrung, 40%
+Vereinfachung der Komplexität, 25%
+Modernheit, 20%
+Beliebtheit, 15%
+|===
 
-TODO: Tabelle aufbauen
-
-===== Beurteilung
+==== Beurteilung
 Nun sollen die zur Auswahl stehende Möglichkeiten anhand der Beurteilungskriterien bewertet werden. Anschließend wird ein Sieger angekündigt, der bei der technischen Umsetzung benutzt werden soll.
 
-TODO
+===== Beurteilung der Frontend-Technologien
+Dieser Abschnitt befasst sich mit der Bewertung der Frontend-Frameworks.
 
-===== Entscheidung und Begründung der Auswahl
+====== Persönliche Erfahrung
+
+ - React.js: React ist ein auf JavaScript basierendes Framework. JavaScript ist allen Projektmitgliedern bekannt aus dem Unterricht. Mit dem Framework hat allerdings nur ein Projektmitglied viel Erfahrung, weil er mit dieses Framework sowohl in seiner Freizeit als auch in der Firma Projekte umgesetzt hat. Hingegen konnten die anderen zwei Mitglieder keine Erfahrung mit React sammeln. Das Erlernen des Frameworks könnte wegen des erfahrenen Mitglieds um ein vielfaches beschleunigt werden, weshalb React.js die Note 2 bekommt.
+ - Vue.js: Vue basiert ebenfalls auf die Programmiersprache JavaScript und ist daher von jedem Mitglied erlernbar. Allerdings haben alle Mitglieder nur die Grundlagen des Frameworks aus dem Unterricht erlernt. Diese Kenntnisse reichen leider für die Umsetzung der Webapplikation nicht aus und müssten von jedem Mitglied erweitert werden. Aus diesem Grund erhält Vue.js die Note 3.
+ - Angular: Angular basiert auf TypeScript. Mit TypeScript hat ebenfalls nur ein Mitglied Erfahrung, aber da die Typensicherheit einen wichtigen Bestandteil der erfolgreichen Umsetzung der Webapplikation darstellt, wird TypeScript auf jeden Fall von jedem Mitglied gemeistert werden müssen. Mit Angular selbst hat kein einzelnes Mitglied Erfahrung. Deshalb bekommt Angular die Note 5.
+
+====== Vereinfachung der Komplexität
+
+ - React.js: React ermöglicht eine "Separation of Concerns", oder Abtrennung der Bedenken, auf der Ebene der UI. In sogenannten Komponenten werden React-Elemente in JSX, einer Erweiterung der Programmiersprache JavaScript, erstellt und in einer Hierarchie geordnet, die der gewünschten Hierarchie im DOM entspricht. Weitere Features wie States, Props, Hooks und Lifecycle-Methoden verleihen Entwickler mit mehr Kontrolle über ihr Frontend. React erhält die Note 2.
+ - Vue.js: Vue hat sehr viel mit React gemeinsam. Im Gegensatz zu React sind Vue Komponente nicht in einer einzigen Datei abgebildet, sondern bestehen aus mehreren Dateien, die HTML, CSS und JavaScript abtrennen. Allerdings ist es auch in Vue möglich JSX zu verwenden. Während React eine unidirektionale Datenbindung hat, besitzt Vue eine bidirektionale Datenbindung. Diese Tatsache erhöht die Komplexität und macht Vue anfälliger auf Endlosschleifen. Deshalb wird die Note 3 vergeben.
+ - Angular: Angular ist aus dieser Gruppe das schwierigste Framework zu erlernen, aber gleichzeitig bietet es die breiteste Palette an Werkzeugen, um den Entwicklungsprozess zu verbessern. Es basiert auf TypeScript und nutzt dessen Decorators bei der Erstellung von Komponenten. Angular und Vue haben viele Ähnlichkeiten, aber Angular hat mehr Vorgaben. Auch hier wird die Note 2 vergeben.
+
+====== Modernheit
+ - React.js: React wurde im Mai 2013 veröffentlicht und ist damit das älteste Framework der Gruppe. Es sind bereits 10 Jahre seit der Veröffentlichung vergangen, aber React hat sich kontinuierlich verbessert und ist in dieser Zeit ständig auf dem modernsten Stand geblieben im Bereich der Frontend-Frameworks. Aus diesem Grund verdient React zumindest die Note 3.
+ - Vue.js: Vue wurde im Februar 2014 veröffentlicht. Weil es nicht einmal um ein Jahr jünger ist als React und sich nicht wesentlich von diesem unterscheidet, erhält das Framework ebenfalls die Note 3.
+ - Angular: Angular wurde im September 2016 veröffentlicht und ist das jüngste Framework. Das Framework hat die Nutzung von TypeScript im Frontend popularisiert und hat moderne Features wie Dependency Injection und Decorators. Aus diesem Grund verdient Angular die Note 2.
+
+====== Beliebtheit
+ - React.js: React ist das beliebteste Framework aus der Gruppe.footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 20.01.2023] Ungefähr 82% der Entwickler nutzen das Framework laut State of JS 2022. Die Zahlen sprechen für sich: React verdient die Note 1.
+ - Vue.js: Diesselbe Statistik zeigt, dass ungefähr 46% der Entwickler Vue.js nutzen. Damit erhält Vue die Note 3.
+ - Angular.js: Angular hat gegenüber von Vue nur einen winzigen Vorteil. Ungefähr 49% der Entwickler nutzen das Framework. Hier wurde ebenfalls die Note 3 vergeben.
+
+===== Beurteilung er Backend-Technologien
+Dieser Abschnitt befasst sich mit der Bewertung der Backend-Frameworks.
+
+====== Persönliche Erfahrung
+ - Express.js: Express ist eines der bekanntesten Web-Frameworks und basiert auf Node. Alle Mitglieder durften im Unterricht Erfahrung mit Express sammeln, allerdings ist kein Mitglied besonders gut vertraut mit dem Framework, weshalb die Note 2 vergeben wird.
+ - ASP .NET Core: Obwohl ASP .NET Core auch zu den beliebten Web-Frameworks gehört, hat nur ein Mitglied damit Erfahrung auf einem grundlegenden Niveau. Dementsprechend wird die Note 4 vergeben.
+ - Django: Dieses ist auch ein beliebtes Framework, allerdings hat kein Mitglied jegliche Erfahrung damit. Aus diesem Grund wird die note 5 vergeben.
+ - Next.js: Next ist eine ziemlich neue Technologie. Trotzdem konnten zwei Mitglieder mit dem Framework Erfahrung sammeln. Eines der Mitglieder hat sogar fortgeschrittene Erfahrung mit der Umsetzung von Webapplikationen basierend auf Next. Deswegen bekommt auch Next.js die Note 2.
+
+====== Vereinfachung der Komplexität
+- Express.js: Express unterstützt Entwickler dabei das Backend ihrer Applikation mit REST-Endpunkten auszustatten und globale Middlewares einzubinden, die weitere Funktionalitäten wie die Authentifizierung und Autorisierung von Benutzer oder das Logging von Funktionsaufrufen ermöglichen. Dadurch wird die Komplexität des Backend-Aufbaus vereinfacht. Allerdings hat das Framework wenige Rendering-Tools anzubieten. Express stützt sich auf die Model-View-Controller-Architektur und erzwingt eine gewisse Struktur. Deswegen erhält es die Note 3.
+- ASP .NET Core: ASP .NET Core bietet eine einheitliche Umgebung zum Erstellen von UI und API. Außerdem sind die clientseitige Verwendung von C# und die einheitliche Strukturierung von einzelne Seiten auf der Webseite hilfreiche Tools um den Entwicklern mehr Kontrolle zu verleihen. ASP .NET Core enthält auch integrierte Abhängigkeitsinjektion und parallele Versionsverwaltung. Deswegen wird die Note 2 vergeben.
+- Django: Django ist einzigartig, weil es im Gegensatz zu den anderen Frameworks eine Möglichkeit bereitstellt, die Applikation mit der Datenbank zu verbinden und darauf zuzugreifen. Darüber hinaus übernimmt das Framework das Management der Nutzer-Sessions und bietet eine eigene Templating-Sprache zur Erzeugung dynamischer HTML-Inhalte für MVC-Applikationen. Django erhält die Note 1.
+- Next.js: Next hat im Gegensatz zu Express keine Vorgaben an die API-Architektur. Das Framework kann in Verbindung mit jeder Architektur genutzt werden. Darüber hinaus bietet es moderne Features, um das Rendering durch statische oder serverseitige Implementierungen zu verbessern. Für cloudbasierte Applikationen stellt Next kostenlos eine Cloudinfrastruktur sowie eine CI/CD-Pipeline bereit. Angesichts dieser Vorteile verdient das Framework die Note 1.
+
+====== Modernheit
+- Express.js: Express wurde im November 2010 veröffentlicht. Obwohl es immer noch ein essenzieller Teil der beliebtesten Tech-Stacks im Bereich der Webentwicklung gilt, ist es bereits 13 Jahre alt. Würden RESTful APIs in der Zukunft nicht mehr die beliebtesten sein, wäre Express in großer Gefahr, ersetzt zu werden. Aus diesem Grund erhält es die Note 4.
+- ASP .NET Core: ASP .NET Core wurde im Juni 2016 veröffentlicht und ist der Nachfolger vom ASP .NET. Das Framework hat moderne Features wie plattformübergreifende Unterstützung, verbesserte Modularität mit Docker-Unterstützung und eine solide Cloud-Unterstützung footnote:[Vgl. https://jelvix.com/blog/asp-net-vs-asp-net-core#:~:text=Just%20like%20ASP.NET%2C%20ASP,better%20than%20ASP.NET%20does., abgerufen am 20.01.2023]. Das Framework verdient die Note 2.
+- Django: Django ist das älteste Framework in der Gruppe. Es wurde im Juli 2005 veröffentlicht. Es steht zur Debatte, ob dieses Framework überhaupt noch relevant genug ist, um es heutzutage in einem Tech-Stack aufzunehmen. Wegen des erhöhten Risikos erhält Django die Note 5.
+- Next.js: Next ist das jüngste Framework in der Gruppe und wurde im October 2016 veröffentlicht. Seine Features sind für die Entwicklung moderner Webapplikationen gedacht und für Cloud-Hosting optimiert. Features wie die Edge Functions, die die Bereitstellung von Inhalten von dem Nutzer am nächsten CDN-Server ermöglichen, sind ein Beweis dafür, dass Next im Gegensatz zu anderen Backend-Frameworks ein Pionier im Bereich Cloud ist. Deshalb verdient es die Note 1.
+
+====== Beliebtheit
+- Express.js: Express schneidet bei Statistiken über beliebteste JavaScript-Frameworks immer gut ab footnote:[Vgl. https://userguiding.com/blog/javascript-frameworks/, abgerufen am 20.01.2023]. Das bewährte Framework gilt als Standard in Tech-Stacks wie MERN, MEAN und MEVN. Dank dieser Beliebtheit erhält Express die Note 1.
+- ASP .NET Core: ASP .NET Core ist nach Express das beliebteste Backend-Framework footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 20.01.2023]. Unternehmen wie Slack und StackOverflow nutzen das Framework. Aus diesen Gründen erhält es die Note 2.
+- Django: Django ist hinter ASP .NET Core ein weiteres beliebtes Framework. Unternehmen wie Google, YouTube und Instagram nutzen das Framework. Relativ zu den anderen Frameworks ist Django trotz seines Alters in den Top 10 beliebteste Backend-Frameworks. Deshalb wird auch Django die Note 2 vergeben.
+- Next.js: Next ist im Vergleich zu den anderen Frameworks ein Neuling, allerdings wurde das Framework bereits in das Tech-Stack vieler großen Unternehmen aufgenommen. Beispiele dafür sind Netflix, Vimeo, Twitch, Coinbase, Nike, Uber und OpenAI. Next ist zwar aktuell noch nicht so beliebt die anderen Frameworks, nichtsdestotrotz verdient das Framework wegen des positiven Trends die Note 3.
+
+===== Beurteilung der API-Architekturen
+Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
+
+====== Persönliche Erfahrung
+ - RPC: Mit der RPC-Architektur hat ein Mitglied fortgeschrittene Erfahrung und zwei Mitglieder grundlegende Erfahrung. Somit wird die Note 2 vergeben.
+ - SOAP: Kein Mitglied hat jegliche Erfahrung mit der SOAP-Architektur. Aus diesem Grund erhält sie die Note 5.
+ - REST: Gleichfalls wie bei RPC hat ein Mitglied fortgeschrittene Erfahrung und zwei Mitglieder grundlegende Erfahrung. Auch hier wird die Note 2 vergeben.
+ - GraphQL: Mit GraphQL hat nur ein Mitglied grundlegende Erfahrung. Daher wird die Note 4 vergeben.
+
+====== Vereinfachung der Komplexität
+- RPC: gRPC und tRPC  sind höchst performant und gleichzeitig leicht aufzusetzen. Beide haben sehr gute Dokumentationen auf ihrer Webseite und sind in dieser Hinsicht im Gegensatz zu SOAP und REST besser darin, neue Entwickler bei der Aufsetzung zu unterstützen. Hier wird die Note 2 vergeben.
+- SOAP: SOAP ist für seinen großen Overhead berüchtigt. Im Gegensatz zu anderen Architekturen codiert sie ihre Repräsentationen in XML und erhöht somit die Bytegroße von Paketen um ein Vielfaches. Diese Hindernisse erhöhen eher die Komplexität, statt sie zu vereinfachen. Deswegen wird die Note 5 vergeben.
+- REST: REST ist eine sehr schlanke API-Architektur, das ihre Repräsentationen in JSON codiert und die Bytegroße minimal haltet. Das Programmieren von Endpoints ist sehr einfach. Dabei werden die HTTP-CRUD-Methoden verwendet werden. Diese Art der Komplexitätsreduktion verdient die Note 1.
+- GraphQL: GraphQL ist sehr gut darin, Probleme zu lösen, die erst bei der Y-Skalierung einer Applikation entstehen footnote:[Vgl. https://akfpartners.com/techblog/2008/05/08/splitting-applications-or-services-for-scale/, abgerufen am 20.01.2023]. In dieser Hinsicht vereinfacht GraphQL die Komplexität höchst komplexer Applikationen. Weniger komplexe Applikation wie voraussichtlich EduCluster profitieren von dieser Vereinfachung nicht. Ganz im Gegenteil: die Aufsetzung von GraphQL selbst führt unnötige Komplexität ein. Aus diesem Grund wird die Note 4 vergeben.
+
+====== Modernheit
+- RPC: Unter RPC versteht man verschiedene Formen der Architektur, wie XML-RPC, gRPC und tRPC. XML-RPC ist die älteste davon und wird heutzutage nicht mehr oft verwendet. Hingegen sind gRPC und tRPC moderne API-Architekturen. gRPC wurde in 2016 und tRPC erst im Jahr 2021 eingeführt. Wegen dieser beiden Varianten von RPC wird die Note 1 vergeben.
+- SOAP: SOAP wurde im Jahr 1999 vom Wide Web-Konsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
+- REST: REST wurde im Jahr 2000 von Roy Fielding eingeführt und begann ab 2005 immer beliebter zu werden. Das macht diese Architektur relativ alt. Trotzdem gilt auch noch heute als moderne API-Architektur, weshalb die Note 3 vergeben wird.
+- GraphQL: GraphQL wurde im Jahr 2015 veröffentlicht. Diese API-Architektur ist relativ neu und ihre Features -- singulärer Endpunkt, einmalige Fetches und Typensicherheit -- sind höchst modern. Daher wird die Note 1 vergeben.
+
+====== Beliebtheit
+- RPC: RPC ist zwar performant, allerdings ist sein Einsatz nur auf spezifische Fälle eingeschränkt, weshalb diese Architektur in der Gruppe an letzter Stelle ist, nach Beliebtheit sortiert foornote:[Vgl. https://www.webscrapingapi.com/the-5-most-popular-api-styles-and-what-sets-them-apart, abgerufen am 20.01.2023]. In diesen spezifischen Fällen ist die Architektur allerdings sehr beliebt, weshalb die Note 4 vergeben wird.
+- SOAP: SOAP ist nach REST die zweitbeliebteste Architektur. Auch wenn der Einsatz von SOAP-APIs aktuell nachlässt, bleibt diese API-Architektur eine solide Entscheidung für viele Tech-Stacks. SOAP wird die Note 2 vergeben.
+- REST: REST ist die beliebteste API-Architektur in der Gruppe. Das könnte sich aber in nächste Zeit wegen des erhöhten Einsatzes von Microservices, wo GraphQL und gRPC eine bessere wahl sind, ändern. Nichtsdestotrotz verdient diese Architektur aktuell die Note 1.
+- GraphQL: Obwohl GraphQL ein Neuling ist, ist diese Architektur immer im Top 3 beliebteste API-Architekturen zu finden. Deswegen verdient sie die Note 3.
+
+==== Entscheidung und Begründung der Auswahl
 TODO
 
 === Technische Umsetzung
@@ -227,9 +303,6 @@ https://create.t3.gg/
 https://create.t3.gg/en/usage/trpc
 https://www.javatpoint.com/spring-boot-architecture
 (Architektur erklären und bildlich darstellen)
-
-==== Integration der Untis-Schnittstelle
-https://webuntis.noim.me/
 
 === Reflexion der eigenen Arbeit
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
