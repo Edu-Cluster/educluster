@@ -28,9 +28,9 @@ model appointment {
   date_until                   DateTime                 @db.Timestamptz(6)
   roomname                     String?                  @db.VarChar(20)
   cluster                      BigInt?
-  creator                      BigInt
+  creator                      BigInt?
   cluster_appointmentTocluster cluster?                 @relation(fields: [cluster], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  person                       person                   @relation(fields: [creator], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  person                       person?                  @relation(fields: [creator], references: [id], onDelete: NoAction, onUpdate: NoAction)
   room                         room?                    @relation(fields: [roomname], references: [name], onDelete: NoAction, onUpdate: NoAction)
   topics_for_appointment       topics_for_appointment[]
 }
@@ -39,16 +39,18 @@ model cluster {
   id          BigInt        @id @default(autoincrement())
   inserted_at DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
   updated_at  DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
-  teams_id    String?       @unique @db.VarChar(30)
-  channel_id  String?       @db.VarChar(30)
+  teams_id    String        @db.VarChar(30)
+  channel_id  String        @db.VarChar(30)
   creator     BigInt
   clustername String        @unique @db.VarChar(50)
   description String?
-  is_private  Boolean?      @default(false)
+  is_private  Boolean       @default(false)
   person      person        @relation(fields: [creator], references: [id], onDelete: NoAction, onUpdate: NoAction)
   admin_of    admin_of[]
   appointment appointment[]
   member_of   member_of[]
+
+  @@unique([teams_id, channel_id])
 }
 
 model equipment {
@@ -143,4 +145,16 @@ model notifications {
   viewed                                 Boolean?
   person_notifications_person_idToperson person   @relation("notifications_person_idToperson", fields: [person_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   person_notifications_senderToperson    person?  @relation("notifications_senderToperson", fields: [sender], references: [username], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model teaching_times {
+  teaching_hour Int    @id
+  begin         String @db.VarChar(5)
+  end_          String @db.VarChar(5)
+}
+
+model room_size {
+  seatcount String @id @db.VarChar(30)
+  minimum   Int
+  maximum   Int
 }
