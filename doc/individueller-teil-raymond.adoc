@@ -57,9 +57,9 @@ Zu guter Letzt soll auf die Beliebtheit der jeweiligen Technologien geachtet wer
 Dieser Abschnitt umfasst die drei bekanntesten Frontend-Technologien stand 2022. footnote:[Vgl. https://technostacks.com/blog/best-frontend-frameworks/, abgerufen am 29.10.2022]
 
 ===== React.js
-React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für den Frontend. Es wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
+React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für das Frontend. Sie wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
 
-Abgesehen davon, dass sie die bekannteste JavaScript Bibliothek ist, bietet React auch eine breite Palette an Features.
+Abgesehen davon, dass sie die bekannteste JavaScript-Bibliothek ist, bietet React auch eine breite Palette an Features.
 
 Zum einen besitzt sie ein virtuelles DOM footnote:[Vgl. https://reactjs.org/docs/faq-internals.html, abgerufen am 29.10.2022], das zwischengespeichert und mit dem tatsächlichen DOM synchronisiert wird, um nur diejenigen Komponenten zu rendern, die sich geändert haben. Damit erzielt React eine Erhöhung der Performanz und ermöglicht eine deklarative API. Das bedeutet, dass der Entwickler den erwünschten UI-Zustand definieren kann und React führt im Hintergrund die benötigte Arbeit durch, damit das DOM diesen Zustand entspricht.
 
@@ -211,8 +211,8 @@ Dieser Abschnitt befasst sich mit der Bewertung der Frontend-Frameworks.
 
 ====== Persönliche Erfahrung
 
- - React.js: React ist ein auf JavaScript basierendes Framework. JavaScript ist allen Projektmitgliedern bekannt aus dem Unterricht. Mit dem Framework hat allerdings nur ein Projektmitglied viel Erfahrung, weil er mit dieses Framework sowohl in seiner Freizeit als auch in der Firma Projekte umgesetzt hat. Hingegen konnten die anderen zwei Mitglieder keine Erfahrung mit React sammeln. Das Erlernen des Frameworks könnte wegen des erfahrenen Mitglieds um ein vielfaches beschleunigt werden, weshalb React.js die Note 2 bekommt.
- - Vue.js: Vue basiert ebenfalls auf die Programmiersprache JavaScript und ist daher von jedem Mitglied erlernbar. Allerdings haben alle Mitglieder nur die Grundlagen des Frameworks aus dem Unterricht erlernt. Diese Kenntnisse reichen leider für die Umsetzung der Webapplikation nicht aus und müssten von jedem Mitglied erweitert werden. Aus diesem Grund erhält Vue.js die Note 3.
+ - React.js: React ist eine auf JavaScript basierende Bibliothek. JavaScript ist allen Projektmitgliedern bekannt aus dem Unterricht. Mit der Bibliothek hat allerdings nur ein Projektmitglied viel Erfahrung, weil er mit ihr sowohl in seiner Freizeit als auch in der Firma Projekte umgesetzt hat. Hingegen konnten die anderen zwei Mitglieder keine Erfahrung mit React sammeln. Das Erlernen der Bibliothek könnte wegen des erfahrenen Mitglieds um ein vielfaches beschleunigt werden, weshalb React.js die Note 2 bekommt.
+ - Vue.js: Vue basiert ebenfalls auf die Programmiersprache JavaScript und ist daher von jedem Mitglied erlernbar. Allerdings haben alle Mitglieder nur die Grundlagen der Bibliothek aus dem Unterricht erlernt. Diese Kenntnisse reichen leider für die Umsetzung der Webapplikation nicht aus und müssten von jedem Mitglied erweitert werden. Aus diesem Grund erhält Vue.js die Note 3.
  - Angular: Angular basiert auf TypeScript. Mit TypeScript hat ebenfalls nur ein Mitglied Erfahrung, aber da die Typensicherheit einen wichtigen Bestandteil der erfolgreichen Umsetzung der Webapplikation darstellt, wird TypeScript auf jeden Fall von jedem Mitglied gemeistert werden müssen. Mit Angular selbst hat kein einzelnes Mitglied Erfahrung. Deshalb bekommt Angular die Note 5.
 
 ====== Vereinfachung der Komplexität
@@ -222,12 +222,12 @@ Dieser Abschnitt befasst sich mit der Bewertung der Frontend-Frameworks.
  - Angular: Angular ist aus dieser Gruppe das schwierigste Framework zu erlernen, aber gleichzeitig bietet es die breiteste Palette an Werkzeugen, um den Entwicklungsprozess zu verbessern. Es basiert auf TypeScript und nutzt dessen Decorators bei der Erstellung von Komponenten. Angular und Vue haben viele Ähnlichkeiten, aber Angular hat mehr Vorgaben. Auch hier wird die Note 2 vergeben.
 
 ====== Modernheit
- - React.js: React wurde im Mai 2013 veröffentlicht und ist damit das älteste Framework der Gruppe. Es sind bereits 10 Jahre seit der Veröffentlichung vergangen, aber React hat sich kontinuierlich verbessert und ist in dieser Zeit ständig auf dem modernsten Stand geblieben im Bereich der Frontend-Frameworks. Aus diesem Grund verdient React zumindest die Note 3.
+ - React.js: React wurde im Mai 2013 veröffentlicht und ist damit die älteste Technologie aus der Gruppe. Es sind bereits 10 Jahre seit der Veröffentlichung vergangen, aber React hat sich kontinuierlich verbessert und ist in dieser Zeit ständig auf dem modernsten Stand geblieben im Bereich der Frontend-Frameworks. Aus diesem Grund verdient React zumindest die Note 3.
  - Vue.js: Vue wurde im Februar 2014 veröffentlicht. Weil es nicht einmal um ein Jahr jünger ist als React und sich nicht wesentlich von diesem unterscheidet, erhält das Framework ebenfalls die Note 3.
  - Angular: Angular wurde im September 2016 veröffentlicht und ist das jüngste Framework. Das Framework hat die Nutzung von TypeScript im Frontend popularisiert und hat moderne Features wie Dependency Injection und Decorators. Aus diesem Grund verdient Angular die Note 2.
 
 ====== Beliebtheit
- - React.js: React ist das beliebteste Framework aus der Gruppe.footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 20.01.2023] Ungefähr 82% der Entwickler nutzen das Framework laut State of JS 2022. Die Zahlen sprechen für sich: React verdient die Note 1.
+ - React.js: React ist die beliebteste Technologie aus der Gruppe.footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 20.01.2023] Ungefähr 82% der Entwickler nutzen React laut State of JS 2022. Die Zahlen sprechen für sich: React verdient die Note 1.
  - Vue.js: Diesselbe Statistik zeigt, dass ungefähr 46% der Entwickler Vue.js nutzen. Damit erhält Vue die Note 3.
  - Angular.js: Angular hat gegenüber von Vue nur einen winzigen Vorteil. Ungefähr 49% der Entwickler nutzen das Framework. Hier wurde ebenfalls die Note 3 vergeben.
 
@@ -264,11 +264,11 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 ====== Persönliche Erfahrung
  - RPC: Mit der RPC-Architektur hat ein Mitglied fortgeschrittene Erfahrung und zwei Mitglieder grundlegende Erfahrung. Somit wird die Note 2 vergeben.
  - SOAP: Kein Mitglied hat jegliche Erfahrung mit der SOAP-Architektur. Aus diesem Grund erhält sie die Note 5.
- - REST: Gleichfalls wie bei RPC hat ein Mitglied fortgeschrittene Erfahrung und zwei Mitglieder grundlegende Erfahrung. Auch hier wird die Note 2 vergeben.
+ - REST: Mit REST haben alle drei Mitglieder grundlegende Erfahrung. Die REST-Architektur erhält dafür die Note 3.
  - GraphQL: Mit GraphQL hat nur ein Mitglied grundlegende Erfahrung. Daher wird die Note 4 vergeben.
 
 ====== Vereinfachung der Komplexität
-- RPC: gRPC und tRPC  sind höchst performant und gleichzeitig leicht aufzusetzen. Beide haben sehr gute Dokumentationen auf ihrer Webseite und sind in dieser Hinsicht im Gegensatz zu SOAP und REST besser darin, neue Entwickler bei der Aufsetzung zu unterstützen. Hier wird die Note 2 vergeben.
+- RPC: gRPC und tRPC  sind höchst performant und gleichzeitig leicht aufzusetzen. Beide haben sehr gute Dokumentationen auf ihrer Webseite und sind in dieser Hinsicht im Gegensatz zu SOAP und REST besser darin, neue Entwickler bei der Aufsetzung zu unterstützen. Hier wird die Note 1 vergeben.
 - SOAP: SOAP ist für seinen großen Overhead berüchtigt. Im Gegensatz zu anderen Architekturen codiert sie ihre Repräsentationen in XML und erhöht somit die Bytegroße von Paketen um ein Vielfaches. Diese Hindernisse erhöhen eher die Komplexität, statt sie zu vereinfachen. Deswegen wird die Note 5 vergeben.
 - REST: REST ist eine sehr schlanke API-Architektur, das ihre Repräsentationen in JSON codiert und die Bytegroße minimal haltet. Das Programmieren von Endpoints ist sehr einfach. Dabei werden die HTTP-CRUD-Methoden verwendet werden. Diese Art der Komplexitätsreduktion verdient die Note 1.
 - GraphQL: GraphQL ist sehr gut darin, Probleme zu lösen, die erst bei der Y-Skalierung einer Applikation entstehen footnote:[Vgl. https://akfpartners.com/techblog/2008/05/08/splitting-applications-or-services-for-scale/, abgerufen am 20.01.2023]. In dieser Hinsicht vereinfacht GraphQL die Komplexität höchst komplexer Applikationen. Weniger komplexe Applikation wie voraussichtlich EduCluster profitieren von dieser Vereinfachung nicht. Ganz im Gegenteil: die Aufsetzung von GraphQL selbst führt unnötige Komplexität ein. Aus diesem Grund wird die Note 4 vergeben.
@@ -276,7 +276,7 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 ====== Modernheit
 - RPC: Unter RPC versteht man verschiedene Formen der Architektur, wie XML-RPC, gRPC und tRPC. XML-RPC ist die älteste davon und wird heutzutage nicht mehr oft verwendet. Hingegen sind gRPC und tRPC moderne API-Architekturen. gRPC wurde in 2016 und tRPC erst im Jahr 2021 eingeführt. Wegen dieser beiden Varianten von RPC wird die Note 1 vergeben.
 - SOAP: SOAP wurde im Jahr 1999 vom Wide Web-Konsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
-- REST: REST wurde im Jahr 2000 von Roy Fielding eingeführt und begann ab 2005 immer beliebter zu werden. Das macht diese Architektur relativ alt. Trotzdem gilt auch noch heute als moderne API-Architektur, weshalb die Note 3 vergeben wird.
+- REST: REST wurde im Jahr 2000 von Roy Fielding eingeführt und begann ab 2005 immer beliebter zu werden. Das macht diese Architektur relativ alt. Trotzdem gilt auch noch heute als moderne API-Architektur, weshalb die Note 2 vergeben wird.
 - GraphQL: GraphQL wurde im Jahr 2015 veröffentlicht. Diese API-Architektur ist relativ neu und ihre Features -- singulärer Endpunkt, einmalige Fetches und Typensicherheit -- sind höchst modern. Daher wird die Note 1 vergeben.
 
 ====== Beliebtheit
@@ -286,10 +286,56 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 - GraphQL: Obwohl GraphQL ein Neuling ist, ist diese Architektur immer im Top 3 beliebteste API-Architekturen zu finden. Deswegen verdient sie die Note 3.
 
 ==== Entscheidung und Begründung der Auswahl
-TODO
+Nun werden in diesem Abschnitt die Ergebnisse der Beurteilung ausgewertet. Die Technologien mit dem niedrigsten Punktestand werden als Gewinner ausgezeichnet.
+
+===== Ergebnisse der Frontend-Frameworks
+In diesem Abschnitt werden die Ergebnisse der Frontend-Frameworks dargestellt und daraus ein Sieger ausgewählt.
+
+[%header,format=csv]
+|===
+Kriterium, Gewichtung, React.js, Ergebnis, Vue.js, Ergebnis, Angular, Ergebnis
+Persönliche Erfahrung, 40%, 2, "0,8", 3, "1,2", 5, 2
+Vereinfachung der Komplexität, 25%, 2, "0,5", 3, "0,75", 2, "0,5"
+Modernität, 20%, 3, "0,6", 3, "0,6", 2, "0,4"
+Beliebtheit, 15%, 1, "0,15", 3, "0,45", 3, "0,45"
+Gesamt, , , "2,05", , "3,0", , "3,35"
+|===
+
+React.js ist laut den Ergebnissen der Sieger. Diese Bibliothek hat im Gegensatz zu Vue und Angular wenige Vorgaben und ist sehr flexibel. React kann mit JavaScript oder mit TypeScript verwendet werden. Darüber hinaus wird die Möglichkeit angeboten, entweder klassenbasierte oder funktionale Komponente zu entwickeln.
+
+===== Ergebnisse der Backend-Frameworks
+[%header,format=csv]
+|===
+Kriterium, Gewichtung, Express.js, Ergebnis, ASP .NET Core, Ergebnis, Django, Ergebnis, Next.js, Ergebnis
+Persönliche Erfahrung, 40%, 2, "0,8", 4, "1,6", 5, 2, 2, "0,8"
+Vereinfachung der Komplexität, 25%, 3, "0,75", 2, "0,5", 1, "0,25", 1, "0,25"
+Modernität, 20%, 4, "0,8", 2, "0,4", 5, 1, 1, "0,2"
+Beliebtheit, 15%, 1, "0,15", 2, "0,3", 2, "0,3", 3, "0,45"
+Gesamt, , , "2,5", , "2,8", , "3,55", , "1,7"
+|===
+
+Der Sieger ist Next.js, die Ausnahme im Bereich der Backend-Frameworks, da es als Full-Stack Framework gilt. Die Voraussetzung eines React-Frontends ist gegeben und wird durch ein flexibles Node.js Backend ergänzt. Die moderne Rendering-Features des Frameworks ermöglichen eine hohe Leistung der Webapplikation.
+
+===== Ergebnisse der API-Architekturen
+[%header,format=csv]
+|===
+Kriterium, Gewichtung, RPC, Ergebnis, SOAP, Ergebnis, REST, Ergebnis, GraphQL, Ergebnis
+Persönliche Erfahrung, 40%, 2, "0,8", 5, 2, 3, "1,2", 4, "1,6"
+Vereinfachung der Komplexität, 25%, 1, "0,25", 5, "1,25", 1, "0,25", 4, 1
+Modernität, 20%, 1, "0,2", 5, 1, 2, "0,4", 1, "0,2"
+Beliebtheit, 15%, 4, "0,6", 2, "0,3", 1, "0,15", 3, "0,45"
+Gesamt, , , "1,85", , "4,75", , "2,0", , "2,25"
+|===
+
+Bei den API-Architekturen zeichnet sich RPC als Sieger aus. REST steht an zweiter Stelle mit einem winzigen Nachteil gegenüber von RPC. Für unseren Technologie-Stapel eignet sich tRPC besser als gRPC, weil letzteres eher für Microservices gedacht ist. Unsere Webapplikation wird ein Monolith sein und benötigt daher die Schnelligkeit von gRPC nicht, kann aber sehr wohl von der Typensicherheit von tRPC profitieren. Außerdem lässt sich die tRPC API auf Next.js sehr leicht aufsetzen.
+
+===== Auswahl des Technologie-Stapels
+Das Ergebnis hat gezeigt, dass React, Next.js und tRPC die Gewinner der Beurteilung sind. Diese Technologien bilden nun das Tech-Stack von EduCluster. Ergänzend dazu werden TypeScript und TailwindCSS genutzt werden. TypeScript ist ein typensicherer Compiler für JavaScript und TailwindCSS ist ein CSS-Framework. Zu guter Letzt wird Prisma, ein moderner objektrelationaler Mapper, für die Datenbankanbindung genutzt, um die vollständige Typensicherheit von EduCluster zu garantieren.
+
+Diese Kombination von Technologien ist unter dem Begriff "t3-Stack" bekannt -- ein Technologie-Stapel, der von einem ehemaligen Twitch.tv Softwareingenieur namens Theo Browne popularisiert wurde footnote:[Vgl. https://github.com/topics/t3-stack, abgerufen am 20.01.2023]. Das Team hat sich für diesen Stapel entschieden, weil er höchst modern ist und von einer ständig wachsenden Entwickler-Gemeinschaft unterstützt wird. Mit diesem Tech-Stack soll EduCluster den Test der Zeit bestehen und die Entwicklung möglichst viel beschleunigen und vereinfachen.
 
 === Technische Umsetzung
-In diesem Kapitel wird die technische Umsetzung dokumentiert und mithilfe von Screenshots und Diagramme demonstriert.
+In diesem Kapitel wird die technische Umsetzung mithilfe von Screenshots dokumentiert.
 
 ==== Einleitung
 https://create.t3.gg/en/folder-structure
@@ -304,11 +350,14 @@ https://create.t3.gg/en/usage/trpc
 https://www.javatpoint.com/spring-boot-architecture
 (Architektur erklären und bildlich darstellen)
 
+==== React Komponente
+TODO
+
 === Reflexion der eigenen Arbeit
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
 
 ==== Persönlicher Verantwortungsbereich
-(Softwarearchitektur planen, Projekt aufsetzen, API aufbauen, Untis Schnittstelle integrieren, Frontend implementieren)
+(Softwarearchitektur planen, Projekt aufsetzen, API aufbauen, Frontend implementieren)
 
 ==== Erreichte Ziele
 (Was wurde geschafft und funktioniert gut? Was wurde nicht geschafft und warum?)
