@@ -14,9 +14,10 @@ import {
   updateMemberOfCluster,
   removeMemberFromCluster,
   addMemberToCluster,
+  getItemOfAppointmentHandler,
 } from '../controllers/item.controller';
 import {
-  clusterSchema,
+  idNamePair,
   clusterEditSchema,
   clusterCreateSchema,
   updateMemberSchema,
@@ -33,9 +34,14 @@ export const itemRouter = createRouter()
     resolve: async ({ input }) => await getClusterDetails({ input }),
   })
   .query('ofCluster', {
-    input: clusterSchema,
+    input: idNamePair,
     resolve: async ({ input, ctx }) =>
       await getItemOfClusterHandler({ input, ctx }),
+  })
+  .query('ofAppointment', {
+    input: idNamePair,
+    resolve: async ({ input, ctx }) =>
+      await getItemOfAppointmentHandler({ input, ctx }),
   })
   .query('membersOfCluster', {
     input: number(),

@@ -12,8 +12,6 @@ import Loader from '../../components/Loader';
 const RoomSearchPage: NextPage = () => {
   const { setAuthUser, setRooms, rooms } = useStore();
 
-  // TODO Lara (EC-115): Zeitfelder aus der Datenbank holen und ein global state setzen
-
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,

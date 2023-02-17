@@ -2,19 +2,23 @@ import Avatar from '../Avatar';
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { Appointment } from '../../lib/types';
 
-const AppointmentBanner = () => {
-  // TODO Lara: Untere Daten aus Store holen wenn die DB-Abfrage existiert
-  const appointmentname = 'TEST';
-  const description = 'test';
+type Props = {
+  appointment: any;
+};
+
+const AppointmentBanner = ({ appointment }: Props) => {
+  const appointmentname = appointment?.name;
+  const description = appointment?.description;
   const person = {
-    username: 'testperson',
+    username: appointment?.person?.username,
   };
   const cluster = {
-    clustername: 'testcluster',
-    clusterId: 1,
+    clustername: appointment?.cluster_appointmentTocluster?.clustername,
+    clusterId: appointment?.cluster,
   };
-  const isRoomless = false;
+  const room = appointment?.roomname ?? 'Raumlos';
 
   const enterAppointment = () => {
     // TODO Denis: Implementieren mit EC-87
@@ -34,7 +38,7 @@ const AppointmentBanner = () => {
               {cluster.clustername}
             </p>
           </Link>{' '}
-          <p className="text-xl">/</p> {isRoomless ? 'Raumlos' : 'V_101'}
+          <p className="text-xl">/</p> {room}
         </span>
         <span className="mt-3 text-sm">
           erstellt von{' '}

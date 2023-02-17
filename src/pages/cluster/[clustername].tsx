@@ -34,7 +34,7 @@ const ClusterPage: NextPage = () => {
     clusterfullname && Number((clusterfullname as string).split('*')[1]);
   const clustername =
     clusterfullname && (clusterfullname as string).split('*')[0];
-  const input = { clusterId, clustername };
+  const input = { id: clusterId, name: clustername };
 
   // @ts-ignore
   const itemsOfClusterQuery = trpc.useQuery(['item.ofCluster', input], {

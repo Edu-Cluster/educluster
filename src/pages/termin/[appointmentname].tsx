@@ -10,6 +10,8 @@ import Loader from '../../components/Loader';
 import AppointmentBanner from '../../components/Appointment/AppointmentBanner';
 import Tag from '../../components/SubjectTopic/Tag';
 import ItemListHeader from '../../components/Item/ItemListHeader';
+import { bigint } from 'zod';
+import Stringifier from 'postcss/lib/stringifier';
 
 const AppointmentPage: NextPage = () => {
   const store = useStore();
@@ -31,14 +33,44 @@ const AppointmentPage: NextPage = () => {
     userQuery.refetch();
   }, []);
 
-  const clusterId =
+  const appointmentId =
     appointmentfullname &&
     Number((appointmentfullname as string).split('*')[1]);
-  const clustername =
+  const appointmentname =
     appointmentfullname && (appointmentfullname as string).split('*')[0];
-  const input = { clusterId, clustername };
+  const input = { id: appointmentId, name: appointmentname };
 
-  const tags: any[] = [{ name: 'testtag' }]; // TODO Lara
+  // @ts-ignore
+  const itemsOfAppointmentQuery = trpc.useQuery(['item.ofAppointment', input], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      if (data) {
+        store.setAppointmentDetails(data.appointmentDetails);
+        store.setUserOfAppointment(data.user);
+        store.setTagsOfAppointment(
+          data.tags.map((obj: { topic: any }) => obj.topic),
+        );
+      }
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  const clusterAssociationQuery = trpc.useQuery(
+    ['item.clusterAssociation', Number(store.appointmentDetails?.cluster)],
+    {
+      enabled: false,
+      onSuccess: async ({ data }) => {
+        if (data) {
+          store.setClusterAssociation(data.association);
+        }
+      },
+      onError: async (err) => {
+        console.error(err);
+      },
+    },
+  );
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -46,11 +78,8 @@ const AppointmentPage: NextPage = () => {
     onSuccess: async ({ data }) => {
       store.setAuthUser(data.user as User);
 
-      // Fetch appointment association
-      // TODO Lara
-
-      // Fetch appointment details
-      // TODO Lara EC-100
+      await itemsOfAppointmentQuery.refetch();
+      await clusterAssociationQuery.refetch();
     },
     onError: async (err) => {
       console.error(err);
@@ -67,20 +96,20 @@ const AppointmentPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container">
-          <MemberList members={store.userOfCluster} />
-          {tags && tags.length && (
+          <MemberList members={store.userOfAppointment} />
+          {store.tagsOfAppointment && store.tagsOfAppointment.length && (
             <div className="h-fit w-full max-w-[800px] mt-8">
               <ItemListHeader title="Tags" />
               <div className="mt-2 px-2">
-                {tags.map((tag, idx) => (
-                  <Tag key={idx} name={tag.name} />
+                {store.tagsOfAppointment?.map((tag: string, idx: number) => (
+                  <Tag key={idx} name={tag} />
                 ))}
               </div>
             </div>
           )}
         </div>
 
-        <AppointmentBanner />
+        <AppointmentBanner appointment={store.appointmentDetails} />
       </main>
     );
   }
