@@ -1,11 +1,11 @@
 import { boolean, number, object, string, array, TypeOf, bigint } from 'zod';
 
-export const clusterSchema = object({
-  clustername: string(),
-  clusterId: number(),
+export const idNamePair = object({
+  name: string(),
+  id: number(),
 });
 
-export type ClusterInput = TypeOf<typeof clusterSchema>;
+export type ClusterInput = TypeOf<typeof idNamePair>;
 
 export const clusterInvitationSchema = object({
   type: number(),
