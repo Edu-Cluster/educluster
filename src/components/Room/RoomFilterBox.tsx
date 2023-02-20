@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { timeTypes } from '../../lib/enums';
 import useStore from '../../lib/store';
 import TimeSelectField from '../TimeSelectField';
 import RegisteredSearchField from '../RegisteredSearchField';
 import SelectField from '../SelectField';
+import trpc from '../../lib/trpc';
 
 type Props = {
   showResetButton: boolean;
@@ -36,13 +37,41 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
       '[name="room-search"]',
       // @ts-ignore
     ).value;
-
-    // Query the database for matches using the filters and the text in the search field
-    // TODO Lara (EC-239)
-
-    // Set the rooms state with the matches
-    // TODO Lara (EC-239)
   });
+
+  const store = useStore();
+  const equipmentQuery = trpc.useQuery(['catalog.equipment'], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      store.setEquipment(data.equipment.map((obj: { name: any }) => obj.name));
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  const roomSizeQuery = trpc.useQuery(['catalog.roomsize'], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      store.setRoomSizesTerm(
+        data.roomsizes.map((obj: { seatcount: any }) => obj.seatcount),
+      );
+      store.setRoomSizesMin(
+        data.roomsizes.map((obj: { minimum: any }) => obj.minimum),
+      );
+      store.setRoomSizesMax(
+        data.roomsizes.map((obj: { maximum: any }) => obj.maximum),
+      );
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  useEffect(() => {
+    equipmentQuery.refetch();
+    roomSizeQuery.refetch();
+  }, []);
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">
@@ -73,15 +102,24 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
             </div>
             <div className="flex flex-wrap sm:flex-nowrap justify-around gap-5 mt-5">
               <SelectField preselected="-" registerSelectName="personCount">
-                <option value="1">1-10 Sitzplätze</option>
-                <option value="10">11-20 Sitzplätze</option>
-                <option value="20">21-30 Sitzplätze</option>
-                <option value="30">{'>'} 31 Sitzplätze</option>
+                <>
+                  {store.roomSizesTerm &&
+                    store.roomSizesTerm.map((name: any, idx: any) => (
+                      <option key={idx} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                </>
               </SelectField>
               <SelectField preselected="-" registerSelectName="equipment">
-                <option value="Tafel">Tafel</option>
-                <option value="Beamer">Beamer</option>
-                <option value="Tafel&Beamer">Tafel und Beamer</option>
+                <>
+                  {store.equipment &&
+                    store.equipment.map((name: any, idx: any) => (
+                      <option key={idx} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                </>
               </SelectField>
             </div>
           </form>

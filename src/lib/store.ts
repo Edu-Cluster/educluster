@@ -52,6 +52,15 @@ type Store = {
   endTimes: any;
   setEndTimes: (times: any) => void;
 
+  equipment: any;
+  setEquipment: (items: any) => void;
+  roomSizesTerm: any;
+  setRoomSizesTerm: (items: any) => void;
+  roomSizesMin: any;
+  setRoomSizesMin: (items: any) => void;
+  roomSizesMax: any;
+  setRoomSizesMax: (items: any) => void;
+
   clusterOfUser: any;
   setClusterOfUser: (items: any) => void;
   appointmentsOfUser: any;
@@ -128,6 +137,18 @@ const useStore = create<Store>((set) => ({
   setBeginTimes: (beginTimes) => set((state) => ({ ...state, beginTimes })),
   endTimes: null,
   setEndTimes: (endTimes) => set((state) => ({ ...state, endTimes })),
+
+  equipment: null,
+  setEquipment: (equipment) => set((state) => ({ ...state, equipment })),
+  roomSizesTerm: null,
+  setRoomSizesTerm: (roomSizesTerm) =>
+    set((state) => ({ ...state, roomSizesTerm })),
+  roomSizesMin: null,
+  setRoomSizesMin: (roomSizesMin) =>
+    set((state) => ({ ...state, roomSizesMin })),
+  roomSizesMax: null,
+  setRoomSizesMax: (roomSizesMax) =>
+    set((state) => ({ ...state, roomSizesMax })),
 
   clusterOfUser: null,
   setClusterOfUser: (clusterOfUser) =>

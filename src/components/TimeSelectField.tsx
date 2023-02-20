@@ -20,7 +20,7 @@ const TimeSelectField = ({
     enabled: false,
     onSuccess: async ({ data }) => {
       store.setBeginTimes(data.times.map((obj: { begin: any }) => obj.begin));
-      store.setEndTimes(data.times.map((obj: { end: any }) => obj.end));
+      store.setEndTimes(data.times.map((obj: { end_: any }) => obj.end_));
     },
     onError: async (err) => {
       console.error(err);
