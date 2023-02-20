@@ -18,4 +18,3 @@ export const catalogRouter = createRouter()
 // })
 // .query('ofCluster', {
 //     input: clusterSchema,
-//     resolve: async ({ input }) => await getItemOfClusterHandler({ input }),

@@ -71,6 +71,12 @@ type Store = {
   setAppointmentOfCluster: (items: any) => void;
   clusterDetails: any;
   setClusterDetails: (clusterDetails: any) => void;
+  userOfAppointment: any;
+  setUserOfAppointment: (items: any) => void;
+  tagsOfAppointment: any;
+  setTagsOfAppointment: (items: any) => void;
+  appointmentDetails: any;
+  setAppointmentDetails: (appointmentDetails: any) => void;
 
   potentialTopics: string[] | null;
   setPotentialTopics: (topics: string[] | null) => void;
@@ -159,6 +165,15 @@ const useStore = create<Store>((set) => ({
   clusterDetails: null,
   setClusterDetails: (clusterDetails) =>
     set((state) => ({ ...state, clusterDetails })),
+  userOfAppointment: null,
+  setUserOfAppointment: (userOfAppointment) =>
+    set((state) => ({ ...state, userOfAppointment })),
+  tagsOfAppointment: null,
+  setTagsOfAppointment: (tagsOfAppointment) =>
+    set((state) => ({ ...state, tagsOfAppointment })),
+  appointmentDetails: null,
+  setAppointmentDetails: (appointmentDetails) =>
+    set((state) => ({ ...state, appointmentDetails })),
 
   potentialTopics: null,
   setPotentialTopics: (potentialTopics) =>

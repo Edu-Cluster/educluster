@@ -25,6 +25,8 @@ import {
   deleteMember,
   deleteAdmin,
   officiallyInviteUser,
+  readAppointmentById,
+  readTagsOfAppointment,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -101,16 +103,16 @@ export const getItemOfClusterHandler = async ({
   ctx: ContextWithUser;
 }) => {
   try {
-    const clusterDetails = await readClusterById(input.clusterId);
+    const clusterDetails = await readClusterById(input.id);
 
-    if (clusterDetails?.clustername !== input.clustername) {
+    if (!clusterDetails || clusterDetails?.clustername !== input.name) {
       return { status: statusCodes.FAILURE };
     }
 
-    const fetchedUsers = await readUsersOfCluster(input.clusterId);
+    const fetchedUsers = await readUsersOfCluster(input.id);
     fetchedUsers.map((fetchedUser) => {
       const isMember = fetchedUser.member_of.some(
-        ({ cluster_id }) => cluster_id === BigInt(input.clusterId),
+        ({ cluster_id }) => cluster_id === BigInt(input.id),
       );
 
       // @ts-ignore
@@ -131,7 +133,7 @@ export const getItemOfClusterHandler = async ({
     });
 
     const user = arrayOfArrayTransformer(fetchedUsers);
-    const appointments = await readAppointmentsOfCluster(input.clusterId);
+    const appointments = await readAppointmentsOfCluster(input.id);
 
     return {
       status: statusCodes.SUCCESS,
@@ -139,6 +141,62 @@ export const getItemOfClusterHandler = async ({
         user,
         appointments,
         clusterDetails,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const getItemOfAppointmentHandler = async ({
+  input,
+  ctx,
+}: {
+  input: ClusterInput;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const appointmentDetails = await readAppointmentById(input.id);
+
+    if (!appointmentDetails || appointmentDetails?.name !== input.name) {
+      return { status: statusCodes.FAILURE };
+    }
+
+    const fetchedUsers = await readUsersOfCluster(appointmentDetails.cluster!);
+    fetchedUsers.map((fetchedUser) => {
+      const isMember = fetchedUser.member_of.some(
+        ({ cluster_id }) => cluster_id === BigInt(input.id),
+      );
+
+      // @ts-ignore
+      delete fetchedUser.member_of;
+
+      if (fetchedUser.username === ctx?.user?.username) {
+        // @ts-ignore
+        fetchedUser.isMe = true;
+      }
+
+      if (isMember) {
+        // @ts-ignore
+        return (fetchedUser.isAdmin = false);
+      }
+
+      // @ts-ignore
+      return (fetchedUser.isAdmin = true);
+    });
+
+    const user = arrayOfArrayTransformer(fetchedUsers);
+    const tags = await readTagsOfAppointment(input.id);
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        user,
+        tags,
+        appointmentDetails,
       },
     };
   } catch (err: any) {

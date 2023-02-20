@@ -121,6 +121,12 @@ export const readClusterById = async (clusterid: number | bigint) =>
     include: { person: true },
   });
 
+export const readAppointmentById = async (appointmentid: number | bigint) =>
+  await prisma.appointment.findUnique({
+    where: { id: appointmentid },
+    include: { cluster_appointmentTocluster: true, person: true },
+  });
+
 export const readClusterByClustername = async (clustername: string) =>
   await prisma.cluster.findUnique({ where: { clustername } });
 
@@ -195,7 +201,7 @@ export const readAppointmentsOfCluster = async (clusterid: number) => {
   for (let i = 0; i * maxCountForPage < count._count.id; i++) {
     result[i] = await prisma.appointment.findMany({
       where: {
-        id: clusterid,
+        cluster: clusterid,
       },
       select: {
         description: true,
@@ -219,7 +225,12 @@ export const readAppointmentsOfCluster = async (clusterid: number) => {
   return result;
 };
 
-export const readUsersOfCluster = async (clusterid: number) =>
+export const readTagsOfAppointment = async (appointmentid: number) =>
+  await prisma.topics_for_appointment.findMany({
+    where: { appointment: appointmentid },
+  });
+
+export const readUsersOfCluster = async (clusterid: number | bigint) =>
   await prisma.person.findMany({
     where: {
       OR: [
