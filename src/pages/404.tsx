@@ -9,20 +9,19 @@ const NotFoundPage: NextPage = () => {
       <div className="flex flex-col justify-center gap-5 text-center mt-10">
         <Logo />
         <h1 className="text-[22px] text-gray-700">
-          Diese Seite existiert leider nicht...
+          Diese Seite existiert leider nicht.
         </h1>
         <p>
           Hör auf falsche Links einzugeben und benutze stattdessen unsere
           intuitive Buttons zum Navigieren! :)
         </p>
       </div>
-      <div className="mt-10">
-        <Link href="/">
-          <h1 className="text-xl hover:cursor-pointer">
-            Zurück zur Hauptseite
-          </h1>
-        </Link>
-      </div>
+
+      <Link href="/">
+        <div className="mt-10 bg-slate-200 hover:bg-slate-300 p-3 rounded-xl cursor-pointer">
+          <p className="text-xl">Zurück zur Hauptseite</p>
+        </div>
+      </Link>
     </main>
   );
 };

@@ -43,7 +43,7 @@ const ProfileBadge = (props: Props) => {
   const handleLogout = async () => {
     toast.loading('Sie werden ausgeloggt...');
 
-    logoutUser();
+    await logoutUser();
   };
 
   return (

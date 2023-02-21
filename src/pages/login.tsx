@@ -53,7 +53,7 @@ const LoginPage: NextPage = () => {
 
     if (code) {
       // Retrieve login credentials from local storage
-      const username = sessionStorage.getItem('username') || '';
+      const username = sessionStorage.getItem('username') as string;
 
       registerUser({ username, code });
     }
@@ -91,7 +91,8 @@ const LoginPage: NextPage = () => {
         sessionStorage.setItem('password', password);
         sessionStorage.setItem('persistentCookie', String(isSliderOn));
 
-        // Redirect to microsoft login prompt TODO Lara/Denis: redirect_uri in development mode auf http://localhost:3000/login setzen!!!
+        // Redirect to microsoft login prompt
+        // TODO Lara/Denis: redirect_uri in development mode auf http://localhost:3000/login setzen!!!
         document.location.href = `
         https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize
         ?client_id=f7c7c0f0-1f3e-4444-b003-6e3c118178d0
@@ -109,22 +110,20 @@ const LoginPage: NextPage = () => {
       toast.dismiss();
 
       // Internal server error
-      error.response.errors.forEach((err: any) => {
-        console.error(err);
-      });
+      console.error(error);
 
       toast.error('Beim Einloggen ist etwas falsch gelaufen!');
     },
   });
 
-  const onSubmit = handleSubmit(() => {
+  const onSubmit = handleSubmit(async () => {
     // Get values from the input fields
     const { username, password } = getValues();
 
     toast.loading('Es wird nach Ihrem Profil gesucht...');
 
     // Send login POST request to auth router
-    loginUser({ username, password, persistentCookie: isSliderOn });
+    await loginUser({ username, password, persistentCookie: isSliderOn });
   });
 
   return (
