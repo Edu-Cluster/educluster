@@ -33,7 +33,7 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
           <p className="mt-12 uppercase">
             {isPrivate ? 'PRIVAT' : 'ÖFFENTLICH'}
           </p>
-          <span className="mt-6 text-sm">
+          <span className="text-sm">
             erstellt von{' '}
             <p className="align-baseline text-sm text-cyan-700 dark:text-cyan-700">
               {person.username}

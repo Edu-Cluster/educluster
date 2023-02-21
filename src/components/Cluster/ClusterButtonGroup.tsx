@@ -8,11 +8,13 @@ import {
   TrashIcon,
   UserAddIcon,
   XIcon,
+  PlusIcon,
 } from '@heroicons/react/outline';
 import useStore from '../../lib/store';
 import toast from 'react-hot-toast';
 import trpc from '../../lib/trpc';
 import { clusterAssociations, notificationTypes } from '../../lib/enums';
+import Link from 'next/link';
 
 type Props = {
   isOnInvitationPage?: boolean;
@@ -107,28 +109,33 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
           {!isOnInvitationPage ? (
             <>
               {isAdmin && (
-                <div
-                  className="cluster-button text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-100"
-                  onClick={() =>
-                    (document.location.href = `./einladen/${clusterfullname}`)
-                  }
-                >
-                  <p className="mr-2 dark:text-blue-500 text-blue-500">
-                    Mitglieder einladen
-                  </p>
-                  <UserAddIcon height={20} width={20} />
-                </div>
-              )}
-              {isAdmin && (
-                <div
-                  className="cluster-button text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-100"
-                  onClick={() => setEditMode(true)}
-                >
-                  <p className="mr-2 dark:text-violet-500 text-violet-500">
-                    Cluster bearbeiten
-                  </p>
-                  <PencilIcon height={20} width={20} />
-                </div>
+                <>
+                  <Link href={`./admin/${clusterfullname}`}>
+                    <div className="cluster-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
+                      <p className="mr-2 dark:text-blue-emerald text-emerald-500">
+                        Termin erstellen
+                      </p>
+                      <PlusIcon height={20} width={20} />
+                    </div>
+                  </Link>
+                  <Link href={`./einladen/${clusterfullname}`}>
+                    <div className="cluster-button text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-100">
+                      <p className="mr-2 dark:text-blue-500 text-blue-500">
+                        Mitglieder einladen
+                      </p>
+                      <UserAddIcon height={20} width={20} />
+                    </div>
+                  </Link>
+                  <div
+                    className="cluster-button text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-100"
+                    onClick={() => setEditMode(true)}
+                  >
+                    <p className="mr-2 dark:text-violet-500 text-violet-500">
+                      Cluster bearbeiten
+                    </p>
+                    <PencilIcon height={20} width={20} />
+                  </div>
+                </>
               )}
               {isAdmin || isMember ? (
                 <div className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
@@ -169,17 +176,14 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
               ) : (
                 <></>
               )}
-              <div
-                className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100"
-                onClick={() =>
-                  (document.location.href = `../../cluster/${clusterfullname}`)
-                }
-              >
-                <p className="mr-2 dark:text-orange-500 text-orange-500">
-                  Zurück zum Cluster
-                </p>
-                <ArrowNarrowLeftIcon height={20} width={20} />
-              </div>
+              <Link href={`../../cluster/${clusterfullname}`}>
+                <div className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
+                  <p className="mr-2 dark:text-orange-500 text-orange-500">
+                    Zurück zum Cluster
+                  </p>
+                  <ArrowNarrowLeftIcon height={20} width={20} />
+                </div>
+              </Link>
             </>
           )}
         </>

@@ -9,9 +9,6 @@ type Store = {
   authUser: User | null;
   setAuthUser: (user: User | null) => void;
 
-  settingsPopupOpen: boolean;
-  setSettingsPopupOpen: (isOpen: boolean) => void;
-
   notifications: Notifications[] | null;
   setNotifications: (notifications: Notifications[] | null) => void;
   newNotificationsAvailable: boolean;
@@ -94,10 +91,6 @@ type Store = {
 const useStore = create<Store>((set) => ({
   authUser: null,
   setAuthUser: (user) => set((state) => ({ ...state, authUser: user })),
-
-  settingsPopupOpen: false,
-  setSettingsPopupOpen: (isOpen) =>
-    set((state) => ({ ...state, settingsPopupOpen: isOpen })),
 
   notifications: null,
   setNotifications: (notifications) =>
