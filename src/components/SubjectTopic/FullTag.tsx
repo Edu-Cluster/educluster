@@ -10,20 +10,16 @@ type Props = {
 const FullTag = ({ resource, name }: Props) => {
   const { subjects, setSubjects, topics, setTopics } = useStore();
 
-  const removeTag = (e: any) => {
-    const tagName = e.currentTarget.parentElement.parentElement.querySelector(
-      `#${name}`,
-    ).textContent;
-
+  const removeTag = () => {
     if (resource === resources.SUBJECT) {
       const newSubjects =
-        subjects && subjects.filter((subject) => subject !== tagName);
+        subjects && subjects.filter((subject) => subject !== name);
 
       if (newSubjects) {
         setSubjects(newSubjects);
       }
     } else if (resource === resources.TOPIC) {
-      const newTopics = topics && topics.filter((topic) => topic !== tagName);
+      const newTopics = topics && topics.filter((topic) => topic !== name);
 
       if (newTopics) {
         setTopics(newTopics);
@@ -33,8 +29,8 @@ const FullTag = ({ resource, name }: Props) => {
 
   return (
     <span
-      onClick={(e) => removeTag(e)}
-      className="bg-sky-700 text-center rounded-md w-fit cursor-default mb-2"
+      onClick={removeTag}
+      className="bg-sky-700 rounded-md cursor-default mb-2"
     >
       <p id={name} className="text-white p-2">
         {name}

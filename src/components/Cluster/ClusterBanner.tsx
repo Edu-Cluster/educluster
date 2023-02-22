@@ -7,10 +7,10 @@ import RegisteredSearchField from '../RegisteredSearchField';
 import RegisteredTextArea from '../RegisteredTextArea';
 
 type Props = {
-  isOnInvitationPage?: boolean;
+  isNotMainPage?: boolean;
 };
 
-const ClusterBanner = ({ isOnInvitationPage }: Props) => {
+const ClusterBanner = ({ isNotMainPage }: Props) => {
   const { editMode, clusterDetails } = useStore();
   const methods = useForm();
 
@@ -98,7 +98,7 @@ const ClusterBanner = ({ isOnInvitationPage }: Props) => {
         </FormProvider>
       )}
       <ClusterButtonGroup
-        isOnInvitationPage={isOnInvitationPage}
+        isNotMainPage={isNotMainPage}
         isPrivate={isSliderOn}
       />
     </div>

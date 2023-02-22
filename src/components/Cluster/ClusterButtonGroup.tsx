@@ -17,11 +17,11 @@ import { clusterAssociations, notificationTypes } from '../../lib/enums';
 import Link from 'next/link';
 
 type Props = {
-  isOnInvitationPage?: boolean;
+  isNotMainPage?: boolean;
   isPrivate?: boolean;
 };
 
-const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
+const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
   const {
     editMode,
     setEditMode,
@@ -106,7 +106,7 @@ const ClusterButtonGroup = ({ isOnInvitationPage, isPrivate }: Props) => {
     <div className="flex flex-col gap-4">
       {!editMode ? (
         <>
-          {!isOnInvitationPage ? (
+          {!isNotMainPage ? (
             <>
               {isAdmin && (
                 <>

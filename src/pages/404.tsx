@@ -18,9 +18,9 @@ const NotFoundPage: NextPage = () => {
       </div>
 
       <Link href="/">
-        <div className="mt-10 bg-slate-200 hover:bg-slate-300 p-3 rounded-xl cursor-pointer">
-          <p className="text-xl">Zurück zur Hauptseite</p>
-        </div>
+        <button className="w-[80%] lg:w-[40%] h-16 primary-button mt-10">
+          Zurück zur Hauptseite
+        </button>
       </Link>
     </main>
   );

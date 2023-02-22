@@ -31,6 +31,9 @@ type Store = {
   searchItemsLoading: boolean;
   setSearchItemsLoading: (status: boolean) => void;
 
+  allRooms: Room[] | null;
+  setAllRooms: (allRooms: Room[] | null) => void;
+
   clusterAssociation:
     | clusterAssociations.IS_ADMIN
     | clusterAssociations.IS_MEMBER
@@ -86,6 +89,10 @@ type Store = {
 
   searchPotentialMembersLoading: boolean;
   setSearchPotentialMembersLoading: (status: boolean) => void;
+  searchPotentialSubjectsLoading: boolean;
+  setSearchPotentialSubjectsLoading: (status: boolean) => void;
+  searchPotentialTopicsLoading: boolean;
+  setSearchPotentialTopicsLoading: (status: boolean) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -121,6 +128,9 @@ const useStore = create<Store>((set) => ({
   searchItemsLoading: false,
   setSearchItemsLoading: (status) =>
     set((state) => ({ ...state, searchItemsLoading: status })),
+
+  allRooms: null,
+  setAllRooms: (allRooms) => set((state) => ({ ...state, allRooms })),
 
   clusterAssociation: null,
   setClusterAssociation: (association) =>
@@ -182,6 +192,12 @@ const useStore = create<Store>((set) => ({
   searchPotentialMembersLoading: false,
   setSearchPotentialMembersLoading: (status) =>
     set((state) => ({ ...state, searchPotentialMembersLoading: status })),
+  searchPotentialSubjectsLoading: false,
+  setSearchPotentialSubjectsLoading: (status) =>
+    set((state) => ({ ...state, searchPotentialSubjectsLoading: status })),
+  searchPotentialTopicsLoading: false,
+  setSearchPotentialTopicsLoading: (status) =>
+    set((state) => ({ ...state, searchPotentialTopicsLoading: status })),
 }));
 
 export default useStore;
