@@ -117,7 +117,7 @@ const InviteClusterPage: NextPage = () => {
           </div>
         </div>
 
-        <ClusterBanner isOnInvitationPage={true} />
+        <ClusterBanner isNotMainPage={true} />
       </main>
     );
   }

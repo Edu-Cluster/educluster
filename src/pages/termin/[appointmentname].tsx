@@ -10,8 +10,6 @@ import Loader from '../../components/Loader';
 import AppointmentBanner from '../../components/Appointment/AppointmentBanner';
 import Tag from '../../components/SubjectTopic/Tag';
 import ItemListHeader from '../../components/Item/ItemListHeader';
-import { bigint } from 'zod';
-import Stringifier from 'postcss/lib/stringifier';
 
 const AppointmentPage: NextPage = () => {
   const store = useStore();
