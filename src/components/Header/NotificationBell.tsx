@@ -243,7 +243,7 @@ const NotificationBell = (props: Props) => {
                   {notification.title === 'Einladung' ? (
                     <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-4 mb-2">
                       <div
-                        className="cluster-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
+                        className="banner-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
                         onClick={() => respondToInvitation(true, idx)}
                       >
                         <p className="mr-2 text-emerald-500 dark:text-emerald-500">
@@ -252,7 +252,7 @@ const NotificationBell = (props: Props) => {
                         <CheckIcon height={20} width={20} />
                       </div>
                       <div
-                        className="cluster-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
+                        className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
                         onClick={() => respondToInvitation(false, idx)}
                       >
                         <p className="mr-2 text-red-500 dark:text-red-500">

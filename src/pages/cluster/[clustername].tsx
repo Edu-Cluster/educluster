@@ -11,7 +11,15 @@ import ClusterBanner from '../../components/Cluster/ClusterBanner';
 import Loader from '../../components/Loader';
 
 const ClusterPage: NextPage = () => {
-  const store = useStore();
+  const {
+    setClusterDetails,
+    userOfCluster,
+    setUserOfCluster,
+    appointmentOfCluster,
+    setAppointmentOfCluster,
+    setClusterAssociation,
+    setAuthUser,
+  } = useStore();
   const router = useRouter();
   let { clustername: clusterfullname } = router.query;
 
@@ -25,6 +33,9 @@ const ClusterPage: NextPage = () => {
     }
 
     // TODO Lara/Denis: Wenn Cluster privat ist, darf diese Seite nur von Mitglieder besucht werden
+
+    // Reset usersOfCluster state
+    setUserOfCluster(null);
 
     // Fetch user and set store state
     userQuery.refetch();
@@ -41,9 +52,9 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        store.setClusterDetails(data.clusterDetails);
-        store.setUserOfCluster(data.user);
-        store.setAppointmentOfCluster(data.appointments);
+        setClusterDetails(data.clusterDetails);
+        setUserOfCluster(data.user);
+        setAppointmentOfCluster(data.appointments);
       }
     },
     onError: async (err) => {
@@ -57,7 +68,7 @@ const ClusterPage: NextPage = () => {
       enabled: false,
       onSuccess: async ({ data }) => {
         if (data) {
-          store.setClusterAssociation(data.association);
+          setClusterAssociation(data.association);
         }
       },
       onError: async (err) => {
@@ -70,7 +81,7 @@ const ClusterPage: NextPage = () => {
     enabled: false,
     retry: 0,
     onSuccess: async ({ data }) => {
-      store.setAuthUser(data.user as User);
+      setAuthUser(data.user as User);
 
       // Fetch cluster association
       await clusterAssociationQuery.refetch();
@@ -93,10 +104,10 @@ const ClusterPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container">
-          <MemberList members={store.userOfCluster} />
+          <MemberList members={userOfCluster} />
           <ItemList
             resource={resources.APPOINTMENT}
-            items={store.appointmentOfCluster}
+            items={appointmentOfCluster}
             title="Lerneinheiten"
           />
         </div>

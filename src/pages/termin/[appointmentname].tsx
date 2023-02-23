@@ -12,7 +12,16 @@ import Tag from '../../components/SubjectTopic/Tag';
 import ItemListHeader from '../../components/Item/ItemListHeader';
 
 const AppointmentPage: NextPage = () => {
-  const store = useStore();
+  const {
+    appointmentDetails,
+    setAppointmentDetails,
+    userOfAppointment,
+    setUserOfAppointment,
+    tagsOfAppointment,
+    setTagsOfAppointment,
+    setClusterAssociation,
+    setAuthUser,
+  } = useStore();
   const router = useRouter();
   let { appointmentname: appointmentfullname } = router.query;
 
@@ -26,6 +35,9 @@ const AppointmentPage: NextPage = () => {
     }
 
     // TODO Lara/Denis: Wenn Termin aus einem privaten Cluster stammt, darf diese Seite nur von Mitglieder besucht werden
+
+    // Reset userOfAppointment state
+    setUserOfAppointment(null);
 
     // Fetch user and set store state
     userQuery.refetch();
@@ -43,11 +55,9 @@ const AppointmentPage: NextPage = () => {
     enabled: false,
     onSuccess: async ({ data }) => {
       if (data) {
-        store.setAppointmentDetails(data.appointmentDetails);
-        store.setUserOfAppointment(data.user);
-        store.setTagsOfAppointment(
-          data.tags.map((obj: { topic: any }) => obj.topic),
-        );
+        setAppointmentDetails(data.appointmentDetails);
+        setUserOfAppointment(data.user);
+        setTagsOfAppointment(data.tags.map((obj: { topic: any }) => obj.topic));
       }
     },
     onError: async (err) => {
@@ -56,12 +66,12 @@ const AppointmentPage: NextPage = () => {
   });
 
   const clusterAssociationQuery = trpc.useQuery(
-    ['item.clusterAssociation', Number(store.appointmentDetails?.cluster)],
+    ['item.clusterAssociation', Number(appointmentDetails?.cluster)],
     {
       enabled: false,
       onSuccess: async ({ data }) => {
         if (data) {
-          store.setClusterAssociation(data.association);
+          setClusterAssociation(data.association);
         }
       },
       onError: async (err) => {
@@ -74,7 +84,7 @@ const AppointmentPage: NextPage = () => {
     enabled: false,
     retry: 0,
     onSuccess: async ({ data }) => {
-      store.setAuthUser(data.user as User);
+      setAuthUser(data.user as User);
 
       await itemsOfAppointmentQuery.refetch();
       await clusterAssociationQuery.refetch();
@@ -94,12 +104,12 @@ const AppointmentPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container">
-          <MemberList members={store.userOfAppointment} />
-          {store.tagsOfAppointment && store.tagsOfAppointment.length && (
+          <MemberList members={userOfAppointment} />
+          {tagsOfAppointment && tagsOfAppointment.length && (
             <div className="h-fit w-full max-w-[800px] mt-8">
               <ItemListHeader title="Tags" />
               <div className="mt-2 px-2">
-                {store.tagsOfAppointment?.map((tag: string, idx: number) => (
+                {tagsOfAppointment?.map((tag: string, idx: number) => (
                   <Tag key={idx} name={tag} />
                 ))}
               </div>
@@ -107,7 +117,7 @@ const AppointmentPage: NextPage = () => {
           )}
         </div>
 
-        <AppointmentBanner appointment={store.appointmentDetails} />
+        <AppointmentBanner appointment={appointmentDetails} />
       </main>
     );
   }

@@ -111,7 +111,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
               {isAdmin && (
                 <>
                   <Link href={`./admin/${clusterfullname}`}>
-                    <div className="cluster-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
+                    <div className="banner-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
                       <p className="mr-2 dark:text-blue-emerald text-emerald-500">
                         Termin erstellen
                       </p>
@@ -119,7 +119,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                     </div>
                   </Link>
                   <Link href={`./einladen/${clusterfullname}`}>
-                    <div className="cluster-button text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-100">
+                    <div className="banner-button text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-100">
                       <p className="mr-2 dark:text-blue-500 text-blue-500">
                         Mitglieder einladen
                       </p>
@@ -127,7 +127,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                     </div>
                   </Link>
                   <div
-                    className="cluster-button text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-100"
+                    className="banner-button text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-100"
                     onClick={() => setEditMode(true)}
                   >
                     <p className="mr-2 dark:text-violet-500 text-violet-500">
@@ -138,14 +138,14 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                 </>
               )}
               {isAdmin || isMember ? (
-                <div className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
+                <div className="banner-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
                   <p className="mr-2 dark:text-orange-500 text-orange-500">
                     Cluster verlassen
                   </p>
                   <ArrowNarrowLeftIcon height={20} width={20} />
                 </div>
               ) : (
-                <div className="cluster-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
+                <div className="banner-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
                   <p className="mr-2 dark:text-emerald-500 text-emerald-500">
                     Cluster beitreten
                   </p>
@@ -153,7 +153,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                 </div>
               )}
               {isAdmin && (
-                <div className="cluster-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100">
+                <div className="banner-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100">
                   <p className="mr-2 dark:text-red-500 text-red-500">
                     Cluster löschen
                   </p>
@@ -165,7 +165,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
             <>
               {membersToInvite.length ? (
                 <div
-                  className="cluster-button text-fuchsia-500 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-100"
+                  className="banner-button text-fuchsia-500 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-100"
                   onClick={() => sendInvitations()}
                 >
                   <p className="mr-2 dark:text-fuchsia-500 text-fuchsia-500">
@@ -177,7 +177,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                 <></>
               )}
               <Link href={`../../cluster/${clusterfullname}`}>
-                <div className="cluster-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
+                <div className="banner-button text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-100">
                   <p className="mr-2 dark:text-orange-500 text-orange-500">
                     Zurück zum Cluster
                   </p>
@@ -190,14 +190,14 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
       ) : (
         <>
           <div
-            className="cluster-button text-amber-500 hover:bg-amber-100 dark:hover:bg-amber-100"
+            className="banner-button text-amber-500 hover:bg-amber-100 dark:hover:bg-amber-100"
             onClick={() => saveSettings()}
           >
             <p className="mr-2 dark:text-amber-500 text-amber-500">Speichern</p>
             <SaveIcon height={20} width={20} />
           </div>
           <div
-            className="cluster-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100"
+            className="banner-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100"
             onClick={() => setEditMode(false)}
           >
             <p className="mr-2 dark:text-red-500 text-red-500">Abbrechen</p>
