@@ -1,8 +1,7 @@
 import Avatar from '../Avatar';
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/outline';
-import { Appointment } from '../../lib/types';
+import AppointmentButtonGroup from './AppointmentButtonGroup';
 
 type Props = {
   appointment: any;
@@ -19,10 +18,6 @@ const AppointmentBanner = ({ appointment }: Props) => {
     clusterId: appointment?.cluster,
   };
   const room = appointment?.roomname ?? 'Raumlos';
-
-  const enterAppointment = () => {
-    // TODO Denis: Implementieren mit EC-87
-  };
 
   return (
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
@@ -48,28 +43,7 @@ const AppointmentBanner = ({ appointment }: Props) => {
         </span>
         <p className="mt-4 break-words break-word text-[16px]">{description}</p>
       </div>
-      <div className="flex flex-col gap-4">
-        <div
-          onClick={enterAppointment}
-          className="cluster-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100"
-        >
-          <p className="mr-2 dark:hover:text-black text-emerald-500">
-            Termin beitreten
-          </p>
-          <ArrowRightIcon height={20} width={20} />
-        </div>
-        <div
-          onClick={() =>
-            (document.location.href = `/cluster/${cluster.clustername}*${cluster.clusterId}`)
-          }
-          className="cluster-button text-yellow-500 dark:hover:text-black hover:bg-yellow-100"
-        >
-          <p className="mr-2 dark:hover:text-black text-yellow-500">
-            Zum Cluster
-          </p>
-          <ArrowRightIcon height={20} width={20} />
-        </div>
-      </div>
+      <AppointmentButtonGroup cluster={cluster} />
     </div>
   );
 };
