@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { resources } from '../../lib/enums';
 import useStore from '../../lib/store';
 import SearchField from '../SearchField';
-import { AppointmentData, ClusterData } from '../../lib/types';
-import { Room } from 'webuntis';
+import { AppointmentData, ClusterData, RoomData } from '../../lib/types';
 import trpc from '../../lib/trpc';
 
 type Props = {
@@ -16,7 +15,6 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
   const {
     clusters,
     appointments,
-    rooms,
     setClusters,
     setAppointments,
     setRooms,
@@ -25,17 +23,6 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
   const [textInput, setTextInput] = useState('');
   const debouncedSearchTerm = useDebounce(textInput, 500);
 
-  useEffect(() => {
-    // Fetch all resources by default
-    if (resource === resources.APPOINTMENT) {
-      appointmentsQuery.refetch();
-    } else if (resource === resources.CLUSTER) {
-      clustersQuery.refetch();
-    } else if (resource === resources.ROOM) {
-      roomsQuery.refetch();
-    }
-  }, []);
-
   useEffect(
     () => {
       // Send item query to get a list of the given resource from the database
@@ -43,8 +30,9 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
         appointmentsQuery.refetch();
       } else if (resource === resources.CLUSTER) {
         clustersQuery.refetch();
-      } else if (resource === resources.ROOM) {
-        roomsQuery.refetch();
+      } else {
+        setSearchItemsLoading(false);
+        setItems(null);
       }
     },
     [debouncedSearchTerm], // Only call effect if debounced search term changes
@@ -84,32 +72,13 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
     },
   });
 
-  const roomsQuery = trpc.useQuery(['item.rooms', textInput], {
-    enabled: false,
-    retry: 0,
-    onSuccess: ({ data }) => {
-      if (!rooms) {
-        // Save search result rooms as state
-        setItems(data.rooms);
-        setSearchItemsLoading(false);
-      }
-    },
-    onError: async (err) => {
-      setItems(null);
-      setSearchItemsLoading(false);
-      console.error(err);
-    },
-  });
-
   const setItems = (
-    items: AppointmentData[][] | ClusterData[][] | Room[][] | null,
+    items: AppointmentData[][] | ClusterData[][] | RoomData[][] | null,
   ) => {
     if (resource === resources.CLUSTER) {
       setClusters(items as ClusterData[][]);
     } else if (resource === resources.APPOINTMENT) {
       setAppointments(items as AppointmentData[][]);
-    } else if (resource === resources.ROOM) {
-      setRooms(items as Room[][]);
     }
   };
 

@@ -12,6 +12,8 @@ type Props = {
   required?: boolean;
   maxLength?: number;
   minLength?: number;
+  max?: string;
+  min?: string;
 };
 
 const RegisteredSearchField = ({
@@ -24,6 +26,8 @@ const RegisteredSearchField = ({
   required,
   maxLength,
   minLength,
+  max,
+  min,
 }: Props) => {
   const { register } = useFormContext();
 
@@ -50,6 +54,8 @@ const RegisteredSearchField = ({
           required={required}
           maxLength={maxLength}
           minLength={minLength}
+          max={max}
+          min={min}
         />
       ) : (
         <input
@@ -63,6 +69,8 @@ const RegisteredSearchField = ({
           required={required}
           maxLength={maxLength}
           minLength={minLength}
+          max={max}
+          min={min}
         />
       )}
     </div>

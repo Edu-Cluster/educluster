@@ -1,6 +1,11 @@
 import create from 'zustand';
-import { AppointmentData, ClusterData, Notifications, User } from './types';
-import { Room } from 'webuntis';
+import {
+  AppointmentData,
+  ClusterData,
+  Notifications,
+  RoomData,
+  User,
+} from './types';
 import { clusterAssociations } from './enums';
 
 // Note: Store only contains states that cannot be isolated in a single component
@@ -26,13 +31,12 @@ type Store = {
   setClusters: (clusters: ClusterData[][] | null) => void;
   appointments: AppointmentData[][] | null;
   setAppointments: (appointments: AppointmentData[][] | null) => void;
-  rooms: Room[][] | null;
-  setRooms: (rooms: Room[][] | null) => void;
+  rooms: RoomData[][] | null;
+  setRooms: (rooms: RoomData[][] | null) => void;
   searchItemsLoading: boolean;
   setSearchItemsLoading: (status: boolean) => void;
-
-  allRooms: Room[] | null;
-  setAllRooms: (allRooms: Room[] | null) => void;
+  roomAvailabilities: Map<any, any> | null;
+  setRoomAvailabilities: (roomAvailabilities: Map<any, any> | null) => void;
 
   clusterAssociation:
     | clusterAssociations.IS_ADMIN
@@ -123,14 +127,13 @@ const useStore = create<Store>((set) => ({
   setAppointments: (appointments) =>
     set((state) => ({ ...state, appointments })),
   rooms: null,
-  // @ts-ignore
   setRooms: (rooms) => set((state) => ({ ...state, rooms })),
   searchItemsLoading: false,
   setSearchItemsLoading: (status) =>
     set((state) => ({ ...state, searchItemsLoading: status })),
-
-  allRooms: null,
-  setAllRooms: (allRooms) => set((state) => ({ ...state, allRooms })),
+  roomAvailabilities: null,
+  setRoomAvailabilities: (roomAvailabilities) =>
+    set((state) => ({ ...state, roomAvailabilities })),
 
   clusterAssociation: null,
   setClusterAssociation: (association) =>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import type { AppointmentData, ClusterData } from '../../lib/types';
+import { RoomData } from '../../lib/types';
 import { conditionSatisfactionTypes, resources } from '../../lib/enums';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
-import { Room } from 'webuntis';
 import RoomItemInList from '../Room/RoomItemInList';
 import useStore from '../../lib/store';
 import Loader from '../Loader';
@@ -12,7 +12,7 @@ import ItemListHeader from './ItemListHeader';
 
 type Props = {
   resource: resources.CLUSTER | resources.APPOINTMENT | resources.ROOM;
-  items: ClusterData[][] | AppointmentData[][] | Room[][] | null;
+  items: ClusterData[][] | AppointmentData[][] | RoomData[][] | null;
   title?: 'Lerneinheiten' | 'Cluster';
   placeholder?: string;
 };
@@ -45,7 +45,13 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     return (
       <div className="h-fit w-full mt-8 border-2 border-sky-50">
         {title ? <ItemListHeader title={title} /> : <></>}
-        <Loader type="div" size={50} />
+        <Loader
+          type="div"
+          size={50}
+          loaderText={
+            resource === resources.ROOM ? 'Räume werden geladen...' : undefined
+          }
+        />
       </div>
     );
   }
@@ -98,12 +104,12 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     case resources.ROOM:
       ItemsInList = (
         <>
-          {(items as Room[][])[page - 1].map((item, idx) => (
+          {(items as RoomData[][])[page - 1].map((item, idx) => (
             <RoomItemInList
+              id={item.untis_id}
               key={idx}
               name={item.name}
-              link={'/appointment/' + item.name + '#' + item.id}
-              conditionsSatisfied={conditionSatisfactionTypes.SATISFIED}
+              conditionsSatisfied={item.conditionSatisfaction}
             />
           ))}
         </>

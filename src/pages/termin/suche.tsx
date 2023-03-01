@@ -12,8 +12,6 @@ import Loader from '../../components/Loader';
 const AppointmentSearchPage: NextPage = () => {
   const { setAuthUser, appointments } = useStore();
 
-  // TODO Lara (EC-94): Zeitfelder aus der Datenbank holen und ein global state setzen
-
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
     retry: 0,
