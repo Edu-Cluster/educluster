@@ -338,34 +338,92 @@ Diese Kombination von Technologien ist unter dem Begriff "t3-Stack" bekannt -- e
 In diesem Kapitel wird die technische Umsetzung mithilfe von Screenshots dokumentiert.
 
 ==== Einleitung
-Die folgende technische Umsetzung bezieht sich auf die Aufsetzung des Projekts und anschleißend daran auf das Erstellen der React-Komponente, welche für folgende Seiten der Webapplikation notwendig sind:
-
-- Dashboard
-- Cluster- und Terminsuche
-- Cluster- und Terminseite
-
-Diese Seiten stellen die Kernfunktionen der Webapplikation bereit und sind aus diesem Grund besonders wichtig für die erfolgreiche Umsetzung des Projekts.
+Die folgende technische Umsetzung bezieht sich auf die Aufsetzung des Projekts und auf das Erstellen der React-Komponente für die Dashboard-Seite
 
 ==== Bootstrapping
 Um am einfachsten eine Applikation mit dem t3-Stack zu erzeugen, benutzt man die Befehlszeilenschnittstelle von create-t3-app. Im Terminal ist "npm create t3-app@latest" einzugeben. Dieses Kommando beginnt ein Dialog, der folgendermaßen aussieht:
 
-image::img/bootstrapping.png[]
+image::img/raymond/bootstrapping.png[]
 
 Nach der Installation der Abhängigkeiten wird das Grundgerüst der Applikation mit der gewünschten Verzeichnisstruktur bereitgestellt.
 
-image:img/folder_structure.png[]
+image:img/raymond/folder_structure.png[]
 
 In den Konfigurationsdateien muss derzeit nichts angepasst werden. Nun kann die Entwicklung beginnen.
 
 ==== React-Komponenten
-Im folgenden Kapitel werden die genannten React-Komponenten präsentiert und erklärt.
+Im folgenden Kapitel werden die genannten React-Komponenten, die für die Entwicklung der Dashboard-Seite benötigt werden, präsentiert und erklärt.
 
-=====  Dashboard
+Die Dashboard-Seite soll auch die Hauptseite der Webapplikation sein. Diese Seite soll drei Hauptkomponenten darstellen:
 
+- Eine Auflistung der Cluster, in denen der Benutzer ein Teilnehmer oder Administrator ist
+- Eine Auflistung der Lerneinheiten, in denen der Benutzer ein Teilnehmer oder Administrator ist
+- Eine Auflistung der persönlichen Informationen des Benutzers mit einem generierten Profil-Avatar
 
-===== Cluster- und Terminsuche
+Die ersten zwei Komponenten können in eine einzige React-Komponente zusammengefasst werden, die je nach übergebene Properties die Liste mit den richtigen Elementen befüllt.
 
-===== Cluster- und Terminseite
+===== Auflistung der Cluster und Lerneinheiten
+Zuerst soll ein Datentyp für die Properties definiert werden, die in diese Komponente übergeben werden:
+
+image:img/raymond/itemlist_props.png[]
+
+Der Attribut "resource" definiert den Ressourcentyp der eingegebenen Liste von Gegenständen. Danach werden über den Attribut "items" die Gegenstände in einem zweidimensionalen Array übermittelt.
+
+Die Zweidimensionalität ist daher notwendig, weil die Liste sehr lang werden kann und durch die Implementierung einer Seitennummerierung das endlose Scrollen vermieden werden soll. Man soll auf eine beliebige Seite navigieren können und den entsprechenden Array von Gegenständen aufgelistet bekommen.
+
+Der Titel der Liste wird im optionalen Attribut "title" übergeben. Falls sich die Liste nicht im Ladezustand befindet und trotzdem keine Gegenstände übergeben wurden, soll ein beliebiger Platzhalter-Text angezeigt werden, der mit "placeholder" übergeben wurde.
+
+Nun kann die Komponente erstellt werden.
+
+image:img/raymond/itemlist_component.png[]
+
+Die Funktion "loadNewPage" stellt die Funktionalität der Seiten-Navigation bereit. Darunter wird durch mehrere IF-Anweisungen auf folgenden Fällen geprüft:
+
+- Wurde explizit "null" oder wurden keine Gegenstände übermittelt, greift die erste Kondition.
+- Wurde der Ladezustand nicht auf "true" gesetzt, greift die zweite Kondition, ansonsten wird ein Loader innerhalb einer leeren Box gerendert
+- Wurde ein Platzhalter-Text übergeben, wird dieser angezeigt, ansonsten wird geprüft ob "items" ein leerer zweidimensionaler Array ist statt "null", und wenn das zutrifft wird nichts gerendert
+
+Falls die erste Kondition nicht zutrifft, gibt es garantiert ein zweidimensionaler Array mit Gegenständen wie Cluster-, Lerneinheiten- oder Raum-Objekte. Nun muss zwischen diesen Fällen unterschieden werden, um die richtigen Elemente zu rendern.
+
+image:img/raymond/itemlist_clusteritem.png[]
+
+Wenn der Cluster-Ressourcentyp übergeben wurde, wird in einer Variable die ClusterItemInList-Komponente zwischengespeichert. Ebenso wird die AppointmentItemInList-Komponente zwischengespeichert, wenn der Lerneinheit-Ressourcentyp übgergeben wurde.
+
+image:img/raymond/itemlist_appointmentitem.png[]
+
+Am Ende dieser Komponente wird eine Box mit den aufgelisteten Elementen gerendert:
+
+image:img/raymond/itemlist_render.png[]
+
+Die Variable, in der die richtige Komponente zwischengespeichert wurde, wird innerhalb eines Teilungselements gerendert. Darunter werden die einzelnen Kästchen für die Seitennummerierung generiert. Da Arrays null-indiziert sind, wird "idx + 1" für die Seitennummer angezeigt. Dem Element, der den Kästchen darstellt, wird ein Click-Event-Handler zugewiesen, um die Seiten-Navigation zu implementieren.
+
+===== Auflistung der persönlichen Informationen
+Die persönlichen Informationen des Benutzers, die angezeigt werden sollen, sind der Benutzername auf Educluster, der standardmäßig mit dem WebUntis-Benutzernamen equivalent ist aber umgeändert werden kann, und die HTL-Email-Adresse. Diese werden aus dem "authUser" Objekt, der den clientseitigen Zustand des eingeloggten Benutzers repräsentiert, hergeleitet und in der Komponente angezeigt.
+
+image:img/raymond/identitybadge_component.png[]
+
+In der Avatar-Komponente wird ein zufälliger Avatar für den Benutzer nach dem Benutzernamen generiert. Dafür wird auf die Schnittstelle von avatars.dicebear zugegriffen, die die Generierung durchführt und ein Bild zurückliefert.
+
+image:img/raymond/avatar_component.png[]
+
+Die Properties der Komponente übergeben alle relevanten Informationen für die Generierung, wie den Typen -- "user" für einen menschlichen Avatar und "thing" für ein willkürliches Muster -- und den Kern, der in diesem Fall den Benutzernamen entspricht. Für Cluster und Termine werden jeweils Muster-Avatare generiert, die sich aus den Cluster- bzw. Terminnamen erzeugen lassen. Bei fehlender Eingabe des Kerns wird "placeholder" als Standardkern an avatars.dicebear übergeben.
+
+Für die Anpassung des Avatars an anderen Stellen wie auf der Cluster-Seite, Termin-Seite und in der Menüleiste werden zwei weitere Properties definiert: "bigger" und "rounded". Ersteres erhöht die Höhe und Breite des Avatars und letzteres ändert den quadratischen Darstellungstyp des Avatars auf einen runden Darstellungstyp.
+
+===== Endergebnis
+Das Endergebnis sieht folgendermaßen aus:
+
+image:img/raymond/dashboard_page.png[]
+
+Hier sieht man die zwei Instanzen der ItemList-Komponente, die jeweils die relevanten Cluster bzw. Lerneinheiten des Benutzers auflistet. Auch die IdentityBadge-Komponente ist ersichtlich und zeigt den Benutzernamen, die HTL-Email-Adresse sowie den generierten Avatar.
+
+Die erzeugte Komponente werden auch auf anderen Seiten der Webapplikation verwendet. Ihre Allgemeinheit macht sie wiederverwendbar und gleichzeitig auch spezifisch genug, um einzelne Teile einer Seite zu entsprechen.
+
+Hier ist die Cluster-Seite zur Demonstration:
+
+image:img/raymond/cluster_page.png[]
+
+Man erkennt die Auflistung der Lerneinheiten. Rechts wird eine Komponente gerendert, die die obige Avatar-Komponente verwendet. Hier ist allerdings der Darstellungstyp quadratisch und der Avatar stellt ein Muster statt einer menschlichen Figur dar.
 
 === Reflexion der eigenen Arbeit
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
