@@ -51,7 +51,6 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
   }
 
   let ItemsInList;
-
   switch (resource) {
     case resources.CLUSTER:
       ItemsInList = (
