@@ -3,6 +3,7 @@ import type {
   cluster,
   appointment,
   notifications,
+  room,
 } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -41,3 +42,5 @@ export type AppointmentData = Appointment & {
   roomname: string | null;
   link: string;
 };
+
+export type RoomData = room & { conditionSatisfaction: number };

@@ -9,10 +9,12 @@ const customConfig: {
   refreshTokenPublicKey: string;
   school: string;
   schoolBaseUrl: string;
+  eduClusterUser: string;
+  eduClusterPassword: string;
 } = {
   port: 3000,
   accessTokenExpiresIn: 15, // In minutes
-  refreshTokenExpiresIn: 60, // In minutes
+  refreshTokenExpiresIn: 30, // In minutes
 
   dbUri: process.env.DATABASE_URL as string,
   accessTokenPrivateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY as string,
@@ -22,6 +24,9 @@ const customConfig: {
 
   school: 'HTL Pinkafeld',
   schoolBaseUrl: 'euterpe.webuntis.com',
+
+  eduClusterUser: 'VladuRay',
+  eduClusterPassword: 'RandominsOmen09#',
 };
 
 export default customConfig;

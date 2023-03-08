@@ -4,17 +4,18 @@ import React, { useEffect, useState } from 'react';
 import trpc from '../../../lib/trpc';
 import { User } from '../../../lib/types';
 import useStore from '../../../lib/store';
-import { clusterAssociations, resources } from '../../../lib/enums';
+import { clusterAssociations, resources, timeTypes } from '../../../lib/enums';
 import ClusterBanner from '../../../components/Cluster/ClusterBanner';
 import Loader from '../../../components/Loader';
 import RegisteredSearchField from '../../../components/RegisteredSearchField';
 import RegisteredTextArea from '../../../components/RegisteredTextArea';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import SelectField from '../../../components/SelectField';
+import RegisteredSelectField from '../../../components/RegisteredSelectField';
 import ItemListHeader from '../../../components/Item/ItemListHeader';
 import TopicsPalette from '../../../components/SubjectTopic/TopicsPalette';
 import FullTag from '../../../components/SubjectTopic/FullTag';
+import TimeSelectField from '../../../components/TimeSelectField';
 
 const AdminClusterPage: NextPage = () => {
   const router = useRouter();
@@ -25,9 +26,9 @@ const AdminClusterPage: NextPage = () => {
     subjects,
     topics,
     setTopics,
-    allRooms: rooms,
   } = useStore();
   const [selectedSubject, setSelectedSubject] = useState(null);
+  const [isRoomless, setIsRoomless] = useState(false);
   const methods = useForm();
   const { setValue, getValues, handleSubmit } = methods;
   let { clustername } = router.query;
@@ -109,7 +110,7 @@ const AdminClusterPage: NextPage = () => {
 
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields
-    const { appointmentname, description } = getValues();
+    const { appointmentname, description, subject } = getValues();
 
     // Block the use of special characters
     const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~´]/;
@@ -121,7 +122,16 @@ const AdminClusterPage: NextPage = () => {
       return;
     }
 
-    // TODO Lara: create-appointment-mutation aufrufen
+    if (isRoomless) {
+      const { dateFrom, dateTo, timeFrom, timeTo } = getValues();
+
+      // TODO Lara: create-appointment-mutation für roomless aufrufen
+    } else {
+      const tags = topics?.join(',');
+
+      // Redirect to room search page with data as query params
+      document.location.href = `../../../raum/suche?name=${appointmentname}&description=${description}$subject=${subject}&tags=${tags}`;
+    }
   });
 
   const onSubjectChange = (val: any) => {
@@ -135,8 +145,8 @@ const AdminClusterPage: NextPage = () => {
   if (clusterDetailsQuery.isSuccess) {
     return (
       <main className="page-default flex-wrap screen-xxl:flex-nowrap">
-        <div className="list-container flex-wrap screen-xxxl:flex-nowrap">
-          <div className="h-full md:h-[600px] w-full max-w-[800px] input-mask px-4">
+        <div className="list-container flex-wrap gap-10 screen-xxxl:flex-nowrap screen-xxxl:gap-0">
+          <div className="min-h-[600px] w-full max-w-[800px] input-mask px-4">
             <div className="flex justify-center align-items mt-12 mb-8 text-center">
               <h1 className="text-[30px] md:text-[40px] text-gray-700 dark:text-gray-100">
                 Neue Lerneinheit
@@ -163,22 +173,56 @@ const AdminClusterPage: NextPage = () => {
                     height="40"
                   />
                   <div className="flex flex-col w-full">
-                    <span className="text-xs ml-1">Raum</span>
-                    <SelectField
-                      preselected="Raumlos"
+                    <span className="text-xs ml-1">Typ</span>
+                    <RegisteredSelectField
+                      preselected="mit Raum"
                       registerSelectName="room"
+                      onChangeHandler={() => setIsRoomless(!isRoomless)}
                     >
-                      {rooms &&
-                        rooms.map((room, idx) => (
-                          <option key={idx} value={room.name}>
-                            {room.name}
-                          </option>
-                        ))}
-                    </SelectField>
+                      <option value="1">ohne Raum</option>
+                    </RegisteredSelectField>
                   </div>
+                  {isRoomless ? (
+                    <>
+                      <div className="flex flex-col w-full">
+                        <span className="text-xs ml-1">Datum von</span>
+                        <RegisteredSearchField
+                          noIcon={true}
+                          type="date"
+                          registerInputName="dateFrom"
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <span className="text-xs ml-1">Datum bis</span>
+                        <RegisteredSearchField
+                          noIcon={true}
+                          type="date"
+                          registerInputName="dateTo"
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <span className="text-xs ml-1">Zeit von</span>
+                        <TimeSelectField
+                          preselected="-"
+                          registerSelectName="timeFrom"
+                          timeType={timeTypes.FROM}
+                        />
+                      </div>
+                      <div className="flex flex-col w-full">
+                        <span className="text-xs ml-1">Zeit bis</span>
+                        <TimeSelectField
+                          preselected="-"
+                          registerSelectName="timeTo"
+                          timeType={timeTypes.TO}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                   <div className="flex flex-col w-full">
                     <span className="text-xs ml-1">Fach</span>
-                    <SelectField
+                    <RegisteredSelectField
                       preselected="-"
                       registerSelectName="subject"
                       onChangeHandler={onSubjectChange}
@@ -190,7 +234,7 @@ const AdminClusterPage: NextPage = () => {
                           </option>
                         ))}
                       <option>test</option>
-                    </SelectField>
+                    </RegisteredSelectField>
                   </div>
                 </div>
               </form>
@@ -218,7 +262,9 @@ const AdminClusterPage: NextPage = () => {
                 type="submit"
                 form="create-appointment-form"
               >
-                Lerneinheit erstellen
+                {isRoomless
+                  ? 'Lerneinheit erstellen'
+                  : 'Weiter zur Raumselektion'}
               </button>
             </div>
           </div>

@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { timeTypes } from '../lib/enums';
-import SelectField from './SelectField';
+import RegisteredSelectField from './RegisteredSelectField';
 import trpc from '../lib/trpc';
 import useStore from '../lib/store';
 
 type Props = {
-  preselected: string;
+  preselected?: string;
   registerSelectName: string;
   timeType: timeTypes.FROM | timeTypes.TO;
+  required?: boolean;
 };
 
 const TimeSelectField = ({
   preselected,
   registerSelectName,
   timeType,
+  required,
 }: Props) => {
   const store = useStore();
   const teachingTimesQuery = trpc.useQuery(['catalog.times'], {
@@ -32,15 +34,19 @@ const TimeSelectField = ({
   }, []);
 
   return (
-    <SelectField
+    <RegisteredSelectField
       preselected={preselected}
       registerSelectName={registerSelectName}
+      required={required}
     >
       {timeType === timeTypes.FROM ? (
         <>
           {store.beginTimes &&
             store.beginTimes.map((time: any, idx: any) => (
-              <option key={idx} value={time}>
+              <option
+                key={idx}
+                value={Number(time.split(':').join('')).toString()}
+              >
                 {time}
               </option>
             ))}
@@ -49,13 +55,16 @@ const TimeSelectField = ({
         <>
           {store.endTimes &&
             store.endTimes.map((time: any, idx: any) => (
-              <option key={idx} value={time}>
+              <option
+                key={idx}
+                value={Number(time.split(':').join('')).toString()}
+              >
                 {time}
               </option>
             ))}
         </>
       )}
-    </SelectField>
+    </RegisteredSelectField>
   );
 };
 

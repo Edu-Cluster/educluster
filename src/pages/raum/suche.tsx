@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { NextPage } from 'next';
 import { resources } from '../../lib/enums';
 import useStore from '../../lib/store';
-import ItemSearchField from '../../components/Item/ItemSearchField';
 import ItemList from '../../components/Item/ItemList';
 import trpc from '../../lib/trpc';
 import { User } from '../../lib/types';
@@ -34,16 +33,11 @@ const RoomSearchPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="w-full max-w-[800px] mt-16 flex flex-col gap-4">
-          <ItemSearchField
-            resource={resources.ROOM}
-            placeholder="Nach Räumen suchen"
-            name="room-search"
-          />
           <RoomFilterBox showResetButton={!!rooms} />
           <ItemList
             resource={resources.ROOM}
             items={rooms}
-            placeholder="Benutze das Suchfeld oder die Filter um nach Räumen zu suchen"
+            placeholder='Klicke auf "Alle Filter Übernehmen" um nach Räumen zu suchen'
           />
         </div>
       </main>

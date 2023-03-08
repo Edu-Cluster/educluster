@@ -2,6 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { Cluster, ContextWithUser } from '../../lib/types';
 import {
   clusterAssociations,
+  conditionSatisfactionTypes,
   notificationTypes,
   statusCodes,
 } from '../../lib/enums';
@@ -27,6 +28,7 @@ import {
   officiallyInviteUser,
   readAppointmentById,
   readTagsOfAppointment,
+  getAllSpecificRooms,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -37,6 +39,8 @@ import {
 } from '../schemata/cluster.schema';
 import { findUserByEduClusterUsername } from '../services/user.service';
 import { insertNewNotification } from '../services/notification.service';
+import { isRoomAvailable } from '../services/untis.service';
+import { SpecificRoomsSchema } from '../schemata/room.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -547,15 +551,73 @@ export const getPublicClusters = async ({ input }: { input: string }) => {
   }
 };
 
-export const getRooms = async ({ input }: { input: string }) => {
+export const getSpecificRooms = async ({
+  input,
+}: {
+  input: SpecificRoomsSchema;
+}) => {
+  const availabilityMap = new Map();
+
   try {
-    // TODO Denis: read available rooms from webuntis
-    // TODO Denis: Auch mit input funktional machen
+    const allSpecificRooms = await getAllSpecificRooms(
+      input.sizeMin,
+      input.sizeMax,
+      input.equipment,
+    );
+
+    if (!allSpecificRooms || !allSpecificRooms.length) {
+      return {
+        status: statusCodes.FAILURE,
+        data: {
+          rooms: [],
+        },
+      };
+    }
+
+    // Get available rooms by checking if the rooms are booked within the given range or not
+    for (let i = allSpecificRooms.length - 1; i >= 0; i--) {
+      const availability = await isRoomAvailable(
+        Number(allSpecificRooms[i].untis_id),
+        input.from,
+        input.to,
+      );
+
+      if (Array.isArray(availability)) {
+        availabilityMap.set(allSpecificRooms[i].untis_id, availability);
+        // @ts-ignore
+        allSpecificRooms[i].conditionSatisfaction =
+          conditionSatisfactionTypes.SEMISATISFIED;
+      } else {
+        if (availability) {
+          // @ts-ignore
+          allSpecificRooms[i].conditionSatisfaction =
+            conditionSatisfactionTypes.SATISFIED;
+        } else {
+          // @ts-ignore
+          allSpecificRooms[i].conditionSatisfaction =
+            conditionSatisfactionTypes.UNSATISFIED;
+        }
+      }
+    }
+
+    // Sort rooms by condition satisfaction
+    allSpecificRooms.sort((a, b) =>
+      // @ts-ignore
+      a.conditionSatisfaction > b.conditionSatisfaction
+        ? 1
+        : // @ts-ignore
+        b.conditionSatisfaction > a.conditionSatisfaction
+        ? -1
+        : 0,
+    );
+
+    const rooms = arrayOfArrayTransformer(allSpecificRooms);
 
     return {
       status: statusCodes.SUCCESS,
       data: {
-        rooms: null,
+        rooms,
+        availabilities: availabilityMap || null,
       },
     };
   } catch (err: any) {
@@ -575,7 +637,7 @@ function arrayOfArrayTransformer(arr: any[]) {
   arr.forEach((entry) => {
     if (singleArr.length === 10) {
       page++;
-      entry.push(singleArr);
+      arrOfArr.push(singleArr);
       singleArr = [];
     } else {
       singleArr.push(entry);

@@ -369,3 +369,64 @@ export const deleteAdmin = async (
       cluster_id: clusterId,
     },
   });
+
+export const getAllSpecificRooms = async (
+  sizeMin?: number,
+  sizeMax?: number,
+  equipment?: string,
+) => {
+  if (sizeMin && sizeMax && equipment) {
+    return await prisma.room.findMany({
+      where: {
+        AND: [
+          {
+            seats: {
+              gte: sizeMin,
+              lte: sizeMax,
+            },
+          },
+          {
+            equipment_for_room: {
+              every: {
+                equipment,
+              },
+            },
+          },
+        ],
+      },
+    });
+  } else if (sizeMin && sizeMax) {
+    return await prisma.room.findMany({
+      where: {
+        seats: {
+          gte: sizeMin,
+          lte: sizeMax,
+        },
+      },
+    });
+  } else if (equipment) {
+    return await prisma.room.findMany({
+      where: {
+        equipment_for_room: {
+          every: {
+            equipment,
+          },
+        },
+      },
+    });
+  } else {
+    return await getAllRooms();
+  }
+};
+
+export const getAllRooms = async (name?: string) => {
+  if (name) {
+    return await prisma.room.findMany({
+      where: {
+        name: { contains: name },
+      },
+    });
+  }
+
+  return await prisma.room.findMany();
+};
