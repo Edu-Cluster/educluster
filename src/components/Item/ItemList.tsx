@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { AppointmentData, ClusterData } from '../../lib/types';
 import { RoomData } from '../../lib/types';
-import { conditionSatisfactionTypes, resources } from '../../lib/enums';
+import { resources } from '../../lib/enums';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';

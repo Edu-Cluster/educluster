@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { prisma } from '../utils/prisma';
 
-const maxCountForPage = 5;
+const maxCountForPage = 6;
 export const readClusterFromUser = async (username: string) => {
   let clusterUserAdminList = await prisma.person.findUnique({
     where: { username: username },

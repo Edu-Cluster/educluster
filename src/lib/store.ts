@@ -81,6 +81,10 @@ type Store = {
   setTagsOfAppointment: (items: any) => void;
   appointmentDetails: any;
   setAppointmentDetails: (appointmentDetails: any) => void;
+  appointmentRoomSelected: string | null;
+  setAppointmentRoomSelected: (appointmentRoomSelected: string | null) => void;
+  appointmentDateSelected: string | null;
+  setAppointmentDateSelected: (appointmentDateSelected: string | null) => void;
 
   potentialTopics: string[] | null;
   setPotentialTopics: (topics: string[] | null) => void;
@@ -180,6 +184,12 @@ const useStore = create<Store>((set) => ({
   appointmentDetails: null,
   setAppointmentDetails: (appointmentDetails) =>
     set((state) => ({ ...state, appointmentDetails })),
+  appointmentRoomSelected: null,
+  setAppointmentRoomSelected: (appointmentRoomSelected) =>
+    set((state) => ({ ...state, appointmentRoomSelected })),
+  appointmentDateSelected: null,
+  setAppointmentDateSelected: (appointmentDateSelected) =>
+    set((state) => ({ ...state, appointmentDateSelected })),
 
   potentialTopics: null,
   setPotentialTopics: (potentialTopics) =>

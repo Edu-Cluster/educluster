@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { timeTypes } from '../../lib/enums';
+import { resources, timeTypes } from '../../lib/enums';
 import useStore from '../../lib/store';
 import TimeSelectField from '../TimeSelectField';
 import RegisteredSearchField from '../RegisteredSearchField';
 import RegisteredSelectField from '../RegisteredSelectField';
 import trpc from '../../lib/trpc';
 import toast from 'react-hot-toast';
+import FullTag from '../SubjectTopic/FullTag';
 
 type Props = {
   showResetButton: boolean;
+  showSummary?: string | null;
 };
 
-const RoomFilterBox = ({ showResetButton }: Props) => {
+const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
   const store = useStore();
   const [newFromDate, setNewFromDate] = useState(null);
   const [newToDate, setNewToDate] = useState(null);
   const methods = useForm();
   const { setValue, getValues, handleSubmit } = methods;
 
+  // @ts-ignore
+  const params = new URL(document.location).searchParams;
   const maxDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
   const maxDateDay =
     maxDate.getDate().toString().length === 1
@@ -58,11 +62,22 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
 
     // Get values from the input fields
     const { timeFrom, timeTo, personCount, equipment } = getValues();
+    const now = new Date();
+    const hours = now.getHours().toString();
+    let minutes = now.getMinutes().toString();
+
+    if (minutes.length === 1) {
+      minutes = `0${minutes}`;
+    }
+
+    const timeNow = `${hours}${minutes}`;
 
     if (
       timeFrom === '-1' ||
       timeTo === '-1' ||
-      Number(timeFrom) > Number(timeTo)
+      Number(timeFrom) > Number(timeTo) ||
+      Number(timeNow) > Number(timeFrom) ||
+      Number(timeNow) > Number(timeTo)
     ) {
       toast.error('Bitte wählen Sie einen validen Zeitrahmen aus!');
       store.setSearchItemsLoading(false);
@@ -103,6 +118,10 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
       equipment: equipment === '-1' ? '' : equipment,
     });
   });
+
+  const createNewAppointment = async () => {
+    // TODO: EC-124
+  };
 
   const { mutate: specificRoomsMutation } = trpc.useMutation(
     ['item.specificRooms'],
@@ -157,6 +176,97 @@ const RoomFilterBox = ({ showResetButton }: Props) => {
     equipmentQuery.refetch();
     roomSizeQuery.refetch();
   }, []);
+
+  if (!!showSummary) {
+    return (
+      <div className="h-fit w-full max-w-[800px]">
+        <h1 className="text-[30px] md:text-[40px] screen-xxl:text-[60px] text-gray-700 dark:text-gray-100 mb-10 text-center">
+          Terminübersicht
+        </h1>
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Bezeichnung: </p>
+            <p className="text-2xl">{params?.get('name')}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Beschreibung: </p>
+            <p className="text-2xl">{params?.get('description')}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Raum: </p>
+            <p className="text-2xl">{store.appointmentRoomSelected}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Datum: </p>
+            <p className="text-2xl">
+              {store.appointmentDateSelected
+                ? `${store.appointmentDateSelected
+                    .toString()
+                    .slice(0, 4)}-${store.appointmentDateSelected
+                    .toString()
+                    .slice(4, 6)}-${store.appointmentDateSelected
+                    .toString()
+                    .slice(6, 8)}`
+                : newFromDate}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Zeitrahmen: </p>
+            <p className="text-2xl">
+              {getValues().timeFrom.length === 3
+                ? `${getValues().timeFrom.slice(
+                    0,
+                    1,
+                  )}:${getValues().timeFrom.slice(1, 3)}`
+                : `${getValues().timeFrom.slice(
+                    0,
+                    2,
+                  )}:${getValues().timeFrom.slice(2, 4)}`}{' '}
+              -{' '}
+              {getValues().timeTo.length === 3
+                ? `${getValues().timeTo.slice(0, 1)}:${getValues().timeTo.slice(
+                    1,
+                    3,
+                  )}`
+                : `${getValues().timeTo.slice(0, 2)}:${getValues().timeTo.slice(
+                    2,
+                    4,
+                  )}`}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Fach: </p>
+            <p className="text-2xl">{params?.get('subject')}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold">Themen: </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {params
+                .get('tags')
+                ?.split(',')
+                ?.map((topic, idx) => (
+                  <FullTag key={idx} resource={resources.TOPIC} name={topic} />
+                ))}
+            </div>
+          </div>
+          <button
+            className="primary-button w-80 h-16 mt-10 bg-emerald-500 hover:bg-emerald-700"
+            onClick={createNewAppointment}
+          >
+            Termin erstellen
+          </button>
+          <button
+            className="primary-button w-80 h-16 bg-red-500 hover:bg-red-700"
+            onClick={() => {
+              document.location.href = '/';
+            }}
+          >
+            Abbrechen
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-8">

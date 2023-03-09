@@ -16,7 +16,11 @@ type Props = {
 };
 
 const RoomItemInList = ({ name, id, conditionsSatisfied }: Props) => {
-  const { roomAvailabilities } = useStore();
+  const {
+    roomAvailabilities,
+    setAppointmentRoomSelected,
+    setAppointmentDateSelected,
+  } = useStore();
   const [conditionFulfilled, setConditionFulfilled] = useState(false);
 
   let ConditionSatisfaction;
@@ -42,6 +46,7 @@ const RoomItemInList = ({ name, id, conditionsSatisfied }: Props) => {
   const onAvailabilitiesChanged = (value: any) => {
     if (value !== '-1') {
       setConditionFulfilled(true);
+      setAppointmentDateSelected(value);
     } else {
       setConditionFulfilled(false);
     }
@@ -65,7 +70,10 @@ const RoomItemInList = ({ name, id, conditionsSatisfied }: Props) => {
           <></>
         )}
         {conditionsSatisfied === conditionSatisfactionTypes.SATISFIED ? (
-          <div className="banner-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100">
+          <div
+            className="banner-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100"
+            onClick={() => setAppointmentRoomSelected(name)}
+          >
             <p className="mr-2 dark:hover:text-black text-emerald-500">
               Auswählen
             </p>
@@ -93,7 +101,10 @@ const RoomItemInList = ({ name, id, conditionsSatisfied }: Props) => {
                 ))}
             </SelectField>
             {conditionFulfilled ? (
-              <div className="banner-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100">
+              <div
+                className="banner-button text-emerald-500 dark:hover:text-black hover:bg-emerald-100"
+                onClick={() => setAppointmentRoomSelected(name)}
+              >
                 <p className="mr-2 dark:hover:text-black text-emerald-500">
                   Auswählen
                 </p>
