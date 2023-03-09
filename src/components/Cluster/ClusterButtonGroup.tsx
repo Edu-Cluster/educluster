@@ -68,6 +68,18 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
     },
   });
 
+  const { mutate: addMemberToClusterMutation } = trpc.useMutation(
+    ['item.addNewMemberToCluster'],
+    {
+      onSuccess: () => {
+        document.location.reload();
+      },
+      onError: (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   const sendInvitations = async () => {
     const userIds: bigint[] = [];
 
@@ -100,6 +112,10 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
       description: newDescription,
       isPrivate: isPrivate as boolean,
     });
+  };
+
+  const addNewMember = () => {
+    addMemberToClusterMutation(Number(clusterDetails.id));
   };
 
   return (
@@ -145,7 +161,10 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                   <ArrowNarrowLeftIcon height={20} width={20} />
                 </div>
               ) : (
-                <div className="banner-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100">
+                <div
+                  className="banner-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100"
+                  onClick={() => addNewMember()}
+                >
                   <p className="mr-2 dark:text-emerald-500 text-emerald-500">
                     Cluster beitreten
                   </p>

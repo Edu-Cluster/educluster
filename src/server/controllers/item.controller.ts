@@ -29,6 +29,7 @@ import {
   readAppointmentById,
   readTagsOfAppointment,
   getAllSpecificRooms,
+  instantlyAddUser,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -422,9 +423,11 @@ export const sendMemberInvitation = async ({
 export const addMemberToCluster = async ({
   input,
   ctx,
+  invited,
 }: {
   input: number;
   ctx: ContextWithUser;
+  invited: boolean;
 }) => {
   try {
     const id = ctx?.user?.id;
@@ -435,7 +438,11 @@ export const addMemberToCluster = async ({
       };
     }
 
-    await officiallyInviteUser(id, input);
+    if (invited) {
+      await officiallyInviteUser(id, input);
+    } else {
+      await instantlyAddUser(id, input);
+    }
 
     return {
       status: statusCodes.SUCCESS,

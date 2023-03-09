@@ -311,6 +311,18 @@ export const officiallyInviteUser = (
     },
   });
 
+export const instantlyAddUser = (
+  person_id: number | bigint,
+  cluster_id: number | bigint,
+) =>
+  prisma.member_of.create({
+    data: {
+      person_id,
+      cluster_id,
+      is_active: true,
+    },
+  });
+
 export const transformMemberToAdmin = async (
   personId: number | bigint,
   clusterId: number,
