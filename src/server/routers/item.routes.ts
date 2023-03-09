@@ -69,7 +69,13 @@ export const itemRouter = createRouter()
   })
   .mutation('addMemberToCluster', {
     input: number(),
-    resolve: async ({ input, ctx }) => await addMemberToCluster({ input, ctx }),
+    resolve: async ({ input, ctx }) =>
+      await addMemberToCluster({ input, ctx, invited: true }),
+  })
+  .mutation('addNewMemberToCluster', {
+    input: number(),
+    resolve: async ({ input, ctx }) =>
+      await addMemberToCluster({ input, ctx, invited: false }),
   })
   .mutation('updateCluster', {
     input: clusterEditSchema,
