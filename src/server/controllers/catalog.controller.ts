@@ -6,7 +6,7 @@ import {
   readTeachingTimes,
 } from '../services/catalog.service';
 
-export const getTeachingTimes = async ({}: {}) => {
+export const getTeachingTimes = async () => {
   try {
     const times = await readTeachingTimes();
     return {
@@ -23,7 +23,7 @@ export const getTeachingTimes = async ({}: {}) => {
     });
   }
 };
-export const getEquipment = async ({}: {}) => {
+export const getEquipment = async () => {
   try {
     const equipment = await readEquipment();
     return {
@@ -40,7 +40,7 @@ export const getEquipment = async ({}: {}) => {
     });
   }
 };
-export const getRoomSizes = async ({}: {}) => {
+export const getRoomSizes = async () => {
   try {
     const roomsizes = await readRoomSizes();
     return {

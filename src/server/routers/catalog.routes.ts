@@ -7,13 +7,13 @@ import {
 
 export const catalogRouter = createRouter()
   .query('times', {
-    resolve: async ({ ctx }) => await getTeachingTimes({ ctx }),
+    resolve: async () => await getTeachingTimes(),
   })
   .query('equipment', {
-    resolve: async ({ ctx }) => await getEquipment({ ctx }),
+    resolve: async () => await getEquipment(),
   })
   .query('roomsize', {
-    resolve: async ({ ctx }) => await getRoomSizes({ ctx }),
+    resolve: async () => await getRoomSizes(),
   });
 // })
 // .query('ofCluster', {
