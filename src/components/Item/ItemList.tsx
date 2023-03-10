@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { AppointmentData, ClusterData } from '../../lib/types';
 import { RoomData } from '../../lib/types';
-import { conditionSatisfactionTypes, resources } from '../../lib/enums';
+import { resources } from '../../lib/enums';
 import ClusterItemInList from '../Cluster/ClusterItemInList';
 import AppointmentItemInList from '../Appointment/AppointmentItemInList';
 import Tag from '../SubjectTopic/Tag';
@@ -31,14 +31,26 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
 
   if (!items || !items.length) {
     if (!searchItemsLoading) {
-      if (placeholder) {
+      if (items && !items.length) {
+        return (
+          <div className="text-center mt-24">
+            <p className="text-gray-400">
+              Keine{' '}
+              {resource === resources.ROOM
+                ? 'Räume'
+                : resource === resources.CLUSTER
+                ? 'Cluster'
+                : 'Lerneinheiten'}{' '}
+              gefunden!
+            </p>
+          </div>
+        );
+      } else if (placeholder) {
         return (
           <div className="text-center mt-24">
             <p className="text-gray-400">{placeholder}</p>
           </div>
         );
-      } else if (items && !items.length) {
-        return <></>;
       }
     }
 
