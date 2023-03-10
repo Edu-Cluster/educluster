@@ -285,37 +285,37 @@ Es folgt eine Reihe von Bildern, die die Erstellung der Datenbank auf Supabase z
 Zunächst wird in Figure 1 gezeigt, welche Informationen supabase benötigt, um eine Datenbank anzulegen. Wie hier dargestellt werden ein Organisationsname, ein Datenbankname, ein Passwort für den Zugriff, die Region, in der die Datenbank genutzt wird, ebenso wie die Version, die genutzt werden soll gefordert.
 
 .Erstellung Datenbank
-image::Bilder Datenbank/DatenbankErstellen1.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen1.png[Screenshot]
 
 Figure 2 zeigt als Nächstes die generierten API Keys und Datenbank URL.
 
 .API Keys und Project Configuration
-image::Bilder Datenbank/DatenbankErstellen2.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen2.png[Screenshot]
 
 In Figure 3 wird als Nächstes die Einstiegsseite zur neu angelegten Datenbank angezeigt. Von hier aus können der Table Editor, SQL Editor oder auch die Authentication Einstellungen betreten werden.
 
 .Ansicht neue Datenbank
-image::Bilder Datenbank/DatenbankErstellen3.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen3.png[Screenshot]
 
 In Figure 4 wird der Table Editor gezeigt. Hier kann durch Betätigen des New Table-Buttons eine Tabelle händisch in der GUI erzeugt werden.
 
 .Übersicht Table Editor
-image::Bilder Datenbank/DatenbankErstellen4.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen4.png[Screenshot]
 
 Figure 5 stellt das Erstellen der Tabelle über die GUI dar. Hier kann ein Tabellenname, Beschreibung als auch die einzelnen Spalten mit deren Eigenschaften eingegeben werden.
 
 .Create New Table in GUI
-image::Bilder Datenbank/DatenbankErstellen5.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen5.png[Screenshot]
 
 In Figure 6 wurde gerade eine Beispieltabelle erstellt. Als Beispiel wurde hier die Tabelle cluster herangezogen, welche in weiterer Folge in der Testdatenbank verwendet wurden.
 
 .Erstellen Beispieltabelle in GUI
-image::Bilder Datenbank/DatenbankErstellen6.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen6.png[Screenshot]
 
 Zuletzt zeigt Figure 7 noch die fertige Testdatentabelle mit Testinhalten.
 
 .Fertige Beispieltabelle mit Inhalten
-image::Bilder Datenbank/DatenbankErstellen7.png[Screenshot]
+image::img/lara/Bilder Datenbank/DatenbankErstellen7.png[Screenshot]
 
 ==== Modellierung der Datenbank
 Zunächst musste ein ER-Modell zur geplanten Datenbank erstellt werden.
@@ -417,7 +417,7 @@ Bei 1-N Beziehungen wird ein Fremdschlüssel in den N-Tabellen erstellt, somit w
 Hier ist das aus den oben genannten Überlegungen resultierende ER-Modell dargestellt:
 
 .ER-Modell Datenbank
-image::Bilder Datenbank/EduCluster-ERModell.jpg[ER-Modell]
+image::img/lara/Bilder Datenbank/EduCluster-ERModell.jpg[ER-Modell]
 
 Zum Erstellen der Datenbank wurden folgende Code Snippets genutzt. Die Überlegungen zu den einzelnen Tabellen entsprechen den oben angeführten.
 
@@ -762,51 +762,51 @@ In diesem Bild wird der gesamte Workflow der einzelnen Tasks im Projekt dargeste
 Zudem kann ein Task auch von hier direkt über Already Fixed in den Status Fixed verschoben werden, falls er bereits bei einem anderen Task mitgefixed wurde.
 
 .Workflow Status: Design
-image::Bilder YouTrack/FromDesign.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromDesign.PNG[Screenshot]
 //TODO! Bildbezeichnungen und Verweise anpassen!
 
 Als Nächstes steht der Task im Status Open. Wie bereits erwähnt werden hier die Tasks direkt von den Entwicklern entgegengenommen und umgesetzt. Für die Umsetzung wird der Task weiter über Start Progress in den Status In Progress gesetzt.
 Ebenso kann der Task von hier aber auch wieder über Already Fixed direkt in den Status Fixed befördert werden, wenn erst später erkannt wird, dass er bereits gefixed wurde.
 
 .Workflow Status: Open
-image::Bilder YouTrack/FromOpen.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromOpen.PNG[Screenshot]
 
 Im Status In Progress steht jeder Task nur, wenn er gerade direkt in der Umsetzung bearbeitet wird. Sobald er fertig ist, wird er weiter über Solve in den Status Ready To Test geschoben.
 
 .Workflow Status: In Progress
-image::Bilder YouTrack/FromInProgress.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromInProgress.PNG[Screenshot]
 
 Der Ready To-Test-Status steht für den Zeitraum, wenn ein Task bereits umgesetzt wurde und noch nicht getestet wird. Analog dem Status Open können hier Tester sich die Tasks nehmen und zum Testen über Start Testing in den Status In Testing schieben.
 
 .Workflow Status: Ready To Test
-image::Bilder YouTrack/FromReadyToTest.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromReadyToTest.PNG[Screenshot]
 
 Steht ein Task im Status In Testing, wird er gerade aktiv getestet. Sobald der Tester mit dieser Aufgabe vollständig fertig ist, schiebt er den Task über Resolve in den Fixed Status.
 
 .Workflow Status: In Testing
-image::Bilder YouTrack/FromInTesting.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromInTesting.PNG[Screenshot]
 
 Ein Task im Fixed-Status wurde bereits fertig umgesetzt und getestet. Falls hier jedoch ein Fehler unterläuft und der Task fälschlicherweise in diesem Status landet, kann er über Re-Open wieder zurück in den Open-Status geschoben werden.
 
 .Workflow Status: Fixed
-image::Bilder YouTrack/FromFixed.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromFixed.PNG[Screenshot]
 
 Sollte jedoch im Workflow der Fall entstehen, dass weitere Fragen auftauchen, die erst mit dem Projektteam oder Auftraggeber besprochen werden müssen und somit nicht weiter umgesetzt oder getestet werden können, können diese in einen To Be Discussed-Status geschoben werden. Dies ist vom Open-, In-Progress- oder In-Testing-Status aus möglich. Der Task verweilt dort so lange, bis die Fragen geklärt sind und wird dann in den Status zurückgeschoben, in dem er anschließend weiterbehandelt werden soll.
 
 .Workflow Status: To Be Discussed
-image::Bilder YouTrack/FromToBeDiscussed.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromToBeDiscussed.PNG[Screenshot]
 
 Zuletzt wurde noch ein Won't-Fix-Status hinzugefügt, da sich im Laufe des Projektes manche Tasks als nicht nötig herausgestellt haben. Aus diesem Status können Tasks ebenso wieder aufgelebt werden, falls sie fälschlicherweise dorthin geschoben wurden.
 
 .Workflow Status: Won't Fix
-image::Bilder YouTrack/FromWontFix.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/FromWontFix.PNG[Screenshot]
 
 ===== Übersicht des Projektfortschritts in YouTrack
 Um den Projektfortschritt möglichst deutlich darzustellen, wurde hier vom Projektteam auf das angebotene Kanban Board in YouTrack zurückgegriffen, auf dem ebenfalls die einzelnen Sprints dargestellt werden können.
 Im folgenden Bild kann ein Zwischenstand auf dem Kanban Board für den finalen Sprint des Teams EduCluster betrachtet werden. Hier werden die einzelnen Status in Spalten und die Tasks in entsprechenden Spalten dargestellt. Dargestellt wird hier von links nach rechts der Standardworkflow mit einer zusätzlichen Spalte links für die To Be Discussed Tasks, dass diese somit nicht übersehen werden.
 
 .Kanban Board
-image::Bilder YouTrack/KanBanBoard.PNG[Screenshot]
+image::img/lara/Bilder YouTrack/KanBanBoard.PNG[Screenshot]
 
 === Requirements Engineering
 Als Requirements Engineering wird das ingenieurmäßige Festlegen von Anforderungen an bestimmte Systeme bezeichnet.footnote:[https://wirtschaftslexikon.gabler.de/definition/requirements-engineering-44113, abgerufen am 06.03.2023] Es wird in größeren Projekten für eine reibungslose Zusammenarbeit benötigt.
