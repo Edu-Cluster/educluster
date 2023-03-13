@@ -29,9 +29,22 @@ const AdminClusterPage: NextPage = () => {
   } = useStore();
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [isRoomless, setIsRoomless] = useState(false);
+  const [newFromDate, setNewFromDate] = useState(null);
+  const [newToDate, setNewToDate] = useState(null);
   const methods = useForm();
-  const { setValue, getValues, handleSubmit } = methods;
+  const { getValues, handleSubmit } = methods;
   let { clustername } = router.query;
+
+  const minDate = new Date();
+  const minDateDay =
+    minDate.getDate().toString().length === 1
+      ? `0${minDate.getDate()}`
+      : minDate.getDate();
+  const minDateMonth =
+    (minDate.getMonth() + 1).toString().length === 1
+      ? `0${minDate.getMonth() + 1}`
+      : minDate.getMonth() + 1;
+  const minDateString = `${minDate.getFullYear()}-${minDateMonth}-${minDateDay}`;
 
   useEffect(() => {
     // Fetch user and set store state
@@ -123,14 +136,29 @@ const AdminClusterPage: NextPage = () => {
     }
 
     if (isRoomless) {
-      const { dateFrom, dateTo, timeFrom, timeTo } = getValues();
+      const { timeFrom, timeTo } = getValues();
 
+      if (
+        timeFrom === '-1' ||
+        timeTo === '-1' ||
+        Number(timeFrom) > Number(timeTo)
+      ) {
+        toast.error('Bitte wählen Sie einen validen Zeitrahmen aus!');
+        return;
+      }
+
+      // newFromDate, newToDate
       // TODO Lara: create-appointment-mutation für roomless aufrufen
     } else {
       const tags = topics?.join(',');
 
+      if (subject === '-1' || !tags || !tags.length) {
+        toast.error('Bitte wählen sie einen Fach und zumindest ein Thema aus!');
+        return;
+      }
+
       // Redirect to room search page with data as query params
-      document.location.href = `../../../raum/suche?name=${appointmentname}&description=${description}$subject=${subject}&tags=${tags}`;
+      document.location.href = `../../../raum/suche?name=${appointmentname}&description=${description}&subject=${subject}&tags=${tags}`;
     }
   });
 
@@ -190,6 +218,10 @@ const AdminClusterPage: NextPage = () => {
                           noIcon={true}
                           type="date"
                           registerInputName="dateFrom"
+                          onChangeHandler={(e: any) =>
+                            setNewFromDate(e.target.value)
+                          }
+                          min={minDateString}
                         />
                       </div>
                       <div className="flex flex-col w-full">
@@ -198,6 +230,10 @@ const AdminClusterPage: NextPage = () => {
                           noIcon={true}
                           type="date"
                           registerInputName="dateTo"
+                          onChangeHandler={(e: any) =>
+                            setNewToDate(e.target.value)
+                          }
+                          min={minDateString}
                         />
                       </div>
                       <div className="flex flex-col w-full">
