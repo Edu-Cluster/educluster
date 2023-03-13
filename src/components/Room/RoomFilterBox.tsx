@@ -119,9 +119,39 @@ const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
     });
   });
 
-  const createNewAppointment = async () => {
-    // TODO: EC-124
+  const createNewAppointment = () => {
+    const { timeFrom, timeTo } = getValues();
+    const date = store.appointmentDateSelected as string;
+    const roomname = store.appointmentRoomSelected;
+
+    createAppointmentMutation({
+      name: params.get('name') as string,
+      description: params.get('description') as string,
+      subject: params.get('subject') as string,
+      topics: params.get('topics')?.split(',') as string[],
+      clusterId: Number(params.get('cluster')),
+      timeFrom,
+      timeTo,
+      date,
+      roomname,
+    });
   };
+
+  const { mutate: createAppointmentMutation } = trpc.useMutation(
+    ['item.createAppointment'],
+    {
+      retry: 0,
+      onSuccess: ({ data }) => {
+        document.location.href = `../../termin/${data.name}*${data.id}`;
+      },
+      onError: (err) => {
+        toast.error(
+          'Leider ist ein Fehler beim Erstellen dieses Termins aufgetreten!',
+        );
+        console.error(err);
+      },
+    },
+  );
 
   const { mutate: specificRoomsMutation } = trpc.useMutation(
     ['item.specificRooms'],
@@ -136,7 +166,7 @@ const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
           store.setRoomAvailabilities(data.availabilities);
         }
       },
-      onError: async (err) => {
+      onError: (err) => {
         store.setRooms(null);
         store.setSearchItemsLoading(false);
         console.error(err);

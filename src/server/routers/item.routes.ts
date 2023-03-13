@@ -15,6 +15,7 @@ import {
   addMemberToCluster,
   getItemOfAppointmentHandler,
   getSpecificRooms,
+  createAppointment,
 } from '../controllers/item.controller';
 import {
   idNamePair,
@@ -22,6 +23,7 @@ import {
   clusterCreateSchema,
   updateMemberSchema,
   clusterInvitationSchema,
+  appointmentCreateSchema,
 } from '../schemata/cluster.schema';
 import { number, string } from 'zod';
 import { specificRoomsSchema } from '../schemata/room.schema';
@@ -84,6 +86,10 @@ export const itemRouter = createRouter()
   .mutation('createCluster', {
     input: clusterCreateSchema,
     resolve: async ({ input, ctx }) => await createCluster({ input, ctx }),
+  })
+  .mutation('createAppointment', {
+    input: appointmentCreateSchema,
+    resolve: async ({ input, ctx }) => await createAppointment({ input, ctx }),
   })
   .query('appointments', {
     input: string(),
