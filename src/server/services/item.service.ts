@@ -179,6 +179,48 @@ export const createNewCluster = async ({
     },
   });
 
+export const createNewAppointment = async ({
+  teamsId,
+  untisId,
+  name,
+  description,
+  dateFrom,
+  dateUntil,
+  roomname,
+  topics,
+  clusterId,
+  creator,
+}) => {
+  await prisma.appointment.create({
+    data: {
+      name,
+      description,
+      creator,
+      cluster: clusterId,
+      room: roomname === null ? undefined : roomname,
+      teams_id: teamsId,
+      untis_id: untisId,
+      date_from: dateFrom,
+      date_until: dateUntil,
+    },
+  });
+
+  const newAppointment = await prisma.appointment.findFirst({
+    where: { name },
+    select: { id: true, name: true },
+  });
+  for (const item of topics) {
+    await prisma.topics_for_appointment.create({
+      data: {
+        appointment: newAppointment.id,
+        topic: item,
+      },
+    });
+  }
+
+  return newAppointment;
+};
+
 export const addNewClusterAdmin = async (
   personId: number | bigint | undefined,
   clusterId: number | bigint | undefined,

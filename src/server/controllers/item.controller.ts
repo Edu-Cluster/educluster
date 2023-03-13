@@ -30,6 +30,7 @@ import {
   readTagsOfAppointment,
   getAllSpecificRooms,
   instantlyAddUser,
+  createNewAppointment,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -37,6 +38,7 @@ import {
   ClusterCreateSchema,
   UpdateMemberSchema,
   ClusterInvitationSchema,
+  AppointmentCreateSchema,
 } from '../schemata/cluster.schema';
 import { findUserByEduClusterUsername } from '../services/user.service';
 import { insertNewNotification } from '../services/notification.service';
@@ -507,6 +509,80 @@ export const createCluster = async ({
     return {
       data: {
         id: result?.id,
+      },
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+    });
+  }
+};
+
+export const createAppointment = async ({
+  input,
+  ctx,
+}: {
+  input: AppointmentCreateSchema;
+  ctx: ContextWithUser;
+}) => {
+  try {
+    const {
+      name,
+      description,
+      timeFrom,
+      timeTo,
+      topics,
+      date,
+      roomname,
+      clusterId,
+    } = input;
+    const creator = ctx?.user?.id;
+    const teamsId = name;
+    const untisId = name; // TODO Denis
+    const dateFrom = new Date(date);
+    const dateUntil = new Date(date);
+
+    // Construct the appropriate from-date
+    if (timeFrom.length === 3) {
+      dateFrom.setHours(Number(timeFrom[0]));
+      dateFrom.setMinutes(Number(timeFrom.slice(1, timeFrom.length)));
+      dateFrom.setSeconds(0);
+    } else {
+      dateFrom.setHours(Number(timeFrom.slice(0, 2)));
+      dateFrom.setMinutes(Number(timeFrom.slice(2, timeFrom.length)));
+      dateFrom.setSeconds(0);
+    }
+
+    // Construct the appropriate to-date
+    if (timeTo.length === 3) {
+      dateUntil.setHours(Number(timeFrom[0]));
+      dateUntil.setMinutes(Number(timeFrom.slice(1, timeFrom.length)));
+      dateUntil.setSeconds(0);
+    } else {
+      dateUntil.setHours(Number(timeFrom.slice(0, 2)));
+      dateUntil.setMinutes(Number(timeFrom.slice(2, timeFrom.length)));
+      dateUntil.setSeconds(0);
+    }
+
+    const newAppointment = await createNewAppointment({
+      teamsId,
+      untisId,
+      name,
+      description,
+      roomname,
+      topics,
+      creator,
+      clusterId,
+      dateFrom,
+      dateUntil,
+    });
+
+    return {
+      data: {
+        id: newAppointment && newAppointment.id,
+        name: newAppointment && newAppointment.name,
       },
       status: statusCodes.SUCCESS,
     };

@@ -29,8 +29,7 @@ const AdminClusterPage: NextPage = () => {
   } = useStore();
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [isRoomless, setIsRoomless] = useState(false);
-  const [newFromDate, setNewFromDate] = useState(null);
-  const [newToDate, setNewToDate] = useState(null);
+  const [newDate, setNewDate] = useState(null);
   const methods = useForm();
   const { getValues, handleSubmit } = methods;
   let { clustername } = router.query;
@@ -121,9 +120,32 @@ const AdminClusterPage: NextPage = () => {
     },
   });
 
+  const { mutate: createAppointmentMutation } = trpc.useMutation(
+    ['item.createAppointment'],
+    {
+      retry: 0,
+      onSuccess: ({ data }) => {
+        document.location.href = `../../termin/${data.name}*${data.id}`;
+      },
+      onError: (err) => {
+        toast.error(
+          'Leider ist ein Fehler beim Erstellen dieses Termins aufgetreten!',
+        );
+        console.error(err);
+      },
+    },
+  );
+
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields
     const { appointmentname, description, subject } = getValues();
+
+    if (subject === '-1' || !topics || !topics.length) {
+      toast.error('Bitte wählen sie einen Fach und zumindest ein Thema aus!');
+      return;
+    }
+
+    const tags = topics?.join(',');
 
     // Block the use of special characters
     const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~´]/;
@@ -141,24 +163,27 @@ const AdminClusterPage: NextPage = () => {
       if (
         timeFrom === '-1' ||
         timeTo === '-1' ||
-        Number(timeFrom) > Number(timeTo)
+        Number(timeFrom) > Number(timeTo) ||
+        !newDate
       ) {
         toast.error('Bitte wählen Sie einen validen Zeitrahmen aus!');
         return;
       }
 
-      // newFromDate, newToDate
-      // TODO Lara: create-appointment-mutation für roomless aufrufen
+      createAppointmentMutation({
+        clusterId: clusterId as number,
+        name: appointmentname,
+        date: newDate as string,
+        roomname: null,
+        description,
+        timeFrom,
+        topics,
+        timeTo,
+        subject,
+      });
     } else {
-      const tags = topics?.join(',');
-
-      if (subject === '-1' || !tags || !tags.length) {
-        toast.error('Bitte wählen sie einen Fach und zumindest ein Thema aus!');
-        return;
-      }
-
       // Redirect to room search page with data as query params
-      document.location.href = `../../../raum/suche?name=${appointmentname}&description=${description}&subject=${subject}&tags=${tags}`;
+      document.location.href = `../../../raum/suche?name=${appointmentname}&description=${description}&subject=${subject}&tags=${tags}&cluster=${clusterId}`;
     }
   });
 
@@ -213,25 +238,13 @@ const AdminClusterPage: NextPage = () => {
                   {isRoomless ? (
                     <>
                       <div className="flex flex-col w-full">
-                        <span className="text-xs ml-1">Datum von</span>
+                        <span className="text-xs ml-1">Datum</span>
                         <RegisteredSearchField
                           noIcon={true}
                           type="date"
                           registerInputName="dateFrom"
                           onChangeHandler={(e: any) =>
-                            setNewFromDate(e.target.value)
-                          }
-                          min={minDateString}
-                        />
-                      </div>
-                      <div className="flex flex-col w-full">
-                        <span className="text-xs ml-1">Datum bis</span>
-                        <RegisteredSearchField
-                          noIcon={true}
-                          type="date"
-                          registerInputName="dateTo"
-                          onChangeHandler={(e: any) =>
-                            setNewToDate(e.target.value)
+                            setNewDate(e.target.value)
                           }
                           min={minDateString}
                         />

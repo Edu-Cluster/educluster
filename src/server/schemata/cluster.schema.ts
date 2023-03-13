@@ -1,4 +1,13 @@
-import { boolean, number, object, string, array, TypeOf, bigint } from 'zod';
+import {
+  boolean,
+  number,
+  object,
+  string,
+  array,
+  TypeOf,
+  bigint,
+  any,
+} from 'zod';
 
 export const idNamePair = object({
   name: string(),
@@ -31,6 +40,20 @@ export const clusterCreateSchema = object({
 });
 
 export type ClusterCreateSchema = TypeOf<typeof clusterCreateSchema>;
+
+export const appointmentCreateSchema = object({
+  name: string(),
+  description: string(),
+  date: string(),
+  timeFrom: string(),
+  timeTo: string(),
+  subject: string(),
+  topics: array(string()),
+  roomname: any(),
+  clusterId: number(),
+});
+
+export type AppointmentCreateSchema = TypeOf<typeof appointmentCreateSchema>;
 
 export const updateMemberSchema = object({
   username: string(),
