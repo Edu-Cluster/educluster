@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { resources, timeTypes } from '../../lib/enums';
 import useStore from '../../lib/store';
@@ -7,6 +7,7 @@ import FullTag from '../SubjectTopic/FullTag';
 import RegisteredSearchField from '../RegisteredSearchField';
 import SubjectTopicSearchField from '../SubjectTopic/SubjectTopicSearchField';
 import ItemListHeader from '../Item/ItemListHeader';
+import trpc from '../../lib/trpc';
 
 type Props = {
   showResetButton: boolean;
@@ -14,14 +15,17 @@ type Props = {
 
 const AppointmentFilterBox = ({ showResetButton }: Props) => {
   const {
-    setAppointmentOfCluster,
+    setAppointments,
     setPotentialSubjects,
     subjects,
     setSubjects,
     setPotentialTopics,
     topics,
     setTopics,
+    setSearchItemsLoading,
   } = useStore();
+  const [newFromDate, setNewFromDate] = useState(null);
+  const [newToDate, setNewToDate] = useState(null);
   const methods = useForm();
   const { setValue, getValues, handleSubmit } = methods;
 
@@ -31,7 +35,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     setValue('dateFrom', '');
     setValue('dateTo', '');
 
-    setAppointmentOfCluster(null);
+    setAppointments(null);
     setPotentialSubjects(null);
     setPotentialTopics(null);
     setSubjects(null);
@@ -44,16 +48,8 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
   };
 
   const onSubmit = handleSubmit(() => {
-    // Reset some filters
-    setPotentialSubjects(null);
-    setPotentialTopics(null);
-    // @ts-ignore
-    document.querySelector('[name="subject-search"]').value = '';
-    // @ts-ignore
-    document.querySelector('[name="topic-search"]').value = '';
-
     // Get values from the input fields
-    const { timeFrom, timeTo, dateFrom, dateTo } = getValues();
+    const { timeFrom, timeTo } = getValues();
 
     // @ts-ignore
     const searchFieldValue = document.querySelector(
@@ -62,11 +58,41 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
     ).value;
 
     // Query the database for matches using the filters and the text in the search field
-    // TODO Lara (EC-96)
+    advancedSearchQuery({
+      name: searchFieldValue === '' ? null : searchFieldValue,
+      timeFrom: timeFrom === '-1' ? null : timeFrom,
+      timeTo: timeTo === '-1' ? null : timeTo,
+      dateFrom: newFromDate || null,
+      dateTo: newToDate || null,
+      topics: topics || null,
+      subject: subjects || null,
+    });
 
-    // Set the appointments state with the matches
-    // TODO Lara (EC-96)
+    // Reset some filters
+    setPotentialSubjects(null);
+    setPotentialTopics(null);
+    // @ts-ignore
+    document.querySelector('[name="subject-search"]').value = '';
+    // @ts-ignore
+    document.querySelector('[name="topic-search"]').value = '';
   });
+
+  const { mutate: advancedSearchQuery } = trpc.useMutation(
+    ['item.advancedAppointments'],
+    {
+      retry: 0,
+      onSuccess: ({ data }) => {
+        // Save search result appointments as state
+        setAppointments(data.appointments);
+        setSearchItemsLoading(false);
+      },
+      onError: async (err) => {
+        setAppointments(null);
+        setSearchItemsLoading(false);
+        console.error(err);
+      },
+    },
+  );
 
   return (
     <div className="h-fit w-full max-w-[800px] mt-2">
@@ -96,6 +122,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
                   noIcon={true}
                   type="date"
                   registerInputName="dateFrom"
+                  onChangeHandler={(e: any) => setNewFromDate(e.target.value)}
                 />
               </div>
               <div className="flex flex-col w-full">
@@ -104,6 +131,7 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
                   noIcon={true}
                   type="date"
                   registerInputName="dateTo"
+                  onChangeHandler={(e: any) => setNewToDate(e.target.value)}
                 />
               </div>
             </div>

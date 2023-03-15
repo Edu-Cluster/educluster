@@ -31,6 +31,7 @@ import {
   getAllSpecificRooms,
   instantlyAddUser,
   createNewAppointment,
+  readSpecificPublicAppointments,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -38,12 +39,15 @@ import {
   ClusterCreateSchema,
   UpdateMemberSchema,
   ClusterInvitationSchema,
-  AppointmentCreateSchema,
 } from '../schemata/cluster.schema';
 import { findUserByEduClusterUsername } from '../services/user.service';
 import { insertNewNotification } from '../services/notification.service';
 import { isRoomAvailable } from '../services/untis.service';
 import { SpecificRoomsSchema } from '../schemata/room.schema';
+import {
+  AppointmentAdvancedSearchSchema,
+  AppointmentCreateSchema,
+} from '../schemata/appointment.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -597,6 +601,71 @@ export const createAppointment = async ({
 export const getPublicAppointments = async ({ input }: { input: string }) => {
   try {
     const publicAppointments = await readPublicAppointments(input);
+    const appointments = arrayOfArrayTransformer(publicAppointments);
+
+    return {
+      status: statusCodes.SUCCESS,
+      data: {
+        appointments,
+      },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const getSpecificPublicAppointments = async ({
+  input,
+}: {
+  input: AppointmentAdvancedSearchSchema;
+}) => {
+  try {
+    const fullDateFrom = input.dateFrom ? new Date(input.dateFrom) : null;
+    const fullDateTo = input.dateTo ? new Date(input.dateTo) : null;
+
+    if (fullDateFrom && input.timeFrom) {
+      if (input.timeFrom.length === 3) {
+        fullDateFrom.setHours(Number(input.timeFrom[0]));
+        fullDateFrom.setMinutes(
+          Number(input.timeFrom.slice(1, input.timeFrom.length)),
+        );
+        fullDateFrom.setSeconds(0);
+      } else {
+        fullDateFrom.setHours(Number(input.timeFrom.slice(0, 2)));
+        fullDateFrom.setMinutes(
+          Number(input.timeFrom.slice(3, input.timeFrom.length)),
+        );
+        fullDateFrom.setSeconds(0);
+      }
+    }
+
+    if (fullDateTo && input.timeTo) {
+      if (input.timeTo.length === 3) {
+        fullDateTo.setHours(Number(input.timeTo[0]));
+        fullDateTo.setMinutes(
+          Number(input.timeTo.slice(1, input.timeTo.length)),
+        );
+        fullDateTo.setSeconds(0);
+      } else {
+        fullDateTo.setHours(Number(input.timeTo.slice(0, 2)));
+        fullDateTo.setMinutes(
+          Number(input.timeTo.slice(3, input.timeTo.length)),
+        );
+        fullDateTo.setSeconds(0);
+      }
+    }
+
+    const publicAppointments = await readSpecificPublicAppointments(
+      input.name,
+      fullDateFrom,
+      fullDateTo,
+      input.topics,
+      input.subject,
+    );
     const appointments = arrayOfArrayTransformer(publicAppointments);
 
     return {

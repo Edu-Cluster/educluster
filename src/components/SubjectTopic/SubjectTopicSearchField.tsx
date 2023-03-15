@@ -4,6 +4,7 @@ import SearchField from '../SearchField';
 import SubjectTopicComponent from './SubjectTopicComponent';
 import { resources } from '../../lib/enums';
 import Loader from '../Loader';
+import trpc from '../../lib/trpc';
 
 type Props = {
   resource: resources.TOPIC | resources.SUBJECT;
@@ -43,40 +44,41 @@ const SubjectTopicSearchField = ({ resource }: Props) => {
       })) ||
     [];
 
+  const findSubjectsQuery = trpc.useQuery(['catalog.subjects', textInput], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      if (!potentialSubjects) {
+        setPotentialSubjects(data.subjects);
+      }
+
+      setSearchPotentialSubjectsLoading(false);
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
+  const findTopicsQuery = trpc.useQuery(['catalog.topics', textInput], {
+    enabled: false,
+    onSuccess: async ({ data }) => {
+      if (!potentialTopics) {
+        setPotentialTopics(data.topics);
+      }
+
+      setSearchPotentialTopicsLoading(false);
+    },
+    onError: async (err) => {
+      console.error(err);
+    },
+  });
+
   useEffect(
     () => {
       if (debouncedSearchTerm) {
         if (isTopic) {
-          // TODO Lara: topics query aufrufen
-          const searchResultTopics: string[] = [
-            'Vektoren',
-            'Grammatik',
-            'Lineare Algebra',
-            'Hibernate',
-          ];
-
-          if (!potentialTopics) {
-            // Save search result potential topics as a state
-            setPotentialTopics(searchResultTopics);
-          }
-
-          setSearchPotentialTopicsLoading(false);
+          findTopicsQuery.refetch();
         } else {
-          // TODO Lara: subjects query aufrufen
-          const searchResultSubjects: string[] = [
-            'Mathematik',
-            'Deutsch',
-            'Programmieren',
-            'Statik',
-            'Chemie',
-          ];
-
-          if (!potentialSubjects) {
-            // Save search result potential subjects as a state
-            setPotentialSubjects(searchResultSubjects);
-          }
-
-          setSearchPotentialSubjectsLoading(false);
+          findSubjectsQuery.refetch();
         }
       }
     },
@@ -119,19 +121,27 @@ const SubjectTopicSearchField = ({ resource }: Props) => {
             name="topic-search"
             onChangeHandler={setNewTextInput}
           />
-          {potentialTopics && (
-            <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
-              {potentialTopics.map((potentialTopic, idx) => (
-                <SubjectTopicComponent
-                  key={idx}
-                  resource={resource}
-                  name={potentialTopic}
-                  showPlusButton={
-                    !matchingTopics.some((topic) => topic === potentialTopic)
-                  }
-                />
-              ))}
-            </div>
+          {searchPotentialTopicsLoading ? (
+            <Loader
+              type="div"
+              size={50}
+              extraClasses="h-40 bg-gray-50 h-auto mt-2"
+            />
+          ) : (
+            potentialTopics && (
+              <div className="w-full h-fit divide-y max-h-[635px] bg-gray-50 overflow-y-auto mt-2">
+                {potentialTopics.map((potentialTopic, idx) => (
+                  <SubjectTopicComponent
+                    key={idx}
+                    resource={resource}
+                    name={potentialTopic}
+                    showPlusButton={
+                      !matchingTopics.some((topic) => topic === potentialTopic)
+                    }
+                  />
+                ))}
+              </div>
+            )
           )}
         </div>
       ) : (
@@ -142,8 +152,7 @@ const SubjectTopicSearchField = ({ resource }: Props) => {
             name="subject-search"
             onChangeHandler={setNewTextInput}
           />
-          {(isTopic && searchPotentialTopicsLoading) ||
-          (!isTopic && searchPotentialSubjectsLoading) ? (
+          {searchPotentialSubjectsLoading ? (
             <Loader
               type="div"
               size={50}

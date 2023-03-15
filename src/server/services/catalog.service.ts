@@ -18,3 +18,17 @@ export const readEquipment = async () =>
     select: { name: true },
     orderBy: { name: 'asc' },
   });
+
+export const readSubjects = async (name) =>
+  await prisma.subject.findMany({
+    where: {
+      name: { contains: name },
+    },
+  });
+
+export const readTopics = async (name) =>
+  await prisma.topic.findMany({
+    where: {
+      name: { contains: name },
+    },
+  });

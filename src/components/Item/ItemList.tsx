@@ -95,11 +95,16 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
               description={item.description}
               creator={item.person.username}
               roomname={item.roomname}
+              dateFrom={item.date_from}
+              dateTo={item.date_until}
               link={'/termin/' + item.name + '*' + item.id}
             >
               {item.topics_for_appointment &&
                 item.topics_for_appointment.map((tag, idx) => {
-                  if (tag.topic_topicTotopics_for_appointment) {
+                  if (
+                    tag.topic_topicTotopics_for_appointment &&
+                    tag.topic_topicTotopics_for_appointment.is_visible
+                  ) {
                     return (
                       <Tag
                         key={idx}

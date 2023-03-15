@@ -17,7 +17,6 @@ const ItemSearchField = ({ resource, placeholder, name }: Props) => {
     appointments,
     setClusters,
     setAppointments,
-    setRooms,
     setSearchItemsLoading,
   } = useStore();
   const [textInput, setTextInput] = useState('');

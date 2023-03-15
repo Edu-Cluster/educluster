@@ -6,6 +6,8 @@ type Props = {
   description: string | null;
   creator: string;
   roomname: string | null;
+  dateFrom: Date;
+  dateTo: Date;
   link: string;
   children: ReactNode;
 };
@@ -15,9 +17,31 @@ const AppointmentItemInList = ({
   description,
   creator,
   roomname,
+  dateFrom,
+  dateTo,
   link,
   children,
 }: Props) => {
+  const dateFromDay =
+    dateFrom.getDate().toString().length === 1
+      ? `0${dateFrom.getDate()}`
+      : dateFrom.getDate();
+  const dateFromMonth =
+    (dateFrom.getMonth() + 1).toString().length === 1
+      ? `0${dateFrom.getMonth() + 1}`
+      : dateFrom.getMonth() + 1;
+  const dateFromString = `${dateFrom.getFullYear()}-${dateFromMonth}-${dateFromDay}`;
+
+  const dateToDay =
+    dateTo.getDate().toString().length === 1
+      ? `0${dateTo.getDate()}`
+      : dateTo.getDate();
+  const dateToMonth =
+    (dateTo.getMonth() + 1).toString().length === 1
+      ? `0${dateTo.getMonth() + 1}`
+      : dateTo.getMonth() + 1;
+  const dateToString = `${dateTo.getFullYear()}-${dateToMonth}-${dateToDay}`;
+
   return (
     <div className="flex flex-col justify-center items-center py-1 px-4 hover:bg-gray-100 dark:hover:bg-slate-800 fast-animate">
       <div className="w-full flex justify-between items-start mb-2">
@@ -43,21 +67,36 @@ const AppointmentItemInList = ({
               </p>
             </span>
             {roomname ? (
-              <p className="text-sm">{`Raum: ${roomname}`}</p>
-            ) : !roomname ? (
-              <p className="text-sm">Raumlos</p>
+              <span className="text-sm block">
+                {' '}
+                Raum:
+                <p className="text-sm ml-1 text-cyan-700 dark:text-cyan-700">
+                  {roomname}
+                </p>
+              </span>
             ) : (
-              <p className="text-sm"></p>
+              <p className="text-sm text-cyan-700 dark:text-cyan-700">
+                Raumlos
+              </p>
             )}
           </div>
         </div>
       </div>
 
       <div className="w-full flex justify-between items-start gap-[1.80rem]">
-        <div className="w-48 md:w-[400px] overflow-hidden">
+        <div className="overflow-hidden">
           {description ? <p className="text-sm">{description}</p> : <></>}
         </div>
-        <div>###</div>
+        <div className="md:min-w-[200px] text-sm">
+          von{' '}
+          <p className="text-sm text-cyan-700 dark:text-cyan-700">
+            {dateFromString}
+          </p>{' '}
+          bis{' '}
+          <p className="text-sm text-cyan-700 dark:text-cyan-700">
+            {dateToString}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -282,7 +282,6 @@ const AdminClusterPage: NextPage = () => {
                             {subject}
                           </option>
                         ))}
-                      <option>test</option>
                     </RegisteredSelectField>
                   </div>
                 </div>

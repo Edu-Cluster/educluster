@@ -2,8 +2,11 @@ import { createRouter } from '../createRouter';
 import {
   getEquipment,
   getRoomSizes,
+  getSubjects,
   getTeachingTimes,
+  getTopics,
 } from '../controllers/catalog.controller';
+import { string } from 'zod';
 
 export const catalogRouter = createRouter()
   .query('times', {
@@ -14,7 +17,12 @@ export const catalogRouter = createRouter()
   })
   .query('roomsize', {
     resolve: async () => await getRoomSizes(),
+  })
+  .query('subjects', {
+    input: string(),
+    resolve: async ({ input }) => await getSubjects({ input }),
+  })
+  .query('topics', {
+    input: string(),
+    resolve: async ({ input }) => await getTopics({ input }),
   });
-// })
-// .query('ofCluster', {
-//     input: clusterSchema,

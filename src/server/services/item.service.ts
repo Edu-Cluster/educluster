@@ -76,6 +76,8 @@ export const readAppointmentsFromUser = async (username: string) => {
         name: true,
         person: { select: { username: true } },
         roomname: true,
+        date_from: true,
+        date_until: true,
         topics_for_appointment: {
           select: {
             topic_topicTotopics_for_appointment: {
@@ -111,7 +113,65 @@ export const readPublicAppointments = async (name?: string) => {
         is_private: false,
       },
     },
-    include: { person: true },
+    include: {
+      person: true,
+      topics_for_appointment: {
+        include: {
+          topic_topicTotopics_for_appointment: true,
+        },
+      },
+    },
+  });
+};
+
+export const readSpecificPublicAppointments = async (
+  name: string | null,
+  dateFrom: Date | null,
+  dateTo: Date | null,
+  topics: string[] | null,
+  subjects: string[] | null,
+) => {
+  return await prisma.appointment.findMany({
+    where: {
+      cluster_appointmentTocluster: {
+        is_private: false,
+      },
+      topics_for_appointment: {
+        ...(topics ? { topic: { in: topics } } : {}),
+        ...(subjects
+          ? {
+              every: {
+                topic_topicTotopics_for_appointment: {
+                  subject: { in: subjects },
+                },
+              },
+            }
+          : {}),
+      },
+      ...(dateFrom
+        ? {
+            date_from: {
+              gte: dateFrom,
+            },
+          }
+        : {}),
+      ...(dateTo
+        ? {
+            date_until: {
+              lte: dateTo,
+            },
+          }
+        : {}),
+      ...(name ? { name: { contains: name } } : {}),
+    },
+    include: {
+      person: true,
+      topics_for_appointment: {
+        include: {
+          topic_topicTotopics_for_appointment: true,
+        },
+      },
+    },
   });
 };
 

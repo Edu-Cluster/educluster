@@ -16,6 +16,7 @@ import {
   getItemOfAppointmentHandler,
   getSpecificRooms,
   createAppointment,
+  getSpecificPublicAppointments,
 } from '../controllers/item.controller';
 import {
   idNamePair,
@@ -23,10 +24,13 @@ import {
   clusterCreateSchema,
   updateMemberSchema,
   clusterInvitationSchema,
-  appointmentCreateSchema,
 } from '../schemata/cluster.schema';
 import { number, string } from 'zod';
 import { specificRoomsSchema } from '../schemata/room.schema';
+import {
+  appointmentAdvancedSearchSchema,
+  appointmentCreateSchema,
+} from '../schemata/appointment.schema';
 
 export const itemRouter = createRouter()
   .query('mine', {
@@ -94,6 +98,11 @@ export const itemRouter = createRouter()
   .query('appointments', {
     input: string(),
     resolve: async ({ input }) => await getPublicAppointments({ input }),
+  })
+  .mutation('advancedAppointments', {
+    input: appointmentAdvancedSearchSchema,
+    resolve: async ({ input }) =>
+      await getSpecificPublicAppointments({ input }),
   })
   .query('clusters', {
     input: string(),
