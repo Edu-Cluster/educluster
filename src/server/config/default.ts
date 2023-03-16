@@ -13,8 +13,8 @@ const customConfig: {
   eduClusterPassword: string;
 } = {
   port: 3000,
-  accessTokenExpiresIn: 15, // In minutes
-  refreshTokenExpiresIn: 30, // In minutes
+  accessTokenExpiresIn: 30, // In minutes
+  refreshTokenExpiresIn: 45, // In minutes
 
   dbUri: process.env.DATABASE_URL as string,
   accessTokenPrivateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY as string,
@@ -26,7 +26,7 @@ const customConfig: {
   schoolBaseUrl: 'euterpe.webuntis.com',
 
   eduClusterUser: 'VladuRay',
-  eduClusterPassword: 'RandominsOmen09#',
+  eduClusterPassword: 'Ezezez09#',
 };
 
 export default customConfig;

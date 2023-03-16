@@ -32,8 +32,6 @@ const ClusterPage: NextPage = () => {
       document.location.href = '/404';
     }
 
-    // TODO Lara/Denis: Wenn Cluster privat ist, darf diese Seite nur von Mitglieder besucht werden
-
     // Reset usersOfCluster state
     setUserOfCluster(null);
 

@@ -26,9 +26,20 @@ export const readSubjects = async (name) =>
     },
   });
 
+export const readAllSubjects = async () => await prisma.subject.findMany();
+
 export const readTopics = async (name) =>
   await prisma.topic.findMany({
     where: {
       name: { contains: name },
+    },
+  });
+
+export const readAllTopics = async () => await prisma.topic.findMany();
+
+export const readTopicsBySubject = async (name) =>
+  await prisma.topic.findMany({
+    where: {
+      subject: { contains: name },
     },
   });

@@ -28,11 +28,11 @@
     }
 
     .page-sizing {
-        @apply h-auto w-full mt-5;
+        @apply screen-xxxl:h-[88vh] w-full;
     }
 
     .page-default {
-        @apply page-sizing flex justify-center screen-xxl:mt-12 gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap;
+        @apply page-sizing flex justify-center gap-5 px-2 pb-24 sm:px-24 lg:px-12 screen-xxxl:px-36 flex-wrap-reverse screen-xxl:flex-nowrap;
     }
 
     .list-container {

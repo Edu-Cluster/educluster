@@ -33,7 +33,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     if (!searchItemsLoading) {
       if (items && !items.length) {
         return (
-          <div className="text-center mt-24">
+          <div className="text-center mt-24 w-full max-w-[800px]">
             <p className="text-gray-400">
               Keine{' '}
               {resource === resources.ROOM
@@ -41,7 +41,7 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
                 : resource === resources.CLUSTER
                 ? 'Cluster'
                 : 'Lerneinheiten'}{' '}
-              gefunden!
+              gefunden.
             </p>
           </div>
         );

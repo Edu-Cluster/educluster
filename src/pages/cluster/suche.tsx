@@ -30,7 +30,7 @@ const ClusterSearchPage: NextPage = () => {
 
   if (userQuery.isSuccess) {
     return (
-      <main className="page-default">
+      <main className="page-default h-auto">
         <div className="w-full max-w-[800px] mt-16 flex flex-col gap-4">
           <ItemSearchField
             resource={resources.CLUSTER}

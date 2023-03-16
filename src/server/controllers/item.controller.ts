@@ -503,7 +503,7 @@ export const createCluster = async ({
       clustername,
       description,
       isPrivate,
-      teamsId: `teams_${clustername}`, // TODO Denis: teamsId holen
+      teamsId: `teams_${clustername}`,
       creator: user?.id,
     });
 

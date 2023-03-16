@@ -10,7 +10,15 @@ import { User } from '../../lib/types';
 import Loader from '../../components/Loader';
 
 const AppointmentSearchPage: NextPage = () => {
-  const { setAuthUser, appointments } = useStore();
+  const {
+    setAuthUser,
+    appointments,
+    setAppointments,
+    setPotentialSubjects,
+    setPotentialTopics,
+    setSubjects,
+    setTopics,
+  } = useStore();
 
   const userQuery = trpc.useQuery(['user.me'], {
     enabled: false,
@@ -27,11 +35,17 @@ const AppointmentSearchPage: NextPage = () => {
   useEffect(() => {
     // Fetch user and set store state
     userQuery.refetch();
+
+    setAppointments(null);
+    setPotentialSubjects(null);
+    setPotentialTopics(null);
+    setSubjects(null);
+    setTopics(null);
   }, []);
 
   if (userQuery.isSuccess) {
     return (
-      <main className="page-default">
+      <main className="page-default h-auto">
         <div className="w-full max-w-[800px] mt-16 flex flex-col gap-4">
           <ItemSearchField
             resource={resources.APPOINTMENT}

@@ -106,7 +106,7 @@ const InviteClusterPage: NextPage = () => {
     return (
       <main className="page-default">
         <div className="list-container flex-wrap-reverse screen-xxxl:flex-nowrap">
-          {/* @ts-ignore TODO Denis/Lara Type-Problem */}
+          {/* @ts-ignore */}
           <MemberList members={members} isOnInvitationPage={true} />
           <div className="w-full lg:min-w-[400px] mt-16 flex flex-col gap-4">
             <MemberSearchField

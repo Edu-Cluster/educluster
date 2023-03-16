@@ -24,6 +24,7 @@ const AdminClusterPage: NextPage = () => {
     setClusterDetails,
     setClusterAssociation,
     subjects,
+    setSubjects,
     topics,
     setTopics,
   } = useStore();
@@ -59,8 +60,6 @@ const AdminClusterPage: NextPage = () => {
     if (clustername && !clustername.includes('*')) {
       document.location.href = '/404';
     }
-
-    // TODO Lara: subject-query aufrufen
   }, []);
 
   const clusterId =
@@ -80,8 +79,6 @@ const AdminClusterPage: NextPage = () => {
       },
     },
   );
-
-  // TODO Lara: subject-query definieren (alle Fächer aus der DB holen und state mit setSubjects setzen)
 
   const clusterAssociationQuery = trpc.useQuery(
     ['item.clusterAssociation', clusterId as number],
@@ -113,6 +110,9 @@ const AdminClusterPage: NextPage = () => {
 
       // Fetch cluster details
       await clusterDetailsQuery.refetch();
+
+      // Fetch all subjects
+      await findAllSubjectsQuery.refetch();
     },
     onError: async (err) => {
       console.error(err);
@@ -135,6 +135,17 @@ const AdminClusterPage: NextPage = () => {
       },
     },
   );
+
+  const findAllSubjectsQuery = trpc.useQuery(['catalog.allSubjects'], {
+    enabled: false,
+    retry: 0,
+    onSuccess: ({ data }) => {
+      setSubjects(data.subjects);
+    },
+    onError: (err) => {
+      console.error(err);
+    },
+  });
 
   const onSubmit = handleSubmit(() => {
     // Get values from the input fields

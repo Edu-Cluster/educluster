@@ -160,7 +160,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                   </p>
                   <ArrowNarrowLeftIcon height={20} width={20} />
                 </div>
-              ) : (
+              ) : !isPrivate ? (
                 <div
                   className="banner-button text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-100"
                   onClick={() => addNewMember()}
@@ -170,6 +170,8 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                   </p>
                   <ArrowRightIcon height={20} width={20} />
                 </div>
+              ) : (
+                <></>
               )}
               {isAdmin && (
                 <div className="banner-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100">

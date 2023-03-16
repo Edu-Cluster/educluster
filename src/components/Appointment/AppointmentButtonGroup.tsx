@@ -18,7 +18,7 @@ const AppointmentButtonGroup = ({ cluster }: Props) => {
   const isMember = clusterAssociation === clusterAssociations.IS_MEMBER;
 
   const deleteAppointment = () => {
-    // TODO Lara
+    // TODO Denis
   };
 
   return (

@@ -34,8 +34,6 @@ const AppointmentPage: NextPage = () => {
       document.location.href = '/404';
     }
 
-    // TODO Lara/Denis: Wenn Termin aus einem privaten Cluster stammt, darf diese Seite nur von Mitglieder besucht werden
-
     // Reset userOfAppointment state
     setUserOfAppointment(null);
 
