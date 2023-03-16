@@ -1,12 +1,27 @@
 :sectnums:
 :sectnumlevels: 5
-:doctype: book
 :toc-title: Inhaltsverzeichnis
 :table-caption: Tabelle
 :figure-caption: Abbildung
 :lang: de
-// :lang: de
-// :keywords:
+= Document Title
+:backend: pdf
+:doctype: book
+:pdf-page-layout: :portrait
+// :pdf-page-margin-right: 2in
+:page-right-margin: 2in
+:page-background-image: image:Styling/Styling2-1.png[]
+:title-page-background-image: none
+//TODO: alle Benotungen korrigieren
+//TODO: Korrekturlesen lassen
+//TODO: Gendern
+//TODO: alle verweise auf bild und dergleichen anpassen
+//TODO: styling
+//TODO: zusammenführen
+//TODO: Stundenlisten anpassen
+//TODO: abgerufen am anpassen
+//TODO: Stundenübersicht und persönliches fazit
+
 == Individueller Teil Lara Kammerer
 Im folgenden Kapitel werden Datenbanken evaluiert, die gewählte Datenbank modelliert und erzeugt und Requirements Engineering Arbeiten erläutert. Für das Requirements Engineering wird näher auf die Nutzung des Management-Tools und die Erstellung der einzelnen Tasks eingegangen.
 
@@ -76,8 +91,7 @@ Die Strategie des Projektteams muss sich daher durch regelmäßige Absprachen mi
 ===== Zieldefinition
 Im Anschluss werden hier die zur näheren Auswahl herangezogenen Datenbanken beschlossen und diese gewählten Datenbanken näher bezüglich der Anforderungen aus dem Projekt EduCluster evaluiert, um die am besten geeignete Datenbank für das Projekt zu finden.
 
-//TODO? Entscheiden, ob Hosting/Onpremise einbauen? wenn nicht, dann auch in Stundenliste entfernen
-===== ??Hosting - On Premise / Cloud
+===== Hosting - On Premise / Cloud
 Das Hosting einer Datenbank kann auf zwei verschiedene Weisen funktionieren: On Premise oder in einer Cloud.
 
 Mit _On Premise_ ist das Hosting auf eigenen lokalen Servern gemeint. Im Gegensatz zum Cloud-Hosting wird hier einmalig eine Lizenz erworben und damit die entsprechende Software lokal installiert. Sie bietet mehr Freiraum in Gestaltung der Software. Zudem kann sie unbegrenzt genutzt werden.
@@ -143,11 +157,9 @@ Die Datenbanken müssen als Nächstes bezogen auf die wichtigsten Punkte für da
 * Kosten - K.O.-Kriterium
 * Funktionsumfang der Datenbank - K.O.-Kriterium
 * Größeneinschränkungen der Tabellen - mittel wichtig
-* Zugriffseinschränkungen
-    Anzahl der zur selben Zeit angemeldeten Nutzer - wenig wichtig
-    Anzahl der Anmeldungen je Nutzer zur selben Zeit - wichtig
-    Zeitgleiche Transaktionen - wichtig
+* Zugriffseinschränkungen: Anzahl der Anmeldungen je Nutzer zur selben Zeit - wichtig
 * Maximal verfügbarer Arbeitsspeicher - mittel wichtig
+* Einarbeitungsaufwand - wenig wichtig
 
 [.underline]_Kosten_
 
@@ -159,27 +171,34 @@ Ebenso ist eine Möglichkeit zur Erstellung von Triggern für das Projekt Pflich
 
 [.underline]_Größeneinschränkungen der Tabellen_
 
-Die Größeneinschränkungen der Tabellen sind für das Projekt EduCluster von mittlerem Wert, da mit momentanem Plan keine außergewöhnlich großen Datenmengen erwartet werden. Sollte das Projekt jedoch in späterer Folge auf weitere Schuleinrichtungen ausgeweitet werden, wird die Größe der Datenbank eine wichtigere Rolle spielen. Aufgrund der geringen Wichtigkeit für den derzeitigen Plan wird die Anforderung auf ...% gewertet.
+Die Größeneinschränkungen der Tabellen sind für das Projekt EduCluster von mittlerem Wert, da mit momentanem Plan keine außergewöhnlich großen Datenmengen erwartet werden. Sollte das Projekt jedoch in späterer Folge auf weitere Schuleinrichtungen ausgeweitet werden, wird die Größe der Datenbank eine wichtigere Rolle spielen. Aufgrund der geringen Wichtigkeit für den derzeitigen Plan wird die Anforderung auf 25% gewertet.
 
+// TODO David! Schwellenwert (unter 10gb)
 Es kann eine benötigte Datenbankgröße mit ..GB angenommen werden. In Zukunft kann es aber nützlich sein, eine Datenbank ohne Größeneinschränkungen zu haben für etwaige Erweiterungen des Projekts. Hat eine Datenbank somit keine Größeneinschränkungen in der Tabellengröße, kann diese somit mit der Bestnote 1 bewertet werden. Erfüllt sie die benötigte Datenbankgröße, könnte bei einer Erweiterung jedoch zu Problemen in der Größe führen, kann sie mit einer Note 2 beurteilt werden. Bei unzureichender Größe nach derzeitiger Schätzung muss die Datenbank mit einer 3 bewertet werden und direkt ausscheiden.
 
 [.underline]_Zugriffseinschränkungen - Anzahl der zur selben Zeit angemeldeten Nutzer_
 
-Die gleichzeitig angemeldeten Nutzer auf der Datenbank bleibt selbst zu Höchstanspruchszeiten unter 10, da sich einzig die Entwickler und Tester des Systems einzeln anmelden. Sämtliche Nutzer von EduCluster greifen auf die Datenbank zu jeder Zeit ausschließlich durch den Nutzer EduCluster auf die Datenbank zu. Durch die geringe Anzahl der benötigten Nutzer kann dieses Kriterium mit einer sehr geringen Relevanz für das Projekt abgeschätzt werden und bewertet somit nur ...%.
+Die gleichzeitig angemeldeten Nutzer auf der Datenbank bleibt selbst zu Höchstanspruchszeiten unter 10, da sich einzig die Entwickler und Tester des Systems einzeln anmelden. Sämtliche Nutzer von EduCluster greifen auf die Datenbank zu jeder Zeit ausschließlich durch den Nutzer EduCluster auf die Datenbank zu. Durch die geringe Anzahl der benötigten Nutzer kann dieses Kriterium mit einer sehr geringen Relevanz für das Projekt abgeschätzt werden und bewertet somit nur 40%.
 
 Entsprechend der Bewertung zur Größeneinschränkung der Tabellen kann hier ein Schwellenwert von 10 Nutzern zur selben Zeit genannt werden. Somit werden sämtliche Datenbanken mit einer Nutzeranzahl von über 100 Nutzern mit der Bestnote 1 bewertet, jene, die den Schwellenwert von 10 Nutzern übersteigen mit einer 2 und alle die sich darunter befinden mit einer 3.
 
-[.underline]_Zugriffseinschränkungen - Zeitgleiche Transaktionen_
-
-Im Vergleich zur vorhergehenden Anforderung ist es besonders wichtig für das Projekt, dass unzählige Transaktionen je Nutzer zur selben Zeit möglich sind, da sämtliche EduCluster Nutzer auf die Datenbank über denselben Nutzer zugreifen. Diese Anforderung wird somit mit ...% bewertet.
-
-Hier kann ein hoher Bedarf erwartet werden. Es wird mit bis zu ... zeitgleiche Zugriffe auf die Datenbank von demselben Nutzer gerechnet. Daher wird dieser Schwellenwert wieder zwischen einer 3 und 2 als Entscheidung herangezogen. Um die Bestnote zu erreichen, darf es hier keine Einschränkungen in den Zugriffen geben.
-
 [.underline]_Maximal verfügbarerArbeitsspeicher_
 
-Zuletzt wird noch ein ausreichender Arbeitsspeicher benötigt, der sich ebenfalls bei zu starken Einschränkungen auf die Geschwindigkeit der Transaktionen auswirken kann. Da diese Einschränkungen jedoch die Funktionalitäten des Projektes EduCluster aufgrund einer zu erwartenden mittleren Auslastung voraussichtlich nicht betreffen kann diese Anforderung mit ...% bewertet werden.
+Weiters wird noch ein ausreichender Arbeitsspeicher benötigt, der sich ebenfalls bei zu starken Einschränkungen auf die Geschwindigkeit der Transaktionen auswirken kann. Da diese Einschränkungen jedoch die Funktionalitäten des Projektes EduCluster aufgrund einer zu erwartenden mittleren Auslastung voraussichtlich nicht betreffen kann diese Anforderung mit 25% bewertet werden.
 
-Für den Arbeitsspeicher kann ein Schwellenwert von 4 GB bestimmt werden. Sämtliche Datenbanken mit geringerem verfügbaren RAM können somit mit einer 3, Datenbanken bis zu einer verfügbaren RAM-Größe von bis zu 10 GB mit einer 2 und sämtliche Datenbanken mit größerem verfügbaren Arbeitsspeicher mit der Bestnote 1 bewertet werden.note:[Schwellenwert RAM muss noch festgelegt werden]
+Für den Arbeitsspeicher kann ein Schwellenwert von 2 GB bestimmt werden. Sämtliche Datenbanken mit geringerem verfügbaren RAM können somit mit einer 3, Datenbanken bis zu einer verfügbaren RAM-Größe von bis zu 10 GB mit einer 2 und sämtliche Datenbanken mit größerem verfügbaren Arbeitsspeicher mit der Bestnote 1 bewertet werden.
+
+[.underline]_Einarbeitungsaufwand_
+
+Zuletzt kann noch der Einarbeitungsaufwand genannt werden, der benötigt wird, um sich in die gewählte Datenbank einzuarbeiten. Da sich dieses Kriterium jedoch ausschließlich auf den Zeitaufwand für die Umsetzung des Projektes auswirkt, auf den Erfolg des Projektes jedoch nicht, wird es nur mit 10% gewichtet.
+
+Es kann hier die Unterscheidung festgelegt werden zwischen
+
+* dem Projektteam bereits bekannten Datenbanken, die durch den geringsten Einarbeitsungsaufwand mit der Bestnote bewertet werden können
+* weiteren SQL-Datenbanken, die durch die ähnliche Funktionsweise zu den bereits bekannten (da diese alles SQL Datenbanken sind) nur geringen Aufwand benötigen mit der Note 2 bewertet werden können und
+* NoSQL-Datenbanken, die durch die neuartige Funktionsweise den größten Aufwand benötigen und somit nur mit der Note 3 bewertet werden können
+
+unterschieden werden.
 
 ===== Beurteilung
 Zur Beurteilung werden nun sämtliche Datenbanken einzeln herangezogen und bewertet. Es wird eine an die Schulform angelehnte Benotung verwendet, jedoch mit nur drei Noten. Eine _1_ wird für eine bestmöglich erfüllte Anforderung vergeben. Eine ungenügende Erfüllung der gewünschten Anforderungen hingegen wird mit einer _3_ benotet. Die Vergabe einer _2_ erfolgt für eine Mindesterfüllung der Anforderungen, wenn also die Anforderungen so weit erfüllt werden, um das Projekt durchführen zu können, jedoch nicht optimal.
@@ -191,66 +210,40 @@ _Oracle Database XE_ bietet eine maximale Datenbankgröße von 12 GB, weshalb es
 
 _SQL Server Express_ bietet eine maximale Datenbankgröße von 10 GB. Ebenso wie die Oracle Database XE erfüllt sie damit nur die momentanen Anforderungen und wird damit ebenfalls mit einer 2 benotet.footnote:MSSQL[]
 
-_MySQL Community Server_ erfährt in der Größe keine Einschränkungen und kann somit mit der Bestnote 1 bewertet werden.footnote:[Vgl. https://dev.mysql.com/doc/refman/8.0/en/table-size-limit.html, aufgerufen am 15.02.2023]
+_MySQL Community Server_ erfährt in der Größe keine Einschränkungen und kann somit mit der Bestnote 1 bewertet werden.footnote:[Vgl. https://dev.mysql.com/doc/refman/8.0/en/table-size-limit.html, abgerufen am 15.02.2023]
 
 _PostgreSQL_ unterliegt ebenso keinen Größeneinschränkungen, da es eine Open Source Datenbank ist und somit die Vollversion kostenlos genutzt werden kann. Die Benotung fällt hier mit der Bestnote 1 aus.footnote:PostgreSQLData[Vgl. https://www.postgresql.org/docs/current/limits.html, abgerufen am 14.02.2023]
 
 [.underline]_Zugriffseinschränkungen - Anzahl der zur selben Zeit angemeldeten Nutzer_
 
-_Oracle Database XE_ kann hier mit einer gleichzeitig angemeldeten Nutzeranzahl von 12 punkten und erreicht somit die Note 2.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
+_Oracle Database XE_ kann hier mit einer gleichzeitig angemeldeten Nutzeranzahl von 1528 punkten und erreicht somit die Bestnote 1.footnote:[Vgl. https://vladmihalcea.com/maximum-database-connections/, abgerufen am 13.03.2023]
 
 _SQL Server Express_ lässt sogar 32.767 Nutzer zur gleichen Zeit zu und erhält
  somit ebenfalls die Bestnote 1.footnote:[Vgl. https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-user-connections-server-configuration-option?view=sql-server-ver16, abgerufen am 15.02.2023]
 
-NOTE: Quelle komisch
-//TODO? kommt mir komisch vor
-
-_MySQL Community Server_ hat hier keine Einschränkungen und bekommt somit ebenfalls die Bestnote 1.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
+_MySQL Community Server_ schränkt hier auf 38 simultane Zugriffe je Nutzer ein. Das Problem kann jedoch leicht umgangen werden, indem je Prozedur (also zum Beispiel für das Auslesen, das Aktualisieren und das Erstellen der Lerngruppen) je ein Nutzer verwendet wird, wodurch die Zugriffsbeschränkungen als praktisch uneingeschränkt gelten. Die Bewertung kann hier also mit einer 2 für die benötigte Umgehung der Zugriffsbeschränkungen benotet werden.footnote:[Vgl. https://www.infomaniak.com/en/support/faq/471/mysql-maximum-number-of-simultaneous-connections, abgerufen am 23.02.2023]
 
 _PostgreSQL_ hat hier ein Default-Limit von 100 Nutzern, kann bei Bedarf aber unbegrenzt erhöht werden. Somit erhält auch PostgreSQL die Bestnote 1.footnote:[Vgl. https://help.compose.com/docs/postgresql-connection-limits, abgerufen am 15.02.2023]
 
-[.underline]_Zugriffseinschränkungen - Zeitgleiche Transaktionen_
-
-//concurrent user connections
-//simultaneous user connections
-_Oracle Database XE_ hat hier keine Einschränkungen und erreicht somit die Bestnote 1.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
-
-_SQL Server Express_ schränkt hier auf 50 gleichzeitige Anmeldungen zur selben Zeit ein und bekommt damit eine 2.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
-
-_MySQL Community Server_ schränkt hier auf 38 simultane Zugriffe je Nutzer ein. Das Problem kann jedoch leicht umgangen werden, indem je Prozedur (also zum Beispiel für das Auslesen, das Aktualisieren und das Erstellen der Lerngruppen) je ein Nutzer verwendet wird, wodurch die Zugriffsbeschränkungen als praktisch uneingeschränkt gelten. Die Bewertung kann hier also mit einer 2 für die benötigte Umgehung der Zugriffsbeschränkungen benotet werden.footnote:[Vgl. https://www.infomaniak.com/en/support/faq/471/mysql-maximum-number-of-simultaneous-connections, abgerufen am 23.02.2023]
-
-_PostgreSQL_ hat als Vollversion ebenfalls keine Einschränkungen in diesem Bereich und erhält somit ebenfalls die Bestnote 1.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
-
 [.underline]_Maximal verfügbarer Arbeitsspeicher_
 
-_Oracle Database XE_ bietet einen maximalen Arbeitsspeicher von 2 GB, was somit in eine Note von ... resultiert.footnote:Oracle[]
+_Oracle Database XE_ bietet einen maximalen Arbeitsspeicher von 2 GB, was somit in eine Note von 2 resultiert.footnote:Oracle[]
 
-_SQL Server Express_ ist mit einem maximalen Arbeitsspeicher von 2 GB ausgestattet. Es wird somit eine Note von ... vergeben.footnote:[Vgl.https://support.estos.de/de/procall-enterprise/einschraenkungen-beim-einsatz-von-microsoft-sql-server-express, abgerufen am 17.02.2023]
+_SQL Server Express_ ist mit einem maximalen Arbeitsspeicher von 2 GB ausgestattet. Es wird somit eine Note von 2 vergeben.footnote:[Vgl.https://support.estos.de/de/procall-enterprise/einschraenkungen-beim-einsatz-von-microsoft-sql-server-express, abgerufen am 17.02.2023]
 
-_MySQL Community Server_ bietet hingegen ganze 8 TB, wodurch sich die Note ... ergibt.
-
-NOTE: Quelle nur ChatGPT
-//TODO: ChatGPT antwort - keine Quelle!
+_MySQL Community Server_ nutzt bis zu 2 GB RAM wodurch sich die Note 2 ergibt.footnote:[Vgl. https://kinsta.com/knowledgebase/mysql-community-server/#key-things-to-know-about-mysql-community-server, abgerufen am 12.03.2023]
 
 _PostgreSQL_ ist per Default auf 4 MB gesetzt, kann jedoch bei Bedarf auf bis zu 2147 GB gesetzt werden. Deshalb kann hier die Bestnote 1 vergeben werden.footnote:[Vgl. https://postgresqlco.nf/doc/en/param/work_mem/, abgerufen am 17.02.2023]
 
-NOTE: Quelle komisch
-//TODO: kommt mir komisch vor
+[.underline]_Einarbeitsungsaufwand_
+
+_Oracle Database XE_ ist eine der bereits für das Projektteam bekannten Datenbanken und kann somit mit der Bestnote 1 bewertet werden.
+
+_SQL Server Express_ ist ebenso eine der für Teile des Projektteams bereits bekannten Datenbanken und kann somit ebenfalls mit der Bestnote 1 ausgezeichnet werden.
+
+_MySQL Community Server_ ist dem Projektteam bisher noch nicht bekannt, jedoch eine SQL Datenbank und kann daher mit einer Note 2 bewertet werden.
+
+_PostgreSQL_ ist dem Projektteam ebenfalls noch nicht bekannt und bekommt somit als weitere unbekannte SQL-Datenbank eine Note 2.
 
 [.underline]_Ergebnis_
 
@@ -259,12 +252,12 @@ Nach den Einzelbewertungen ergibt sich folgendes Ergebnis:
 [%EvaluierungErgebnisse,cols=6*]
 .Evaluierung Tabelle
 |===
-|Anforderung |Tabellengrößen |Gleichzeitig angemeldete Nutzer |Zeitgleiche Transaktionen |Verfügbarer Arbeitsspeicher |Ergebnis
-|Wertung |...% |...% |...% |...% |100%
-|Oracle Database XE |2 |2 |1 |3? |Gesamtnote
-|SQL Server Express |2 |1 |2 |3? |Gesamtnote
-|MySQL Community Server |1 |1 |1 |2? |Gesamtnote
-|PostgreSQL |1 |1 |1 |1 |Gesamtnote
+|Anforderung |Tabellen- größen |Gleichzeitig angemeldete Nutzer |Verfügbarer Arbeits- speicher | Einarbeitungs- aufwand |Ergebnis
+|Wertung |25% |40% |25% |10% |100%
+|Oracle Database XE |2 |1 |2 |1 |1,5
+|SQL Server Express |2 |1 |2 |1 |1,5
+|MySQL Community Server |1 |2 |2 |2 |1,75
+|PostgreSQL |1 |1 |1 |2 |1,1
 |===
 
 //TODO! Tabellenbeschriftung Anpassen bei Zusammensetzen der Files
@@ -407,11 +400,6 @@ Die Beziehungen der EduCluster Datenbank sind folgende:
 
 Ganz entsprechend der Erklärungen oberhalb müssen für alle N-zu-N-Beziehungen eigene Tabellen erstellt werden, also für die Administratoren der Cluster, sowie die normalen Teilnehmer der Cluster, die Ausstattung der Räume und ebenfalls für die Themen der einzelnen Termine.
 Bei 1-N Beziehungen wird ein Fremdschlüssel in den N-Tabellen erstellt, somit wird in der Clustertabelle und in der Termintabelle jeweils der Ersteller, sowie das Cluster eines Termins, der Raum, in dem ein Termin abgehalten wird als Fremdschlüssel hinzugefügt. Ebenso wird bei den Themen das Unterrichtsfach als Fremdschlüssel hinzugefügt. Hingegen hier wird aufgrund der schwachen Beziehung der Primärschlüssel aus diesem Fremdschlüssel und dem eigenen Namen zusammengesetzt.
-
-[.underline]_Trigger?_
-//TODO Lara?
-[.underline]_History Tabellen?_
-//TODO Lara?
 
 ==== Ergebnis
 Hier ist das aus den oben genannten Überlegungen resultierende ER-Modell dargestellt:
@@ -821,14 +809,15 @@ Als Beispiel für eine User Story kann hier das Login herangezogen werden.
 ****
 [.underline]*SOLL Prozess: Login*
 
-* Als Schüler/Lehrer/Administrator will ich mich in mein Konto einloggen, sodass ich Cluster bilden oder beitreten kann.
-* Es müssen folgende Daten ausgefüllt werden: Username / HTL E-Mail-Adresse und Passwort.
+Als Schüler/Lehrer/Administrator will ich mich in mein Konto einloggen, sodass ich Cluster bilden oder beitreten kann.
+
+* Es müssen folgende Daten ausgefüllt werden: *Username / HTL E-Mail-Adresse und Passwort*.
 * Beide Felder sind Pflichtfelder. Werden diese beiden Felder nicht richtig ausgefüllt kann ein Login nicht erfolgen.
-* Hat der Nutzer eine falsche E-Mail-Adresse oder ein falsches Passwort eingegeben, dann muss er mit einer aussagekräftigen Fehlermeldung an das Login Formular zurückgeleitet werden.
+* Hat der Nutzer eine *falsche E-Mail-Adresse oder ein falsches Passwort* eingegeben, dann muss er mit einer aussagekräftigen *Fehlermeldung* an das Login Formular zurückgeleitet werden.
 * Bei falscher E-Mail-Adresse muss der Nutzer darauf hingewiesen werden, eine derzeit gültige E-Mail-Adresse der HTL Pinkafeld zu verwenden.
-* Das Login Formular hat eine Checkbox 'Angemeldet bleiben'. Dies bedeutet, dass der Nutzer sich nicht noch einmal einloggen muss, sondern angemeldet bleibt.
-* Durch einen erfolgreichen Login wird der Nutzer in das Hauptmenü weitergeleitet.
-* Der Login erfolgt mit den Schuldaten - die Authentifizierung erfolgt in WebUntis.
+* Das Login Formular hat eine *Checkbox 'Angemeldet bleiben'*. Dies bedeutet, dass der Nutzer sich nicht noch einmal einloggen muss, sondern angemeldet bleibt.
+* Durch einen *erfolgreichen Login* wird der Nutzer in das Hauptmenü weitergeleitet.
+* Der Login erfolgt mit den Schuldaten - die *Authentifizierung* erfolgt in WebUntis.
 ****
 
 ==== Aufsplittung in Tasks
@@ -907,7 +896,7 @@ Die Sitzung muss durch Betätigen des Logout-Buttons sofort beendet werden.
 Der Nutzer muss auf die Login-Seite von EduCluster zurückgeleitet werden.
 ****
 
- Zusätzlich konnten aus der Login Story 9 einzelne Tasks definiert werden. Drei Beispiele werden im Anschluss angeführt:
+Zusätzlich konnten aus der Login Story 9 einzelne Tasks definiert werden. Drei Beispiele werden im Anschluss angeführt:
 
 .Task: Login Maske
 ****
