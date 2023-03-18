@@ -13,14 +13,26 @@ zur Datenbereitsstellung eingesetzt, wie beispielsweise WebUntis, LMS, Microsoft
 für die Schülerschaft beim Lernen. Dazu entsteht eine Schwierigkeit im Unterricht für Lehrkräfte im Anlegen und Organisieren der Klasse.
 
 Hier kommt EduCluster ins Spiel. Mittels Clusterbildung ermöglicht die Web-Applikation eine einfache und übersichtliche Erstellung von Lerngruppen mitsamt Raumreservierung.
-Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und über eine Suche von weiteren Mitschüler/innen gefunden werden kann.
-Nutzende können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln.
-Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft Teams zum Abhalten von Remote Lerneinheiten als auch Datenorganisation herangezogen, welche über die genannten Funktionalitäten
+Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und, falls er öffentlich ist, über eine Suche von weiteren Mitschüler/innen gefunden werden kann.
+Nutzende können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln und die Administrationsrolle an andere Mitglieder erteilen.
+Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft Teams zum Abhalten von Remote Lerneinheiten und zur Datenorganisation herangezogen, welche über die genannten Funktionalitäten
 EduCluster zur Verfügung stehen.
 
 [discrete]
 === Abstract
-// TODO
+The goal of the following thesis is the conception of a system that improves upon extant learning group formation and room reservation capabilities.
+A functional extension of WebUntis is to be implemented in such a way as to incorporate a direct connection to Microsoft Teams. This way a standardization of the
+extant platforms for organization and exchange of educational content may be realized. Enabling students to independently organise learning units and if necessary
+reserve rooms for these occasions is a further goal to be realized within the scope of this thesis.
+
+Presently, room reservation is a functionality exclusively reserved for teachers and administrative staff within HTL Pinkafeld. Furhermore, educational content is
+made available across a wide range of platforms such as WebUntis, LMS, Microsoft Teams, Google Docs and the class-segmented digital storage provided by the school itself.
+This large diversity of tools culminates in confusion for students and teachers alike.
+
+This is where EduCluster steps in. The web application enables the simple creation of clusters and includes room reservation functionality. A Cluster represents
+a collective of students in EduCluster that acts as a unit on the platform and may plan learning units and reserve rooms. Additionally, public Clusters may be found
+by other students looking to join one on the dedicated search page. Users may create or join any number of said Clusters. If a user creates a Cluster, they are automatically promoted to administrators and may confer this role upon other members.
+The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft Teams for the possibility of remote learning units as well for the capability of organising educational content.
 
 [discrete]
 === Vorwort
