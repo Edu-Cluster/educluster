@@ -1,7 +1,5 @@
 = Diplomarbeit EduCluster
 
-// TODO gendern nicht vergessen!
-
 [discrete]
 === Kurzfassung
 Das Ziel der vorliegenden Diplomarbeit ist, ein System zu schaffen, um Lerngruppenbildung und damit verbundene Raumreservierungen effizienter zu gestalten.
@@ -23,20 +21,28 @@ EduCluster zur Verfügung stehen.
 The goal of the following thesis is the conception of a system that improves upon extant learning group formation and room reservation capabilities.
 A functional extension of WebUntis is to be implemented in such a way as to incorporate a direct connection to Microsoft Teams. This way a standardization of the
 extant platforms for organization and exchange of educational content may be realized. Enabling students to independently organise learning units and if necessary
-reserve rooms for these occasions is a further goal to be realized within the scope of this thesis.
+reserve rooms for these occasions is a further goal to be realized within the scope of this undertaking.
 
 Presently, room reservation is a functionality exclusively reserved for teachers and administrative staff within HTL Pinkafeld. Furhermore, educational content is
 made available across a wide range of platforms such as WebUntis, LMS, Microsoft Teams, Google Docs and the class-segmented digital storage provided by the school itself.
 This large diversity of tools culminates in confusion for students and teachers alike.
 
-This is where EduCluster steps in. The web application enables the simple creation of clusters and includes room reservation functionality. A Cluster represents
+This is where EduCluster steps in. The web application enables the simple creation of Clusters and includes room reservation functionality. A Cluster represents
 a collective of students in EduCluster that acts as a unit on the platform and may plan learning units and reserve rooms. Additionally, public Clusters may be found
 by other students looking to join one on the dedicated search page. Users may create or join any number of said Clusters. If a user creates a Cluster, they are automatically promoted to administrators and may confer this role upon other members.
-The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft Teams for the possibility of remote learning units as well for the capability of organising educational content.
+The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and an integration of Microsoft Teams for the possibility of remote learning units as well for the capability of digitally organising educational content.
 
 [discrete]
 === Vorwort
-// TODO
+Im Rahmen des sechsten Semesters began die Suche nach einem Diplomarbeitsthema. Als das Projektteam von einer Idee zur nächsten durchiterierte, trat Prof. Dipl.-Inf. David Zach an das Projetteam heran.
+Er präsentierte eine Idee, die gleichzeitig das Monopol auf Raumreservierung von den Lerhenden ablösen als auch eine zentralisierte Verwaltung von Lerninhalten erschaffen würde.
+Das Projektteam war in kürzer Zeit davon überzeugt und beschloss, die Herausforderung trotz hoher Komplexität anzunehmen. Es folgte eine Auseinandersetzung mit dem Thema, die sich mit der Konzeption und Planung überlappte und schließlich im siebten Semester endete.
+Die Implementierungsphase folgte kurz darauf und forderte jedes einzelne Mitglied aus. Während dieser Zeit wurde viel gelernt. Ebenso wurden vor allem Dank der technischen Unterstützung von Prof. Dipl.-Inf. David Zach als auch der fachlichen Unterstützung von Prof. Mag. Heinz Bundschuh viele Hürden überwunden.
+Das Projektteam hat immer zusammengehalten und traf schwierige Entscheidungen, um die Sauberkeit der bestehenden Codebasis sowie die Qualität des Endproduktes zu erhalten. Es wurde stets darauf geachtet, eine möglichst erweiterbare Applikation zu entwicklen, um den Anforderungen des Auftragsgebers, wie von Prof. Dipl.-Inf. David Zach kommuniziert, gerecht zu werden.
+
+Alle bewältigten Herausforderungen des Projekts, von Projektantrag bis hin zur technischen
+Umsetzung eines jeden Einzelnen, werden auf den nun folgenden Seiten vom gesamten Team
+im Detail erklärt.
 
 :sectnums:
 :sectnumlevels: 6
@@ -46,9 +52,9 @@ The organisation of a Cluster is achieved through an integration of WebUntis for
 
 include::projektantrag.adoc[]
 
-// TODO Vorstudie
+include::vorstudie.adoc[]
 
-// TODO Evaluierung Lara
+include::individueller-teil-lara.adoc[]
 
 include::individueller-teil-raymond.adoc[]
 
