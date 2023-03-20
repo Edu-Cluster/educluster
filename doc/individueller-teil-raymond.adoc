@@ -6,50 +6,64 @@
 
 Der individuelle Teil gliedert sich in drei Teilbereiche.
 
-Der erste Teil des individuellen Teils befasst sich mit der Evaluierung bewährter Technologie-Stacks, die die Anforderungen des Projekts „EduCluster“ erfüllen. Darin werden verschiedene Technologie-Stacks bewertet und der am besten geeignete Stapel ermittelt.
+Der erste Teil des individuellen Teils befasst sich mit der Evaluierung bewährter Technologie-Stacks, die die Anforderungen des Projekts EduCluster erfüllen. Darin werden verschiedene Technologie-Stacks bewertet und der am besten geeignete Stack ermittelt.
 
-Folglich wird im zweiten Abschnitt die technische Umsetzung erklärt. Dabei wird auf den Aufbau des Grundgerüsts der Applikation gezielt. Es werden die einzelnen Schritte des Aufbaus und der Konfiguration erläutert und mit konkreten Beispielen ergänzt.
+Folglich wird im zweiten Abschnitt die technische Umsetzung erklärt. Dabei wird auf den Aufbau des Grundgerüsts der Applikation gezielt. Es werden die einzelnen Schritte des Aufbaus und der Konfiguration erläutert und mit konkreten Beispielen ergänzt. Außerdem wird die Entwicklung des Frontends erklärt und mittels Beispielen demonstriert.
 
-Zu guter Letzt wird im dritten Teil eine kurze Zusammenfassung der erreichten Ziele, die Reflexion der eigenen Arbeit sowie eine Zukunftsaussicht des vorgeschlagenen Lösungsansatzes erarbeitet.
+Zu guter Letzt wird im dritten Teil die Reflexion der eigenen Arbeit erarbeitet und die individuelle Zeiteinteilung präsentiert.
 
 === Evaluierung der Technologie-Stacks
-Eine Evaluierung der verschiedenen potentiellen Technologie-Stacks für die Entwicklung der Webapplikation „EduCluster“ bedeutet eine Analyse und Bewertung der zur Verfügung stehenden Möglichkeiten. Zur Erfüllung dieser Aufgabe werden die bekanntesten Stacks ausgesucht, damit die Qualität der gruppierten Technologien nicht nur theoretisch, sondern auch praktisch bewiesen werden kann.
+Eine Evaluierung der verschiedenen potenziellen Technologie-Stacks für die Entwicklung der Webapplikation EduCluster bedeutet eine Analyse und Bewertung der zur Verfügung stehenden Möglichkeiten. Zur Erfüllung dieser Aufgabe werden die bekanntesten Stacks ausgesucht, damit die Qualität der gruppierten Technologien nicht nur theoretisch, sondern auch praktisch bewiesen werden kann.
 
 Im Laufe dieses Abschnitts werden die ausgewählten Stacks vorgestellt und anhand von Beurteilungskriterien bewertet. Die Bewertung wird sich an den Anforderungen richten und anschließend einen Sieger ankündigen, der für die technische Umsetzung benutzt werden soll.
 
 ==== Stakeholder der Evaluierung
 Bei der Evaluierung eines Technologie-Stacks sollen die Interessen verschiedener Stakeholder beachtet werden.
 
-TODO: Erweitern
+===== Auftraggeber
+Der Auftraggeber, die HTL Pinkafeld, wünscht sich, dass der Technologiestapel der Webapplikation EduCluster weder aus veralteten noch aus frisch auf dem Markt Technologien besteht. Alte Technologien sind nicht zukunftsfähig und frische Technologien sind aufgrund der Unbekanntheit ein hohes Risiko.
+Die richtige Wahl eines Technologiestapels muss sowohl Modernheit als auch Zuverlässigkeit priorisieren.
+
+===== Projektteam
+Innerhalb des Projekts herrscht die Meinung, dass vor allem auf Modernheit bei der Suche nach den geeigneten Technologien geachtet werden soll. Diese Tatsache folgt daraus, dass die Teammitglieder möglichst viel während der Umsetzung des Projekts lernen und ihre Kenntnisse verbessern wollen. Nichtsdestotrotz müssen die Anforderungen des Auftraggebers gehalten werden.
+
+===== Benutzer
+Künftige Nutzer der Webapplikation können den technischen Unterschied zwischen Technologiestapeln nicht erkennen, allerdings ist für ihnen die reibungslose Interaktion mit der Applikation wichtig. Deshalb soll darauf geachtet werden die Leistung der Applikation durch "Overengineering" zu kompromittieren.
+
+===== Zukünftige Entwickler
+Falls EduCluster künftig in der HTL Pinkafeld eingesetzt wird bzw. von einer anderen Diplomarbeitsgruppe übernommen wird, sollen diese künftigen Entwickler nicht von der Komplexität der ausgewählten Technologien zurückgehalten werden. Deshalb wird hohe Priorität darauf gesetzt, möglichst simple Lösungsansätze zu finden und dementsprechend praktische Technologien auszuwählen. Wie bereits erwähnt, soll die Falle des "Overengineering" vermieden werden.
+
+===== Technische Betreuung
+Die technische Betreuung durch Prof. Dipl.-Inf. David Zach kann nur dann Unterstützung bieten, wenn dem Professor bekannte Technologien genutzt werden. Bei der Nutzung von dem Professor unbekannten Technologien ist das Projektteam auf Internetrecherche angewiesen. Aus diesem Grund soll darauf geachtet werden, bekannte Technologien auszuwählen, damit das Projektteam von der technischen Betreuung des Professors möglichst viel profitieren kann.
 
 ==== Zieldefinition
-Das Ziel dieser Evaluierung ist die Wahl des richtigen Technologie-Stacks für die Webapplikation „EduCluster“ unter Berücksichtigung der Anforderungen des Projekts. Es wird darauf hingewiesen, dass die Ermittlung einer geeigneten Datenbank nicht inkludiert wird, da dieser Teil von Lara Kammerer übernommen wird.
+Das Ziel dieser Evaluierung ist die Wahl des richtigen Technologie-Stacks für die Webapplikation EduCluster unter Berücksichtigung der Anforderungen des Projekts. Es wird darauf hingewiesen, dass die Ermittlung einer geeigneten Datenbank nicht inkludiert wird, da dieser Teil von einem anderen Projektmitglied übernommen wird.
 
 ===== Was ist ein Technologie-Stack?
-Ein Technologie-Stack ist ein Stapel von Technologien, der sich aus Frameworks und Libraries zusammensetzt. Darin können entweder alle oder nur die auschlaggebendsten Technologien aufgefasst werden, die in dem Projekt ihren Einsatz finden. Da ersteres den vorgesehenen Zeitrahmen sprengen würde, wird die zweite Variante aufgenommen.
+Ein Technologie-Stack ist ein Stapel von Technologien, der sich aus Frameworks und Libraries zusammensetzt. Darin können entweder alle oder nur die ausschlaggebendsten Technologien aufgefasst werden, die in dem Projekt ihren Einsatz finden. Da ersteres den vorgesehenen Zeitrahmen sprengen würde, wird die zweite Variante aufgenommen.
 
-Der Stapel kann konzeptionell in vier Teilen gespalten werden:
+Der Stack kann konzeptionell in vier Teilen gespalten werden:
 
 •	Frontend, worin der GUI-Entwurf und die clientseitige Logik implementiert wird
 •	Backend, in dem die serverseitige Logik und die Anbindung an die Datenbank implementiert wird
 •	API, die eine Verbindung zwischen Frontend und Backend aufbaut
 •	Datenbank, wo die relevanten Daten gespeichert und abgerufen werden
 
-Wie bereits erwähnt wird die Datenbankschicht aus dieser Evaluierung ausgeschlossen. Somit liegt der Fokus auf den Frontend, den Backend und die Programmierungsschnittstelle.
+Wie bereits erwähnt wird die Datenbankschicht aus dieser Evaluierung ausgeschlossen. Somit liegt der Fokus auf den Frontend, den Backend und die Schnittstelle.
 
 ===== Warum wird ein Technologie-Stack benötigt?
-Um die Gestaltung einer umfangreichen Webapplikation wie „EduCluster“ sicherzustellen und dabei ein qualitatives Ergebnis liefern zu können hat sich das Projektteam dazu entschieden, die mit dieser Aufgabe verbundenen Komplexität durch Einsatz bewährter Technologien möglichst viel zu reduzieren.
+Um die Gestaltung einer umfangreichen Webapplikation wie EduCluster sicherzustellen und dabei ein qualitatives Ergebnis liefern zu können hat sich das Projektteam dazu entschieden, die mit dieser Aufgabe verbundenen Komplexität durch Einsatz bewährter Technologien möglichst viel zu reduzieren.
 
 Der Einsatz mehrerer Technologien und deren Auffassung in Form eines Technologiestapels hat sich vor allem durch den Einfluss großer Technologie-Konzernen wie Meta (vormals Facebook), Netflix und Amazon als Standard durchgesetzt. Um den Umsetzungserfolg gewährleisten zu können ist es strategisch sinnvoll, diesem Trend zu folgen.
 
 ===== Anforderungen an den Technologie-Stack
-Der Technologiestapel muss in erster Linie Technologien enthalten, mit denen die Entwickler bereits Erfahrung gesammelt haben. Es ist natürlich unmlöglich einen Stapel zu finden, in dem alle Technologien von allen Entwicklern bereits genutzt wurden. Allerdings soll im Allgemeinen auf Technologien verzichtet werden, mit denen keiner der Entwickler Erfahrung hat, da sonst ein großer Schnitt der zur Verfügung stehenden Zeit unproduktiv genutzt wird.
+Der Stack muss in erster Linie Technologien enthalten, mit denen die Entwickler bereits Erfahrung gesammelt haben. Es ist natürlich unmöglich einen Stack zu finden, in dem alle Technologien von allen Entwicklern bereits genutzt wurden. Allerdings soll im Allgemeinen auf Technologien verzichtet werden, mit denen keiner der Entwickler Erfahrung hat, da sonst ein großer Schnitt der zur Verfügung stehenden Zeit unproduktiv genutzt wird.
 
 Außerdem sollen nur die Technologien ausgewählt werden, die den Entwicklungsaufwand am meisten reduzieren und den schnellsten Entwicklungsprozess fördern. Hier wird nochmals darauf hingewiesen, dass eine effiziente Nutzung der verfügbaren Zeit der wichtigste Faktor ist, um ein Projekt der Größe von EduCluster erfolgreich abschließen zu können.
 
-Die laufende Innovation im Bereich der Webentwicklung bewirkt eine ständige Änderung der Technologie-Trends. Dies bedeutet, dass viele Technologien im Laufe der Zeit von besseren Varianten ersetzt werden. Um zu verhindern, dass sich die Applikation EduCluster von Technologien abhängig macht, die in kürzester Zeit durch neue Stars ersetzt werden, soll auf eine möglichst moderne Austattung gezielt werden.
+Die laufende Innovation im Bereich der Webentwicklung bewirkt eine ständige Änderung der Technologie-Trends. Dies bedeutet, dass viele Technologien im Laufe der Zeit von besseren Varianten ersetzt werden. Um zu verhindern, dass sich die Applikation EduCluster von Technologien abhängig macht, die in kürzester Zeit durch neue Stars ersetzt werden, soll auf eine möglichst moderne Ausstattung gezielt werden.
 
-Um unnötige Bugs auszuschließen und die Entwicklererfahrung möglichst gut zu gestalten ist es sinnvoll auf eine vollständige Typensicherheit der Aplikation zu zielen. Typensicherheit ist ein wesentlicher Schutz vor Programmfehlern, die von dem Kompiler vor der Ausführung des Programms bereits gefangen werden.
+Um unnötige Bugs auszuschließen und die Entwicklererfahrung möglichst gut zu gestalten ist es sinnvoll auf eine vollständige Typensicherheit der Applikation zu zielen. Typensicherheit ist ein wesentlicher Schutz vor Programmfehlern, die von dem Compiler vor der Ausführung des Programms bereits gefangen werden.
 
 Zu guter Letzt soll auf die Beliebtheit der jeweiligen Technologien geachtet werden, um die sicherste Wette auf einen dauerhaften Technologiestapel zu setzen.
 
@@ -57,13 +71,13 @@ Zu guter Letzt soll auf die Beliebtheit der jeweiligen Technologien geachtet wer
 Dieser Abschnitt umfasst die drei bekanntesten Frontend-Technologien stand 2022. footnote:[Vgl. https://technostacks.com/blog/best-frontend-frameworks/, abgerufen am 29.10.2022]
 
 ===== React.js
-React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für das Frontend. Sie wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
+React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für den Frontend. Sie wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
 
 Abgesehen davon, dass sie die bekannteste JavaScript-Bibliothek ist, bietet React auch eine breite Palette an Features.
 
 Zum einen besitzt sie ein virtuelles DOM footnote:[Vgl. https://reactjs.org/docs/faq-internals.html, abgerufen am 29.10.2022], das zwischengespeichert und mit dem tatsächlichen DOM synchronisiert wird, um nur diejenigen Komponenten zu rendern, die sich geändert haben. Damit erzielt React eine Erhöhung der Performanz und ermöglicht eine deklarative API. Das bedeutet, dass der Entwickler den erwünschten UI-Zustand definieren kann und React führt im Hintergrund die benötigte Arbeit durch, damit das DOM diesen Zustand entspricht.
 
-Obwohl das Programmieren mit React sich an die Prinzipien des deklarativen Paradigmas hält, ermöglicht die Bibliothek beim Erstellen von Komponenten eine Wahl wischen funktionelle und klassenbasierte Komponenten. Damit kann sich der Entwickler für eine bestimmte JSX-basierte Syntax entscheiden.
+Obwohl das Programmieren mit React sich an die Prinzipien des deklarativen Paradigmas hält, ermöglicht die Bibliothek beim Erstellen von Komponenten eine Wahl zwischen funktionelle und klassenbasierte Komponenten. Damit kann sich der Entwickler für eine bestimmte JSX-basierte Syntax entscheiden.
 
 Zu guter Letzt gibt es zumindest für funktionelle Komponente die Möglichkeit, sogenannte „Hooks“ footnote:[Vgl. https://reactjs.org/docs/hooks-intro.html, abgerufen am 29.10.2022] selbst zu definieren oder von einem Package Manager zu installieren. Diese Konstrukte ermöglichen einen direkten Zugriff auf Zustands- und Lebenszyklus-Features in Form einer Funktion.
 
@@ -72,7 +86,7 @@ Vue ist ein JavaScript Framework, das häufig als Alternative zu React vorgestel
 
 Vue ist ebenso wie React auf Komponenten und deklarativem Rendering basiert, und setzt ebenfalls auf die Strategie des virtuellen DOMs. Jedoch ist Vue in einer Hinsicht React überlegen. Es besitzt eine sogenannte „two-way data binding“, wodurch eine sofortige Synchronisierung zwischen UI und Datenmodell sicherstellt wird.
 
-Ein weiteres Merkmal von Vue sind die „directives“ footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in der HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
+Ein weiteres Merkmal von Vue sind die „directives“ footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in dem HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
 
 ===== Angular
 Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt wie React und Vue footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreich footnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
@@ -101,7 +115,7 @@ Applikationen, die mit ASP.NET Core entwickelt werden, können eine von drei mö
 Das Framework bietet eine große Liste an Features footnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
 
 ===== Django
-Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit Organisation heutzutage gepflegt wird.
+Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
 
 Ein großer Vorteil von Django ist die Möglichkeit, das Datenmodell der Applikation in Python statt in SQL aufzubauen. Dieses Feature wird von Djangos ORM ermöglicht, indem es Datenstrukturen in Python-Klassen übersetzt.footnote:[Vgl. https://www.ibm.com/cloud/learn/django-explained#:~:text=Starting%20a%20Django%20project%20allows,within%20a%20fully%20Python%20environment., abgerufen am 30.11.2022]
 
@@ -120,7 +134,7 @@ Es gibt drei Arten von Rendering footnote:[Vgl. https://nextjs.org/learn/foundat
 •	Server Side Rendering, wo das HTML der Seite für jeden Request auf den Server generiert wird
 •	Static Site Generation, wodurch eine Generierung der Seite während dem Build-Prozess der Applikation durchgeführt wird
 
-SSR und SSG sind eine moderne Art des Rendering, das sich „Pre-Rendering“ nennt. Darin wird das Abrufen von Daten und die Transformierung der React-Komponente in HTML vor dem Absenden der Response an den Client durchgeführt.
+SSR und SSG sind eine moderne Art des Renderings, das sich „Pre-Rendering“ nennt. Darin wird das Abrufen von Daten und die Transformierung der React-Komponente in HTML vor dem Absenden der Response an den Client durchgeführt.
 
 Next.js bietet nicht nur performante Arten von Rendering, sondern auch eine Lösung zur Authentifizierung durch NextAuth und ein effizientes Routing-System, das aus Dateien und Ordnern automatisch Routen generiert. Das Framework bietet auch Packages zur weiteren Optimierung der Performance, wie „next/image“ und „next/link“.
 
@@ -140,7 +154,7 @@ Im Jahr 2021 wurde tRPC veröffentlicht, ein RPC-Framework, das auf TypeScript b
 ===== SOAP
 “Simple Object Access Protocol”, oder kurz SOAP, ist ein XML-basiertes Protokoll, das zur Verbreitung der sogenannten „Web Services“ geführt hat. Das XML-Format legt die Struktur der Request- und Response-Nachrichten fest.footnote:[Vgl. https://stoplight.io/api-types/soap-api, abgerufen am 06.11.2022]
 
-Im Hintergrund nutzt SOAP das RPC-Muster, um die Parameter von Funktionen und Methoden zu befüllen und das entsprechende Return-Ergebnis zurückzuliefern. Jedoch waren RPC-Lösungen vor der Einführung auf einer einzigen Programmiersprache limitiert, die von beiden Seiten benutzt werden musste. Mit SOAP wurde eine Entkopplung eingeführt, wodurch die Nutzung verschiedener Programmiersprachen ermöglicht wurde.
+Im Hintergrund nutzt SOAP das RPC-Muster, um die Parameter von Funktionen und Methoden zu befüllen und das entsprechende Return-Ergebnis zurückzuliefern. Jedoch waren RPC-Lösungen vor der Einführung von SOAP auf einer einzigen Programmiersprache limitiert, die von beiden Seiten benutzt werden musste. Mit SOAP wurde eine Entkopplung eingeführt, wodurch die Nutzung verschiedener Programmiersprachen ermöglicht wurde.
 
 Obwohl es immer noch weit verbreitet ist, verliert SOAP in letzter Zeit an Beliebtheit.footnote:[Vgl. https://www.researchgate.net/figure/Trend-of-SOAP-and-REST-in-Google-searches_fig1_296702598, abgerufen am 06.11.2022]
 
@@ -154,7 +168,7 @@ Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Krit
 •	Client-Server-Architektur mit HTTP-Anfragen muss vorhanden sein
 •	„Statelessness“, die Trennung von Anfragen, sodass keine Client-Informationen zwischen zwei Anfragen gespeichert werden
 •	Cachebare Daten, die Client-Server-Interaktionen vereinfachen
-•	Eine Uniforme Schnittstelle damit Informationen in standardisierte Form übermittelt werden
+•	Eine Uniforme Schnittstelle, damit Informationen in standardisierte Form übermittelt werden
 •	Ein hierarchisches System, die jedem Server-Typ richtig einordnet und das für den Client unsichtbar ist
 
 ===== GraphQL
@@ -162,7 +176,7 @@ GraphQL ist eine Abfragesprache und eine serverseitige Laufzeitumgebung zum Ausf
 
 GraphQL ist Datenbankunabhängig und ermöglicht die Definierung von Typen und von zwei Arten von Abfragen: Mutations und Queries. Mutations sind datenändernde Abfragen wie Create, Update und Delete. Queries hingegen sind Read-Only-Abfragen.
 
-Entwickelt wurde GraphQL als Reaktion auf Probleme, die mit der Nutzung einer REST-API auftauchen. Deswegen ist der größte Vorteil von GraphQL auch das größte Nachteil von REST: Under- und Overfetching. REST-Endpunkte können nur fixe Datenstrukturen zurückliefern, was dazu führt, dass in vielen Fällen entweder zu wenige Daten oder zu viele Daten geliefert werden. Ersteres kann nur mit mehreren Abfragen gelöst werden, während letzteres zwangsläufig mit Leistungsabfälle verbunden ist.
+Entwickelt wurde GraphQL als Reaktion auf Probleme, die mit der Nutzung einer REST-API auftauchen. Deswegen ist der größte Vorteil von GraphQL auch der größte Nachteil von REST: Under- und Overfetching. REST-Endpunkte können nur fixe Datenstrukturen zurückliefern, was dazu führt, dass in vielen Fällen entweder zu wenige Daten oder zu viele Daten geliefert werden. Ersteres kann nur mit mehreren Abfragen gelöst werden, während letzteres zwangsläufig mit Leistungsabfälle verbunden ist.
 
 Mit GraphQL ist es möglich, höchst spezifische Abfragen clientseitig zu definieren, ohne dafür serverseitig einen entsprechenden Endpoint aufbauen zu müssen, der diese Abfragen behandelt. GraphQL hat nur einen einzigen Endpoint. Dieser kann mit allen Arten von Abfragen umgehen. Diese Kapazität von GraphQL löst das Problem des Under- und Overfetching.footnote:[Vgl. https://www.howtographql.com/basics/1-graphql-is-the-better-rest/, aufgerufen am 06.11.2022]
 
@@ -188,7 +202,7 @@ Es soll eine Applikation entwickelt werden, die nicht schon in den nächsten paa
 Für die Modernheit wird eine 20%ige-Gewichtung vergeben.
 
 ===== Beliebtheit
-Beliebte Frameworks haben eine größere Anzahl an Anhänger. Dementsprechend stehen auf Foren wie StackOverflow mehr Fragen und Antworten, die einem bei Schwierigkeiten schnell aushelfen können. Auch wenn eine Frage noch nicht gestellt wurde ist aufgrund der hohen Anzahl an Experten mit einer niedrigen Reaktionszeit zu rechnen. Das ist insofern ein Vorteil, dass die Dokumentation eines Frameworks allein meistens nicht ausreicht um alle Fragen abzudecken, die während der Entwicklung auftauchen.
+Beliebte Frameworks haben eine größere Anzahl an Anhänger. Dementsprechend stehen auf Foren wie StackOverflow mehr Fragen und Antworten, die einem bei Schwierigkeiten schnell aushelfen können. Auch wenn eine Frage noch nicht gestellt wurde, ist aufgrund der hohen Anzahl an Experten mit einer niedrigen Reaktionszeit zu rechnen. Das ist insofern ein Vorteil, dass die Dokumentation eines Frameworks allein meistens nicht ausreicht, um alle Fragen abzudecken, die während der Entwicklung auftauchen.
 
 Diesem Kriterium wird eine Gewichtung von 15% vergeben, da die Anzahl von Fragen großteils schon durch die persönliche Erfahrung der Teammitglieder reduziert werden soll.
 
@@ -314,7 +328,7 @@ Beliebtheit, 15%, 1, "0,15", 2, "0,3", 2, "0,3", 3, "0,45"
 Gesamt, , , "2,5", , "2,8", , "3,55", , "1,7"
 |===
 
-Der Sieger ist Next.js, die Ausnahme im Bereich der Backend-Frameworks, da es als Full-Stack Framework gilt. Die Voraussetzung eines React-Frontends ist gegeben und wird durch ein flexibles Node.js Backend ergänzt. Die moderne Rendering-Features des Frameworks ermöglichen eine hohe Leistung der Webapplikation.
+Der Sieger ist Next.js, die Ausnahme im Bereich der Backend-Frameworks, da es als Full-Stack Framework gilt. Die Voraussetzung eines React-Frontends ist gegeben und wird durch ein flexibles Node.js Backend ergänzt. Die modernen Rendering-Features des Frameworks ermöglichen eine hohe Leistung der Webapplikation.
 
 ===== Ergebnisse der API-Architekturen
 [%header,format=csv]
@@ -398,7 +412,7 @@ image:img/raymond/itemlist_render.png[]
 Die Variable, in der die richtige Komponente zwischengespeichert wurde, wird innerhalb eines Teilungselements gerendert. Darunter werden die einzelnen Kästchen für die Seitennummerierung generiert. Da Arrays null-indiziert sind, wird "idx + 1" für die Seitennummer angezeigt. Dem Element, der den Kästchen darstellt, wird ein Click-Event-Handler zugewiesen, um die Seiten-Navigation zu implementieren.
 
 ===== Auflistung der persönlichen Informationen
-Die persönlichen Informationen des Benutzers, die angezeigt werden sollen, sind der Benutzername auf Educluster, der standardmäßig mit dem WebUntis-Benutzernamen equivalent ist aber umgeändert werden kann, und die HTL-Email-Adresse. Diese werden aus dem "authUser" Objekt, der den clientseitigen Zustand des eingeloggten Benutzers repräsentiert, hergeleitet und in der Komponente angezeigt.
+Die persönlichen Informationen des Benutzers, die angezeigt werden sollen, sind der Benutzername auf Educluster, der standardmäßig mit dem WebUntis-Benutzernamen equivalent ist aber umgeändert werden kann, und die HTL E-Mail-Adresse. Diese werden aus dem "authUser" Objekt, der den clientseitigen Zustand des eingeloggten Benutzers repräsentiert, hergeleitet und in der Komponente angezeigt.
 
 image:img/raymond/identitybadge_component.png[]
 
@@ -415,7 +429,7 @@ Das Endergebnis sieht folgendermaßen aus:
 
 image:img/raymond/dashboard_page.png[]
 
-Hier sieht man die zwei Instanzen der ItemList-Komponente, die jeweils die relevanten Cluster bzw. Lerneinheiten des Benutzers auflistet. Auch die IdentityBadge-Komponente ist ersichtlich und zeigt den Benutzernamen, die HTL-Email-Adresse sowie den generierten Avatar.
+Hier sieht man die zwei Instanzen der ItemList-Komponente, die jeweils die relevanten Cluster bzw. Lerneinheiten des Benutzers auflistet. Auch die IdentityBadge-Komponente ist ersichtlich und zeigt den Benutzernamen, die HTL E-Mail-Adresse sowie den generierten Avatar.
 
 Die erzeugte Komponente werden auch auf anderen Seiten der Webapplikation verwendet. Ihre Allgemeinheit macht sie wiederverwendbar und gleichzeitig auch spezifisch genug, um einzelne Teile einer Seite zu entsprechen.
 
@@ -429,15 +443,16 @@ Man erkennt die Auflistung der Lerneinheiten. Rechts wird eine Komponente gerend
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
 
 ==== Persönlicher Verantwortungsbereich
-(Projekt aufsetzen, Frontend implementieren, bei den Integrationen unterstützen)
-
-==== Erreichte Ziele
-(Was wurde geschafft und funktioniert gut? Was wurde nicht geschafft und warum?)
+Ich entschloss mich aufgrund meiner Erfahrung mit Next.js das Projekt aufzusetzen und unseren GitHub Repository zu initialisieren. Darüber hinaus hat die Entwicklung des Frontends den Großteil meiner Zeit in Anspruch genommen. Ich habe außerdem bei der Untis-Integration Unterstützung geleistet.
 
 ==== Stundenübersicht
-(Tortendiagramm einfügen)
+Das folgende Diagramm stellt meine Zeiteinteilung bildlich dar.
+
+// TODO: Tortendiagramm einfügen
+
+// TODO: Erklärung der Daten
 
 ==== Persönliches Fazit
-TODO
+// TODO
 
 :sectnums!:
