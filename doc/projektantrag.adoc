@@ -1,6 +1,9 @@
 :sectnums:
 :sectnumlevels: 3
-== Inhalt des Diplomarbeitsantrages
+
+== Projektantrag
+
+=== Inhalt des Diplomarbeitsantrages
 Die nachfolgenden Punkte umfassen den Inhalt des Diplomarbeitsantrages für das Projekt „EduCluster“.
 
 === Schule
@@ -19,7 +22,7 @@ xx.05.2023
 Technisch: Prof. Dipl.-Inf. David Zach
 Fachlich: Prof. MMag. Bernd Hochwarter
 
-=== Ausgangslage (ca. 400 Zeichen)
+=== Ausgangslage
 Bis dato werden Raumreservierungen in der HTL Pinkafeld ausschließlich über WebUntis und nur von Professoren abgewickelt. Schüler können sich einzig zu Lerneinheiten außerhalb der Klassenräume verabreden oder vor Ort nach freien Klassenräumen suchen, in welchen sie möglicherweise nicht ausreichend lange bleiben können aufgrund einer später dort stattfindenden Unterrichtseinheit.
 
 === Projektteam (Arbeitsaufwand)
@@ -36,7 +39,7 @@ HTL Pinkafeld, Abteilung Informatik
 Meierhofplatz 1
 7423 Pinkafeld
 
-=== Untersuchungsanliegen der individuellen Themenstellungen (ca. 800 Zeichen)
+=== Untersuchungsanliegen der individuellen Themenstellungen
 Folgende Untersuchungsanliegen sind für die einzelnen Teammitglieder vorgesehen:
 
 Lara Kammerer: Evaluierung der zu verwendenden Datenbank sowie deren Bereitstellung. Konzeption und Implementierung der Backend-Logik in Kooperation mit den bereitgestellten Anbindungen. Datenerhebung zusätzlicher Informationen zur Unterstützung des Terminerstellungsprozesses.
@@ -45,10 +48,10 @@ Christoph Kiessewetter: Evaluierung der anzuwendenden Testing-Techniken bzw. der
 
 Raymond Denis Vladu: Evaluierung der Frameworks und Libraries unter Berücksichtigung der aktuellen Standards. Designen der GUI nach Erkenntnissen aufgrund der UX-Evaluierung.
 
-=== Zielsetzung (ca. 400 Zeichen)
+=== Zielsetzung
 Das Projektteam hat sich dazu entschieden, der HTL Pinkafeld ein zentrales System zur Raumreservierung und Lerngruppenbildung bereitzustellen. In weiterer Folge könnte dieses System auf weitere Lehrstätten ausgeweitet werden.
 
-=== Geplantes Ergebnis der Prüfungskandidatin/des Prüfungskandidaten (ca. 400 Zeichen)
+=== Geplantes Ergebnis der Prüfungskandidatin/des Prüfungskandidaten
 Lara Kammerer: Abnahmefähiges Backend mit erfolgreicher Unterstützung geplanter Funktionalitäten
 
 Christoph Kiessewetter: Erfolgreiche Eingliederung von MS Teams und Untis

@@ -1,25 +1,21 @@
 :sectnums:
 :sectnumlevels: 3
-[discrete]
-= Vorstudie
-[discrete]
-== Projekt: EduCluster
-== Inhalt
-toc::[]
 
-== Einleitung
+== Vorstudie
+
+=== Einleitung
 Diese Vorstudie beschreibt die notwendigen Rahmenbedingungen, welche zur Umsetzung der EduCluster Webapplikation für die HTL Pinkafeld notwendig sind. Die Ausgangssituation zeigt das Verbesserungspotential für das Projekt EduCluster auf.
 
 Im Kapitel Zieldefinition werden die festgelegten Ziele erläutert. Wie genau diese umgesetzt werden, wird in den Kapiteln Anforderungen und Analyse der IST und SOLL Prozesse näher beschrieben.
 
 Weiters ist auch das Software-Design, als auch deren Systemarchitektur, im Kapitel Software-Design genauer beschrieben.
 
-== Auftraggeber Beschreibung
+=== Auftraggeber Beschreibung
 Der Auftraggeber des EduCluster Projektes ist die HTL Pinkafeld. Die Schule ist an der innovativen Lösung des Projektes interessiert, bestehende, bereits verwendete Produkte miteinander zu kombinieren und diese einfach über eine Plattform erreichbar zu machen.
 
 Die HTL Pinkafeld ist mit ihrem aktuellen Stand der Dinge nicht zufrieden. Die Kombination erlaubt der Schule, ihre tagtäglichen Prozesse simpler und übersichtlicher abzuwickeln und somit deren Ablauf und Darstellung für alle Beteiligten, den Schüler/innen und Professor/innen, verständlich zu machen.
 
-== Auftragnehmer Beschreibung
+=== Auftragnehmer Beschreibung
 Die Auftragnehmer bestehen aus folgenden Teammitgliedern:
 [%header,format=csv]
 |===
@@ -31,10 +27,10 @@ Bild von Christoph, Christoph Kiessewetter Tester Operations Entwickler Klasse: 
 Bild von Denis, Raymond Denis Vladu Entwickler Softwarearchitekt Klasse: 7YBIF E-Mail: raymond.vladu@htlpinkafeld.at GitHub: https://github.com/vladudenis 7400 Oberwart
 |===
 
-== Analyse
+=== Analyse
 In den folgenden Kapiteln wird der IST-Zustand, die Ausgangssituation, kurz und detailliert beschrieben. Eine SWOT-Analyse des IST-Zustandes, sowie eine detaillierte Beschreibung der IST-Prozesse ist ebenfalls enthalten.
 
-=== Ausgangssituation
+==== Ausgangssituation
 Bis dato werden Raumreservierungen ausschließlich über WebUntis abgewickelt. Ebenso kann dies nur von Lehrkräften oder Administrierenden in WebUntis durchgeführt werden. Schüler/innen können sich entweder in nicht belegten Räumen zusammenfinden, ohne zuvor die Lerneinheit für weitere Mitschüler/innen sichtbar zu machen oder den Studiersaal besuchen, bei welchem nur selten auf ein individuelles Themengebiet eingegangen werden kann.
 
 Daher ergeben sich folgende Verbesserungspotentiale, die umgesetzt werden sollen:
@@ -56,7 +52,7 @@ Aus den oben erwähnten Gründen möchte das Projektteam „EduCluster“ eine W
 
 Die App wird somit als eine Verbindung von WebUntis und MS Teams über eine benutzerfreundliche Bedienoberfläche, mit der Zusatzfunktion zur Bildung von Lerngruppen mit gegebenenfalls Raumreservierung umgesetzt.
 
-=== IST-Prozesse
+==== IST-Prozesse
 Die momentane Situation an der HTL Pinkafeld lässt keine einheitliche Erstellung von Unterrichtseinheiten und Lerneinheiten zur gemeinsamen Weiterbildung der Schüler/innen zu. Es existiert noch kein zentrales System, das ebenso von Schüler/innen genutzt werden kann, um sich zu Lerngruppen zusammenzufinden und geeignete Räume zu diesen Vorhaben zur Verfügung zu stellen.
 
 Es kann ein Use Case zu allgemeinen Einstellungen auf dem Profil wie folgt erstellt werden. Während ein Schüler/eine Schülerin ausschließlich die Berechtigung zum Login, Anpassen seines/ihres eigenen Profils und seiner/ihrer Profileinstellungen hat, kann ein Administrator/eine Administratorin in EduCluster noch zusätzlich zu seinem/ihrem Profil auch die der anderen Mitnutzer/innen ändern, ebenso wie Stammdaten zu den Räumen und Themen, Unterrichtseinheiten als auch Lerneinheiten aller Personen bearbeiten als auch Löschen und sonstige administrative Handlungen durchführen.
@@ -144,10 +140,10 @@ Aus der in Tabelle ?? dargestellten SWOT-Matrix kann deutlich das Potential in d
 
 Ebenso deutlich wird eine fehlende Möglichkeit an Lerngruppenbildung über Klassengrenzen hinausgehend als auch zur Raumreservierung von Schüler/innen zum Rückzug für Lernaktivitäten in ebendiesen Lerngruppen. Auch dieses Potential birgt aber bei der Lösung das Risiko in sich, dass es durch die Willkür von Schüler/innen bei der Raumbuchung zu Konflikten mit Raumbuchungen für Unterrichtseinheiten kommen kann, welche eigens von einem/einer Administrator/in aufgelöst werden müssen.
 
-== Zieldefinition
+=== Zieldefinition
 In den folgenden Absätzen werden die Zielgrößen geschildert und beschrieben, die Liefergegenstände erklärt sowie EduClusters Nicht-Ziele deklariert.
 
-=== Zielgrößen
+==== Zielgrößen
 Das Hauptziel des Projektes EduCluster ist die Verbindung von Plattformen, um die Lernaktivitäten von Studierenden zu unterstützen. Dieses Hauptziel kann in folgende Zielgrößen gegliedert werden:
 
 . Schaffen von Übersicht über die Nutzung eines einzigen Tools zur remote Unterrichtseinheit & Dokumentenbereitstellung
@@ -165,13 +161,13 @@ WebUntis bietet das Feature, einen Raum für eine Unterrichtseinheit zu reservie
 +
 Die Hauptaufgabe von EduCluster findet sich daher darin, dieses Feature auszubauen, um ebenso Schülern/Schülerinnen zu ermöglichen Lerngruppen zu bilden und zu diesem Zweck Lehrräume zu buchen. Außerdem soll die Nutzung des Features erleichtert werden, damit die Orchestrierung von parallelen Lerneinheiten in verschiedenen Lehrräumen reibungslos verlaufen kann.
 
-=== Liefergegenstände
+==== Liefergegenstände
 Der Hauptliefergegenstand des Projektes EduCluster ist die Webapplikation mit all ihren Funktionen wie in den Zielgrößen beschrieben. Dieses kann in folgende Liefergegenstände gegliedert werden:
 
 . Organisation von zusätzlichen Unterrichtseinheiten (Freifächer, Nachhilfe)
 . Optimierter Unterricht durch schnell und einfach organisierte Cluster
 
-=== Nicht-Ziele
+==== Nicht-Ziele
 Im folgenden Abschnitt werden die Nicht-Ziele des Projekts deutlich und detailliert erörtert, damit keine Ungewissheit darüber besteht, welche Features in der Projektabwicklung berücksichtigt werden und welche nicht.
 
 . Die Registrierung soll nicht in EduCluster selbst implementiert werden
@@ -195,10 +191,10 @@ Eine Implementierung des genannten Karteikartensystems sowie anderer Features an
 +
 EduCluster soll die Vorteile von MS Teams und WebUntis mit der zusätzlichen Möglichkeit zur Lerngruppenbildung zusammenführen. Es wird daher von einer eigenen Implementierung eines Filesharing-Systems, eines Whiteboards als auch von Online Sessions abgesehen, da die über MS Teams laufen wird und EduCluster nur die übersichtliche Verbindung der beiden Tools darstellt.
 
-== Anforderungen
+=== Anforderungen
 Die Anforderungen an das Projekt EduCluster können wie folgt definiert werden:
 
-=== Funktionale Anforderungen (Functional Requirements)
+==== Funktionale Anforderungen (Functional Requirements)
 Die folgenden funktionalen Anforderungen beschreiben die wesentlichen Komponenten des Systems in natürlicher Sprache. In einem weiteren Schritt werden diese dann in User-Stories genauer definiert.
 
 . Login
@@ -264,7 +260,7 @@ Systemadministratoren/Systemadministratorinnen haben zusätzlich am Hauptmenü d
 +
 Ebenso können die einzelnen Katalogwerte zu Raumausstattung, Modi, Unterrichtsfächern und Tags ergänzt, bearbeitet oder gelöscht werden.
 
-=== Nicht-funktionale Anforderungen (Non-functional Requirements)
+==== Nicht-funktionale Anforderungen (Non-functional Requirements)
 Die Nicht-Funktionalen Anforderungen werden in die unten angeführten Kategorien eingeteilt und kurz beschrieben. Zu einem späteren Zeitpunkt werden diese Anforderungen noch genauer beschrieben und um Werte ergänzt, die eine Messbarkeit ermöglichen.
 
 . Sicherheit
@@ -287,13 +283,13 @@ Test-Driven Development als Prinzip sollte angewandt werden. Das bedeutet, dass 
 +
 Sämtliche rechtlichen Anforderungen wie AGBs, Datenschutzvorgaben und bestimmte Gesetze sind einzuhalten.
 
-== Software Design
+=== Software Design
 In diesem Kapitel werden Details über die wichtigsten Entscheidungen, die im Bereich des Software-Designs gemacht wurden, erläutert. Diese wurden in den jeweiligen individuellen Evaluierungen gemacht und dementsprechend begründet.
 
 .Software-Design
 image::img/Bilder Vorstudie/Software-Design.jpg[]
 
-=== System-Architektur
+==== System-Architektur
 Die Systemarchitektur ist einfach gehalten und zielt auf eine skalierbare Lösung mit maximaler Performance ab. Aus diesem Grund wurden die modernsten Technologien ausgewählt, aus welchen ein Monolith mit einer alleinstehenden Datenbank entwickelt werden soll.
 
 .System-Architektur
@@ -313,7 +309,7 @@ Der Tech-Stack besteht aus:
 //TODO Denis: kann man das so stehen lassen?
 Dieser Stack nennt sich t3-Stack. Er wurde von einem ehemaligen Twitch.tv Softwareentwickler namens Theo Browne erfunden und wird im Bereich der Webentwicklung immer beliebter, da es Full-Stack Typensicherheit anbietet und auf das größte und beliebteste React-Framework – Next.js – aufbaut.
 
-==== Webapplikation
+===== Webapplikation
 Die Entwickler/innen des Next.js Frameworks bieten auch einen Cloud-Hosting-Dienst an, der sich besonders gut für Next-Applikationen eignet, da er auch Integrationen mit anderen Plattformen und Tools unterstützt. Darüber hinaus kann Vercel mit dem GitHub Repository der zu hostenden Applikation verknüpft werden, um eine automatisierte CI/CD Pipeline aufzusetzen. Nach jedem erfolgreichen Merge Request oder direktem Push wird ein neuer Build ausgeführt und die gehostete Applikation wird auf die aktuelle Version gebracht. Zuletzt ist das Hosten auf Vercel für kleinere Projekte trotz beeindruckender Performance mit keinen Kosten verbunden.
 
 // Auch wenn die Vorteile von Vercel für sich sprechen, sollten gute Alternativen hier nicht vergessen werden. Heroku ist eine beliebte Plattform für das Hosten von Applikationen in der Cloud. Gleich wie Vercel gibt es hier eine Möglichkeit, kostenlos zu hosten, solange die Applikation klein ist und wenig Traffic hat. Hier gibt es sogenannte „Add-ons“, die eine breite Palette an Tools und weitere Dienste anbieten. Der Nutzer kann sich beispielsweise auch eine Datenbank, ein Monitoring-System, Logging und sogar eine CI/CD Pipeline aufsetzen, um die gehostete Applikation besser auszurüsten. Allerdings ist dieses Setup weitaus komplizierter als auf Vercel und erfordert mehr Aufwand.
@@ -322,15 +318,15 @@ Die Entwickler/innen des Next.js Frameworks bieten auch einen Cloud-Hosting-Dien
 // Es ist auch möglich, die Applikation auf selbst bereitgestellte Hardware – wie zum Beispiel auf einem RaspberryPi – laufen zu lassen und damit selbst zu hosten, aber diese Aufgabe geht weit über das geplante Aufwandbudget hinaus, was die Aufstellung und Bedienung der Infrastruktur angeht.
 // Eine Analyse der genannten Vorteile von Vercel sowie die Tatsache, dass es sonst keine guten Alternativen für Cloud-Hosting gibt, die Vercels Niveau entsprechen, führt zur Überzeugung, dass Vercel die am besten geeignete Plattform für das Hosten der Webapplikation ist.
 
-==== WebUntis
+===== WebUntis
 WebUntis ist das Grundgerüst des Projekts, da die ganze Raumreservierungslogik davon abhängig ist. Deshalb muss hier eine reibungslose Kommunikation über die WebUntis gRPC API erfolgen. Wichtig ist außerdem, dass auf jedem Request eine entsprechende Response in kürzester Zeit zurückkommt, und dass bei unerwarteten Fehlern sichere Fallback-Verhalten definierten wurden.
 Für Node.js gibt es ein WebUntis-Package zum Installieren, das als Wrapper über die API fungiert. Dieses Package kommt zudem mit definierten Typen, damit die Entwicklung auch in TypeScript erfolgen kann.
 
-==== Microsoft Graph (Teams)
+===== Microsoft Graph (Teams)
 Außer WebUntis ist die Applikation auch von Microsoft Teams abhängig, weil es eine Vielzahl an lernunterstützenden Tools zu Verfügung stellt. Darunter gibt es ein Whiteboard, Kahoot Quiz sowie die Möglichkeit zum Filesharing. Um diese Tools anbieten zu können, wird für jedes Lerncluster ein Team/Channel benötigt.
 Um das geplante Verhalten der Applikation hinsichtlich ihrer Anlehnung an Microsoft Teams zu ermöglichen, wird eine Kommunikation über die Microsoft Graph REST API benötigt.
 
-=== Ablaufprozesse (SOLL-Prozesse)
+==== Ablaufprozesse (SOLL-Prozesse)
 EduCluster soll ein zentrales System zu Erstellung von Unterrichtseinheiten und ebenso Lerneinheiten von Schülern/Schülerinnen unter sich oder Schülern/Schülerinnen mit Lehrkräften, sogenannte Cluster, zur Verfügung stellen. Der in Abbildung ?? dargestellte Use Case zur Lerngruppenbildung verdeutlicht die Grundaufgabe des Projekts.
 Wie in Abbildung ?? dargestellt muss ein Cluster von einem/einer sogenannten Lerngruppenadministrierenden erstellt werden. Dieser/Diese kann sowohl eine Lehrkraft als auch ein Schüler/eine Schülerin sein, da es sich hierbei einzig um den Gründenden/die Gründende der Lerngruppe handelt. Sollte sich also ein Schüler/eine Schülerin bereit erklären, seine Mitschüler/innen in bestimmten Themengebieten beim Lernen zu unterstützen, kann er somit ebenfalls ein Cluster erstellen. Dieses Cluster stellt im Anschluss die Lerngruppe dar, die im Anschluss Termine zu Lerneinheiten planen kann und wird automatisch von EduCluster in MS Teams als eigenes Team/eigener Channel angelegt. Zum Erstellen eines solchen Termins muss der/die Lerngruppenadministrierende in EduCluster diesen Termin erstellen – hier kann zwischen einer Lerneinheit vor Ort (also auch mit Raumreservierung) oder remote gewählt werden. Die Raumreservierung findet ebenfalls in EduCluster selbst statt, wodurch automatisch ein Termin im WebUntis für den zugehörigen Raum erstellt wird. Zusätzlich wird automatisch beim Anlegen eines Termins auch in MS Teams ein Termin für das entsprechende Team/den entsprechenden Channel angelegt, welcher genutzt werden kann, um allgemeine Informationen zu teilen oder für eine Remote–Lerneinheit.
 Nach dem Erstellen eines Clusters können Nutzende dem erstellten Cluster beitreten. Solange ein Cluster noch keinen Termin hat, kann dieser nur direkt durch seinen Namen oder die ID gefunden werden. Sobald ebenso ein Termin erstellt wurde, kann ein Cluster ebenfalls über die Terminsuche gefunden werden, in der zusätzliche Filter zu Unterrichtsfächern und Themen bzw. einer bestimmten Zeit gefiltert werden kann. Durch Auswählen eines Termins kann im Anschluss einem Cluster beigetreten werden.
@@ -404,7 +400,7 @@ Sollte ein Cluster generell nicht mehr gebraucht werden, kann es zur Gänze gel�
 .SOLL-Prozess: Cluster löschen
 image::img/Bilder Diagramme Vorstudie/SOLLProzess-ClusterLöschen.jpg[ClusterLöschenSoll]
 
-=== User Stories
+==== User Stories
 ****
 [.underline]*SOLL Prozess: Login*
 

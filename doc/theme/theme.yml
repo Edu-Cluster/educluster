@@ -1,0 +1,15 @@
+extends: base
+page:
+  margin: [1.5in, 1in, 1in, 0.75in]
+base:
+  font-size: 12
+  text-align: justify
+  line-height: 1.5
+heading:
+  font-color: #74b9ff
+link:
+  font-color: #0984e3
+table:
+  caption:
+    side: bottom
+

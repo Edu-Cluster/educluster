@@ -1,16 +1,10 @@
 :sectnums:
 :sectnumlevels: 5
-:toc-title: Inhaltsverzeichnis
-:table-caption: Tabelle
-:figure-caption: Abbildung
 :lang: de
 :backend: pdf
-:doctype: book
-:pdf-page-layout: :portrait
-// :pdf-page-margin-right: 2in
-:page-right-margin: 2in
-:page-background-image: image:Styling/Styling2-1.png[]
-:title-page-background-image: none
+:table-caption: Tabelle
+:figure-caption: Abbildung
+
 //TODO: alle Benotungen korrigieren
 //TODO: Korrekturlesen lassen
 //TODO: Gendern
