@@ -1,6 +1,10 @@
 :sectnums:
 :sectnumlevels: 3
 
+image:img/deckblatt_vorstudie.png[]
+
+<<<
+
 == Vorstudie
 
 === Einleitung

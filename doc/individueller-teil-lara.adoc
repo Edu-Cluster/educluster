@@ -18,6 +18,10 @@
 //TODO: abgerufen am anpassen
 //TODO: Stundenübersicht und persönliches fazit
 
+image:img/lara/deckblatt.png[]
+
+<<<
+
 == Individueller Teil Lara Kammerer
 Im folgenden Kapitel werden Datenbanken evaluiert, die gewählte Datenbank modelliert und erzeugt und Requirements Engineering Arbeiten erläutert. Für das Requirements Engineering wird näher auf die Nutzung des Management-Tools und die Erstellung der einzelnen Tasks eingegangen.
 

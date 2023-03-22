@@ -4,6 +4,10 @@
 :table-caption: Tabelle
 :figure-caption: Abbildung
 
+image:img/raymond/deckblatt.png[]
+
+<<<
+
 == Individueller Teil Raymond Denis Vladu
 
 === Einleitung
