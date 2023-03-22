@@ -5,12 +5,15 @@
 :table-caption: Tabelle
 :figure-caption: Abbildung
 
-//TODO: alle Benotungen korrigieren
+// :doctype: book
+// :pdf-page-layout: :portrait
+// // :pdf-page-margin-right: 2in
+// :page-right-margin: 2in
+// :page-background-image: image:Styling/Styling2-1.png[]
+// :title-page-background-image: none
 //TODO: Korrekturlesen lassen
-//TODO: Gendern
 //TODO: alle verweise auf bild und dergleichen anpassen
 //TODO: styling
-//TODO: zusammenführen
 //TODO: Stundenlisten anpassen
 //TODO: abgerufen am anpassen
 //TODO: Stundenübersicht und persönliches fazit
@@ -54,20 +57,20 @@ Das Projektteam EduCluster stellt für das Projekt, und somit auch die Datenbank
 
 [.underline]_Zukünftige Benutzer: Schüler und Personal der HTL Pinkafeld_
 
-Die zukünftigen Benutzer, die Schüler der HTL Pinkafeld, stellen für das Projekt die größte Bedeutung dar. Für die Nutzung der Webapplikation stellt die Datenbank bzw. der Zugriff auf die Datenbank eine zentrale Stelle dar. Die Speicherung der Daten zu den Nutzern selbst, ebenso die Identifikation der Cluster in MS Teams und der Termine in sowohl MS Teams als auch WebUntis geschieht über die lokale Datenbank.
+Die zukünftigen Nutzenden, die Schüler/innen der HTL Pinkafeld, stellen für das Projekt die größte Bedeutung dar. Für die Nutzung der Webapplikation stellt die Datenbank bzw. der Zugriff auf die Datenbank eine zentrale Stelle dar. Die Speicherung der Daten zu den Nutzern selbst, ebenso die Identifikation der Cluster in MS Teams und der Termine in sowohl MS Teams als auch WebUntis geschieht über die lokale Datenbank.
 Die Strategie, die vom Projektteam hier verfolgt werden muss, äußert sich durch die Sicherstellung einer stabilen Verbindung zur Datenbank, wodurch eine zuverlässige Speicherung der UserID, sowie ClusterID und TerminID aus MS Teams ebenso wie der UserName als auch die Raumnamen und TerminIDs erst möglich wird.
 
 Administrationsarbeiten:
 
-Für zukünftige Administrationsarbeiten muss eine Möglichkeit vorhanden sein, über Datenbankabfragen in bereits erstellte History Tabellen zu sehen, um bei Bedarf alte Stände wiederherzustellen oder zu analysieren, welcher Nutzer bestimmte Handlungen vorgenommen hat. Ebenso ist es wichtig, mit wenig Aufwand Cluster oder Termine zu löschen oder Schüler aus Clustern zu entfernen, sollten diese aufgrund von Diskrepanzen unter den Schülern bzw. mit Unterrichtseinheiten kollidieren.
+Für zukünftige Administrationsarbeiten muss eine Möglichkeit vorhanden sein, über Datenbankabfragen in bereits erstellte History Tabellen zu sehen, um bei Bedarf alte Stände wiederherzustellen oder zu analysieren, welcher Nutzer/welche Nutzerin bestimmte Handlungen vorgenommen hat. Ebenso ist es wichtig, mit wenig Aufwand Cluster oder Termine zu löschen oder Schüler/innen aus Clustern zu entfernen, sollten diese aufgrund von Diskrepanzen unter den Schülern/Schülerinnen bzw. mit Unterrichtseinheiten kollidieren.
 
-Als möglicher Konflikt kann hier die Option für Triggern genannt werden. Es muss also für genannte History Tabellen eine Datenbank mit der Funktionalität für Trigger sein. Diese Bedingung wird als K.O.-Kriterium behandelt. Zudem muss der zukünftige Systemadministrator grundlegende SQL Kenntnisse aufweisen, um die History Tabellen abfragen zu können. Die Datenbank muss hingegen genügend Platz aufweisen, um diese History Tabellen zusätzlich aufbewahren zu können.
+Als möglicher Konflikt kann hier die Option für Triggern genannt werden. Es muss also für genannte History Tabellen eine Datenbank mit der Funktionalität für Trigger sein. Diese Bedingung wird als K.O.-Kriterium behandelt. Zudem muss der/die zukünftige Systemadministrator/in grundlegende SQL Kenntnisse aufweisen, um die History Tabellen abfragen zu können. Die Datenbank muss hingegen genügend Platz aufweisen, um diese History Tabellen zusätzlich aufbewahren zu können.
 
-Die Strategie für die Datenbank muss somit das Einbauen von Triggern zur Erstellung von Historytabellen beinhalten, welche in späterer Folge von Systemadministratoren mit einfachen SELECT-Anweisungen abgefragt werden können.
+Die Strategie für die Datenbank muss somit das Einbauen von Triggern zur Erstellung von Historytabellen beinhalten, welche in späterer Folge von Systemadministrierenden mit einfachen SELECT-Anweisungen abgefragt werden können.
 
-[.underline]_Zukünftige Entwickler: Personal oder Maturanten der HTL Pinkafeld_
+[.underline]_Zukünftige Entwickelnde: Personal oder Maturanten/Maturantinnen der HTL Pinkafeld_
 
-Zukünftige Entwickler haben für die Wahl der Datenbank nur eine mittlere Bedeutung. Ihre Erwartung an die Datenbank wird ein leichter Zugang sein. Die Datenbank soll somit übersichtlich gestaltet sein, die Trigger und History abfragbar sein und ebenso soll ein klarer Aufbau der Datenbank über ein ER-Diagramm ersichtlich sein.
+Zukünftige Entwickelnde haben für die Wahl der Datenbank nur eine mittlere Bedeutung. Ihre Erwartung an die Datenbank wird ein leichter Zugang sein. Die Datenbank soll somit übersichtlich gestaltet sein, die Trigger und History abfragbar sein und ebenso soll ein klarer Aufbau der Datenbank über ein ER-Diagramm ersichtlich sein.
 
 Als Konflikt kann hier eine schlechte Dokumentation der Datenbank oder ein schlechter Aufbau der Schreib- und Lesezugriffe identifiziert werden.
 
@@ -123,10 +126,10 @@ Das erste festgelegte K.O.-Kriterium für das Projekt EdCluster sind die Kosten 
 * MySQL Community Server
 * PostgreSQL
 
-Zudem müssen ausreichend Zugriffsmöglichkeiten vorhanden sein. Es müssen Mehrfachzugriffe von einem Nutzer zu Tausenden gleichzeitig durchführbar sein. Die Auswahl der kostenlosen Datenbankanbieter erfüllt das zur Gänze, somit muss hier keine weitere Einschränkung erfolgen.
+Zudem müssen ausreichend Zugriffsmöglichkeiten vorhanden sein. Es müssen Mehrfachzugriffe von einzelnen Nutzenden zu Tausenden gleichzeitig durchführbar sein. Die Auswahl der kostenlosen Datenbankanbietenden erfüllt das zur Gänze, somit muss hier keine weitere Einschränkung erfolgen.
 
 Zuletzt muss es eine Datenbankprogrammiersprache geben, da Trigger geplant sind, um vor Änderungen in der Datenbank alte Stände in sogenannte History-Tabellen zu sichern.
-Diese Bedingungen werden von allen Anbietern erfüllt, somit können für die weitere Evaluierung alle Datenbanken in Betracht gezogen werden.
+Diese Bedingungen werden von allen Anbietenden erfüllt, somit können für die weitere Evaluierung alle Datenbanken in Betracht gezogen werden.
 
 [.underline]_Oracle Database XE_
 
@@ -150,7 +153,7 @@ Die Datenbanken müssen als Nächstes bezogen auf die wichtigsten Punkte für da
 * Kosten - K.O.-Kriterium
 * Funktionsumfang der Datenbank - K.O.-Kriterium
 * Größeneinschränkungen der Tabellen - mittel wichtig
-* Zugriffseinschränkungen: Anzahl der Anmeldungen je Nutzer zur selben Zeit - wichtig
+* Zugriffseinschränkungen: Anzahl der zeitgleichen Verbindungen - wichtig
 * Maximal verfügbarer Arbeitsspeicher - mittel wichtig
 * Einarbeitungsaufwand - wenig wichtig
 
@@ -164,26 +167,26 @@ Ebenso ist eine Möglichkeit zur Erstellung von Triggern für das Projekt Pflich
 
 [.underline]_Größeneinschränkungen der Tabellen_
 
-Die Größeneinschränkungen der Tabellen sind für das Projekt EduCluster von mittlerem Wert, da mit momentanem Plan keine außergewöhnlich großen Datenmengen erwartet werden. Sollte das Projekt jedoch in späterer Folge auf weitere Schuleinrichtungen ausgeweitet werden, wird die Größe der Datenbank eine wichtigere Rolle spielen. Aufgrund der geringen Wichtigkeit für den derzeitigen Plan wird die Anforderung auf 25% gewertet.
+Die Größeneinschränkungen der Tabellen sind für das Projekt EduCluster von mittlerem Wert, da mit momentanem Plan keine außergewöhnlich großen Datenmengen erwartet werden. Sollte das Projekt jedoch in späterer Folge auf weitere Schuleinrichtungen ausgeweitet werden, wird die Größe der Datenbank eine wichtigere Rolle spielen. Aufgrund der mittleren Wichtigkeit für den derzeitigen Plan wird die Anforderung auf 25 % gewertet.
 
 // TODO David! Schwellenwert (unter 10gb)
-Es kann eine benötigte Datenbankgröße mit ..GB angenommen werden. In Zukunft kann es aber nützlich sein, eine Datenbank ohne Größeneinschränkungen zu haben für etwaige Erweiterungen des Projekts. Hat eine Datenbank somit keine Größeneinschränkungen in der Tabellengröße, kann diese somit mit der Bestnote 1 bewertet werden. Erfüllt sie die benötigte Datenbankgröße, könnte bei einer Erweiterung jedoch zu Problemen in der Größe führen, kann sie mit einer Note 2 beurteilt werden. Bei unzureichender Größe nach derzeitiger Schätzung muss die Datenbank mit einer 3 bewertet werden und direkt ausscheiden.
+Es kann eine benötigte Datenbankgröße mit .. GB angenommen werden. In Zukunft kann es aber nützlich sein, eine Datenbank ohne Größeneinschränkungen zu haben für etwaige Erweiterungen des Projekts. Hat eine Datenbank somit keine Größeneinschränkungen in der Tabellengröße, kann diese somit mit der Bestnote 1 bewertet werden. Erfüllt sie die benötigte Datenbankgröße, könnte bei einer Erweiterung jedoch zu Problemen in der Größe führen, kann sie mit einer Note 2 beurteilt werden. Bei unzureichender Größe nach derzeitiger Schätzung muss die Datenbank mit einer 3 bewertet werden und direkt ausscheiden.
 
-[.underline]_Zugriffseinschränkungen - Anzahl der zur selben Zeit angemeldeten Nutzer_
+[.underline]_Zugriffseinschränkungen - Anzahl der zeitgleichen Verbindungen_
 
-Die gleichzeitig angemeldeten Nutzer auf der Datenbank bleibt selbst zu Höchstanspruchszeiten unter 10, da sich einzig die Entwickler und Tester des Systems einzeln anmelden. Sämtliche Nutzer von EduCluster greifen auf die Datenbank zu jeder Zeit ausschließlich durch den Nutzer EduCluster auf die Datenbank zu. Durch die geringe Anzahl der benötigten Nutzer kann dieses Kriterium mit einer sehr geringen Relevanz für das Projekt abgeschätzt werden und bewertet somit nur 40%.
+Im Vergleich zur vorhergehenden Anforderung ist es besonders wichtig für das Projekt, dass unzählige Transaktionen zur selben Zeit möglich sind, da viele EduCluster Nutzende auf die Datenbank zur selben Zeit zugreifen müssen. Diese Anforderung wird somit mit 40 % bewertet.
 
-Entsprechend der Bewertung zur Größeneinschränkung der Tabellen kann hier ein Schwellenwert von 10 Nutzern zur selben Zeit genannt werden. Somit werden sämtliche Datenbanken mit einer Nutzeranzahl von über 100 Nutzern mit der Bestnote 1 bewertet, jene, die den Schwellenwert von 10 Nutzern übersteigen mit einer 2 und alle die sich darunter befinden mit einer 3.
+Entsprechend der Bewertung zur Größeneinschränkung der Tabellen kann hier ein Schwellenwert von 10 Verbindungen zur selben Zeit genannt werden. Somit werden sämtliche Datenbanken mit einer Verbindungsanzahl von über 100 mit der Bestnote 1 bewertet, jene, die den Schwellenwert von 10 Nutzern übersteigen mit einer 2 und alle die sich darunter befinden mit einer 3.
 
 [.underline]_Maximal verfügbarerArbeitsspeicher_
 
-Weiters wird noch ein ausreichender Arbeitsspeicher benötigt, der sich ebenfalls bei zu starken Einschränkungen auf die Geschwindigkeit der Transaktionen auswirken kann. Da diese Einschränkungen jedoch die Funktionalitäten des Projektes EduCluster aufgrund einer zu erwartenden mittleren Auslastung voraussichtlich nicht betreffen kann diese Anforderung mit 25% bewertet werden.
+Weiters wird noch ein ausreichender Arbeitsspeicher benötigt, der sich ebenfalls bei zu starken Einschränkungen auf die Geschwindigkeit der Transaktionen auswirken kann. Da diese Einschränkungen jedoch die Funktionalitäten des Projektes EduCluster aufgrund einer zu erwartenden mittleren Auslastung voraussichtlich nicht betreffen kann diese Anforderung mit 25 % bewertet werden.
 
 Für den Arbeitsspeicher kann ein Schwellenwert von 2 GB bestimmt werden. Sämtliche Datenbanken mit geringerem verfügbaren RAM können somit mit einer 3, Datenbanken bis zu einer verfügbaren RAM-Größe von bis zu 10 GB mit einer 2 und sämtliche Datenbanken mit größerem verfügbaren Arbeitsspeicher mit der Bestnote 1 bewertet werden.
 
 [.underline]_Einarbeitungsaufwand_
 
-Zuletzt kann noch der Einarbeitungsaufwand genannt werden, der benötigt wird, um sich in die gewählte Datenbank einzuarbeiten. Da sich dieses Kriterium jedoch ausschließlich auf den Zeitaufwand für die Umsetzung des Projektes auswirkt, auf den Erfolg des Projektes jedoch nicht, wird es nur mit 10% gewichtet.
+Zuletzt kann noch der Einarbeitungsaufwand genannt werden, der benötigt wird, um sich in die gewählte Datenbank einzuarbeiten. Da sich dieses Kriterium jedoch ausschließlich auf den Zeitaufwand für die Umsetzung des Projektes auswirkt, auf den Erfolg des Projektes jedoch nicht, wird es nur mit 10 % gewichtet.
 
 Es kann hier die Unterscheidung festgelegt werden zwischen
 
@@ -207,16 +210,15 @@ _MySQL Community Server_ erfährt in der Größe keine Einschränkungen und kann
 
 _PostgreSQL_ unterliegt ebenso keinen Größeneinschränkungen, da es eine Open Source Datenbank ist und somit die Vollversion kostenlos genutzt werden kann. Die Benotung fällt hier mit der Bestnote 1 aus.footnote:PostgreSQLData[Vgl. https://www.postgresql.org/docs/current/limits.html, abgerufen am 14.02.2023]
 
-[.underline]_Zugriffseinschränkungen - Anzahl der zur selben Zeit angemeldeten Nutzer_
+[.underline]_Zugriffseinschränkungen - Anzahl der zeitgleichen Verbindungen_
 
 _Oracle Database XE_ kann hier mit einer gleichzeitig angemeldeten Nutzeranzahl von 1528 punkten und erreicht somit die Bestnote 1.footnote:[Vgl. https://vladmihalcea.com/maximum-database-connections/, abgerufen am 13.03.2023]
 
-_SQL Server Express_ lässt sogar 32.767 Nutzer zur gleichen Zeit zu und erhält
- somit ebenfalls die Bestnote 1.footnote:[Vgl. https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-user-connections-server-configuration-option?view=sql-server-ver16, abgerufen am 15.02.2023]
+_SQL Server Express_ lässt sogar 32.767 Nutzende zur gleichen Zeit zu und erhält somit ebenfalls die Bestnote 1.footnote:[Vgl. https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-user-connections-server-configuration-option?view=sql-server-ver16, abgerufen am 15.02.2023]
 
-_MySQL Community Server_ schränkt hier auf 38 simultane Zugriffe je Nutzer ein. Das Problem kann jedoch leicht umgangen werden, indem je Prozedur (also zum Beispiel für das Auslesen, das Aktualisieren und das Erstellen der Lerngruppen) je ein Nutzer verwendet wird, wodurch die Zugriffsbeschränkungen als praktisch uneingeschränkt gelten. Die Bewertung kann hier also mit einer 2 für die benötigte Umgehung der Zugriffsbeschränkungen benotet werden.footnote:[Vgl. https://www.infomaniak.com/en/support/faq/471/mysql-maximum-number-of-simultaneous-connections, abgerufen am 23.02.2023]
+_MySQL Community Server_ schränkt hier auf 38 simultane Zugriffe je Nutzende/n ein. Das Problem kann jedoch leicht umgangen werden, indem je Prozedur (also zum Beispiel für das Auslesen, das Aktualisieren und das Erstellen der Lerngruppen) je ein Nutzender/eine Nutzende verwendet wird, wodurch die Zugriffsbeschränkungen als praktisch uneingeschränkt gelten. Die Bewertung kann hier also mit einer 2 für die benötigte Umgehung der Zugriffsbeschränkungen benotet werden.footnote:[Vgl. https://www.infomaniak.com/en/support/faq/471/mysql-maximum-number-of-simultaneous-connections, abgerufen am 23.02.2023]
 
-_PostgreSQL_ hat hier ein Default-Limit von 100 Nutzern, kann bei Bedarf aber unbegrenzt erhöht werden. Somit erhält auch PostgreSQL die Bestnote 1.footnote:[Vgl. https://help.compose.com/docs/postgresql-connection-limits, abgerufen am 15.02.2023]
+_PostgreSQL_ hat hier ein Default-Limit von 100 Nutzenden, kann bei Bedarf aber unbegrenzt erhöht werden. Somit erhält auch PostgreSQL die Bestnote 1.footnote:[Vgl. https://help.compose.com/docs/postgresql-connection-limits, abgerufen am 15.02.2023]
 
 [.underline]_Maximal verfügbarer Arbeitsspeicher_
 
@@ -245,7 +247,7 @@ Nach den Einzelbewertungen ergibt sich folgendes Ergebnis:
 [%EvaluierungErgebnisse,cols=6*]
 .Evaluierung Tabelle
 |===
-|Anforderung |Tabellen- größen |Gleichzeitig angemeldete Nutzer |Verfügbarer Arbeits- speicher | Einarbeitungs- aufwand |Ergebnis
+|Anforderung |Tabellen- größen |Zeitgleiche Verbindungen |Verfügbarer Arbeits- speicher | Einarbeitungs- aufwand |Ergebnis
 |Wertung |25% |40% |25% |10% |100%
 |Oracle Database XE |2 |1 |2 |1 |1,5
 |SQL Server Express |2 |1 |2 |1 |1,5
@@ -312,30 +314,71 @@ Hier werden die benötigten Daten für das Projekt EduCluster gesammelt und in e
 
 [.underline]_Benötigte Daten_
 
-_Userdaten:_ Zu den Nutzern müssen zumindest bekannt sein:
+_Userdaten:_ Zu den Nutzenden müssen zumindest bekannt sein:
 
-* eine PersonID (int8): zur Identifikation des Nutzers. Die PersonID dient als Primärschlüssel und muss somit UNIQUE und NOT NULL sein.
-* ein Username (varchar): zur Individualisierung des eigenen Nutzerkontos. Der Name wird per Default aus dem UntisUsernamen übernommen, kann jedoch vom Nutzer selbst in seinen privaten Einstellungen angepasst werden. Der Username darf jedoch nicht leer sein und muss daher NOT NULL sein.
-* der Untis Username (varchar): zu Identifikation des Untis Kontos, das mit dem Nutzerkonto verbunden ist. Um die Identifikation sicherzustellen, muss der Untis Username UNIQUE und NOT NULL sein. Befüllt wird er direkt beim ersten Login und somit Erstellen des Nutzers durch den Usernamen aus dem Login (die Untis Logindaten werden benötigt zum Login in EduCluster).
-* die Teams E-Mail-Adresse (varchar): zur Identifikation des verbundenen MS Teams Kontos, zum zuverlässigen Hinzufügen und Entfernen der Nutzer zu Channels. Für die eindeutige Identifikation muss die Teams E-Mail-Adresse UNIQUE sein. Bei erstmaligem Login eines Nutzers wird zunächst der Nutzer selbst in die Datenbank geladen, die Teams E-Mail-Adresse jedoch freigehalten. Nach einem anschließenden Check, ob die Adresse befüllt ist, wird der Nutzer automatisch an ein Microsoft Login weitergeleitet. Bei einem erfolgreichen Login wird die E-Mail-Adresse direkt in die Datenbank eingetragen und mit dem Nutzer verknüpft. Sobald die Adresse erst einmal eingetragen ist, kann sie nur noch vom Administrator abgeändert oder entfernt werden.
-* isSysadmin (boolean): zur Feststellung, ob der Nutzer als Admin agieren darf. Der Wert ist NOT NULL, ist aber per Default false.
+* eine PersonID (int8): zur Identifikation des Nutzenden. Die PersonID dient als Primärschlüssel und muss somit UNIQUE und NOT NULL sein.
+* ein Username (varchar): zur Individualisierung des eigenen Nutzendenkontos. Der Name wird per Default aus dem UntisUsernamen übernommen, kann jedoch vom/von der Nutzenden selbst in seinen privaten Einstellungen angepasst werden. Der Username darf jedoch nicht leer sein und muss daher NOT NULL sein.
+* der Untis Username (varchar): zu Identifikation des Untis Kontos, das mit dem Nutzendenkonto verbunden ist. Um die Identifikation sicherzustellen, muss der Untis Username UNIQUE und NOT NULL sein. Befüllt wird er direkt beim ersten Login und somit Erstellen des Nutzers durch den Usernamen aus dem Login (die Untis Logindaten werden benötigt zum Login in EduCluster).
+* die Teams E-Mail-Adresse (varchar): zur Identifikation des verbundenen MS Teams Kontos, zum zuverlässigen Hinzufügen und Entfernen der Nutzenden zu Channels. Für die eindeutige Identifikation muss die Teams E-Mail-Adresse UNIQUE sein. Bei erstmaligem Login eines/einer Nutzenden wird zunächst der/die Nutzende selbst in die Datenbank geladen, die Teams E-Mail-Adresse jedoch freigehalten. Nach einem anschließenden Check, ob die Adresse befüllt ist, wird der/die Nutzende automatisch an ein Microsoft Login weitergeleitet. Bei einem erfolgreichen Login wird die E-Mail-Adresse direkt in die Datenbank eingetragen und mit dem/der Nutzenden verknüpft. Sobald die Adresse erst einmal eingetragen ist, kann sie nur noch vom Administrator abgeändert oder entfernt werden.
+* isSysadmin (boolean): zur Feststellung, ob der/die Nutzende als Administrator/in agieren darf. Der Wert ist NOT NULL, ist aber per Default false.
+
+.Codeblock Create Tables für Person
+****
+create table person (
+  id bigint generated by default as identity primary key,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  untis_username varchar(30) unique not null,
+  teams_email varchar(50) unique,
+  username varchar(30) unique not null,
+  is_sysadmin boolean not null
+);
+****
 
 _Clusterdaten:_ Analog den Userdaten müssen über die Cluster ebenso bekannt sein:
 
 * eine ClusterID (int8): zu eindeutigen Identifikation des Clusters im System. Die ClusterID dient analog der PersonID als Primärschlüssel des Clusters und muss somit ebenfalls UNIQUE und NOT NULL sein.
-* eine Clusterbezeichnung (varchar): zur Identifikation für Nutzer über den Gruppennamen. Der Name muss von dem Ersteller des Clusters beim Erstellvorgang eingegeben werden und darf nicht leer gelassen werden. Er dient in späterer Folge ebenfalls zur Identifikation für Nutzer, da Namen leichter zu merken sind als Ziffern. Durch die unbedingte und eindeutige Eingabe des Namen muss dieser Wert ebenfalls UNIQUE und NOT NULL sein.
+* eine Clusterbezeichnung (varchar): zur Identifikation für Nutzende über den Gruppennamen. Der Name muss von dem Ersteller/der Erstellerin des Clusters beim Erstellvorgang eingegeben werden und darf nicht leer gelassen werden. Er dient in späterer Folge ebenfalls zur Identifikation für Nutzende, da Namen leichter zu merken sind als Ziffern. Durch die unbedingte und eindeutige Eingabe des Namen muss dieser Wert ebenfalls UNIQUE und NOT NULL sein.
 * eine Beschreibung (Text): um den Nutzen des Clusters/der Lerngruppe zu beschreiben. Die Beschreibung kann ebenso beim Erstellen eines Clusters mit eingegeben werden und dient dazu, eine kurze Übersicht zu geben, wozu das Cluster hauptsächlich genutzt wird. Sie kann im Gegensatz zum Namen jedoch frei gelassen werden und kann zusätzlich auch bei mehreren Clustern gleich sein.
 * eine TeamsID (varchar): zur Identifikation des zugehörigen Teams in MS Teams. Cluster werden Channels in MS Teams zugeordnet. Da jedoch je Cluster maximal 20 Channels erzeugt werden können, ist die Angabe des Teams, in dem sich der Channel befindet zusätzlich notwendig. Durch die Anzahl von bis zu 20 Clustern je Team kann dieser Wert nicht unique sein, NOT NULL ist aber eine wichtige Bedingung, da sonst das Cluster nicht eindeutig zu seinem Channel zugeordnet werden kann.
 * eine ChannelID (varchar): zur Identifikation des zugehörigen Channels in MS Teams. Die ChannelID stellt nun die eindeutige Zuordnung der Cluster zum Channel dar. Einzeln müssen die Channels nicht Unique sein, jedoch in Verbindung (zusammengesetzt) mit der TeamsID muss die ChannelID UNIQUE sein. Die ChannelID selbst muss alleine zusätzlich noch NOT NULL sein.
-* die creatorID (int8): zur Zuordnung des Erstellers des Clusters. Die CreatorID wird automatisch vom System gesetzt beim Erstellen des Clusters und kann damit niemals null sein. Da jedoch in späterer Folge bim Anzeigen des Clusters davon ausgegangen wird, dass es einen Creator dazu gibt, muss durch ein NOT NULL sichergestellt werden, dass diese niemals herausgelöscht wird.
-* isPrivate (boolean): um festzustellen, ob der Cluster geschlossen geführt wird, oder nicht. Der Wert isPrivate soll anzeigen, ob ein Cluster geschlossen oder offen geführt wird. Bei einem true kann das Cluster nicht über die Clustersuche bzw. Terminsuche gefunden werden. Nutzer können dadurch nur dem Cluster durch eine Einladung eines Clusteradministrators beitreten. Der Wert ist per Default auf false gesetzt, damit das Cluster jederzeit über die Cluster- oder Terminsuche gefunden werden kann. Dieser Wert muss somit NOT NULL sein.
+* die creatorID (int8): zur Zuordnung des Erstellers/der Erstellerin des Clusters. Die CreatorID wird automatisch vom System gesetzt beim Erstellen des Clusters und kann damit niemals null sein. Da jedoch in späterer Folge bim Anzeigen des Clusters davon ausgegangen wird, dass es einen Creator dazu gibt, muss durch ein NOT NULL sichergestellt werden, dass diese niemals herausgelöscht wird.
+* isPrivate (boolean): um festzustellen, ob der Cluster geschlossen geführt wird, oder nicht. Der Wert isPrivate soll anzeigen, ob ein Cluster geschlossen oder offen geführt wird. Bei einem true kann das Cluster nicht über die Clustersuche bzw. Terminsuche gefunden werden. Nutzende können dadurch nur dem Cluster durch eine Einladung eines/einer Clusteradministrierenden beitreten. Der Wert ist per Default auf false gesetzt, damit das Cluster jederzeit über die Cluster- oder Terminsuche gefunden werden kann. Dieser Wert muss somit NOT NULL sein.
+
+.Codeblock Create Tables für Cluster
+****
+create table cluster (
+  id bigint generated by default as identity primary key,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  teams_id varchar(30) not null,
+  channel_id varchar(30)not null,
+  creator bigint references person(id) not null,
+  clustername varchar(50) unique not null,
+  description text,
+  is_private boolean not null,
+  unique (teams_id, channel_id)
+);
+****
 
 _Raumdaten:_ Zu den Räumen müssen folgende Werte bekannt sein:
 
-* der Raumname (varchar): zur eindeutigen Identifikation des Raumes für die Nutzer als auch das System. Der Raumname entspricht den Bezeichnungen an den Türen im Schulgebäude. Er fungiert hier als PRIMARY KEY und muss somit UNIQUE und NOT NULL sein. In späterer Folge kann angedacht werden, diese Daten aus WebUntis auszulesen, damit würden sämtliche Raumnamen synchronisiert werden.
+* der Raumname (varchar): zur eindeutigen Identifikation des Raumes für die Nutzenden als auch das System. Der Raumname entspricht den Bezeichnungen an den Türen im Schulgebäude. Er fungiert hier als PRIMARY KEY und muss somit UNIQUE und NOT NULL sein. In späterer Folge kann angedacht werden, diese Daten aus WebUntis auszulesen, damit würden sämtliche Raumnamen synchronisiert werden.
 * die UntisID (varchar): zur Identifikation des Raumes in WebUntis. Dieser Wert soll die Verbindung zum Raum in WebUntis herstellen, dass bei einer Buchung des Raumes, der Raum in WebUntis ebenso reserviert wird. Es ist damit unbedingt nötig, dass die UntisID UNIQUE und NOT NULL ist, um als eindeutiger Fremdschlüssel zu agieren.
 * die Platzanzahl (int8): zur Angabe der Raumgröße. Für die Reservierung von Räumen wird oft eine bestimmte Raumgröße benötigt. Für eine Größenangabe kann die Sitzplatzzahl herangezogen werden. Sie wird damit als NOT NULL bewertet.
 * isActive (boolean): zur Angabe, ob der Raum für die Reservierungen verwendet werden kann. Es gibt in der Schule Räume, die nicht zur freien Buchung bereitstehen, wie zum Beispiel die Cisco-Labore aufgrund der Ausstattung. Da aber bei späterer Folge die Räume direkt aus WebUntis synchronisiert werden sollen, muss eine Möglichkeit geschaffen werden, diese als inaktiv zu setzen, damit diese nicht bei Reservierungen gebucht werden können.
+
+.Codeblock Create Tables für Räume
+****
+create table room (
+  name varchar(20) primary key,
+    inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  untis_id varchar(30) not null,
+  seats int,
+  is_active boolean
+);
+****
 
 _Termindaten:_ Zu den Terminen müssen zudem bekannt sein:
 
@@ -348,32 +391,103 @@ _Termindaten:_ Zu den Terminen müssen zudem bekannt sein:
 * ein EndDatum mit Zeit (timestamptz): zur Buchung und Terminerstellung in WebUntis und MS Teams. Das EndDatum verhält sich analog dem BeginnDatum. Es ist damit nicht unique, aber NOT NULL.
 * der Raumname (varchar): zur Raumzuordnung, falls der Termin vor Ort abgehalten werden soll. Da der Termin aber auch roomless abgehalten werden kann, kann dieser wert auch null sein. Er kann hingegen nicht zur selben Zeit zweimal belegt werden. Diese Bedingung muss jedoch vom System übernommen werden, da das im Vergleich nur mit erhöhtem Aufwand in der Datenbank angewendet werden kann.
 * die ClusterID (int8): zur Zuordnung zum veranstaltenden Cluster. Es muss immer ein Cluster zu einem Termin angegeben sein, da die Mitglieder zum MS Teams Termin hinzugefügt werden müssen. Die ClusterID ist somit NOT NULL. Es können jedoch mehrere Termine vom selben Cluster geplant sein, weshalb ein unique-Wert hier fehl am Platz wäre.
-* den Ersteller des Termins (int8): um die Erstellung des Termins gegebenenfalls nachvollziehen zu können. Der Ersteller ist eine zusätzliche Information. Er wird jedoch automatisch vom System befüllt und kann damit nie leer bleiben (NOT NULL).
+* den Ersteller/die Erstellerin des Termins (int8): um die Erstellung des Termins gegebenenfalls nachvollziehen zu können. Der Ersteller/Die Erstellerin ist eine zusätzliche Information. Er wird jedoch automatisch vom System befüllt und kann damit nie leer bleiben (NOT NULL).
 
-_Katalogwerte:_ Es müssen Katalogwerte zu verschiedenen Gebieten angelegt werden, damit diese Werte in späterer Folge vom Administrator angepasst werden können. Es soll dazu Werte geben zu:
+.Codeblock Create Tables für Termine
+****
+create table appointment (
+  id bigint generated by default as identity primary key,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  teams_id varchar(30) unique not null,
+  untis_id varchar(30) unique,
+  name varchar(50) not null,
+  description text,
+  date_from timestamp with time zone not null,
+  date_until timestamp with time zone not null,
+  roomname varchar(20) references room(name),
+  cluster bigint references cluster(id),
+  creator bigint references person(id)
+);
+****
+
+_Katalogwerte:_ Es müssen Katalogwerte zu verschiedenen Gebieten angelegt werden, damit diese Werte in späterer Folge vom/von der Administrierenden angepasst werden können. Es soll dazu Werte geben zu:
 
 * Raumdaten: die oben genannten Raumdaten sollen als Katalogwerte veränderbar sein. Ebenso müssen die Raumgröße und die vorhandene Raumausstattung in der Administration anpassbar sein, sodass die Räume bei entsprechenden Angaben gefunden werden.
 * Raumgrößen:
 Es müssen für die Raumsuche vorgegebene Raumgrößenbereiche durch ein Drop-Down Menü je nach benötigter Raumgröße auswählbar sein. Voreingestellt werden hierfür Größenbereiche von 1-10, 11-20, 21-30 und über 30 Sitzplätze. Da diese aber in späterer Folge unkompliziert anpassbar sein sollen, werden diese in eine sogenannte Katalogwerte-Tabelle gespeichert, die im Administrationsmenü angepasst werden können.
++
+.Codeblock Create Tables für Raumgrößen
+****
+create table room_size (
+   seatcount varchar(30) NOT NULL primary key,
+   minimum int NOT NULL,
+   maximum int NOT NULL
+);
+****
+
 * Raumausstattung:
 Die Raumausstattung muss analog den Raumgrößen in einem Drop-Down bei der Raumsuche auswählbar sein. Sie muss ebenfalls in der Administration anpassbar sein. In der Testdatenbank werden vorerst ein Beamer mit jeweiligem Anschluss (z.B. HDMI, VGA), eine Tafel oder ein Whiteboard angelegt.
++
+.Codeblock Create Tables für Raumausstattung
+****
+create table equipment (
+  name varchar(30) primary key,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+****
+
 * Schulfächer:
 Es müssen sämtliche Unterrichtsfächer in der Datenbank angelegt werden, die dann im Anschluss über AutoComplete-Felder als Tags an Termine angehängt werden können. Da sich jedoch auch die Fächer als auch deren Bezeichnungen ständig ändern, müssen diese somit ebenfalls in der Administration anpassbar sein.
++
+.Codeblock Create Tables für Schulfächer
+****
+create table subject (
+  name varchar(30) primary key,
+  symbol varchar(5) unique not null,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+****
+
 * Themengebiete mit Bezug auf die Schulfächer:
-Zusätzlich zu den Unterrichtsfächern werden auch die einzelnen Themengebiete benötigt, um in einem genaueren Ausmaß die besprochenen Bereiche anführen zu können. Dadruch kann in weiterer Folge von anderen Mitschülern besser erkannt, und auch gefiltert werden, in welchen Bereichen sie momentan Hilfe bräuchten oder einfach selbst lernen müssen. Diese Themen müssen somit ebenfalls über ein AutoComplete-Feld ausgewählt werden können, dass exakt die Bezeichnungen gefiltert werden können. Da sich diese Themengebiete aber analog den Unterrichtsfächern stets ändern, muss diese Auswahl auch von einem Administrator bearbeitet werden können. Deshalb werden diese Informationen auch in eine eigene Tabelle in die Datenbank gespeichert.
+Zusätzlich zu den Unterrichtsfächern werden auch die einzelnen Themengebiete benötigt, um in einem genaueren Ausmaß die besprochenen Bereiche anführen zu können. Dadruch kann in weiterer Folge von anderen Mitschülern/Mitschülerinnen besser erkannt, und auch gefiltert werden, in welchen Bereichen sie momentan Hilfe bräuchten oder einfach selbst lernen müssen. Diese Themen müssen somit ebenfalls über ein AutoComplete-Feld ausgewählt werden können, dass exakt die Bezeichnungen gefiltert werden können. Da sich diese Themengebiete aber analog den Unterrichtsfächern stets ändern, muss diese Auswahl auch von einem/einer Administrierenden bearbeitet werden können. Deshalb werden diese Informationen auch in eine eigene Tabelle in die Datenbank gespeichert.
++
+.Codeblock Create Tables für Themengebiete
+****
+create table topic (
+  name varchar(30) primary key,
+  symbol varchar(5) unique not null,
+  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  subject varchar(30) references subject(name) not null,
+  is_visible boolean not null
+);
+****
+
 * Unterrichtszeiten:
 Ebenso muss es möglich zu fix vorgegebenen Uhrzeiten Räume zu buchen bzw. nach Lernzeit zu diesen Uhrzeiten zu suchen, da WebUntis ausschließlich die Unterrichtsstunden zum Buchen eines Raumes zulässt. Diese Unterrichtszeiten können sich jedoch auch ändern und müssen daher ebenso in der Administration bearbeitbar sein. Sie werden daher auch in eine Katalogtabelle in die Datenbank gespeichert.
++
+.Codeblock Create Tables für Unterrichtszeiten
+****
+create table teaching_times (
+  teaching_hour int NOT NULL primary key,
+  begin varchar(5) NOT NULL,
+  end varchar(5) NOT NULL
+);
+****
 
 ===== Modellierung der Beziehungen
 Hier werden nun sämtliche möglichen Beziehungen erklärt und im Anschluss alle Beziehungen der Datenbank für EduCluster näher erläutert.
 
 [.underline]_Mögliche Beziehungen_
 
-_1 zu 1-Beziehung_ sind Beziehungen zwischen zwei einzelnen Elementen. Es wird hier immer genau ein Element der ersten Tabelle genau einem Element der zweiten Tabelle zugeordnet. Ein Beispiel hierfür ist in einem Schulsystem eine Klasse mit dem zugehörigen Klassensprecher. Ein Schüler kann maximal von einer Klasse Klassensprecher sein, ebenso wie jede Klasse immer genau einen Klassensprecher haben wird. In der Datenbank wirkt sich das aus, indem in einer der beiden Tabellen eine eindeutige Identifizierung des zugehörigen anderen Elements als sogenannten Foreign Key intergiert wird. Der Foreign Key muss sich dabei immer auf eine UNIQUE oder PRIMARY KEY Spalte beziehen. In diesem Fall kann _in einer selbstgewählten Tabelle der Foreign Key zur anderen Tabelle_ stehen.
+_1 zu 1-Beziehung_ sind Beziehungen zwischen zwei einzelnen Elementen. Es wird hier immer genau ein Element der ersten Tabelle genau einem Element der zweiten Tabelle zugeordnet. Ein Beispiel hierfür ist in einem Schulsystem eine Klasse mit dem zugehörigen Klassensprecher/der zugehörigen Klassensprecherin. Ein Schüler/Eine Schülerin kann maximal von einer Klasse Klassensprecher/in sein, ebenso wie jede Klasse immer genau einen Klassensprecher/eine Klassensprecherin haben wird. In der Datenbank wirkt sich das aus, indem in einer der beiden Tabellen eine eindeutige Identifizierung des zugehörigen anderen Elements als sogenannten Foreign Key intergiert wird. Der Foreign Key muss sich dabei immer auf eine UNIQUE oder PRIMARY KEY Spalte beziehen. In diesem Fall kann _in einer selbstgewählten Tabelle der Foreign Key zur anderen Tabelle_ stehen.
 
-_1 zu N-Beziehung_ sind Beziehungen zwischen mehreren gleichen Elementen zu einem anderen. Gemeint ist hier ein Element einer Tabelle, das in Verbindung zu mehreren Elementen einer anderen Tabelle steht. Bezogen auf das oben genannte Schulbeispiel kann hier die Klasse mit ihren Schülern genannt werden. Es wird hier jeder Schüler immer genau einer Klasse zugeordnet, die Klasse hingegen kann auch mehrere Schüler haben. Hier muss der oben genannte _Foreign Key unbedingt in der Tabelle der vielen Elemente_ stehen, da hiermit nur auf eine Klasse verwiesen wird und nicht die erste Normalisierungsstufe verletzt wird, da bei der Klasse sonst viele Schüler in einem Feld stehen müssten.
+_1 zu N-Beziehung_ sind Beziehungen zwischen mehreren gleichen Elementen zu einem anderen. Gemeint ist hier ein Element einer Tabelle, das in Verbindung zu mehreren Elementen einer anderen Tabelle steht. Bezogen auf das oben genannte Schulbeispiel kann hier die Klasse mit ihren Schülern/Schülerinnen genannt werden. Es wird hier jeder Schüler immer genau einer Klasse zugeordnet, die Klasse hingegen kann auch mehrere Schüler/innen haben. Hier muss der oben genannte _Foreign Key unbedingt in der Tabelle der vielen Elemente_ stehen, da hiermit nur auf eine Klasse verwiesen wird und nicht die erste Normalisierungsstufe verletzt wird, da bei der Klasse sonst viele Schüler/innen in einem Feld stehen müssten.
 
-_N zu M-Beziehung_ sind Beziehungen zwischen mehreren einer Art zu mehreren möglichen einer anderen Art. Es können also mehrere Elemente der ersten Tabelle mit mehreren Tabellen der zweiten verbunden sein. Im Schulbeispiel entspricht dieses Szenario den Schülern, die mehrere Unterrichtsfächer besuchen und umgekehrt die Fächer, die von mehreren Schülern besucht werden. In der Datenbank muss für diese Beziehung eine eigene Tabelle erstellt werden, mit sowohl einem Foreign Key zu den Schülern als auch einem zu den Fächern. In den Tabellen der Schüler bzw. der Unterrichtsfächer sind somit keine Foreign Keys.
+_N zu M-Beziehung_ sind Beziehungen zwischen mehreren einer Art zu mehreren möglichen einer anderen Art. Es können also mehrere Elemente der ersten Tabelle mit mehreren Tabellen der zweiten verbunden sein. Im Schulbeispiel entspricht dieses Szenario den Schülern/Schülerinnen, die mehrere Unterrichtsfächer besuchen und umgekehrt die Fächer, die von mehreren Schülern/Schülerinnen besucht werden. In der Datenbank muss für diese Beziehung eine eigene Tabelle erstellt werden, mit sowohl einem Foreign Key zu den Schülern/Schülerinnen als auch einem zu den Fächern. In den Tabellen der Schüler/innen bzw. der Unterrichtsfächer sind somit keine Foreign Keys.
 
 [.underline]_Verwendete Beziehungen_
 
@@ -391,8 +505,8 @@ Die Beziehungen der EduCluster Datenbank sind folgende:
 
 [.underline]_Auswirkung in Datenbankaufbau_
 
-Ganz entsprechend der Erklärungen oberhalb müssen für alle N-zu-N-Beziehungen eigene Tabellen erstellt werden, also für die Administratoren der Cluster, sowie die normalen Teilnehmer der Cluster, die Ausstattung der Räume und ebenfalls für die Themen der einzelnen Termine.
-Bei 1-N Beziehungen wird ein Fremdschlüssel in den N-Tabellen erstellt, somit wird in der Clustertabelle und in der Termintabelle jeweils der Ersteller, sowie das Cluster eines Termins, der Raum, in dem ein Termin abgehalten wird als Fremdschlüssel hinzugefügt. Ebenso wird bei den Themen das Unterrichtsfach als Fremdschlüssel hinzugefügt. Hingegen hier wird aufgrund der schwachen Beziehung der Primärschlüssel aus diesem Fremdschlüssel und dem eigenen Namen zusammengesetzt.
+Ganz entsprechend der Erklärungen oberhalb müssen für alle N-zu-N-Beziehungen eigene Tabellen erstellt werden, also für die Administrierenden der Cluster, sowie die normalen Teilnehmenden der Cluster, die Ausstattung der Räume und ebenfalls für die Themen der einzelnen Termine.
+Bei 1-N Beziehungen wird ein Fremdschlüssel in den N-Tabellen erstellt, somit wird in der Clustertabelle und in der Termintabelle jeweils der Ersteller/die Erstellerin, sowie das Cluster eines Termins, der Raum, in dem ein Termin abgehalten wird als Fremdschlüssel hinzugefügt. Ebenso wird bei den Themen das Unterrichtsfach als Fremdschlüssel hinzugefügt. Hingegen hier wird aufgrund der schwachen Beziehung der Primärschlüssel aus diesem Fremdschlüssel und dem eigenen Namen zusammengesetzt.
 
 ==== Ergebnis
 Hier ist das aus den oben genannten Überlegungen resultierende ER-Modell dargestellt:
@@ -400,64 +514,10 @@ Hier ist das aus den oben genannten Überlegungen resultierende ER-Modell darges
 .ER-Modell Datenbank
 image::img/lara/Bilder Datenbank/EduCluster-ERModell.jpg[ER-Modell]
 
-Zum Erstellen der Datenbank wurden folgende Code Snippets genutzt. Die Überlegungen zu den einzelnen Tabellen entsprechen den oben angeführten.
+Zum Erstellen der Beziehungstabellen wurden folgende Code Snippets genutzt.
 
-.Codeblock Create Tables
-----
-create table person (
-  id bigint generated by default as identity primary key,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  untis_username varchar(30) unique not null,
-  teams_email varchar(50) unique,
-  username varchar(30) unique not null,
-  is_sysadmin boolean not null
-);
-
-create table cluster (
-  id bigint generated by default as identity primary key,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  teams_id varchar(30) not null,
-  channel_id varchar(30)not null,
-  creator bigint references person(id) not null,
-  clustername varchar(50) unique not null,
-  description text,
-  is_private boolean not null,
-  unique (teams_id, channel_id)
-);
-
-create table room (
-  name varchar(20) primary key,
-    inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  untis_id varchar(30) not null,
-  seats int,
-  is_active boolean
-);
-
-create table equipment (
-  name varchar(30) primary key,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
-
-create table subject (
-  name varchar(30) primary key,
-  symbol varchar(5) unique not null,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
-
-create table topic (
-  name varchar(30) primary key,
-  symbol varchar(5) unique not null,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  subject varchar(30) references subject(name) not null,
-  is_visible boolean not null
-);
-
+.Codeblock Create Tables für Beziehungen
+****
 create table admin_of (
   person_id bigint references person(id),
   cluster_id bigint references cluster(id),
@@ -471,21 +531,6 @@ create table member_of (
   primary key (person_id, cluster_id)
 );
 
-create table appointment (
-  id bigint generated by default as identity primary key,
-  inserted_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  teams_id varchar(30) unique not null,
-  untis_id varchar(30) unique,
-  name varchar(50) not null,
-  description text,
-  date_from timestamp with time zone not null,
-  date_until timestamp with time zone not null,
-  roomname varchar(20) references room(name),
-  cluster bigint references cluster(id),
-  creator bigint references person(id)
-);
-
 create table equipment_for_room (
   room varchar(30) references room(name),
   equipment varchar(30) references equipment(name),
@@ -497,32 +542,18 @@ create table topics_for_appointment (
   topic varchar(30) references topic(name),
   primary key (appointment, topic)
 );
+****
 
-create table teaching_times (
-  teaching_hour int NOT NULL primary key,
-  begin varchar(5) NOT NULL,
-  end varchar(5) NOT NULL
-);
-
-create table room_size (
-   seatcount varchar(30) NOT NULL primary key,
-   minimum int NOT NULL,
-   maximum int NOT NULL
-);
-----
-
-Zum Befüllen der Tabellen wurde das im Anschluss angeführte Code Snippet verwendet:
+Zum Befüllen aller Tabellen wurde das im Anschluss angeführte Code Snippet verwendet:
 
 .Codeblock Insert
-----
+****
 INSERT INTO
     person (untis_username, teams_email, username, is_sysadmin)
 VALUES
-    ('KammerLar',null, 'KammerLar', true),
-    ('KiesseChr', null, 'KiesseChr', true),
-    ('VladuRay',null, 'VladuRay', true),
     ('MusterMax','max.muster@htlpinkafeld.at', 'mm', true),
     ('DorferAli', 'alice.dorfer@htlpinkafeld.at', 'Alice Dorfer', false);
+    ...
 
 INSERT into
     cluster (teams_id, channel_id, creator, clustername, description, is_private)
@@ -530,12 +561,7 @@ VALUES
     ('cluster1', 'channel1', 1, 'Fehler 404: Gruppe nicht gefunden', 'Diese Gruppe existiert garnicht.', false),
     ('cluster1', 'channel2', 2, 'Ciao Kakao', 'Rolling with the homies', false),
     ('cluster1', 'channel3', 3, 'Gummibärenbande', 'Mutig und freundlich, so tapfer und gläubig. Fröhlich und frech kämpfen sie auch für dich. Leben im Wald unter Bäumen und Steinen. In ihren Höhlen da sind sie zu Haus.', false),
-    ('cluster1', 'channel4', 4, 'Helden in Strumpfhosen', 'Ich habe soeben die gute Nachricht überbracht und ich... ich... stecke tief in der Scheiße!', false),
-    ('cluster1', 'channel5', 4, 'Bürobusters', 'Ich bin so motiviert, ich könnte Bäumen beim wachsen zusehen.', false),
-    ('cluster2', 'channel1', 2, 'Die taffen Giraffen', 'Ich seh den Baum vor lauter Wäldern nicht.', false),
-    ('cluster2', 'channel2', 4, 'Die Mathelarven', 'Wir tun nix, wir wollen nur rechnen.', false),
-    ('cluster2', 'channel3', 2, 'Das A-Team', 'Wir schreiben das A ganz groß.', false),
-    ('cluster2', 'channel4', 1, 'The Office', 'Unser Office ist 365 Tage im Jahr geöffnet.', false);
+    ...
 
 INSERT into
     room (name, untis_id, seats, is_active)
@@ -543,8 +569,7 @@ VALUES
     ('V_101', 'V_101', 40, true),
     ('V_102', 'V_102', 10, true),
     ('V_103', 'V_103', 30, true),
-    ('V_104', 'V_104', 20, true),
-    ('CISCO_Labor', 'C_402', 30, false);
+    ...
 
 INSERT into
     equipment (name)
@@ -552,8 +577,7 @@ values
     ('Beamer'),
     ('Beamer mit HDMI Anschluss'),
     ('Beamer mit VGA Anschluss'),
-    ('Tafel'),
-    ('Whiteboard');
+    ...
 
 INSERT into
     subject (name, symbol)
@@ -561,8 +585,7 @@ values
     ('Deutsch', 'D'),
     ('Mathematik', 'M'),
     ('Englisch', 'E'),
-    ('Programmieren', 'POS'),
-    ('Betriebswirtschaft', 'BWM');
+    ...
 
 INSERT into
     topic (name, symbol, subject, is_visible)
@@ -570,34 +593,7 @@ values
     ('Mathematik', 'Mathe', 'Mathematik', false),
     ('Algebra und Geometrie', 'AG', 'Mathematik', true),
     ('Lineare Funktion', 'LF', 'Mathematik', true),
-    ('Analysis', 'A', 'Mathematik', true),
-    ('Wahrsch. und Statistik', 'WS', 'Mathematik', true),
-    ('Potenzfunktion', 'PF', 'Mathematik', true),
-    ('Deutsch', 'Deuts', 'Deutsch', false),
-    ('Leserbrief', 'LB', 'Deutsch', true),
-    ('Textinterpretation', 'TI', 'Deutsch', true),
-    ('Textanalyse', 'TA', 'Deutsch', true),
-    ('Zusammenfassung', 'ZF', 'Deutsch', true),
-    ('Kommentar', 'K', 'Deutsch', true),
-    ('Erörterung', 'E', 'Deutsch', true),
-    ('Englisch', 'Engli', 'Englisch', false),
-    ('Health', 'H', 'Englisch', true),
-    ('Communication', 'C', 'Englisch', true),
-    ('Business and Economy', 'BE', 'Englisch', true),
-    ('Programmieren', 'Progr', 'Programmieren', false),
-    ('HTML5', 'HT', 'Programmieren', true),
-    ('CSS', 'CS', 'Programmieren', true),
-    ('Bootstrap', 'B', 'Programmieren', true),
-    ('JavaScript seq', 'JSS', 'Programmieren', true),
-    ('JavaScript OO', 'JSO', 'Programmieren', true),
-    ('NodeJS', 'NJS', 'Programmieren', true),
-    ('Java Vererbung', 'JV', 'Programmieren', true),
-    ('Betriebswirtschaft', 'BWL', 'Betriebswirtschaft', false),
-    ('Personalverrechnung', 'PV', 'Betriebswirtschaft', true),
-    ('Rechnungsabgrenzung', 'RA', 'Betriebswirtschaft', true),
-    ('Rückstellungen', 'RS', 'Betriebswirtschaft', true),
-    ('Anlagenverkauf', 'AV', 'Betriebswirtschaft', true),
-    ('Forderungsbewertung', 'FB', 'Betriebswirtschaft', true);
+    ...
 
 INSERT into
     admin_of (person_id, cluster_id)
@@ -605,22 +601,7 @@ values
     (1, 1),
     (3, 1),
     (2, 2),
-    (3, 3),
-    (4, 4),
-    (5, 4),
-    (3, 4),
-    (4, 5),
-    (1, 5),
-    (2, 5),
-    (3, 6),
-    (1, 7),
-    (2, 7),
-    (3, 7),
-    (4, 8),
-    (5, 8),
-    (1, 9),
-    (4, 9),
-    (5, 9);
+    ...
 
 INSERT into
     member_of (person_id, cluster_id, is_active)
@@ -628,20 +609,7 @@ values
     (2, 1, true),
     (4, 1, true),
     (5, 1, true),
-    (4, 2, true),
-    (1, 2, true),
-    (1, 3, true),
-    (2, 3, false),
-    (5, 3, true),
-    (2, 4, true),
-    (3, 5, false),
-    (5, 5, true),
-    (1, 6, false),
-    (3, 6, false),
-    (5, 7, false),
-    (1, 8, true),
-    (2, 9, true),
-    (3, 9, true);
+    ...
 
 INSERT into
     appointment (teams_id, untis_id, name, description, date_from, date_until, roomname, cluster, creator)
@@ -649,11 +617,7 @@ values
     ('termin1', 'termin1', 'Zurück in die Zukunft', 'Diese Kiste fährt elektrisch, aber ich brauche die Atomreaktion für die 1,21 Gigawattleistung, die nötig ist', '2023-07-19 14:00', '2023-07-19 16:40', 'V_101', 1, 2),
     ('termin2', 'termin2', 'Ein Spektrum von Möglichkeiten', 'Die Realität ist etwas für Menschen ohne Vorstellungskraft', '2023-08-02  09:10', '2023-08-02  10:00', 'V_103', 6, 1),
     ('termin3', 'termin3', 'Seien Sie außergewöhnlich', 'Man muss systematisch Verwirrung stiften – das setzt Kreativität frei. Alles, was widersprüchlich ist, schafft Leben.', '2023-08-01  10:00', '2023-08-01  11:55', 'V_104', 8, 4),
-    ('termin4', 'termin4', 'Monday Mood', 'Monday should be optional', '2023-11-27  08:15', '2023-11-27  10:00', 'V_101', 3, 3),
-	('termin5', 'termin5', 'Der Schwerkraft trotzen', 'Der Kopf ist rund, damit das Denken die Richtung ändern kann.', '2023-05-15  16:40', '2023-05-15  17:30', 'V_102', 5, 3),
-    ('termin6', 'termin6', 'Klärung des Nudelrezeptaufwandes', 'Pasta Asciutta sogt die Mutta', '2023-03-16 18:20', '2023-03-16 20:00', 'V_102', 3, 2),    ('termin7', 'termin7', '0100100001100001011011000110110001101111', 'Have you tried turning it off and on again?', '2023-01-26 13:10', '2023-01-26 14:00', 'V_103', 4, 1),
-    ('termin8', 'termin8', 'Kalkulation des Zerfallsgesetzes', 'I ate some pi', '2023-05-12 11:05', '2023-05-12 11:55', 'V_104', 7, 5),
-    ('termin9', 'termin9', 'Welcher Fall ist der richtige', 'Der Dativ ist dem Genitiv sein Tod', '2023-08-17 09:10', '2023-08-17 10:50', 'V_103', 9, 3);
+    ...
 
 INSERT INTO
     equipment_for_room (room, equipment)
@@ -661,15 +625,7 @@ VALUES
     ('V_101', 'Tafel'),
     ('V_101', 'Beamer'),
     ('V_101', 'Beamer mit HDMI Anschluss'),
-    ('V_102', 'Beamer'),
-    ('V_102', 'Beamer mit VGA Anschluss'),
-    ('V_103', 'Tafel'),
-    ('V_104', 'Whiteboard'),
-    ('V_104', 'Beamer'),
-    ('CISCO_Labor', 'Whiteboard'),
-    ('CISCO_Labor', 'Beamer'),
-    ('CISCO_Labor', 'Beamer mit HDMI Anschluss'),
-    ('CISCO_Labor', 'Beamer mit VGA Anschluss');
+    ...
 
 INSERT INTO
     topics_for_appointment (appointment, topic)
@@ -677,24 +633,7 @@ VALUES
     (1, 'Communication'),
     (1, 'Business and Economy'),
     (1, 'Health'),
-    (2, 'Mathematik'),
-    (3, 'Personalverrechnung'),
-    (3, 'Rechnungsabgrenzung'),
-    (4, 'Textinterpretation'),
-    (4, 'Textanalyse'),
-    (4, 'Zusammenfassung'),
-    (5, 'Leserbrief'),
-    (5, 'Textinterpretation'),
-    (5, 'Textanalyse'),
-    (6, 'Lineare Funktion'),
-    (6, 'Wahrsch. und Statistik'),
-    (7, 'HTML5'),
-    (7, 'CSS'),
-    (7, 'Bootstrap'),
-    (7, 'JavaScript seq'),
-    (8, 'Analysis'),
-    (9, 'Textanalyse'),
-    (9, 'Erörterung');
+    ...
 
 INSERT INTO
     teaching_times (teaching_hour, begin, end_)
@@ -702,21 +641,7 @@ VALUES
     (1, '07:25', '08:15'),
     (2, '08:15', '09:05'),
     (3, '09:10', '10:00'),
-    (4, '10:00', '10:50'),
-    (5, '11:05', '11:55'),
-    (6, '11:55', '12:45'),
-    (7, '13:10', '14:00'),
-    (8, '14:00', '14:50'),
-    (9, '14:50', '15:40'),
-    (10, '15:50', '16:40'),
-    (11, '16:40', '17:30'),
-    (12, '17:30', '18:20'),
-    (13, '18:20', '19:10'),
-    (14, '19:10', '20:00'),
-    (15, '20:00', '20:50'),
-    (16, '20:50', '21:40'),
-    (17, '21:40', '22:30'),
-    (18, '22:30', '23:30');
+    ...
 
 INSERT INTO
     room_size (seatcount, minimum, maximum)
@@ -724,8 +649,8 @@ VALUES
     ('1-10 Sitzplätze', 1, 10),
     ('11-20 Sitzplätze', 11, 20),
     ('21-30 Sitzplätze', 21, 30),
-    ('>30 Sitzplätze', 30, 300);
-----
+    ...
+****
 
 === Projektmanagement
 Im Anschluss werden sämtliche Arbeiten, die für einen reibungslosen Ablauf des Projekts gesorgt haben, angeführt und erläutert.
@@ -733,58 +658,55 @@ Im Anschluss werden sämtliche Arbeiten, die für einen reibungslosen Ablauf des
 ==== YouTrack
 Zum Projektmanagement wurde beim Projekt EduCluster das Management-Tool YouTrack von Jetbrains genutzt.
 
-NOTE: ab hier arbeite ich noch
-//TODO: ab hier
-
 ===== Prozessaufbau
 Der Workflow des Prozesses wurde folgendermaßen in YouTrack abgebildet:
 
-In diesem Bild wird der gesamte Workflow der einzelnen Tasks im Projekt dargestellt. Um zunächst den Standard-Workflow zu erläutern, kann hier der Startpunkt eines jeden Tasks im linken oberen Eck erkannt werden: Design. Wenn somit ein neuer Task erstellt wird, steht er automatisch im Status Design. Dieser Status wurde nur eingeplant, um jeden Task vor einer Bearbeitung im Team zu besprechen, bevor er bearbeitet werden kann, um so noch offene Fragen zu beseitigen. Über Open kann er anschließend in den Status Open gelegt werden, von welchem sich Entwickler jederzeit allgemeine oder ihnen zugewiesene Tasks nehmen können, um diese umzusetzen.
-Zudem kann ein Task auch von hier direkt über Already Fixed in den Status Fixed verschoben werden, falls er bereits bei einem anderen Task mitgefixed wurde.
+In diesem Bild wird der gesamte Workflow der einzelnen Tasks im Projekt dargestellt. Um zunächst den Standard-Workflow zu erläutern, kann hier der Startpunkt eines jeden Tasks im linken oberen Eck erkannt werden: 'Design'. Wenn somit ein neuer Task erstellt wird, steht er automatisch im Status 'Design'. Dieser Status wurde nur eingeplant, um jeden Task vor einer Bearbeitung im Team zu besprechen, bevor er bearbeitet werden kann, um so noch offene Fragen zu beseitigen. Über 'Open' kann er anschließend in den Status 'Open' gelegt werden, von welchem sich Entwickelnde jederzeit allgemeine oder ihnen zugewiesene Tasks nehmen können, um diese umzusetzen.
+Zudem kann ein Task auch von hier direkt über 'Already Fixed' in den Status 'Fixed' verschoben werden, falls er bereits bei einem anderen Task mitgefixed wurde.
 
 .Workflow Status: Design
 image::img/lara/Bilder YouTrack/FromDesign.PNG[Screenshot]
 //TODO! Bildbezeichnungen und Verweise anpassen!
 
-Als Nächstes steht der Task im Status Open. Wie bereits erwähnt werden hier die Tasks direkt von den Entwicklern entgegengenommen und umgesetzt. Für die Umsetzung wird der Task weiter über Start Progress in den Status In Progress gesetzt.
-Ebenso kann der Task von hier aber auch wieder über Already Fixed direkt in den Status Fixed befördert werden, wenn erst später erkannt wird, dass er bereits gefixed wurde.
+Als Nächstes steht der Task im Status 'Open'. Wie bereits erwähnt werden hier die Tasks direkt von den Entwickelnden entgegengenommen und umgesetzt. Für die Umsetzung wird der Task weiter über 'Start Progress' in den Status 'In Progress' gesetzt.
+Ebenso kann der Task von hier aber auch wieder über 'Already Fixed' direkt in den Status 'Fixed' befördert werden, wenn erst später erkannt wird, dass er bereits gefixed wurde.
 
 .Workflow Status: Open
 image::img/lara/Bilder YouTrack/FromOpen.PNG[Screenshot]
 
-Im Status In Progress steht jeder Task nur, wenn er gerade direkt in der Umsetzung bearbeitet wird. Sobald er fertig ist, wird er weiter über Solve in den Status Ready To Test geschoben.
+Im Status 'In Progress' steht jeder Task nur, wenn er gerade direkt in der Umsetzung bearbeitet wird. Sobald er fertig ist, wird er weiter über 'Solve' in den Status 'Ready To Test' geschoben.
 
 .Workflow Status: In Progress
 image::img/lara/Bilder YouTrack/FromInProgress.PNG[Screenshot]
 
-Der Ready To-Test-Status steht für den Zeitraum, wenn ein Task bereits umgesetzt wurde und noch nicht getestet wird. Analog dem Status Open können hier Tester sich die Tasks nehmen und zum Testen über Start Testing in den Status In Testing schieben.
+Der 'Ready To Test'-Status steht für den Zeitraum, wenn ein Task bereits umgesetzt wurde und noch nicht getestet wird. Analog dem Status 'Open' können hier Testende sich die Tasks nehmen und zum Testen über 'Start Testing' in den Status 'In Testing' schieben.
 
 .Workflow Status: Ready To Test
 image::img/lara/Bilder YouTrack/FromReadyToTest.PNG[Screenshot]
 
-Steht ein Task im Status In Testing, wird er gerade aktiv getestet. Sobald der Tester mit dieser Aufgabe vollständig fertig ist, schiebt er den Task über Resolve in den Fixed Status.
+Steht ein Task im Status 'In Testing', wird er gerade aktiv getestet. Sobald der/die Testende mit dieser Aufgabe vollständig fertig ist, schiebt er/sie den Task über 'Resolve' in den 'Fixed'-Status.
 
 .Workflow Status: In Testing
 image::img/lara/Bilder YouTrack/FromInTesting.PNG[Screenshot]
 
-Ein Task im Fixed-Status wurde bereits fertig umgesetzt und getestet. Falls hier jedoch ein Fehler unterläuft und der Task fälschlicherweise in diesem Status landet, kann er über Re-Open wieder zurück in den Open-Status geschoben werden.
+Ein Task im 'Fixed'-Status wurde bereits fertig umgesetzt und getestet. Falls hier jedoch ein Fehler unterläuft und der Task fälschlicherweise in diesem Status landet, kann er über 'Re-Open' wieder zurück in den 'Open'-Status geschoben werden.
 
 .Workflow Status: Fixed
 image::img/lara/Bilder YouTrack/FromFixed.PNG[Screenshot]
 
-Sollte jedoch im Workflow der Fall entstehen, dass weitere Fragen auftauchen, die erst mit dem Projektteam oder Auftraggeber besprochen werden müssen und somit nicht weiter umgesetzt oder getestet werden können, können diese in einen To Be Discussed-Status geschoben werden. Dies ist vom Open-, In-Progress- oder In-Testing-Status aus möglich. Der Task verweilt dort so lange, bis die Fragen geklärt sind und wird dann in den Status zurückgeschoben, in dem er anschließend weiterbehandelt werden soll.
+Sollte jedoch im Workflow der Fall entstehen, dass weitere Fragen auftauchen, die erst mit dem Projektteam oder Auftraggeber besprochen werden müssen und somit nicht weiter umgesetzt oder getestet werden können, können diese in einen 'To Be Discussed'-Status geschoben werden. Dies ist vom 'Open'-, 'In-Progress'- oder 'In Testing'-Status aus möglich. Der Task verweilt dort so lange, bis die Fragen geklärt sind und wird dann in den Status zurückgeschoben, in dem er anschließend weiterbehandelt werden soll.
 
 .Workflow Status: To Be Discussed
 image::img/lara/Bilder YouTrack/FromToBeDiscussed.PNG[Screenshot]
 
-Zuletzt wurde noch ein Won't-Fix-Status hinzugefügt, da sich im Laufe des Projektes manche Tasks als nicht nötig herausgestellt haben. Aus diesem Status können Tasks ebenso wieder aufgelebt werden, falls sie fälschlicherweise dorthin geschoben wurden.
+Zuletzt wurde noch ein 'Won't Fix'-Status hinzugefügt, da sich im Laufe des Projektes manche Tasks als nicht nötig herausgestellt haben. Aus diesem Status können Tasks ebenso wieder aufgelebt werden, falls sie fälschlicherweise dorthin geschoben wurden.
 
 .Workflow Status: Won't Fix
 image::img/lara/Bilder YouTrack/FromWontFix.PNG[Screenshot]
 
 ===== Übersicht des Projektfortschritts in YouTrack
 Um den Projektfortschritt möglichst deutlich darzustellen, wurde hier vom Projektteam auf das angebotene Kanban Board in YouTrack zurückgegriffen, auf dem ebenfalls die einzelnen Sprints dargestellt werden können.
-Im folgenden Bild kann ein Zwischenstand auf dem Kanban Board für den finalen Sprint des Teams EduCluster betrachtet werden. Hier werden die einzelnen Status in Spalten und die Tasks in entsprechenden Spalten dargestellt. Dargestellt wird hier von links nach rechts der Standardworkflow mit einer zusätzlichen Spalte links für die To Be Discussed Tasks, dass diese somit nicht übersehen werden.
+Im folgenden Bild kann ein Zwischenstand auf dem Kanban Board für den finalen Sprint des Teams EduCluster betrachtet werden. Hier werden die einzelnen Status in Spalten und die Tasks in entsprechenden Spalten dargestellt. Dargestellt wird hier von links nach rechts der Standardworkflow mit einer zusätzlichen Spalte links für die 'To Be Discussed'-Tasks, dass diese somit nicht übersehen werden.
 
 .Kanban Board
 image::img/lara/Bilder YouTrack/KanBanBoard.PNG[Screenshot]
@@ -802,15 +724,15 @@ Als Beispiel für eine User Story kann hier das Login herangezogen werden.
 ****
 [.underline]*SOLL Prozess: Login*
 
-Als Schüler/Lehrer/Administrator will ich mich in mein Konto einloggen, sodass ich Cluster bilden oder beitreten kann.
+Als Schüler/in/Lehrer/in/Administrator/in will ich mich in mein Konto einloggen, sodass ich Cluster bilden oder beitreten kann.
 
 * Es müssen folgende Daten ausgefüllt werden: *Username / HTL E-Mail-Adresse und Passwort*.
 * Beide Felder sind Pflichtfelder. Werden diese beiden Felder nicht richtig ausgefüllt kann ein Login nicht erfolgen.
-* Hat der Nutzer eine *falsche E-Mail-Adresse oder ein falsches Passwort* eingegeben, dann muss er mit einer aussagekräftigen *Fehlermeldung* an das Login Formular zurückgeleitet werden.
-* Bei falscher E-Mail-Adresse muss der Nutzer darauf hingewiesen werden, eine derzeit gültige E-Mail-Adresse der HTL Pinkafeld zu verwenden.
-* Das Login Formular hat eine *Checkbox 'Angemeldet bleiben'*. Dies bedeutet, dass der Nutzer sich nicht noch einmal einloggen muss, sondern angemeldet bleibt.
-* Durch einen *erfolgreichen Login* wird der Nutzer in das Hauptmenü weitergeleitet.
-* Der Login erfolgt mit den Schuldaten - die *Authentifizierung* erfolgt in WebUntis.
+* Hat der/die Nutzende eine *falsche E-Mail-Adresse oder ein falsches Passwort* eingegeben, dann muss er/sie mit einer aussagekräftigen *Fehlermeldung* an das Login Formular zurückgeleitet werden.
+* Bei falscher E-Mail-Adresse muss der/die Nutzende darauf hingewiesen werden, eine derzeit gültige E-Mail-Adresse der HTL Pinkafeld zu verwenden.
+* Das Login Formular hat eine *Checkbox 'Angemeldet bleiben'*. Dies bedeutet, dass der/die Nutzende sich nicht noch einmal einloggen muss, sondern angemeldet bleibt.
+* Durch einen *erfolgreichen Login* wird der/die Nutzende in das Hauptmenü weitergeleitet.
+* Das Login erfolgt mit den Schuldaten - die *Authentifizierung* erfolgt in WebUntis.
 ****
 
 ==== Aufsplittung in Tasks
@@ -820,14 +742,14 @@ Aus der oben gezeigten User Story konnte folgende Story gebaut werden:
 ****
 [.underline]*Kontext*
 
-Als Schüler/Lehrer/Administrator muss man sich in sein Konto einloggen können, sodass man Cluster bilden oder beitreten kann.
+Als Schüler/in/Lehrer/in/Administrator/in muss man sich in sein Konto einloggen können, sodass man Cluster bilden oder beitreten kann.
 
 [.underline]*Ziel*
 
 * Zum Login müssen in einem *Login-Formular* eine HTL-E-Mail-Adresse und ein Passwort angegeben werden (beide als Pflichtfelder ausgeführt).
 * Die *Authentifizierung* muss im WebUntis erfolgen.
-* Werden beide Felder *korrekt ausgefüllt*, muss der Nutzer zur Hauptseite von EduCluster weitergeleitet und eine Session gestartet werden.
-* Bei einer *falschen Eingabe* muss der Nutzer anhand einer aussagekräftigen Fehlermeldung darauf hingewiesen werden und weiterhin am Login-Formular bleiben, um seine Eingaben korrigieren zu können.
+* Werden beide Felder *korrekt ausgefüllt*, muss der/die Nutzende zur Hauptseite von EduCluster weitergeleitet und eine Session gestartet werden.
+* Bei einer *falschen Eingabe* muss der/die Nutzende anhand einer aussagekräftigen Fehlermeldung darauf hingewiesen werden und weiterhin am Login-Formular bleiben, um seine/ihre Eingaben korrigieren zu können.
 * Das Login-Formular muss eine *Checkbox zum ‚Angemeldet bleiben‘* haben, damit die Session beim Schließen des Fensters nicht automatisch abgebrochen wird.
 
 [.underline]*Voraussetzungen*
@@ -841,7 +763,7 @@ Aus dieser Story und der Story zum Logout konnte ein übergreifendes Epic identi
 ****
 [.underline]*Kontext*
 
-Als Schüler/Lehrer/Administrator muss man sich in sein Konto ein- und ausloggen können, sodass man Cluster bilden oder beitreten kann.
+Als Schüler/in/Lehrer/in/Administrator/in muss man sich in sein Konto ein- und ausloggen können, sodass man Cluster bilden oder beitreten kann.
 
 [.underline]*Stories*
 
@@ -868,15 +790,15 @@ Das Login erfolgt mit den Schuldaten - die Authentifizierung erfolgt in WebUntis
 
 _Informations- oder Fehlermeldungen_
 
-Durch einen erfolgreichen Login wird der Nutzer in das Hauptmenü weitergeleitet.
+Durch ein erfolgreiches Login wird der/die Nutzende in das Hauptmenü weitergeleitet.
 
-Hat der Nutzer eine falsche E-Mail-Adresse oder ein falsches Passwort eingegeben, dann muss er mit einer aussagekräftigen Fehlermeldung an das Login Formular zurückgeleitet werden.
+Hat der/die Nutzende eine falsche E-Mail-Adresse oder ein falsches Passwort eingegeben, dann muss er/sie mit einer aussagekräftigen Fehlermeldung an das Login Formular zurückgeleitet werden.
 
-Bei falscher E-Mail-Adresse muss der Nutzer darauf hingewiesen werden, eine derzeit gültige E-Mail-Adresse der HTL Pinkafeld zu verwenden.
+Bei falscher E-Mail-Adresse muss der/die Nutzende darauf hingewiesen werden, eine derzeit gültige E-Mail-Adresse der HTL Pinkafeld zu verwenden.
 
 _Checkbox ‚Angemeldet bleiben‘_
 
-Das Login Formular muss eine Checkbox 'Angemeldet bleiben' haben. Wenn diese auf aktiv gesetzt ist, darf der Nutzer sich nicht noch einmal einloggen müssen, sondern muss angemeldet bleiben.
+Das Login Formular muss eine Checkbox 'Angemeldet bleiben' haben. Wenn diese auf aktiv gesetzt ist, darf der/die Nutzende sich nicht noch einmal einloggen müssen, sondern muss angemeldet bleiben.
 
 [.underline]#Ablauf des Logouts#
 
@@ -886,7 +808,7 @@ Das Logout aus dem Konto erfolgt über den Logout-Button in der Menüleiste.
 
 Die Sitzung muss durch Betätigen des Logout-Buttons sofort beendet werden.
 
-Der Nutzer muss auf die Login-Seite von EduCluster zurückgeleitet werden.
+Der/Die Nutzende muss auf die Login-Seite von EduCluster zurückgeleitet werden.
 ****
 
 Zusätzlich konnten aus der Login Story 9 einzelne Tasks definiert werden. Drei Beispiele werden im Anschluss angeführt:
@@ -938,9 +860,9 @@ Das Login erfolgt mit den Schuldaten - die Authentifizierung erfolgt in WebUntis
 
 Die Antwort von WebUntis soll in diesem Schritt verarbeitet werden.
 
-* Kommt eine positive Rückmeldung auf die Logindaten zurück, soll eine Sitzung gestartet werden. Der Nutzer soll somit automatisch auf die Hauptseite geleitet werden.
-(i) Ist der Nutzer im WebUntis ein Administrator, soll dieser auch auf WebUntis als Administrator eingeloggt werden.
-* kommt eine negative Rückmeldung zurück, sollen die Eingaben in den Eingabefeldern bestehen bleiben. Der Nutzer soll auf der Login-Maske verweilen, es soll ihm aber eine informative Fehlermeldung ausgegeben werden (ob E-Mail-Adresse keine gültige HTL-E-Mail-Adresse oder das Passwort nicht dazu passt). Es soll hierbei *keine* Sitzung gestartet werden.
+* Kommt eine positive Rückmeldung auf die Logindaten zurück, soll eine Sitzung gestartet werden. Der/Die Nutzende soll somit automatisch auf die Hauptseite geleitet werden.
+(i) Ist der/die Nutzende im WebUntis ein Administrator/eine Administratorin, soll dieser auch auf WebUntis als Administrierende/r eingeloggt werden.
+* kommt eine negative Rückmeldung zurück, sollen die Eingaben in den Eingabefeldern bestehen bleiben. Der/Die Nutzende soll auf der Login-Maske verweilen, es soll ihm/ihr aber eine informative Fehlermeldung ausgegeben werden (ob E-Mail-Adresse keine gültige HTL-E-Mail-Adresse oder das Passwort nicht dazu passt). Es soll hierbei *keine* Sitzung gestartet werden.
 
 [.underline]*Nicht Ziele*
 
@@ -951,10 +873,34 @@ Die Abfrage der Login-Daten soll hier *nicht* auf der lokalen Datenbank passiere
 Die Verbindung zu WebUntis muss funktionieren.
 ****
 
-=== Stundenübersicht
+=== Reflexion der eigenen Arbeit
+In diesem Kapitel wird die eigene Arbeit reflektiert bezogen auf den benötigten Stundenaufwand, sowie die Arbeit und die überkommenen Schwierigkeiten.
 
+==== Stundenübersicht
+//TODO Gesamtaufwand anpassen!
+Im Tortendiagramm unterhalb wird die Aufteilung meines Stundenaufwands in verschiedene Kategorien eingeteilt gezeigt. Der Gesamtaufwand beläuft sich auf 330 Stunden.
 
-=== Persönliches Fazit
+Wie deutlich zu sehen ist, gibt es hier drei Hauptteile:
 
+* die Evaluierung der Datenbank mitsamt dem Verschriftlichen der Umsetzung
+* das Requirements Engineering und Festlegen der Anforderungen
+* die Implementierung der Datenbank mitsamt Backend.
+
+Hiervon entfallen gesamt 50 Stunden auf das Schreiben des individuellen Teils, 75 Stunden auf das Formulieren der Requirements (User Stories als auch Tasks) und ganze 82 Stunden auf die Implementierung selbst.
+
+Der Rest der Stunden teilt sich auf in sämtliche Besprechungen mit dem Team und den Betreuungslehrern, das Schreiben der Vorstudie, dem Projektantrag und der allgemeinen Dokumentenfinalisierung.
+
+==== Persönliches Fazit
+In diesem Kapitel werde ich noch mein persönliches Fazit zu der Zusammenarbeit in unserem Team wiedergeben.
+
+Die erste Erkenntnis, die ich in dem Projekt gewinnen konnte, war der große Aufwand, den das Requirements Engineering mit sich bringt, wenn es gründlich überlegt durchgeführt wird. Diesen habe ich drastisch unterschätzt, da er wie oben zu sehen ist, sogar auf ganze 75 Stunden gekommen ist.
+
+Durch den genannten Aufwand konnte unser Team jedoch im Anschluss wirklich flüssig zusammen arbeiten, was uns die gesamte Projektentwicklung drastisch vereinfacht hat. Besonders durch die stark ineinandergreifenden Prozesse in Front- und Backend war es wichtig, diese klar Abzugrenzen, um produktiv miteinander zu arbeiten und agieren.
+
+Ebenso kann ich als wichtiges Mittel hierfür das Tool YouTrack mit unsren Workflows hervorheben, das uns hier auch die Zusammenarbeit weit vereinfacht hat.
+
+Eine weitere Schwierigkeit hat sich für mich in unserem TechStack ergeben, da ich mit keiner der genutzten Technologien bisher Berührungen gehabt habe und mir somit alles neu aneignen musste. Hier kann ich aber wieder die gute Zusammenarbeit im Team betonen, da wir uns hier immer zuverlässig gegenseitig jederzeit unter die Arme gegriffen haben.
+
+Zusammenfassend kann ich also nur betonen, wie wichtig eine gute Planung und Abgrenzung in einem Projekt und besonders auch das Zusammenspiel und die Hilfe untereinander im Projektteam ist.
 
 :sectnums!:

@@ -19,25 +19,26 @@ Hauptverantwortlich: Thomas Gabriel
 xx.05.2023
 
 === Betreuer/innen
-Technisch: Prof. Dipl.-Inf. David Zach
-Fachlich: Prof. MMag. Bernd Hochwarter
+Hauptverantwortlich: Prof. MMag. Bernd Hochwarter
+Andere: Prof. Dipl.-Inf. David Zach
 
 === Ausgangslage
-Bis dato werden Raumreservierungen in der HTL Pinkafeld ausschließlich über WebUntis und nur von Professoren abgewickelt. Schüler können sich einzig zu Lerneinheiten außerhalb der Klassenräume verabreden oder vor Ort nach freien Klassenräumen suchen, in welchen sie möglicherweise nicht ausreichend lange bleiben können aufgrund einer später dort stattfindenden Unterrichtseinheit.
+Bis dato werden Raumreservierungen in der HTL Pinkafeld ausschließlich über WebUntis und nur von Professoren abgewickelt. Schüler/innen können sich einzig zu Lerneinheiten außerhalb der Klassenräume verabreden oder vor Ort nach freien Klassenräumen suchen, in welchen sie möglicherweise nicht ausreichend lange bleiben können aufgrund einer später dort stattfindenden Unterrichtseinheit.
 
 === Projektteam (Arbeitsaufwand)
 [%header,format=csv]
 |===
 Name, Individuelle Themenstellung, Klasse, Arbeitsaufwand
-Lara Kammerer, "Konzeption, Design und Implementierung des Backends", 7YCIF, 180 Stunden
+Lara Kammerer (Hauptverantowrtlich), Datenbankarchitektur, Datenbankanbindung, Requirements Engineering, 7YCIF, 180 Stunden
 Christoph Kiessewetter, Konzeption und Durchführung der Integration von externer Software zur Unterstützung des Lernerfolges, 7YBIF, 180 Stunden
-Raymond Denis Vladu, Konzeption der gesamten Frontend-Applikation unter Berücksichtigung der aktuellen UX und UI-Designvoraben, 7YBIF, 180 Stunden
+Raymond Denis Vladu, Konzeption der gesamten Frontend-Applikation unter Berücksichtigung der aktuellen UX und UI-Designvorgaben, 7YBIF, 180 Stunden
 |===
 
 === Projektpartner
 HTL Pinkafeld, Abteilung Informatik
 Meierhofplatz 1
 7423 Pinkafeld
+AV IF
 
 === Untersuchungsanliegen der individuellen Themenstellungen
 Folgende Untersuchungsanliegen sind für die einzelnen Teammitglieder vorgesehen:
@@ -49,14 +50,14 @@ Christoph Kiessewetter: Evaluierung der anzuwendenden Testing-Techniken bzw. der
 Raymond Denis Vladu: Evaluierung der Frameworks und Libraries unter Berücksichtigung der aktuellen Standards. Designen der GUI nach Erkenntnissen aufgrund der UX-Evaluierung.
 
 === Zielsetzung
-Das Projektteam hat sich dazu entschieden, der HTL Pinkafeld ein zentrales System zur Raumreservierung und Lerngruppenbildung bereitzustellen. In weiterer Folge könnte dieses System auf weitere Lehrstätten ausgeweitet werden.
+Die responsive WebApp stellt die Möglichkeit zur Verfügung, sich zu digitalen "Lernclustern" zusammenzufinden. Die Auswahl findet aufgrund von angekündigten Themenbereichen, Räumen und Übungszeiten statt. Unter zu Hilfenahme von Schnittstellen zu vorhandenen Systemen (WebUntis, MS Teams) wird die Zeitplanung bzw. die externe Userberechtigung durchgeführt.
 
 === Geplantes Ergebnis der Prüfungskandidatin/des Prüfungskandidaten
-Lara Kammerer: Abnahmefähiges Backend mit erfolgreicher Unterstützung geplanter Funktionalitäten
+Lara Kammerer:  Backend, gemäß den Anforderungen und den Erkenntnissen aus der Evaluierung implementiert und zur Verfügung gestellt
 
-Christoph Kiessewetter: Erfolgreiche Eingliederung von MS Teams und Untis
+Christoph Kiessewetter: Integration von MS Teams und Untis in EduCluster inkl. nachvollziehbarem und dokumentiertem Testergebnis
 
-Raymond Denis Vladu: Abnahmefähige Frontend-Applikation
+Raymond Denis Vladu: Frontendapplikation, erstellt gemäß geltenden UX- und UI Richtlinien
 
 === Meilensteine
 26.09.2022 Projektantrag eingereicht
@@ -67,21 +68,19 @@ Raymond Denis Vladu: Abnahmefähige Frontend-Applikation
 
 14.11.2022 Datenbankmodell entworfen und Test-Datenbank aufgesetzt
 
-01.12.2022 Testing-Evaluierung abgeschlossen
-
 31.01.2023 Implementierung des Prototyps abgeschlossen
 
 15.02.2023 Tests des Prototyps abgeschlossen
 
 01.03.2023 Implementierung abgeschlossen
 
-01.03.2023 Beginn der Abschlussarbeiten der Diplomarbeitsdokumentation
-
 15.03.2023 Tests abgeschlossen
 
-31.03.2023 Fertiges Diplomarbeitsdokument an Druckerei versandt
+20.03.2023 GO Live durchführen
+
+31.03.2023 Projekt abgeschlossen
 
 === Rechtliche Reglung (mit dem/den Projektpartner/n erfolgt durch)
-Gesonderte Reglung
+wird gesondert vereinbart
 
 :sectnums!:
