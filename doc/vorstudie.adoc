@@ -1,14 +1,14 @@
 :sectnums:
 :sectnumlevels: 3
-[discrete]
-= Vorstudie
-[discrete]
-== Projekt: EduCluster
-== Inhalt
-toc::[]
+
+== Vorstudie
+
+=== Einleitung
+
 //TODO: Styling & Zusammenfügen umsetzen
 //TODO: Deckblatt
 //TODO: Schriftgröße 12, Blocksatz
+
 Diese Vorstudie beschreibt die notwendigen Rahmenbedingungen, welche zur Umsetzung der EduCluster Webapplikation für die HTL Pinkafeld notwendig sind. Die Ausgangssituation zeigt das Verbesserungspotential für das Projekt EduCluster auf.
 
 Im Kapitel Zieldefinition werden die festgelegten Ziele erläutert. Wie genau diese umgesetzt werden, wird in den Kapiteln Anforderungen und Analyse der IST und SOLL Prozesse näher beschrieben.

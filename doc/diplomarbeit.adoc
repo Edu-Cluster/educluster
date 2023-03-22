@@ -1,6 +1,8 @@
 :lang: de
 :pdf-theme: theme/theme.yml
 :page-background-image: image:img/background.png[]
+
+:doctype: book
 :toc: preamble
 :toc-title: Inhaltsverzeichnis
 
