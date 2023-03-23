@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import LogoImage from '../../public/assets/Logo.png';
 
-const Logo = ({ bigger }: { bigger: boolean }) => {
+const Logo = ({ bigger }: { bigger?: boolean }) => {
   return (
     <div>
       <Link href="/">

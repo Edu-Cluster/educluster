@@ -93,8 +93,8 @@ const AppointmentPage: NextPage = () => {
     },
   });
 
-  if (userQuery.isSuccess) {
-    if (userQuery.data.status === statusCodes.FAILURE) {
+  if (itemsOfAppointmentQuery.isSuccess) {
+    if (itemsOfAppointmentQuery.data.status === statusCodes.FAILURE) {
       document.location.href = '/404';
       return <></>;
     }

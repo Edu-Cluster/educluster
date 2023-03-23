@@ -3,7 +3,6 @@ import { Cluster, ContextWithUser } from '../../lib/types';
 import {
   clusterAssociations,
   conditionSatisfactionTypes,
-  notificationTypes,
   statusCodes,
 } from '../../lib/enums';
 import {
@@ -32,13 +31,13 @@ import {
   instantlyAddUser,
   createNewAppointment,
   readSpecificPublicAppointments,
+  deleteOneAppointment,
 } from '../services/item.service';
 import {
   ClusterInput,
   ClusterEditSchema,
   ClusterCreateSchema,
   UpdateMemberSchema,
-  ClusterInvitationSchema,
 } from '../schemata/cluster.schema';
 import { findUserByEduClusterUsername } from '../services/user.service';
 import { insertNewNotification } from '../services/notification.service';
@@ -48,6 +47,7 @@ import {
   AppointmentAdvancedSearchSchema,
   AppointmentCreateSchema,
 } from '../schemata/appointment.schema';
+import { ClusterNotificationSchema } from '../schemata/notification.schema';
 
 export const getItemOfUserHandler = async ({
   ctx,
@@ -386,31 +386,23 @@ export const sendMemberInvitation = async ({
   input,
   ctx,
 }: {
-  input: ClusterInvitationSchema;
+  input: ClusterNotificationSchema;
   ctx: ContextWithUser;
 }) => {
   try {
     const username = ctx?.user?.username || '';
     const cluster = await readClusterById(input.clusterId);
 
-    if (!cluster) {
-      return {
-        status: statusCodes.FAILURE,
-      };
-    }
-
     for (const id of input.userIds) {
       await provisionallyInviteUser(id, input.clusterId);
 
-      if (input.type === notificationTypes.INVITATION) {
+      if (cluster) {
         await insertNewNotification(
           'Einladung',
           `Sie wurden zum Cluster "${cluster.clustername}#${cluster.id}" eingeladen!`,
           id,
           username,
         );
-      } else if (input.type === notificationTypes.WARNING) {
-        // TODO Denis
       }
     }
 
@@ -771,6 +763,22 @@ export const getSpecificRooms = async ({
         rooms,
         availabilities: availabilityMap || null,
       },
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const deleteAppointment = async ({ input }: { input: bigint }) => {
+  try {
+    await deleteOneAppointment(input);
+
+    return {
+      status: statusCodes.SUCCESS,
     };
   } catch (err: any) {
     throw new TRPCError({

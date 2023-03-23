@@ -95,7 +95,7 @@ const NotificationBell = (props: Props) => {
   const { mutate: markAsViewedMutation } = trpc.useMutation(
     ['notification.setAllViewed'],
     {
-      onError: async (err) => {
+      onError: (err) => {
         console.error(err);
       },
     },

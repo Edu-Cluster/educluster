@@ -7,14 +7,6 @@ export const idNamePair = object({
 
 export type ClusterInput = TypeOf<typeof idNamePair>;
 
-export const clusterInvitationSchema = object({
-  type: number(),
-  clusterId: bigint(),
-  userIds: array(bigint()),
-});
-
-export type ClusterInvitationSchema = TypeOf<typeof clusterInvitationSchema>;
-
 export const clusterEditSchema = object({
   clusterId: bigint(),
   clustername: string(),

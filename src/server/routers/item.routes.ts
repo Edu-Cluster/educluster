@@ -17,20 +17,21 @@ import {
   getSpecificRooms,
   createAppointment,
   getSpecificPublicAppointments,
+  deleteAppointment,
 } from '../controllers/item.controller';
 import {
   idNamePair,
   clusterEditSchema,
   clusterCreateSchema,
   updateMemberSchema,
-  clusterInvitationSchema,
 } from '../schemata/cluster.schema';
-import { number, string } from 'zod';
+import { bigint, number, string } from 'zod';
 import { specificRoomsSchema } from '../schemata/room.schema';
 import {
   appointmentAdvancedSearchSchema,
   appointmentCreateSchema,
 } from '../schemata/appointment.schema';
+import { clusterNotificationSchema } from '../schemata/notification.schema';
 
 export const itemRouter = createRouter()
   .query('mine', {
@@ -69,7 +70,7 @@ export const itemRouter = createRouter()
       await getClusterAssociation({ input, ctx }),
   })
   .mutation('inviteToCluster', {
-    input: clusterInvitationSchema,
+    input: clusterNotificationSchema,
     resolve: async ({ input, ctx }) =>
       await sendMemberInvitation({ input, ctx }),
   })
@@ -111,4 +112,8 @@ export const itemRouter = createRouter()
   .mutation('specificRooms', {
     input: specificRoomsSchema,
     resolve: async ({ input }) => await getSpecificRooms({ input }),
+  })
+  .mutation('deleteAppointment', {
+    input: bigint(),
+    resolve: async ({ input }) => await deleteAppointment({ input }),
   });

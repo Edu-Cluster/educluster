@@ -13,7 +13,7 @@ import {
 import useStore from '../../lib/store';
 import toast from 'react-hot-toast';
 import trpc from '../../lib/trpc';
-import { clusterAssociations, notificationTypes } from '../../lib/enums';
+import { clusterAssociations } from '../../lib/enums';
 import Link from 'next/link';
 
 type Props = {
@@ -89,9 +89,9 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
 
     // Invoke the invite mutation
     invite({
-      type: notificationTypes.INVITATION,
       userIds,
       clusterId: clusterDetails.id,
+      clusterName: clusterDetails.clustername,
     });
   };
 
@@ -116,6 +116,10 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
 
   const addNewMember = () => {
     addMemberToClusterMutation(Number(clusterDetails.id));
+  };
+
+  const deleteCluster = () => {
+    // TODO Denis
   };
 
   return (
@@ -174,7 +178,10 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
                 <></>
               )}
               {isAdmin && (
-                <div className="banner-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100">
+                <div
+                  className="banner-button text-red-500 hover:bg-red-100 dark:hover:bg-red-100"
+                  onClick={deleteCluster}
+                >
                   <p className="mr-2 dark:text-red-500 text-red-500">
                     Cluster löschen
                   </p>

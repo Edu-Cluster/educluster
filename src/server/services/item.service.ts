@@ -356,6 +356,7 @@ export const readUsersOfCluster = async (clusterid: number | bigint) =>
       ],
     },
     select: {
+      id: true,
       username: true,
       teams_email: true,
       is_sysadmin: true,
@@ -545,4 +546,34 @@ export const getAllRooms = async (name?: string) => {
   }
 
   return await prisma.room.findMany();
+};
+
+export const deleteOneAppointment = async (id: bigint) => {
+  await prisma.topics_for_appointment.deleteMany({
+    where: {
+      appointment: id,
+    },
+  });
+
+  await prisma.appointment.delete({
+    where: {
+      id,
+    },
+  });
+};
+
+export const deleteAllAppointments = async (ids: bigint[]) => {
+  for (let id in ids) {
+    await prisma.topics_for_appointment.delete({
+      where: {
+        appointment: id,
+      },
+    });
+
+    await prisma.appointment.delete({
+      where: {
+        id,
+      },
+    });
+  }
 };
