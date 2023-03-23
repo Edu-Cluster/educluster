@@ -44,6 +44,8 @@ const RoomItemInList = ({ name, id, conditionsSatisfied }: Props) => {
   }
 
   const onAvailabilitiesChanged = (value: any) => {
+    console.log(value);
+
     if (value !== '-1') {
       setConditionFulfilled(true);
       setAppointmentDateSelected(value);

@@ -257,7 +257,7 @@ export const createNewAppointment = async ({
       description,
       creator,
       cluster: clusterId,
-      room: roomname === null ? undefined : roomname,
+      roomname: roomname === null ? undefined : roomname,
       teams_id: teamsId,
       untis_id: untisId,
       date_from: dateFrom,

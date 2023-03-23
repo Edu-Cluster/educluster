@@ -210,7 +210,7 @@ const AdminClusterPage: NextPage = () => {
     return (
       <main className="page-default flex-wrap screen-xxl:flex-nowrap">
         <div className="list-container flex-wrap gap-10 screen-xxxl:flex-nowrap screen-xxxl:gap-0">
-          <div className="min-h-[600px] w-full max-w-[800px] input-mask px-4">
+          <div className="min-h-[600px] h-fit pb-12 w-full max-w-[800px] input-mask px-4">
             <div className="flex justify-center align-items mt-12 mb-8 text-center">
               <h1 className="text-[30px] md:text-[40px] text-gray-700 dark:text-gray-100">
                 Neue Lerneinheit

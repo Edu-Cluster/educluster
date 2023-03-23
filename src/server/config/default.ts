@@ -25,8 +25,8 @@ const customConfig: {
   school: 'HTL Pinkafeld',
   schoolBaseUrl: 'euterpe.webuntis.com',
 
-  eduClusterUser: 'VladuRay',
-  eduClusterPassword: 'Ezezez09#',
+  eduClusterUser: process.env.EDU_USER as string,
+  eduClusterPassword: process.env.EDU_PW as string,
 };
 
 export default customConfig;

@@ -71,13 +71,24 @@ const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
     }
 
     const timeNow = `${hours}${minutes}`;
+    const dateNow = new Date();
+    const dateNowDay =
+      dateNow.getDate().toString().length === 1
+        ? `0${dateNow.getDate()}`
+        : dateNow.getDate();
+    const dateNowMonth =
+      (dateNow.getMonth() + 1).toString().length === 1
+        ? `0${dateNow.getMonth() + 1}`
+        : dateNow.getMonth() + 1;
+    const dateNowString = `${dateNow.getFullYear()}-${dateNowMonth}-${dateNowDay}`;
 
     if (
       timeFrom === '-1' ||
       timeTo === '-1' ||
       Number(timeFrom) > Number(timeTo) ||
-      Number(timeNow) > Number(timeFrom) ||
-      Number(timeNow) > Number(timeTo)
+      (newFromDate === dateNowString &&
+        (Number(timeNow) > Number(timeFrom) ||
+          Number(timeNow) > Number(timeTo)))
     ) {
       toast.error('Bitte wählen Sie einen validen Zeitrahmen aus!');
       store.setSearchItemsLoading(false);
@@ -121,14 +132,16 @@ const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
 
   const createNewAppointment = () => {
     const { timeFrom, timeTo } = getValues();
-    const date = store.appointmentDateSelected as string;
+    const date =
+      (store.appointmentDateSelected as string) ||
+      (newFromDate as unknown as string);
     const roomname = store.appointmentRoomSelected;
 
     createAppointmentMutation({
       name: params.get('name') as string,
       description: params.get('description') as string,
       subject: params.get('subject') as string,
-      topics: params.get('topics')?.split(',') as string[],
+      topics: params.get('tags')?.split(',') as string[],
       clusterId: Number(params.get('cluster')),
       timeFrom,
       timeTo,

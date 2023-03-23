@@ -135,14 +135,14 @@ const LoginPage: NextPage = () => {
           src={LoginPicture}
         />
       </div>
-      <div className="w-[50%] h-full lg:h-[500px] input-mask grid grid-rows-3">
-        <div className="flex items-center justify-center w-full">
-          <Logo />
+      <div className="w-[90%] screen-xxl:w-[50%] h-full lg:h-[700px] input-mask grid grid-rows-3">
+        <div className="flex items-center justify-center w-full pt-12">
+          <Logo bigger={true} />
         </div>
         <FormProvider {...methods}>
           <form onSubmit={onSubmit} id="login-form">
             <div className="flex items-center justify-center w-full h-full flex-col gap-5">
-              <div className="w-[80%]">
+              <div className="w-full sm:w-[80%]">
                 <RegisteredSearchField
                   registerInputName="username"
                   name="username"
@@ -152,7 +152,7 @@ const LoginPage: NextPage = () => {
                   placeholder="Benutzername"
                 />
               </div>
-              <div className="w-[80%]">
+              <div className="w-full sm:w-[80%]">
                 <RegisteredSearchField
                   registerInputName="password"
                   name="password"
