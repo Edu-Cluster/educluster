@@ -32,6 +32,10 @@ import {
   createNewAppointment,
   readSpecificPublicAppointments,
   deleteOneAppointment,
+  deleteOneCluster,
+  deleteAllAppointments,
+  deleteClusterAdmin,
+  deleteClusterMember,
 } from '../services/item.service';
 import {
   ClusterInput,
@@ -144,7 +148,8 @@ export const getItemOfClusterHandler = async ({
     });
 
     const user = arrayOfArrayTransformer(fetchedUsers);
-    const appointments = await readAppointmentsOfCluster(input.id);
+    const fetchedAppointments = await readAppointmentsOfCluster(input.id);
+    const appointments = arrayOfArrayTransformer(fetchedAppointments);
 
     return {
       status: statusCodes.SUCCESS,
@@ -776,6 +781,28 @@ export const getSpecificRooms = async ({
 export const deleteAppointment = async ({ input }: { input: bigint }) => {
   try {
     await deleteOneAppointment(input);
+
+    return {
+      status: statusCodes.SUCCESS,
+    };
+  } catch (err: any) {
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: err.message,
+      originalError: err,
+    });
+  }
+};
+
+export const deleteCluster = async ({ input }: { input: bigint }) => {
+  try {
+    const appointments = await readAppointmentsOfCluster(input);
+    const appointmentIds = appointments.map((appointment) => appointment.id);
+
+    await deleteAllAppointments(appointmentIds);
+    await deleteClusterAdmin(input);
+    await deleteClusterMember(input);
+    await deleteOneCluster(input);
 
     return {
       status: statusCodes.SUCCESS,

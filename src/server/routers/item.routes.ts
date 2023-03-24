@@ -18,6 +18,7 @@ import {
   createAppointment,
   getSpecificPublicAppointments,
   deleteAppointment,
+  deleteCluster,
 } from '../controllers/item.controller';
 import {
   idNamePair,
@@ -116,4 +117,8 @@ export const itemRouter = createRouter()
   .mutation('deleteAppointment', {
     input: bigint(),
     resolve: async ({ input }) => await deleteAppointment({ input }),
+  })
+  .mutation('deleteCluster', {
+    input: bigint(),
+    resolve: async ({ input }) => await deleteCluster({ input }),
   });

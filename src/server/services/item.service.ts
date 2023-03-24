@@ -236,6 +236,7 @@ export const createNewCluster = async ({
       description,
       is_private: isPrivate,
       teams_id: teamsId,
+      channel_id: `${teamsId}_channel`,
     },
   });
 
@@ -292,42 +293,29 @@ export const addNewClusterAdmin = async (
     },
   });
 
-export const readAppointmentsOfCluster = async (clusterid: number) => {
-  let count = await prisma.appointment.aggregate({
+export const readAppointmentsOfCluster = async (clusterid: number | bigint) =>
+  await prisma.appointment.findMany({
     where: {
       cluster: clusterid,
     },
-    _count: { id: true },
-  });
-  let result = [];
-  for (let i = 0; i * maxCountForPage < count._count.id; i++) {
-    result[i] = await prisma.appointment.findMany({
-      where: {
-        cluster: clusterid,
-      },
-      select: {
-        description: true,
-        id: true,
-        name: true,
-        person: { select: { username: true } },
-        roomname: true,
-        date_from: true,
-        date_until: true,
-        topics_for_appointment: {
-          select: {
-            topic_topicTotopics_for_appointment: {
-              select: { symbol: true, is_visible: true },
-            },
+    select: {
+      description: true,
+      id: true,
+      name: true,
+      person: { select: { username: true } },
+      roomname: true,
+      date_from: true,
+      date_until: true,
+      topics_for_appointment: {
+        select: {
+          topic_topicTotopics_for_appointment: {
+            select: { symbol: true, is_visible: true },
           },
         },
       },
-      orderBy: { name: 'asc' },
-      skip: i * maxCountForPage,
-      take: i * maxCountForPage + maxCountForPage,
-    });
-  }
-  return result;
-};
+    },
+    orderBy: { name: 'asc' },
+  });
 
 export const readTagsOfAppointment = async (appointmentid: number) =>
   await prisma.topics_for_appointment.findMany({
@@ -476,6 +464,13 @@ export const deleteMember = async (
     },
   });
 
+export const deleteClusterMember = async (clusterId: number | bigint) =>
+  await prisma.member_of.deleteMany({
+    where: {
+      cluster_id: clusterId,
+    },
+  });
+
 export const deleteAdmin = async (
   personId: number | bigint,
   clusterId: number,
@@ -483,6 +478,13 @@ export const deleteAdmin = async (
   await prisma.admin_of.deleteMany({
     where: {
       person_id: personId,
+      cluster_id: clusterId,
+    },
+  });
+
+export const deleteClusterAdmin = async (clusterId: number | bigint) =>
+  await prisma.admin_of.deleteMany({
+    where: {
       cluster_id: clusterId,
     },
   });
@@ -564,7 +566,7 @@ export const deleteOneAppointment = async (id: bigint) => {
 
 export const deleteAllAppointments = async (ids: bigint[]) => {
   for (let id in ids) {
-    await prisma.topics_for_appointment.delete({
+    await prisma.topics_for_appointment.deleteMany({
       where: {
         appointment: id,
       },
@@ -577,3 +579,10 @@ export const deleteAllAppointments = async (ids: bigint[]) => {
     });
   }
 };
+
+export const deleteOneCluster = async (id: bigint) =>
+  await prisma.cluster.delete({
+    where: {
+      id,
+    },
+  });

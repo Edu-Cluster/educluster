@@ -6,7 +6,7 @@ import Link from 'next/link';
 const NotFoundPage: NextPage = () => {
   return (
     <main className="page-default h-[90vh] flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center gap-5 text-center mt-10">
+      <div className="flex flex-col justify-center items-center gap-5 text-center mt-10">
         <Logo />
         <h1 className="text-[22px] text-gray-700">
           Diese Seite existiert leider nicht.

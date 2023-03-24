@@ -28,6 +28,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
     membersToInvite,
     clusterDetails,
     clusterAssociation,
+    userOfCluster,
   } = useStore();
   const clusterfullname = `${clusterDetails.clustername}*${clusterDetails.id}`;
   const isAdmin = clusterAssociation === clusterAssociations.IS_ADMIN;
@@ -80,6 +81,42 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
     },
   );
 
+  const { mutate: warningClusterDeletedMutation } = trpc.useMutation(
+    ['notification.warningClusterDeleted'],
+    {
+      onSuccess: () => {
+        document.location.href = '../../';
+      },
+      onError: (err) => {
+        console.error(err);
+      },
+    },
+  );
+
+  const { mutate: deleteClusterMutation } = trpc.useMutation(
+    ['item.deleteCluster'],
+    {
+      onSuccess: () => {
+        const userIds: bigint[] = [];
+
+        userOfCluster.forEach((userArr: any) => {
+          userArr.forEach((user: any) => {
+            userIds.push(user.id);
+          });
+        });
+
+        warningClusterDeletedMutation({
+          clusterId: clusterDetails.id,
+          clusterName: clusterDetails.clustername,
+          userIds,
+        });
+      },
+      onError: (err) => {
+        console.error(err);
+      },
+    },
+  );
+
   const sendInvitations = async () => {
     const userIds: bigint[] = [];
 
@@ -119,7 +156,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
   };
 
   const deleteCluster = () => {
-    // TODO Denis
+    deleteClusterMutation(clusterDetails.id);
   };
 
   return (

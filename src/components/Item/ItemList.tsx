@@ -20,6 +20,7 @@ type Props = {
 const ItemList = ({ resource, items, title, placeholder }: Props) => {
   const { searchItemsLoading } = useStore();
   const [page, setPage] = useState(1);
+  const strangelyEmpty = items && items.length && !items[0].length;
 
   const loadNewPage = (e: any) => {
     const nextPage = e.target.innerText;
@@ -29,9 +30,9 @@ const ItemList = ({ resource, items, title, placeholder }: Props) => {
     setPage(nextPage);
   };
 
-  if (!items || !items.length) {
+  if (!items || !items.length || strangelyEmpty) {
     if (!searchItemsLoading) {
-      if (items && !items.length) {
+      if (items && (!items.length || strangelyEmpty)) {
         return (
           <div className="text-center mt-24 w-full max-w-[800px]">
             <p className="text-gray-400">
