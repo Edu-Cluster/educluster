@@ -51,6 +51,11 @@ im Detail erklärt.
 
 == Einleitung
 // TODO
+Mit dieser Diplomarbeit wird unserem Auftraggeber eine funktionierende Web-Applikation zur Verfügung gestellt. Um dessen Funktionalität zu gewährleisten, ist eine Datenbank entworfen sowie eine "WebUntis" API angebunden.
+
+Nach wochenlanger Konzeptionsphasen wurde die Datenbank entworfen. Um die Vorteile einer Web-Applikation voll ausnutzen zu können, hat sich das Projektteam für "Supabase" entschieden. Diese Umgebung ist eine bewährte Datenbankumgebung für Web-Applikationen. Im nächsten Zug ist die tatsächliche Web-Applikation entstanden. Mittels Datenbankabfragen kommuniziert diese Applikation mit Supabase, um gewünschte Daten oder Änderungen dieser zu erreichen. Weiters ist eine WebUntis API angebunden, welche es EduCluster erlaubt, aktuelle Stundenplan- und Rauminformationen abzurufen.
+
+In den folgenden Kapiteln sind der Projektantrag, die Vorstudie sowie die einzelnen individuellen Teile eines jeden Teammitglieds angeführt. Diese individuellen Teile stellen sich aus einer übersichtlichen Einleitung, der persönlichen Evaluierung und die technische Umsetzung des betroffenen Teammitglieds. Zudem reflektiert das Teammitglied über die eigene Arbeit in der abschließenden Reflexion. Am Ende dieses Dokumentes ist eine Zusammenfassung, in welcher der Ablauf wie die Erfolge, Hindernisse und Fehlschläge angeführt werden.
 
 <<<
 
