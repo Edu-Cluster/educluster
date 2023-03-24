@@ -1,4 +1,5 @@
 :lang: de
+:hyphens: de
 :pdf-theme: theme/theme.yml
 :page-background-image: image:img/background.png[]
 
