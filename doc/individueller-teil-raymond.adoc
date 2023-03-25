@@ -57,7 +57,7 @@ Der Stack kann konzeptionell in vier Teilen gespalten werden:
 •	API, die eine Verbindung zwischen Frontend und Backend aufbaut
 •	Datenbank, wo die relevanten Daten gespeichert und abgerufen werden
 
-Wie bereits erwähnt wird die Datenbankschicht aus dieser Evaluierung ausgeschlossen. Somit liegt der Fokus auf den Frontend, den Backend und die Schnittstelle.
+Wie bereits erwähnt wird die Datenbankschicht aus dieser Evaluierung ausgeschlossen. Somit liegt der Fokus auf das Frontend, das Backend und die Schnittstelle.
 
 ===== Warum wird ein Technologie-Stack benötigt?
 Um die Gestaltung einer umfangreichen Webapplikation wie EduCluster sicherzustellen und dabei ein qualitatives Ergebnis liefern zu können hat sich das Projektteam dazu entschieden, die mit dieser Aufgabe verbundenen Komplexität durch Einsatz bewährter Technologien möglichst viel zu reduzieren.
@@ -76,51 +76,51 @@ Um unnötige Bugs auszuschließen und die Entwicklererfahrung möglichst gut zu 
 Zu guter Letzt soll auf die Beliebtheit der jeweiligen Technologien geachtet werden, um die sicherste Wette auf einen dauerhaften Technologiestapel zu setzen.
 
 ==== Ermittlung der möglichen Frontend-Technologien
-Dieser Abschnitt umfasst die drei bekanntesten Frontend-Technologien stand 2022. footnote:[Vgl. https://technostacks.com/blog/best-frontend-frameworks/, abgerufen am 29.10.2022]
+Dieser Abschnitt umfasst die drei bekanntesten Frontend-Technologien stand 2022.footnote:[Vgl. https://technostacks.com/blog/best-frontend-frameworks/, abgerufen am 29.10.2022]
 
 ===== React.js
-React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für den Frontend. Sie wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
+React ist eine deklarative, komponentenbasierte JavaScript Bibliothek für das Frontend. Sie wurde im Jahr 2013 mit der Open-Source-Lizenz von dem damaligen Unternehmen „Facebook“ veröffentlicht.
 
 Abgesehen davon, dass sie die bekannteste JavaScript-Bibliothek ist, bietet React auch eine breite Palette an Features.
 
-Zum einen besitzt sie ein virtuelles DOM footnote:[Vgl. https://reactjs.org/docs/faq-internals.html, abgerufen am 29.10.2022], das zwischengespeichert und mit dem tatsächlichen DOM synchronisiert wird, um nur diejenigen Komponenten zu rendern, die sich geändert haben. Damit erzielt React eine Erhöhung der Performanz und ermöglicht eine deklarative API. Das bedeutet, dass der Entwickler den erwünschten UI-Zustand definieren kann und React führt im Hintergrund die benötigte Arbeit durch, damit das DOM diesen Zustand entspricht.
+Zum einen besitzt sie ein virtuelles DOMfootnote:[Vgl. https://reactjs.org/docs/faq-internals.html, abgerufen am 29.10.2022], das zwischengespeichert und mit dem tatsächlichen DOM synchronisiert wird, um nur diejenigen Komponenten zu rendern, die sich geändert haben. Damit erzielt React eine Erhöhung der Performanz und ermöglicht eine deklarative API. Das bedeutet, dass der Entwickler den erwünschten UI-Zustand definieren kann und React führt im Hintergrund die benötigte Arbeit durch, damit das DOM diesen Zustand entspricht.
 
 Obwohl das Programmieren mit React sich an die Prinzipien des deklarativen Paradigmas hält, ermöglicht die Bibliothek beim Erstellen von Komponenten eine Wahl zwischen funktionelle und klassenbasierte Komponenten. Damit kann sich der Entwickler für eine bestimmte JSX-basierte Syntax entscheiden.
 
-Zu guter Letzt gibt es zumindest für funktionelle Komponente die Möglichkeit, sogenannte „Hooks“ footnote:[Vgl. https://reactjs.org/docs/hooks-intro.html, abgerufen am 29.10.2022] selbst zu definieren oder von einem Package Manager zu installieren. Diese Konstrukte ermöglichen einen direkten Zugriff auf Zustands- und Lebenszyklus-Features in Form einer Funktion.
+Zu guter Letzt gibt es zumindest für funktionelle Komponente die Möglichkeit, sogenannte „Hooks“footnote:[Vgl. https://reactjs.org/docs/hooks-intro.html, abgerufen am 29.10.2022] selbst zu definieren oder von einem Package Manager zu installieren. Diese Konstrukte ermöglichen einen direkten Zugriff auf Zustands- und Lebenszyklus-Features in Form einer Funktion.
 
 ===== Vue.js
 Vue ist ein JavaScript Framework, das häufig als Alternative zu React vorgestellt wird. Jedoch wurde Vue nicht von einem Internet-Giganten, sondern einem gewöhnlichen Entwickler entwickelt und schließlich im Jahr 2014 veröffentlicht.
 
 Vue ist ebenso wie React auf Komponenten und deklarativem Rendering basiert, und setzt ebenfalls auf die Strategie des virtuellen DOMs. Jedoch ist Vue in einer Hinsicht React überlegen. Es besitzt eine sogenannte „two-way data binding“, wodurch eine sofortige Synchronisierung zwischen UI und Datenmodell sicherstellt wird.
 
-Ein weiteres Merkmal von Vue sind die „directives“ footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in dem HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
+Ein weiteres Merkmal von Vue sind die „directives“footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in dem HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
 
 ===== Angular
-Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt wie React und Vue footnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreich footnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
+Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt wie React und Vuefootnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreichfootnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
 
 Angular hat ein System entwickelt, das ein hierarchisches „Dependency Injection“ Konzept beinhaltet. Dank dieses Features können Klassen mit Angular-Decorators ihre Abhängigkeiten konfigurieren. Unter diesen Angular-Decorators gibt es Komponente und Directives, die teils auch in React bzw. Vue existieren, aber auch sogenannte „Pipes“ und „Injectables“, die endemisch für das Angular-Framework sind.
 
-In weiterer Folge ist anzumerken, dass Angular aus der Kiste typensicher ist. TypeScript kann zwar auch mit React und Vue eingesetzt werden, jedoch werden dessen zahlreiche Features nirgends besser genutzt als im Angular. Damit eignet sich dieses Framework für die Entwicklung großer Webapplikationen mit einer komplexen Struktur.
+In weiterer Folge ist anzumerken, dass Angular out of the box typensicher ist. TypeScript kann zwar auch mit React und Vue eingesetzt werden, jedoch werden dessen zahlreiche Features nirgends besser genutzt als im Angular. Damit eignet sich dieses Framework für die Entwicklung großer Webapplikationen mit einer komplexen Struktur.
 
 ==== Ermittlung der möglichen Backend-Technologien
-In diesem Abschnitt werden die drei bekanntesten Backend-Technologien stand 2022 footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 30.10.2022] präsentiert, inklusiv eine moderne vierte Option, die sich sowohl als Frontend- als auch als Backend-Technologie kategorisieren lässt.
+In diesem Abschnitt werden die drei bekanntesten Backend-Technologien stand 2022footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 30.10.2022] präsentiert, inklusiv eine moderne vierte Option, die sich sowohl als Frontend- als auch als Backend-Technologie kategorisieren lässt.
 
 ===== Express.js
-Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei beliebtesten Tech-Stacks footnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
+Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei beliebtesten Tech-Stacksfootnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
 
 Mit Express werden Funktionalitäten von Node.js vereinfacht und weitere Features angeboten, wie beispielsweise ein Routing-System oder eine Middleware-Schicht.
 
 Ein weiterer Vorteil von Express ist die Vereinfachung des Entwicklungsprozesses einer REST API. Jedoch ist derselbe Prozess weitaus komplizierter, wenn eine andere API-Architektur bevorzugt wird, wie beispielsweise RPC.
 
-Abschließend ist anzumerken, dass ein Express-Backend auch den Vorteil einer einzigen übergreifenden Programmiersprache bietet. Node.js ist eine serverseitige Laufzeitumgebung für JavaScript und ist der Nutzung des Express-Frameworks vorausgesetzt. Dadurch wird die Komplexität verschiedener Programmiersprachen für den Frontend und Backend reduziert.
+Abschließend ist anzumerken, dass ein Express-Backend auch den Vorteil einer einzigen übergreifenden Programmiersprache bietet. Node.js ist eine serverseitige Laufzeitumgebung für JavaScript und ist der Nutzung des Express-Frameworks vorausgesetzt. Dadurch wird die Komplexität verschiedener Programmiersprachen für das Frontend und Backend reduziert.
 
 ===== ASP .NET Core
 ASP.NET Core ist ein plattformübergreifendes Framework zum Erstellen von Applikationen, das 2016 von Microsoft als Nachfolger von ASP.NET veröffentlicht wurde. Das Framework ermöglicht nicht nur die Entwicklung von Webapplikationen, sondern auch die Erstellung von Webdiensten, IoT-Apps und mobilen Backends sowie ihre Bereitstellung in der Cloud.
 
 Applikationen, die mit ASP.NET Core entwickelt werden, können eine von drei möglichen Programmiersprachen nutzen: C#, F# und Visual Basic. Die beliebteste von diesen ist C#.
 
-Das Framework bietet eine große Liste an Features footnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
+Das Framework bietet eine große Liste an Featuresfootnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
 
 ===== Django
 Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
@@ -132,11 +132,11 @@ In weiterer Folge stellt Django eine CRUD-Funktionalität bereit, womit die Appl
 Django kann rein als Backend genutzt werden und durch eines der beliebten Frontend-Frameworks ergänzt werden, aber es bietet auch die Möglichkeit, die Django Templating-Sprache für die Erzeugung dynamischer HTML-Inhalte zu nutzen. Diese eignet sich für eine Applikation mit MVC-Architektur besonders gut.
 
 ===== Ausnahmefall: Next.js
-Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Framework footnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes Web-Framework beschrieben.
+Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Frameworkfootnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes Web-Framework beschrieben.
 
 Mit Next ist ein React-Frontend und ein Node-Backend vorausgesetzt. Dadurch ist der Vorteil einer einheitlichen Programmiersprache für Frontend und Backend so wie bei Express gegeben. Darüber hinaus bietet das Framework eine große Liste von modernen Features an.
 
-Es gibt drei Arten von Rendering footnote:[Vgl. https://nextjs.org/learn/foundations/how-nextjs-works/rendering, abgerufen am 30.11.2022], die von Next.js unterstützt werden:
+Es gibt drei Arten von Renderingfootnote:[Vgl. https://nextjs.org/learn/foundations/how-nextjs-works/rendering, abgerufen am 30.11.2022], die von Next.js unterstützt werden:
 
 •	Client Side Rendering, das standardmäßig von allen anderen Frameworks benutzt wird
 •	Server Side Rendering, wo das HTML der Seite für jeden Request auf den Server generiert wird
@@ -171,7 +171,7 @@ REST ist ein Akronym für „Representational State Transfer“ und beschreibt e
 
 Mit REST wird bei jeder Client-Anfrage die Repräsentation des Ressourcenzustands an einem entsprechenden Endpoint weitergeleitet. Diese Information kann in verschiedenen Formaten übermittelt werden, aber das beliebteste Format ist derzeit JSON. Sobald die Anfrage ankommt wird eine dem Endpoint entsprechende Logik ausgeführt und die erwartete Information im selben Format zurückgeschickt.
 
-Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Kriterien erfüllen footnote:[Vgl. https://www.redhat.com/en/topics/api/what-is-a-rest-api, abgerufen am 06.11.2022]:
+Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Kriterien erfüllenfootnote:[Vgl. https://www.redhat.com/en/topics/api/what-is-a-rest-api, abgerufen am 06.11.2022]:
 
 •	Client-Server-Architektur mit HTTP-Anfragen muss vorhanden sein
 •	„Statelessness“, die Trennung von Anfragen, sodass keine Client-Informationen zwischen zwei Anfragen gespeichert werden
@@ -271,13 +271,13 @@ Dieser Abschnitt befasst sich mit der Bewertung der Backend-Frameworks.
 
 ====== Modernheit
 - Express.js: Express wurde im November 2010 veröffentlicht. Obwohl es immer noch ein essenzieller Teil der beliebtesten Tech-Stacks im Bereich der Webentwicklung gilt, ist es bereits 13 Jahre alt. Würden RESTful APIs in der Zukunft nicht mehr die beliebtesten sein, wäre Express in großer Gefahr, ersetzt zu werden. Aus diesem Grund erhält es die Note 4.
-- ASP .NET Core: ASP .NET Core wurde im Juni 2016 veröffentlicht und ist der Nachfolger vom ASP .NET. Das Framework hat moderne Features wie plattformübergreifende Unterstützung, verbesserte Modularität mit Docker-Unterstützung und eine solide Cloud-Unterstützung footnote:[Vgl. https://jelvix.com/blog/asp-net-vs-asp-net-core#:~:text=Just%20like%20ASP.NET%2C%20ASP,better%20than%20ASP.NET%20does., abgerufen am 20.01.2023]. Das Framework verdient die Note 2.
+- ASP .NET Core: ASP .NET Core wurde im Juni 2016 veröffentlicht und ist der Nachfolger vom ASP .NET. Das Framework hat moderne Features wie plattformübergreifende Unterstützung, verbesserte Modularität mit Docker-Unterstützung und eine solide Cloud-Unterstützungfootnote:[Vgl. https://jelvix.com/blog/asp-net-vs-asp-net-core#:~:text=Just%20like%20ASP.NET%2C%20ASP,better%20than%20ASP.NET%20does., abgerufen am 20.01.2023]. Das Framework verdient die Note 2.
 - Django: Django ist das älteste Framework in der Gruppe. Es wurde im Juli 2005 veröffentlicht. Es steht zur Debatte, ob dieses Framework überhaupt noch relevant genug ist, um es heutzutage in einem Tech-Stack aufzunehmen. Wegen des erhöhten Risikos erhält Django die Note 5.
 - Next.js: Next ist das jüngste Framework in der Gruppe und wurde im October 2016 veröffentlicht. Seine Features sind für die Entwicklung moderner Webapplikationen gedacht und für Cloud-Hosting optimiert. Features wie die Edge Functions, die die Bereitstellung von Inhalten von dem Nutzer am nächsten CDN-Server ermöglichen, sind ein Beweis dafür, dass Next im Gegensatz zu anderen Backend-Frameworks ein Pionier im Bereich Cloud ist. Deshalb verdient es die Note 1.
 
 ====== Beliebtheit
-- Express.js: Express schneidet bei Statistiken über beliebteste JavaScript-Frameworks immer gut ab footnote:[Vgl. https://userguiding.com/blog/javascript-frameworks/, abgerufen am 20.01.2023]. Das bewährte Framework gilt als Standard in Tech-Stacks wie MERN, MEAN und MEVN. Dank dieser Beliebtheit erhält Express die Note 1.
-- ASP .NET Core: ASP .NET Core ist nach Express das beliebteste Backend-Framework footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 20.01.2023]. Unternehmen wie Slack und StackOverflow nutzen das Framework. Aus diesen Gründen erhält es die Note 2.
+- Express.js: Express schneidet bei Statistiken über beliebteste JavaScript-Frameworks immer gut abfootnote:[Vgl. https://userguiding.com/blog/javascript-frameworks/, abgerufen am 20.01.2023]. Das bewährte Framework gilt als Standard in Tech-Stacks wie MERN, MEAN und MEVN. Dank dieser Beliebtheit erhält Express die Note 1.
+- ASP .NET Core: ASP .NET Core ist nach Express das beliebteste Backend-Frameworkfootnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 20.01.2023]. Unternehmen wie Slack und StackOverflow nutzen das Framework. Aus diesen Gründen erhält es die Note 2.
 - Django: Django ist hinter ASP .NET Core ein weiteres beliebtes Framework. Unternehmen wie Google, YouTube und Instagram nutzen das Framework. Relativ zu den anderen Frameworks ist Django trotz seines Alters in den Top 10 beliebteste Backend-Frameworks. Deshalb wird auch Django die Note 2 vergeben.
 - Next.js: Next ist im Vergleich zu den anderen Frameworks ein Neuling, allerdings wurde das Framework bereits in das Tech-Stack vieler großen Unternehmen aufgenommen. Beispiele dafür sind Netflix, Vimeo, Twitch, Coinbase, Nike, Uber und OpenAI. Next ist zwar aktuell noch nicht so beliebt die anderen Frameworks, nichtsdestotrotz verdient das Framework wegen des positiven Trends die Note 3.
 
@@ -294,7 +294,7 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 - RPC: gRPC und tRPC  sind höchst performant und gleichzeitig leicht aufzusetzen. Beide haben sehr gute Dokumentationen auf ihrer Webseite und sind in dieser Hinsicht im Gegensatz zu SOAP und REST besser darin, neue Entwickler bei der Aufsetzung zu unterstützen. Hier wird die Note 1 vergeben.
 - SOAP: SOAP ist für seinen großen Overhead berüchtigt. Im Gegensatz zu anderen Architekturen codiert sie ihre Repräsentationen in XML und erhöht somit die Bytegroße von Paketen um ein Vielfaches. Diese Hindernisse erhöhen eher die Komplexität, statt sie zu vereinfachen. Deswegen wird die Note 5 vergeben.
 - REST: REST ist eine sehr schlanke API-Architektur, das ihre Repräsentationen in JSON codiert und die Bytegroße minimal haltet. Das Programmieren von Endpoints ist sehr einfach. Dabei werden die HTTP-CRUD-Methoden verwendet werden. Diese Art der Komplexitätsreduktion verdient die Note 1.
-- GraphQL: GraphQL ist sehr gut darin, Probleme zu lösen, die erst bei der Y-Skalierung einer Applikation entstehen footnote:[Vgl. https://akfpartners.com/techblog/2008/05/08/splitting-applications-or-services-for-scale/, abgerufen am 20.01.2023]. In dieser Hinsicht vereinfacht GraphQL die Komplexität höchst komplexer Applikationen. Weniger komplexe Applikation wie voraussichtlich EduCluster profitieren von dieser Vereinfachung nicht. Ganz im Gegenteil: die Aufsetzung von GraphQL selbst führt unnötige Komplexität ein. Aus diesem Grund wird die Note 4 vergeben.
+- GraphQL: GraphQL ist sehr gut darin, Probleme zu lösen, die erst bei der Y-Skalierung einer Applikation entstehenfootnote:[Vgl. https://akfpartners.com/techblog/2008/05/08/splitting-applications-or-services-for-scale/, abgerufen am 20.01.2023]. In dieser Hinsicht vereinfacht GraphQL die Komplexität höchst komplexer Applikationen. Weniger komplexe Applikation wie voraussichtlich EduCluster profitieren von dieser Vereinfachung nicht. Ganz im Gegenteil: die Aufsetzung von GraphQL selbst führt unnötige Komplexität ein. Aus diesem Grund wird die Note 4 vergeben.
 
 ====== Modernheit
 - RPC: Unter RPC versteht man verschiedene Formen der Architektur, wie XML-RPC, gRPC und tRPC. XML-RPC ist die älteste davon und wird heutzutage nicht mehr oft verwendet. Hingegen sind gRPC und tRPC moderne API-Architekturen. gRPC wurde in 2016 und tRPC erst im Jahr 2021 eingeführt. Wegen dieser beiden Varianten von RPC wird die Note 1 vergeben.
@@ -339,7 +339,7 @@ Beliebtheit, 15%, 1, "0,15", 2, "0,3", 2, "0,3", 3, "0,45"
 Gesamt, , , "2,5", , "2,8", , "3,55", , "1,7"
 |===
 
-Der Sieger ist Next.js, die Ausnahme im Bereich der Backend-Frameworks, da es als Full-Stack Framework gilt. Die Voraussetzung eines React-Frontends ist gegeben und wird durch ein flexibles Node.js Backend ergänzt. Die modernen Rendering-Features des Frameworks ermöglichen eine hohe Leistung der Webapplikation.
+Der Sieger ist Next.js, die Ausnahme im Bereich der Backend-Frameworks, da es als Full-Stack Framework gilt. Die Voraussetzung eines React-Frontends ist gegeben und wird durch ein flexibles Node-Backend ergänzt. Die modernen Rendering-Features des Frameworks ermöglichen eine hohe Leistung der Webapplikation.
 
 ===== Ergebnisse der API-Architekturen
 [%header,format=csv]
@@ -358,7 +358,7 @@ Bei den API-Architekturen zeichnet sich RPC als Sieger aus. REST steht an zweite
 ===== Auswahl des Technologie-Stapels
 Das Ergebnis hat gezeigt, dass React, Next.js und tRPC die Gewinner der Beurteilung sind. Diese Technologien bilden nun das Tech-Stack von EduCluster. Ergänzend dazu werden TypeScript und TailwindCSS genutzt werden. TypeScript ist ein typensicherer Compiler für JavaScript und TailwindCSS ist ein CSS-Framework. Zu guter Letzt wird Prisma, ein moderner objektrelationaler Mapper, für die Datenbankanbindung genutzt, um die vollständige Typensicherheit von EduCluster zu garantieren.
 
-Diese Kombination von Technologien ist unter dem Begriff "t3-Stack" bekannt -- ein Technologie-Stapel, der von einem ehemaligen Twitch.tv Softwareingenieur namens Theo Browne popularisiert wurde footnote:[Vgl. https://github.com/topics/t3-stack, abgerufen am 20.01.2023]. Das Team hat sich für diesen Stapel entschieden, weil er höchst modern ist und von einer ständig wachsenden Entwickler-Gemeinschaft unterstützt wird. Mit diesem Tech-Stack soll EduCluster den Test der Zeit bestehen und die Entwicklung möglichst viel beschleunigen und vereinfachen.
+Diese Kombination von Technologien ist unter dem Begriff "t3-Stack" bekannt -- ein Technologie-Stapel, der von einem ehemaligen Twitch.tv Softwareingenieur namens Theo Browne popularisiert wurdefootnote:[Vgl. https://github.com/topics/t3-stack, abgerufen am 20.01.2023]. Das Team hat sich für diesen Stapel entschieden, weil er höchst modern ist und von einer ständig wachsenden Entwickler-Gemeinschaft unterstützt wird. Mit diesem Tech-Stack soll EduCluster den Test der Zeit bestehen und die Entwicklung möglichst viel beschleunigen und vereinfachen.
 
 === Technische Umsetzung
 In diesem Kapitel wird die technische Umsetzung mithilfe von Screenshots dokumentiert.
@@ -431,7 +431,7 @@ image::img/raymond/itemlist_render.png[]
 Die Variable, in der die richtige Komponente zwischengespeichert wurde, wird innerhalb eines Teilungselements gerendert. Darunter werden die einzelnen Kästchen für die Seitennummerierung generiert. Da Arrays null-indiziert sind, wird "idx + 1" für die Seitennummer angezeigt. Dem Element, der den Kästchen darstellt, wird ein Click-Event-Handler zugewiesen, um die Seiten-Navigation zu implementieren.
 
 ===== Auflistung der persönlichen Informationen
-Die persönlichen Informationen des Benutzers, die angezeigt werden sollen, sind der Benutzername auf Educluster, der standardmäßig mit dem WebUntis-Benutzernamen equivalent ist aber umgeändert werden kann, und die HTL E-Mail-Adresse. Diese werden aus dem "authUser" Objekt, der den clientseitigen Zustand des eingeloggten Benutzers repräsentiert, hergeleitet und in der Komponente angezeigt.
+Die persönlichen Informationen des Benutzers, die angezeigt werden sollen, sind der Benutzername auf Educluster, der standardmäßig mit dem WebUntis-Benutzernamen equivalent ist aber umgeändert werden kann, und die HTL-E-Mail-Adresse. Diese werden aus dem "authUser" Objekt, der den clientseitigen Zustand des eingeloggten Benutzers repräsentiert, hergeleitet und in der Komponente angezeigt.
 
 .Komponente "IdentityBadge"
 image::img/raymond/identitybadge_component.png[]
@@ -451,7 +451,7 @@ Das Endergebnis sieht folgendermaßen aus:
 .Dashboard-Seite
 image::img/raymond/dashboard_page.png[]
 
-Hier sieht man die zwei Instanzen der ItemList-Komponente, die jeweils die relevanten Cluster bzw. Lerneinheiten des Benutzers auflistet. Auch die IdentityBadge-Komponente ist ersichtlich und zeigt den Benutzernamen, die HTL E-Mail-Adresse sowie den generierten Avatar.
+Hier sieht man die zwei Instanzen der ItemList-Komponente, die jeweils die relevanten Cluster bzw. Lerneinheiten des Benutzers auflistet. Auch die IdentityBadge-Komponente ist ersichtlich und zeigt den Benutzernamen, die HTL-E-Mail-Adresse sowie den generierten Avatar.
 
 Die erzeugte Komponente werden auch auf anderen Seiten der Webapplikation verwendet. Ihre Allgemeinheit macht sie wiederverwendbar und gleichzeitig auch spezifisch genug, um einzelne Teile einer Seite zu entsprechen.
 
