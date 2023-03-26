@@ -97,7 +97,7 @@ Vue ist ebenso wie React auf Komponenten und deklarativem Rendering basiert, und
 Ein weiteres Merkmal von Vue sind die „directives“footnote:[Vgl. https://vuejs.org/api/built-in-directives.html, abgerufen am 29.10.2022]. Diese sind Anweisungen, die in dem HTML-Template eingebettet werden können und bestimmte Verhalten kontrollieren oder auslösen.
 
 ===== Angular
-Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt wie React und Vuefootnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreichfootnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
+Angular ist ein auf TypeScript basierendes Framework, das von Google im Jahr 2016 veröffentlicht wurde. Angular ist zwar weniger beliebt als React und Vuefootnote:[Vgl. https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/, abgerufen am 11.01.2023], aber es wird dennoch in vielen Unternehmen eingesetzt, vor allem in Österreichfootnote:[Vgl. https://www.stepstone.at/jobs/angular mit Treffer für React.js und Vue.js, aufgerufen am 29.10.2022]. Dafür gibt es gute Gründe.
 
 Angular hat ein System entwickelt, das ein hierarchisches „Dependency Injection“ Konzept beinhaltet. Dank dieses Features können Klassen mit Angular-Decorators ihre Abhängigkeiten konfigurieren. Unter diesen Angular-Decorators gibt es Komponente und Directives, die teils auch in React bzw. Vue existieren, aber auch sogenannte „Pipes“ und „Injectables“, die endemisch für das Angular-Framework sind.
 
@@ -107,7 +107,7 @@ In weiterer Folge ist anzumerken, dass Angular out of the box typensicher ist. T
 In diesem Abschnitt werden die drei bekanntesten Backend-Technologien stand 2022footnote:[Vgl. https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/, abgerufen am 30.10.2022] präsentiert, inklusiv eine moderne vierte Option, die sich sowohl als Frontend- als auch als Backend-Technologie kategorisieren lässt.
 
 ===== Express.js
-Express ist ein auf Node.js basierendes Web-Framework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwicklet und schließlich im Jahr 2010 veröffentlicht. Die drei beliebtesten Tech-Stacksfootnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
+Express ist ein auf Node.js basierendes WebFramework, das den serverseitigen Teil einer Webapplikation übernimmt. Es wurde von IBM und Strongloop entwickelt und schließlich im Jahr 2010 veröffentlicht. Die drei beliebtesten Tech-Stacksfootnote:[Vgl. https://www.fingent.com/blog/top-7-tech-stacks-that-reign-software-development/, aufgerufen am 30.10.2022] in der Webentwicklung – MEAN, MERN und MEVN – basieren alle auf Express.
 
 Mit Express werden Funktionalitäten von Node.js vereinfacht und weitere Features angeboten, wie beispielsweise ein Routing-System oder eine Middleware-Schicht.
 
@@ -123,7 +123,7 @@ Applikationen, die mit ASP.NET Core entwickelt werden, können eine von drei mö
 Das Framework bietet eine große Liste an Featuresfootnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
 
 ===== Django
-Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
+Django ist ein WebFramework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
 
 Ein großer Vorteil von Django ist die Möglichkeit, das Datenmodell der Applikation in Python statt in SQL aufzubauen. Dieses Feature wird von Djangos ORM ermöglicht, indem es Datenstrukturen in Python-Klassen übersetzt.footnote:[Vgl. https://www.ibm.com/cloud/learn/django-explained#:~:text=Starting%20a%20Django%20project%20allows,within%20a%20fully%20Python%20environment., abgerufen am 30.11.2022]
 
@@ -132,7 +132,7 @@ In weiterer Folge stellt Django eine CRUD-Funktionalität bereit, womit die Appl
 Django kann rein als Backend genutzt werden und durch eines der beliebten Frontend-Frameworks ergänzt werden, aber es bietet auch die Möglichkeit, die Django Templating-Sprache für die Erzeugung dynamischer HTML-Inhalte zu nutzen. Diese eignet sich für eine Applikation mit MVC-Architektur besonders gut.
 
 ===== Ausnahmefall: Next.js
-Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Frameworkfootnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes Web-Framework beschrieben.
+Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Frameworkfootnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes WebFramework beschrieben.
 
 Mit Next ist ein React-Frontend und ein Node-Backend vorausgesetzt. Dadurch ist der Vorteil einer einheitlichen Programmiersprache für Frontend und Backend so wie bei Express gegeben. Darüber hinaus bietet das Framework eine große Liste von modernen Features an.
 
@@ -180,7 +180,7 @@ Damit eine API „RESTful“ gekennzeichnet werden kann, muss sie folgenden Krit
 •	Ein hierarchisches System, die jedem Server-Typ richtig einordnet und das für den Client unsichtbar ist
 
 ===== GraphQL
-GraphQL ist eine Abfragesprache und eine serverseitige Laufzeitumgebung zum Ausführen von Abfragen, die vom damaligen Facebook entwickelt und in 2012 veröffentlicht wurde. 
+GraphQL ist eine Abfragesprache und eine serverseitige Laufzeitumgebung zum Ausführen von Abfragen, die vom damaligen Facebook entwickelt und in 2012 veröffentlicht wurde.
 
 GraphQL ist Datenbankunabhängig und ermöglicht die Definierung von Typen und von zwei Arten von Abfragen: Mutations und Queries. Mutations sind datenändernde Abfragen wie Create, Update und Delete. Queries hingegen sind Read-Only-Abfragen.
 
@@ -195,7 +195,7 @@ Eine GraphQL-API implementiert GraphQL serverseitig und clientseitig. Es gibt be
 Zunächst werden die Beurteilungskriterien vorgestellt.
 
 ===== Persönliche Erfahrung
-Angesichts des großen Ökosystems von Technologien im Bereich der Webentwicklung ist die Auswahl eines geeigneten Stacks in erster Linie von der persönlichen Erfahrung der einzelnen Projektmitglieder abhängig. Die Vertrautheit mit Frameworks steigert die Geschwindigkeit des Entwicklungsprozesses und vermindert die Chancen von Programmfehlern und Bugs. 
+Angesichts des großen Ökosystems von Technologien im Bereich der Webentwicklung ist die Auswahl eines geeigneten Stacks in erster Linie von der persönlichen Erfahrung der einzelnen Projektmitglieder abhängig. Die Vertrautheit mit Frameworks steigert die Geschwindigkeit des Entwicklungsprozesses und vermindert die Chancen von Programmfehlern und Bugs.
 
 Persönliche Erfahrung ist ein großer Vorteil und gilt als wichtigstes Kriterium bei der Auswahl. Daher wird eine Gewichtung von 40% vergeben.
 
@@ -258,8 +258,8 @@ Dieser Abschnitt befasst sich mit der Bewertung der Frontend-Frameworks.
 Dieser Abschnitt befasst sich mit der Bewertung der Backend-Frameworks.
 
 ====== Persönliche Erfahrung
- - Express.js: Express ist eines der bekanntesten Web-Frameworks und basiert auf Node. Alle Mitglieder durften im Unterricht Erfahrung mit Express sammeln, allerdings ist kein Mitglied besonders gut vertraut mit dem Framework, weshalb die Note 2 vergeben wird.
- - ASP .NET Core: Obwohl ASP .NET Core auch zu den beliebten Web-Frameworks gehört, hat nur ein Mitglied damit Erfahrung auf einem grundlegenden Niveau. Dementsprechend wird die Note 4 vergeben.
+ - Express.js: Express ist eines der bekanntesten WebFrameworks und basiert auf Node. Alle Mitglieder durften im Unterricht Erfahrung mit Express sammeln, allerdings ist kein Mitglied besonders gut vertraut mit dem Framework, weshalb die Note 2 vergeben wird.
+ - ASP .NET Core: Obwohl ASP .NET Core auch zu den beliebten WebFrameworks gehört, hat nur ein Mitglied damit Erfahrung auf einem grundlegenden Niveau. Dementsprechend wird die Note 4 vergeben.
  - Django: Dieses ist auch ein beliebtes Framework, allerdings hat kein Mitglied jegliche Erfahrung damit. Aus diesem Grund wird die note 5 vergeben.
  - Next.js: Next ist eine ziemlich neue Technologie. Trotzdem konnten zwei Mitglieder mit dem Framework Erfahrung sammeln. Eines der Mitglieder hat sogar fortgeschrittene Erfahrung mit der Umsetzung von Webapplikationen basierend auf Next. Deswegen bekommt auch Next.js die Note 2.
 
@@ -298,7 +298,7 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 
 ====== Modernheit
 - RPC: Unter RPC versteht man verschiedene Formen der Architektur, wie XML-RPC, gRPC und tRPC. XML-RPC ist die älteste davon und wird heutzutage nicht mehr oft verwendet. Hingegen sind gRPC und tRPC moderne API-Architekturen. gRPC wurde in 2016 und tRPC erst im Jahr 2021 eingeführt. Wegen dieser beiden Varianten von RPC wird die Note 1 vergeben.
-- SOAP: SOAP wurde im Jahr 1999 vom Wide Web-Konsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
+- SOAP: SOAP wurde im Jahr 1999 vom Wide WebKonsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
 - REST: REST wurde im Jahr 2000 von Roy Fielding eingeführt und begann ab 2005 immer beliebter zu werden. Das macht diese Architektur relativ alt. Trotzdem gilt auch noch heute als moderne API-Architektur, weshalb die Note 2 vergeben wird.
 - GraphQL: GraphQL wurde im Jahr 2015 veröffentlicht. Diese API-Architektur ist relativ neu und ihre Features -- singulärer Endpunkt, einmalige Fetches und Typensicherheit -- sind höchst modern. Daher wird die Note 1 vergeben.
 
@@ -471,11 +471,11 @@ Ich entschloss mich aufgrund meiner Erfahrung mit Next.js das Projekt aufzusetze
 ==== Stundenübersicht
 Das folgende Diagramm stellt meine Zeiteinteilung bildlich dar.
 
-// TODO: Tortendiagramm einfügen
+//TODO Lara: Tortendiagramm einfügen
 
-// TODO: Erklärung der Daten
+//TODO Denis: Erklärung der Daten
 
 ==== Persönliches Fazit
-// TODO
+//TODO Denis: Fazit schreiben
 
 :sectnums!:

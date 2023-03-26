@@ -7,30 +7,41 @@
 :toc: preamble
 :toc-title: Inhaltsverzeichnis
 
-// TODO Projektausführung Überblick
+//TODO Lara: Projektausführung Überblick
+//TODO Lara: Clusterartikel vereinheitlichen!
 
-// TODO Eidesstattliche Erklärung
+[discrete]
+== Eidesstattliche Erklärung
+Hiermit versichere ich an Eides statt, dass ich die vorliegende Diplomarbeit ohne fremde Hilfe und ohne Benutzung anderer als der angegebenen Quellen und Hilfsmittel angefertigt und die den benutzten Quellen wörtlich oder inhaltlich entnommenen Stellen als solche kenntlich gemacht habe.
+
+Diese Arbeit wurde in gleicher oder ähnlicher Form noch bei keiner anderen Prüferin/keinem anderen Prüfer als Prüfungsleistung eingereicht. Mir ist bekannt, dass Zuwiderhandeln mit der Note "Nicht genügend" (ohne Möglichkeit einer Nachbesserung oder Wiederholung) geahndet wird und weitere rechtliche Schritte nach sich ziehen kann.
+
+Diese Arbeit wurde in gedruckter Version bei der zuständigen Prüferin/dem zuständigen Prüfer hinterlegt.
+
+//TODO Alle: Unterschriften
+
+<<<
 
 [discrete]
 == Kurzfassung
-Das Ziel der vorliegenden Diplomarbeit ist, ein System zu schaffen, um Lerngruppenbildung und damit verbundene Raumreservierungen effizienter zu gestalten. Es soll eine funktionale Erweiterung von WebUntis in Verbindung mit Microsoft Teams geschaffen werden. Erzielt wird die Vereinheitlichung der genutzten Plattformen zur Organisation von Lerninhalten und Datenaustausch. Zudem soll für die Schüler/innen eine Möglichkeit geschaffen werden, selbstständig Lernräume für Lerneinheiten zu buchen.
+Das Ziel der vorliegenden Diplomarbeit ist, ein System zu schaffen, um Lerngruppenbildung und damit verbundene Raumreservierungen effizienter zu gestalten. Es soll eine funktionale Erweiterung von WebUntis in Verbindung mit Microsoft-Teams geschaffen werden. Erzielt wird die Vereinheitlichung der genutzten Plattformen zur Organisation von Lerninhalten und Datenaustausch. Zudem soll für die Schüler/innen eine Möglichkeit geschaffen werden, selbstständig Lernräume für Lerneinheiten zu buchen.
 
-In der HTL Pinkafeld findet zurzeit die Raumreservierung exklusiv durch das Lehr- und Administrationspersonal statt. Darüber hinaus wird eine breite Palette an Plattformen zur Datenbereitsstellung eingesetzt, wie beispielsweise WebUntis, LMS, Microsoft Teams, Google Docs und das Klassenlaufwerk. Diese Auswahl an Werkzeugen mündet in Unübersichtlichkeit für die Schülerschaft beim Lernen. Dazu entsteht eine Schwierigkeit im Unterricht für Lehrkräfte im Anlegen und Organisieren der Klasse.
+In der HTL Pinkafeld findet zurzeit die Raumreservierung exklusiv durch das Lehr- und Administrationspersonal statt. Darüber hinaus wird eine breite Palette an Plattformen zur Datenbereitsstellung eingesetzt, wie beispielsweise WebUntis, LMS (Lernen Mit System), Microsoft-Teams, Google Docs und den schulinternen Fileserver. Diese Auswahl an Werkzeugen mündet in Unübersichtlichkeit für die Schülerschaft beim Lernen. Dazu entsteht eine Schwierigkeit im Unterricht für Lehrkräfte im Anlegen und Organisieren der Klasse.
 
-Hier kommt EduCluster ins Spiel. Mittels Clusterbildung ermöglicht die Web-Applikation eine einfache und übersichtliche Erstellung von Lerngruppen mitsamt Raumreservierung. Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und, falls er öffentlich ist, über eine Suche von weiteren Mitschüler/innen gefunden werden kann. Nutzende können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln und die Administrationsrolle an andere Mitglieder erteilen. Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft Teams zum Abhalten von Remote Lerneinheiten und zur Datenorganisation herangezogen, welche über die genannten Funktionalitäten
+Hier kommt EduCluster ins Spiel. Mittels Clusterbildung ermöglicht die WebApplikation eine einfache und übersichtliche Erstellung von Lerngruppen mitsamt Raumreservierung. Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und, falls er öffentlich ist, über eine Suche von weiteren Mitschüler/innen gefunden werden kann. Sie können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln und die Administrationsrolle an andere Mitglieder erteilen. Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft-Teams zum Abhalten von Remote Lerneinheiten und zur Datenorganisation herangezogen, welche über die genannten Funktionalitäten
 EduCluster zur Verfügung stehen.
 
 <<<
 
 [discrete]
 == Abstract
-The goal of the following thesis is the conception of a system that improves upon extant learning group formation and room reservation capabilities. A functional extension of WebUntis is to be implemented in such a way as to incorporate a direct connection to Microsoft Teams. This way a standardization of the extant platforms for organization and exchange of educational content may be realized. Enabling students to independently organise learning units and if necessary reserve rooms for these occasions is a further goal to be realized within the scope of this thesis.
+The goal of the following thesis is the conception of a system that improves upon extant learning group formation and room reservation capabilities. A functional extension of WebUntis is to be implemented in such a way as to incorporate a direct connection to Microsoft-Teams. This way a standardization of the extant platforms for organization and exchange of educational content may be realized. Enabling students to independently organise learning units and if necessary reserve rooms for these occasions is a further goal to be realized within the scope of this thesis.
 
-Presently, room reservation is a functionality exclusively reserved for teachers and administrative staff within HTL Pinkafeld. Furthermore, educational content is made available across a wide range of platforms such as WebUntis, LMS, Microsoft Teams, Google Docs and the class-segmented digital storage provided by the school itself. This large diversity of tools culminates in confusion for students and teachers alike.
+Presently, room reservation is a functionality exclusively reserved for teachers and administrative staff within HTL Pinkafeld. Furthermore, educational content is made available across a wide range of platforms such as WebUntis, LMS, Microsoft-Teams, Google Docs and the class-segmented digital storage provided by the school itself. This large diversity of tools culminates in confusion for students and teachers alike.
 
-This is where EduCluster steps in. The web application enables the simple creation of Clusters and includes room reservation functionality. A Cluster represents a collective of students in EduCluster that acts as a unit on the platform and may plan learning units and reserve rooms. Additionally, public Clusters may be found by other students looking to join one on the dedicated search page. Users may create or join any number of said Clusters. If a user creates a Cluster, they are automatically promoted to administrators and may confer this role upon other members. The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft Teams for the possibility of remote learning units as well for the capability of organising educational content.
+This is where EduCluster steps in. The web application enables the simple creation of Clusters and includes room reservation functionality. A Cluster represents a collective of students in EduCluster that acts as a unit on the platform and may plan learning units and reserve rooms. Additionally, public Clusters may be found by other students looking to join one on the dedicated search page. Users may create or join any number of said Clusters. If a user creates a Cluster, they are automatically promoted to administrators and may confer this role upon other members. The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft-Teams for the possibility of remote learning units as well for the capability of organising educational content.
 
-The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft Teams for the possibility of remote learning units as well for the capability of organising educational content.
+The organisation of a Cluster is achieved through an integration of WebUntis for the room reservation functionality and of Microsoft-Teams for the possibility of remote learning units as well for the capability of organising educational content.
 
 <<<
 
@@ -50,7 +61,7 @@ im Detail erklärt.
 :sectnumlevels: 6
 
 == Einleitung
-// TODO
+//TODO Lara: Einleitung schreiben
 Mit dieser Diplomarbeit wird unserem Auftraggeber eine funktionierende Web-Applikation zur Verfügung gestellt. Um dessen Funktionalität zu gewährleisten, ist eine Datenbank entworfen sowie eine "WebUntis" API angebunden.
 
 Nach wochenlanger Konzeptionsphasen wurde die Datenbank entworfen. Um die Vorteile einer Web-Applikation voll ausnutzen zu können, hat sich das Projektteam für "Supabase" entschieden. Diese Umgebung ist eine bewährte Datenbankumgebung für Web-Applikationen. Im nächsten Zug ist die tatsächliche Web-Applikation entstanden. Mittels Datenbankabfragen kommuniziert diese Applikation mit Supabase, um gewünschte Daten oder Änderungen dieser zu erreichen. Weiters ist eine WebUntis API angebunden, welche es EduCluster erlaubt, aktuelle Stundenplan- und Rauminformationen abzurufen.
@@ -80,15 +91,15 @@ include::individueller-teil-raymond.adoc[]
 <<<
 
 == Zusammenfassung
-// TODO Zusammenfassung - what?
+//TODO Lara: Zusammenfassung
 Die Erfahrungen der Projektmitglieder haben sich im Zuge des Projektablaufes viel geprägt. Von einer erwartungsvollen und hochmotivierten Anfangsphase über unterschiedliche Neufindungsphasen bis zum zielorientierten Endspurt hat das Projekt alles erlebt. Wider allen Zwischenfällen konnte das Team Problemen und Hindernissen effektiv entgegensteuern, da stets eine gepflegte Kommunikationspolitik zwischen den Teammitgliedern, der Betreuungsperson sowie der Auftraggeberposition herrschte.
 
-// TODO Abbildungsverzeichnis
+//TODO Denis: Abbildungsverzeichnis
 
-// TODO Tabellenverzeichnis
+//TODO Denis: Tabellenverzeichnis
 
-// TODO Quellenverzeichnis
+//TODO Denis: Quellenverzeichnis
 
-// TODO Anhang (Begleitprotokolle, Stundennachweise, )
+//TODO Denis: Anhang (Begleitprotokolle, Stundennachweise, )
 
 :sectnums!:

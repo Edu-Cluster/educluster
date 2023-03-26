@@ -205,7 +205,7 @@ export const loginHandler = async ({
       return { status: statusCodes.FAILURE, error: err };
     }
 
-    // Check if user with given untis username has MS Teams email address in the database
+    // Check if user with given untis username has Microsoft-Teams email address in the database
     const user = await readEduClusterUsername(username);
 
     if (!user?.teams_email) {
