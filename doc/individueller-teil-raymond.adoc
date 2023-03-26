@@ -123,7 +123,7 @@ Applikationen, die mit ASP.NET Core entwickelt werden, können eine von drei mö
 Das Framework bietet eine große Liste an Featuresfootnote:[Vgl. https://learn.microsoft.com/de-ch/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0#why-choose-aspnet-core, abgerufen am 30.10.2022], die es besonders attraktiv machen als Werkzeug zur Entwicklung für Webapplikationen. Erstens bietet es eine einheitliche Umgebung zum Erstellen des UIs sowie der API. Darüber hinaus ist es mit Blazor, einem Framework innerhalb von ASP.NET Core, möglich, C# clientseitig einzusetzen und damit Webbenutzeroberflächen zu erstellen.
 
 ===== Django
-Django ist ein WebFramework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
+Django ist ein Web-Framework für die Programmiersprache Python, das 2005 von Django Software Foundation veröffentlicht wurde und von derselben Non-Profit-Organisation heutzutage gepflegt wird.
 
 Ein großer Vorteil von Django ist die Möglichkeit, das Datenmodell der Applikation in Python statt in SQL aufzubauen. Dieses Feature wird von Djangos ORM ermöglicht, indem es Datenstrukturen in Python-Klassen übersetzt.footnote:[Vgl. https://www.ibm.com/cloud/learn/django-explained#:~:text=Starting%20a%20Django%20project%20allows,within%20a%20fully%20Python%20environment., abgerufen am 30.11.2022]
 
@@ -132,7 +132,7 @@ In weiterer Folge stellt Django eine CRUD-Funktionalität bereit, womit die Appl
 Django kann rein als Backend genutzt werden und durch eines der beliebten Frontend-Frameworks ergänzt werden, aber es bietet auch die Möglichkeit, die Django Templating-Sprache für die Erzeugung dynamischer HTML-Inhalte zu nutzen. Diese eignet sich für eine Applikation mit MVC-Architektur besonders gut.
 
 ===== Ausnahmefall: Next.js
-Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Frameworkfootnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes WebFramework beschrieben.
+Next ist ein Ausnahmefall, weil es sowohl eine Frontend- als auch eine Backend-Lösung anbietet. In diesem Sinne ist Next.js ein Full-Stack Frameworkfootnote:[Vgl. https://launchdarkly.com/blog/whats-so-great-about-nextjs/, abgerufen am 30.11.2022]. Es wurde im Jahr 2016 von Vercel Inc. veröffentlicht und wird als ein React-basiertes Web-Framework beschrieben.
 
 Mit Next ist ein React-Frontend und ein Node-Backend vorausgesetzt. Dadurch ist der Vorteil einer einheitlichen Programmiersprache für Frontend und Backend so wie bei Express gegeben. Darüber hinaus bietet das Framework eine große Liste von modernen Features an.
 
@@ -258,8 +258,8 @@ Dieser Abschnitt befasst sich mit der Bewertung der Frontend-Frameworks.
 Dieser Abschnitt befasst sich mit der Bewertung der Backend-Frameworks.
 
 ====== Persönliche Erfahrung
- - Express.js: Express ist eines der bekanntesten WebFrameworks und basiert auf Node. Alle Mitglieder durften im Unterricht Erfahrung mit Express sammeln, allerdings ist kein Mitglied besonders gut vertraut mit dem Framework, weshalb die Note 2 vergeben wird.
- - ASP .NET Core: Obwohl ASP .NET Core auch zu den beliebten WebFrameworks gehört, hat nur ein Mitglied damit Erfahrung auf einem grundlegenden Niveau. Dementsprechend wird die Note 4 vergeben.
+ - Express.js: Express ist eines der bekanntesten Web-Frameworks und basiert auf Node. Alle Mitglieder durften im Unterricht Erfahrung mit Express sammeln, allerdings ist kein Mitglied besonders gut vertraut mit dem Framework, weshalb die Note 2 vergeben wird.
+ - ASP .NET Core: Obwohl ASP .NET Core auch zu den beliebten Web-Frameworks gehört, hat nur ein Mitglied damit Erfahrung auf einem grundlegenden Niveau. Dementsprechend wird die Note 4 vergeben.
  - Django: Dieses ist auch ein beliebtes Framework, allerdings hat kein Mitglied jegliche Erfahrung damit. Aus diesem Grund wird die note 5 vergeben.
  - Next.js: Next ist eine ziemlich neue Technologie. Trotzdem konnten zwei Mitglieder mit dem Framework Erfahrung sammeln. Eines der Mitglieder hat sogar fortgeschrittene Erfahrung mit der Umsetzung von Webapplikationen basierend auf Next. Deswegen bekommt auch Next.js die Note 2.
 
@@ -298,7 +298,7 @@ Dieser Abschnitt befasst sich mit der Bewertung der API-Architekturen.
 
 ====== Modernheit
 - RPC: Unter RPC versteht man verschiedene Formen der Architektur, wie XML-RPC, gRPC und tRPC. XML-RPC ist die älteste davon und wird heutzutage nicht mehr oft verwendet. Hingegen sind gRPC und tRPC moderne API-Architekturen. gRPC wurde in 2016 und tRPC erst im Jahr 2021 eingeführt. Wegen dieser beiden Varianten von RPC wird die Note 1 vergeben.
-- SOAP: SOAP wurde im Jahr 1999 vom Wide WebKonsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
+- SOAP: SOAP wurde im Jahr 1999 vom Wide Web-Konsortium eingeführt. Wenn wir XML-RPC nicht berücksichtigen, ist diese API-Architektur die älteste aus der Gruppe. Deshalb wird die Note 5 vergeben.
 - REST: REST wurde im Jahr 2000 von Roy Fielding eingeführt und begann ab 2005 immer beliebter zu werden. Das macht diese Architektur relativ alt. Trotzdem gilt auch noch heute als moderne API-Architektur, weshalb die Note 2 vergeben wird.
 - GraphQL: GraphQL wurde im Jahr 2015 veröffentlicht. Diese API-Architektur ist relativ neu und ihre Features -- singulärer Endpunkt, einmalige Fetches und Typensicherheit -- sind höchst modern. Daher wird die Note 1 vergeben.
 
@@ -466,16 +466,30 @@ Man erkennt die Auflistung der Lerneinheiten. Rechts wird eine Komponente gerend
 In diesem Kapitel wird über die eigene Arbeit reflektiert.
 
 ==== Persönlicher Verantwortungsbereich
-Ich entschloss mich aufgrund meiner Erfahrung mit Next.js das Projekt aufzusetzen und unseren GitHub Repository zu initialisieren. Darüber hinaus hat die Entwicklung des Frontends den Großteil meiner Zeit in Anspruch genommen. Ich habe außerdem bei der Untis-Integration Unterstützung geleistet.
+Ich entschloss mich aufgrund meiner Erfahrung mit Next.js das Projekt aufzusetzen und unserem GitHub Repository zu initialisieren. Bevor die parallele Entwicklung des gesamten Teams anfing, habe ich auch selbstständig die API entwickelt. Es ist ebenfalls erwähnenswert, dass außer unserem Projekt EduCluster ein kleineres Test-Projekt von mir entwickelt wurde, um die WebUntis-Schnittstelle manuell zu testen und um die automatisierte Tests von Christoph Kiessewetter in Isolation laufen lassen zu können.
+
+Im Bereich der Dokumentenarbeit habe ich bei der Verschriftlichung der Konzeption und Planung des Projekts im Konzeptpapier sowie in der Vorstudie mitgeholfen. Ebenso habe ich bei der Formulierung des Vorworts, der Kurzfassung, des Abstracts, der Einleitung und der Zusammenfassung meine Team-Mitglieder unterstützt.
+
+Darüber hinaus hat die Entwicklung des Frontends den Großteil meiner Zeit in Anspruch genommen. Ich habe in enger Zusammenarbeit mit Lara Kammerer gearbeitet, da sie das Backend übernehmen durfte. Die Aufsetzung von ASCII-DOC und die Organisation und das Stylen unserer Dokumente ist ebenfalls eine Aufgabe, die ich übernommen bzw. mit Lara Kammerer teilen durfte.
+
+image:img/raymond/git_commits.png[]
+
+Insgesamt habe ich 118 Commits gemacht, 27.753 Codezeilen hinzugefügt und 11.348 Zeilen entfernt. Am intensivsten habe ich im Februar, etwa einen Monat vor der Abgabe-Deadline der Diplomarbeit, gearbeitet.
 
 ==== Stundenübersicht
 Das folgende Diagramm stellt meine Zeiteinteilung bildlich dar.
 
-//TODO Lara: Tortendiagramm einfügen
+// TODO: Tortendiagramm Stundenverteilung einfügen
 
-//TODO Denis: Erklärung der Daten
+Ich habe insgesamt 267 Stunden geleistet. Die Hälfte der geleisteten Stunden wurden in die Implementierung der Webapplikation investiert. Die andere Hälfte setzt sich aus fünf Teile zusammen. Darunter wurden 39,5 Stunden in Besprechungen, 31,25 Stunden in der Fertigstellung der Vorstudie, 27,75 Stunden in allgemeine Dokumentenerstellung, 24 Stunden in dem individuellen Teil und schließlich 9 Stunden im Konzeptpapier und im Projektantrag investiert.
 
 ==== Persönliches Fazit
-//TODO Denis: Fazit schreiben
+Im Rückblick würde ich das Projekt als einen guten Erfolg bezeichnen. Zwar konnten wir nicht alles, was wir geplant hatten, umsetzen, jedoch wurden die wichtigsten Teile des Projekts erfolgreich umgesetzt und getestet. Die Webapplikation sieht sowohl auf Desktop als auch auf mobilen Geräten schön aus, es funktioniert wie gewünscht und kann für die vorgesehenen Zwecke genutzt werden.
+
+Ich konnte Dank meiner beruflichen Erfahrung in der Webentwicklung agil und effizient arbeiten. Unsere Sprints verliefen immer sehr gut, da wir unsere Ziele bis zum Sprint-Ende immer erreichen konnten. Während der Umsetzungsphase durfte ich meine Team-Mitglieder öfters unterstützten, allerdings lernten sie schnell komplexe Aufgaben eigenständig zu erledigen. Dadurch entwickelte sich innerhalb kürzester Zeit eine effiziente Kooperation zwischen uns, was den Entwicklungsprozess viel beschleunigt hat.
+
+Trotz der Erfahrung und dem Wissen vor dem Projektanfang gab es Hürden und Schwierigkeiten, die ich schließlich durch Hartnäckigkeit überwinden konnte. Ich habe in dieser Zeit viel über tRPC gelernt und im Projekt angewandt. Darüber hinaus habe ich gelernt, besser zu kommunizieren und dadurch bessere Zusammenarbeit innerhalb des Teams zu erschaffen. Teamarbeit hat anfangs gefehlt, aber sie entwickelte sich desto schneller umso wir miteinander geredet und unsere Ideen miteinander geteilt haben.
+
+Wenn ich unsere ganze Anstrengung in einem Wort zusammenfassen musste, dann wäre es "Kommunikation". Kommunikation stellte sich während der Projektumsetzung sowohl als größte Schwierigkeit als auch die größte Antriebskraft heraus. Deshalb würde ich zusammenfassend sagen, dass ich sehr dankbar bin, während dieser Diplomarbeit gut kommunizieren gelernt zu haben.
 
 :sectnums!:

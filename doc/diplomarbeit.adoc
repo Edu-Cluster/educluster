@@ -28,7 +28,7 @@ Das Ziel der vorliegenden Diplomarbeit ist, ein System zu schaffen, um Lerngrupp
 
 In der HTL Pinkafeld findet zurzeit die Raumreservierung exklusiv durch das Lehr- und Administrationspersonal statt. Darüber hinaus wird eine breite Palette an Plattformen zur Datenbereitsstellung eingesetzt, wie beispielsweise WebUntis, LMS (Lernen Mit System), Microsoft-Teams, Google Docs und den schulinternen Fileserver. Diese Auswahl an Werkzeugen mündet in Unübersichtlichkeit für die Schülerschaft beim Lernen. Dazu entsteht eine Schwierigkeit im Unterricht für Lehrkräfte im Anlegen und Organisieren der Klasse.
 
-Hier kommt EduCluster ins Spiel. Mittels Clusterbildung ermöglicht die WebApplikation eine einfache und übersichtliche Erstellung von Lerngruppen mitsamt Raumreservierung. Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und, falls er öffentlich ist, über eine Suche von weiteren Mitschüler/innen gefunden werden kann. Sie können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln und die Administrationsrolle an andere Mitglieder erteilen. Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft-Teams zum Abhalten von Remote Lerneinheiten und zur Datenorganisation herangezogen, welche über die genannten Funktionalitäten
+Hier kommt EduCluster ins Spiel. Mittels Clusterbildung ermöglicht die Web-Applikation eine einfache und übersichtliche Erstellung von Lerngruppen mitsamt Raumreservierung. Ein Cluster stellt in EduCluster die Lerngruppe dar, welche nach der Erstellung Termine anlegen, Räume reservieren und, falls er öffentlich ist, über eine Suche von weiteren Mitschüler/innen gefunden werden kann. Nutzende können beliebig solche Cluster erstellen oder ihnen beitreten. Durch das Erstellen können diese zukünftig als Clusteradministrierende handeln und die Administrationsrolle an andere Mitglieder erteilen. Zur Organisation dieses Clusters werden WebUntis zur Raumreservierung als auch Microsoft Teams zum Abhalten von Remote Lerneinheiten und zur Datenorganisation herangezogen, welche über die genannten Funktionalitäten
 EduCluster zur Verfügung stehen.
 
 <<<
@@ -82,16 +82,15 @@ include::individueller-teil-lara.adoc[]
 
 <<<
 
-include::individueller-teil-christoph.adoc[]
-
-<<<
-
 include::individueller-teil-raymond.adoc[]
 
 <<<
 
+include::individueller-teil-christoph.adoc[]
+
+<<<
+
 == Zusammenfassung
-//TODO Lara: Zusammenfassung
 Die Erfahrungen der Projektmitglieder haben sich im Zuge des Projektablaufes viel geprägt. Von einer erwartungsvollen und hochmotivierten Anfangsphase über unterschiedliche Neufindungsphasen bis zum zielorientierten Endspurt hat das Projekt alles erlebt. Wider allen Zwischenfällen konnte das Team Problemen und Hindernissen effektiv entgegensteuern, da stets eine gepflegte Kommunikationspolitik zwischen den Teammitgliedern, der Betreuungsperson sowie der Auftraggeberposition herrschte.
 
 //TODO Denis: Abbildungsverzeichnis
