@@ -8,7 +8,6 @@ image:img/deckblatt_vorstudie.png[]
 == Vorstudie
 
 === Einleitung
-//TODO Lara: Kritik von Bundschuh einarbeiten
 //TODO Lara: Deckblatt ganzseitig einfügen
 
 Diese Vorstudie beschreibt die notwendigen Rahmenbedingungen, welche zur Umsetzung der EduCluster Webapplikation für die HTL Pinkafeld notwendig sind. Die Ausgangssituation zeigt das Verbesserungspotential für das Projekt EduCluster auf.
@@ -29,17 +28,20 @@ Die Auftragnehmer bestehen aus folgenden Teammitgliedern:
 [%header, cols="1,2"]
 |===
 |Bild|Beschreibung
-|Bild von HOBE|Prof. MMag. Bernd Hochwarter +
+^a|image::img/Bilder Vorstudie/HOBE.png[]
+|Prof. MMag. Bernd Hochwarter +
 Projektbetreuer +
 Tel.: +43 664 917 26 79 +
 E-Mail: bernd.hochwarter@htlpinkafeld.at +
 Meierhofplatz 1 7423 Pinkafeld
-|Bild von ZADA|Prof. Dipl.-Inf. David Zach +
+^a|image::img/Bilder Vorstudie/ZADA.jpg[]
+|Prof. Dipl.-Inf. David Zach +
 Technischer Betreuer +
 Tel.: +43 3357 424 91 260 +
 E-Mail: david.zach@htlpinkafeld.at +
 Meierhofplatz 1 7423 Pinkafeld
 |===
+//TODO Alle: Bilder einfügen
 .Teammitglieder
 [%header, cols="1,2"]
 |===
@@ -133,43 +135,34 @@ Das Abhalten der Unterrichtseinheit wird bei momentanen Möglichkeiten unterschi
 image::img/Bilder Diagramme Vorstudie/ISTProzess-UnterrichtseinheitAbhalten.jpg[width=400]
 
 === SWOT-Analyse im IST-Zustand
-Eine SWOT-Analyse zeigt den aktuellen Status der Umgebung, sowie ihre Möglichkeiten zur Verbesserung auf. ‚Opportunities‘ stellen das Potential im momentanen Umfeld dar, während ‚Threats‘ die Risiken des Schulbetriebs derzeit aufweisen. ‚Strengths‘ und ‚Weaknesses‘ sollen zudem noch die Stärken und Schwächen des Schulbetriebs darstellen. Diese Analyse wird im IST-Zustand des Systems durchgeführt.
+Eine SWOT-Analyse zeigt den aktuellen Status der Umgebung, sowie ihre Möglichkeiten zur Verbesserung auf. "Opportunities" stellen das Potential im momentanen Umfeld dar, während "Threats" die Risiken des Schulbetriebs derzeit aufweisen. "Strengths" und "Weaknesses" sollen zudem noch die Stärken und Schwächen des Schulbetriebs darstellen. Diese Analyse wird im IST-Zustand des Systems durchgeführt.
 
-//TODO Lara: SWOT Analyse anpassen: Opportunities und Threats = Einflüsse von Außen?
+//TODO? check David
 [%SWOT-Analyse,cols=2*]
 .SWOT-Analyse
 |===
-| *Opportunities*
+a| *Opportunities*
 
-- es kann eine erhöhte Benutzerfreundlichkeit und Übersicht erzielt werden – Vereinheitlichung des Systems
+* Nutzungswunsch von weiteren Unterrichtseinrichtungen - Möglichkeit zur Erweiterung auf weitere Schulen
+* Wunsch von Schülern/Schülerinnen zu Apps auf verschiedenen Geräten - Erweiterbarkeit auf Smartphones, Tablets, Smartwatches und mehr
 
-- das Raumbuchungssystem kann auf Schüler/innen ausgeweitet werden – Rückzugsort zum Lernen
+a| *Threats*
 
-- es kann ein zusätzlicher Fokus auf Verbreitung des Wissens unter den Schüler/innen gelegt werden – Hilfe untereinander
+* Änderungen in WebUntis- oder Microsoft-Teams-Schnittstelle
+* neuartiges Raumreservierungssystem, das die Clusterbildung ablöst
 
-| *Threats*
+a|*Strengths*
 
-- bereits eingeführte Plattformen durch innovative Funktionen zur Lernunterstützung
+* es können alle Funktionen der verschiedenen Plattformen genutzt werden – Vielfältigkeit im Lernprozess
+* es kann eine erhöhte Benutzerfreundlichkeit und Übersicht erzielt werden – Vereinheitlichung des Systems
+* das Raumbuchungssystem kann auf Schüler/innen ausgeweitet werden – Rückzugsort zum Lernen
+* es kann ein zusätzlicher Fokus auf Verbreitung des Wissens unter den Schüler/innen gelegt werden – Hilfe untereinander
 
-- willkürliche Belegung von Räumen durch Schüler/innen – muss durch Administrator/in immer aufgelöst werden
+a|*Weaknesses*
 
-|*Strengths*
+* willkürliche Belegung von Räumen durch Schüler/innen – muss durch Administrator/in immer aufgelöst werden
+* Überbelegungen der Räume durch Schüler/innen möglich wodurch keine Räume mehr für Unterrichtsänderungen frei sind
 
-- es können alle Funktionen der verschiedenen Plattformen genutzt werden – Vielfältigkeit im Lernprozess
-
-- Raumbuchungen von Lehrpersonal oder Administrator/in auf WebUntis möglich – keine Probleme durch willkürliche Belegung von Räumen durch Schüler/innen
-
-- WebUntis ist erweiterbar
-
-|*Weaknesses*
-
-- zu viele verschiedene Plattformen in Verwendung – Unübersichtlichkeit
-
-- auf jeder Plattform wird erst Einarbeitungszeit benötigt - Komplexität
-
-- Raumbuchungen nur von Lehrpersonal oder Administrator/in möglich – Lerngruppen haben keinen Ort zum konzentrierten Lernen
-
-- durch ausschließlich persönliche Lerngruppenbildung kein Durchmischen über Klassengrenzen hinaus – gegenseitige Hilfe nicht möglich
 |===
 
 Aus der oberhalb dargestellten SWOT-Matrix kann deutlich das Potential in der Übersicht über die verschiedenen genutzten Plattformen erkannt werden. Jedoch bringt dieses Potential bei einer Vereinheitlichung und Reduktion auf ausgewählte Plattformen, wie dargestellt das Risiko durch die nicht genutzten Funktionen der nicht mehr genutzten Plattformen mit.
@@ -301,8 +294,20 @@ Die Nicht-Funktionalen Anforderungen werden in die unten angeführten Kategorien
 
 . *Sicherheit*
 +
-//TODO Lara: Erklärung OWASP
-Die Webapplikation muss die OWASP Top 10 Sicherheitsanforderungen für Webseiten erfüllen.
+//TODO? check David
+Die Webapplikation muss die OWASP Top zehn Sicherheitsrisiken für Webseiten beachten und ihnen entgegenwirken. Die OWASP Foundation ist eine non-profit Stiftung, die sich zum Ziel gesetzt hat, die Software Security im Allgemeinen zu verbessern. Dafür hat sie zehn Sicherheitsrisiken für Software definiert:
+
+.. Injection
+.. Fehler in der Authentifizierung
+.. Verlust der Vertraulichkeit sensible Daten
+.. XML External Entities (XXE)
+.. Fehler in der Zugriffskontrolle
+.. Sicherheitsrelevante Fehlkonfiguration
+.. Cross-Site Scripting (XSS)
+.. Unsichere Deserialisierung
+.. Nutzung von Komponenten mit bekannten Schwachstellen
+.. Unzureichendes Logging & Monitoring
+
 
 . *Erweiterbarkeit des Systems und Qualität des Codes*
 +
@@ -403,7 +408,7 @@ image::img/Bilder Diagramme Vorstudie/SOLLProzess-TerminErstellen.jpg[width=300]
 
 Ein Schüler/Eine Schülerin, der/die ein Cluster sucht, um den Lerneinheiten beizuwohnen, betätigt zuallererst den ‚Termin finden‘-Button. Hier können Filter zur Lerneinheit angewählt werden, zu Thema, Datum und Zeit. Sollte ein Cluster direkt gesucht werden, kann auch nach einem Clusternamen oder einer ID gesucht werden – hier kann ein Cluster ebenso bereits ohne geplante Termine gefunden werden.
 Sollte ein Termin oder Cluster nun den eigenen Wünschen entsprechen, kann diesem Cluster beigetreten werden. Ebenso kann einem Cluster durch Betätigen des Links aus der Einladungs-E-Mail beigetreten werden.
-In beiden Fällen wird direkt mit dem Click auf ‚Cluster beitreten‘ oder auf den Link diese Person zum Cluster hinzugefügt und automatisch ebenso in das Microsoft-Teams-Team/Channel hinzugefügt.
+In beiden Fällen wird direkt mit dem Click auf "Cluster beitreten" oder auf den Link diese Person zum Cluster hinzugefügt und automatisch ebenso in das Microsoft-Teams-Team/Channel hinzugefügt.
 Die Clusterbildung wird grundsätzlich offen geführt, sollte jedoch nicht gewünscht sein, dass sich auch weitere Schüler/innen aus anderen Klassen dazu finden, kann durch Setzen eines Flags eingestellt werden, dass das Cluster ausschließlich durch den geteilten Link gefunden werden kann. Durch die allgemein offene Handhabung können sich durch EduCluster aber auch die Schüler/innen aus verschiedenen Klassen zusammenfinden, um gemeinsam den Lehrstoff zu erarbeiten.
 
 .SOLL-Prozess: Cluster beitreten

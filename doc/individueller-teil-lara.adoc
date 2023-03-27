@@ -5,7 +5,6 @@
 :table-caption: Tabelle
 :figure-caption: Abbildung
 
-//TODO Lara: alle verweise auf bild und dergleichen anpassen
 //TODO Lara: Stundenliste übernehmen
 
 image:img/lara/deckblatt.png[]
@@ -113,7 +112,7 @@ Die Beurteilung erfolgt nach einem System ähnlich dem Schulsystem, jedoch mit d
 Zunächst werden jedoch noch die K.O.-Kriterien betrachtet, bevor an die endgültige Bewertung begonnen wird.
 
 ===== K.O.-Kriterien
-Das erste festgelegte K.O.-Kriterium für das Projekt EdCluster sind die Kosten für die Datenbank. Da das System zukünftig von der HTL Pinkafeld übernommen werden soll, darf das Projekt - somit auch die Datenbank - keine zusätzlichen Kosten erzeugen. Die Datenbanken werden somit auf die kostenlosen Versionen eingeschränkt:
+Das erste festgelegte K.O.-Kriterium für das Projekt EduCluster sind die Kosten für die Datenbank. Da das System zukünftig von der HTL Pinkafeld übernommen werden soll, darf das Projekt - somit auch die Datenbank - keine zusätzlichen Kosten erzeugen. Die Datenbanken werden somit auf die kostenlosen Versionen eingeschränkt:
 
 * Oracle Database XE
 * SQL Server Express
@@ -266,32 +265,32 @@ Zunächst wird direkt unterhalb gezeigt, welche Informationen supabase benötigt
 .Erstellung Datenbank
 image::img/lara/Bilder Datenbank/DatenbankErstellen1.png[]
 
-Figure 2 zeigt als Nächstes die generierten API Keys und Datenbank URL.
+Die Abbildung unterhalb zeigt als Nächstes die generierten API Keys und Datenbank URL.
 
 .API Keys und Project Configuration
 image::img/lara/Bilder Datenbank/DatenbankErstellen2.png[]
 
-In Figure 3 wird als Nächstes die Einstiegsseite zur neu angelegten Datenbank angezeigt. Von hier aus können der Table Editor, SQL Editor oder auch die Authentication Einstellungen betreten werden.
+In der nächsten Abbildung wird als Nächstes die Einstiegsseite zur neu angelegten Datenbank angezeigt. Von hier aus können der Table Editor, SQL Editor oder auch die Authentication Einstellungen betreten werden.
 
 .Ansicht neue Datenbank
 image::img/lara/Bilder Datenbank/DatenbankErstellen3.png[]
 
-In Figure 4 wird der Table Editor gezeigt. Hier kann durch Betätigen des Buttons "New Table" eine Tabelle händisch in der GUI erzeugt werden.
+Unterhalb wird der Table Editor gezeigt. Hier kann durch Betätigen des Buttons "New Table" eine Tabelle händisch in der GUI erzeugt werden.
 
 .Übersicht Table Editor
 image::img/lara/Bilder Datenbank/DatenbankErstellen4.png[width=550]
 
-Figure 5 stellt das Erstellen der Tabelle über die GUI dar. Hier kann ein Tabellenname, Beschreibung als auch die einzelnen Spalten mit deren Eigenschaften eingegeben werden.
+Die nächste Abbildung stellt das Erstellen der Tabelle über die GUI dar. Hier kann ein Tabellenname, Beschreibung als auch die einzelnen Spalten mit deren Eigenschaften eingegeben werden.
 
 .Create New Table in GUI
 image::img/lara/Bilder Datenbank/DatenbankErstellen5.png[]
 
-In Figure 6 wurde gerade eine Beispieltabelle erstellt. Als Beispiel wurde hier die Tabelle cluster herangezogen, welche in weiterer Folge in der Testdatenbank verwendet wurden.
+In der Abbildung unterhalb wurde gerade eine Beispieltabelle erstellt. Als Beispiel wurde hier die Tabelle cluster herangezogen, welche in weiterer Folge in der Testdatenbank verwendet wurden.
 
 .Erstellen Beispieltabelle in GUI
 image::img/lara/Bilder Datenbank/DatenbankErstellen6.png[]
 
-Zuletzt zeigt Figure 7 noch die fertige Testdatentabelle mit Testinhalten.
+Zuletzt zeigt diese Abbildung noch die fertige Testdatentabelle mit Testinhalten.
 
 .Fertige Beispieltabelle mit Inhalten
 image::img/lara/Bilder Datenbank/DatenbankErstellen7.png[]
@@ -335,7 +334,7 @@ _Clusterdaten:_ Analog den Userdaten müssen über die Cluster ebenso bekannt se
 * eine *TeamsID* (varchar): zur Identifikation des zugehörigen Teams in Microsoft-Teams. Cluster werden Channels in Microsoft-Teams zugeordnet. Da jedoch je Cluster maximal 20 Channels erzeugt werden können, ist die Angabe des Teams, in dem sich der Channel befindet zusätzlich notwendig. Durch die Anzahl von bis zu 20 Clustern je Team kann dieser Wert nicht unique sein, NOT NULL ist aber eine wichtige Bedingung, da sonst das Cluster nicht eindeutig zu seinem Channel zugeordnet werden kann.
 * eine *ChannelID* (varchar): zur Identifikation des zugehörigen Channels in Microsoft-Teams. Die ChannelID stellt nun die eindeutige Zuordnung der Cluster zum Channel dar. Einzeln müssen die Channels nicht Unique sein, jedoch in Verbindung (zusammengesetzt) mit der TeamsID muss die ChannelID UNIQUE sein. Die ChannelID selbst muss alleine zusätzlich noch NOT NULL sein.
 * die *creatorID* (int8): zur Zuordnung des Erstellers/der Erstellerin des Clusters. Die CreatorID wird automatisch vom System gesetzt beim Erstellen des Clusters und kann damit niemals null sein. Da jedoch in späterer Folge bim Anzeigen des Clusters davon ausgegangen wird, dass es einen Creator dazu gibt, muss durch ein NOT NULL sichergestellt werden, dass diese niemals herausgelöscht wird.
-* *isPrivate* (boolean): um festzustellen, ob der Cluster geschlossen geführt wird, oder nicht. Der Wert isPrivate soll anzeigen, ob ein Cluster geschlossen oder offen geführt wird. Bei einem true kann das Cluster nicht über die Clustersuche bzw. Terminsuche gefunden werden. Nutzende können dadurch nur dem Cluster durch eine Einladung eines/einer Clusteradministrierenden beitreten. Der Wert ist per Default auf false gesetzt, damit das Cluster jederzeit über die Cluster- oder Terminsuche gefunden werden kann. Dieser Wert muss somit NOT NULL sein.
+* *isPrivate* (boolean): um festzustellen, ob das Cluster geschlossen geführt wird, oder nicht. Der Wert isPrivate soll anzeigen, ob ein Cluster geschlossen oder offen geführt wird. Bei einem true kann das Cluster nicht über die Clustersuche bzw. Terminsuche gefunden werden. Nutzende können dadurch nur dem Cluster durch eine Einladung eines/einer Clusteradministrierenden beitreten. Der Wert ist per Default auf false gesetzt, damit das Cluster jederzeit über die Cluster- oder Terminsuche gefunden werden kann. Dieser Wert muss somit NOT NULL sein.
 
 .Codeblock Create Tables für Cluster
 ****
@@ -923,7 +922,7 @@ Die erste Erkenntnis, die ich in dem Projekt gewinnen konnte, war der große Auf
 
 Durch den genannten Aufwand konnte unser Team jedoch im Anschluss wirklich flüssig zusammen arbeiten, was uns die gesamte Projektentwicklung drastisch vereinfacht hat. Besonders durch die stark ineinandergreifenden Prozesse in Front- und Backend war es wichtig, diese klar Abzugrenzen, um produktiv miteinander zu arbeiten und agieren.
 
-Ebenso kann ich als wichtiges Mittel hierfür das Tool YouTrack mit unsren Workflows hervorheben, das uns hier auch die Zusammenarbeit weit vereinfacht hat.
+Ebenso kann ich als wichtiges Mittel hierfür das Tool YouTrack mit unseren Workflows hervorheben, das uns hier auch die Zusammenarbeit weit vereinfacht hat.
 
 Eine weitere Schwierigkeit hat sich für mich in unserem TechStack ergeben, da ich mit keiner der genutzten Technologien bisher Berührungen gehabt habe und mir somit alles neu aneignen musste. Hier kann ich aber wieder die gute Zusammenarbeit im Team betonen, da wir uns hier immer zuverlässig gegenseitig jederzeit unter die Arme gegriffen haben.
 

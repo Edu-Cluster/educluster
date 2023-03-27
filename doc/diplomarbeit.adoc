@@ -7,8 +7,7 @@
 :toc: preamble
 :toc-title: Inhaltsverzeichnis
 
-//TODO Lara: Projektausführung Überblick
-//TODO Lara: Clusterartikel vereinheitlichen!
+//TODO Lara: Deckblatt
 
 [discrete]
 == Eidesstattliche Erklärung
@@ -61,12 +60,13 @@ im Detail erklärt.
 :sectnumlevels: 6
 
 == Einleitung
-//TODO Lara: Einleitung schreiben
-Mit dieser Diplomarbeit wird unserem Auftraggeber eine funktionierende Web-Applikation zur Verfügung gestellt. Um dessen Funktionalität zu gewährleisten, ist eine Datenbank entworfen sowie eine "WebUntis" API angebunden.
+Ziel dieser Diplomarbeit ist es, der HTL Pinkafeld eine WebApplikation zur Verfügung zu stellen, die die Unterrichtseinteilung von WebUntis mit dem Management der Unterrichtsunterlagen, sowie dem Abhalten der Remote Unterrichtseinheiten auf Microsoft-Teams vereint und zudem noch eine Ergänzung zur Lerngruppenbildung und Raumreservierung für ebenso Schüler/innen der HTL Pinkafeld darstellt.
 
-Nach wochenlanger Konzeptionsphasen wurde die Datenbank entworfen. Um die Vorteile einer Web-Applikation voll ausnutzen zu können, hat sich das Projektteam für "Supabase" entschieden. Diese Umgebung ist eine bewährte Datenbankumgebung für Web-Applikationen. Im nächsten Zug ist die tatsächliche Web-Applikation entstanden. Mittels Datenbankabfragen kommuniziert diese Applikation mit Supabase, um gewünschte Daten oder Änderungen dieser zu erreichen. Weiters ist eine WebUntis API angebunden, welche es EduCluster erlaubt, aktuelle Stundenplan- und Rauminformationen abzurufen.
+Für die Umsetzung dieses Projekts wird die Arbeit nach SCRUM durchgeführt. Es wird somit die Arbeit in einzelnen User Stories formuliert und anschließend in Tasks aufgetrennt, um die stark ineinandergreifenden Komponenten parallel bearbeiten zu können. Mitsamt den regelmäßigen Besprechungen im Projektteam kann dieses somit seine Arbeitskraft optimal auf die Erledigung der Aufgaben (Tasks) aufteilen.
 
-In den folgenden Kapiteln sind der Projektantrag, die Vorstudie sowie die einzelnen individuellen Teile eines jeden Teammitglieds angeführt. Diese individuellen Teile stellen sich aus einer übersichtlichen Einleitung, der persönlichen Evaluierung und die technische Umsetzung des betroffenen Teammitglieds. Zudem reflektiert das Teammitglied über die eigene Arbeit in der abschließenden Reflexion. Am Ende dieses Dokumentes ist eine Zusammenfassung, in welcher der Ablauf wie die Erfolge, Hindernisse und Fehlschläge angeführt werden.
+Im Anschluss werden der Projektantrag, die Vorstudie, sowie die individuellen Teile der Teammitglieder behandelt. Die individuellen Teile setzen sich aus der Evaluierung, der technischen Umsetzung als auch der Reflexion der eigenen Arbeit zusammen. Zuletzt wird dies noch durch eine Zusammenfassung abgerundet, welche die Erfolge, Hindernisse und Fehlschläge des Teams anführt.
+
+//TODO? check David
 
 <<<
 
@@ -91,6 +91,9 @@ include::individueller-teil-christoph.adoc[]
 <<<
 
 == Zusammenfassung
+
+
+//TODO Lara: Zusammenfassung schreiben
 Die Erfahrungen der Projektmitglieder haben sich im Zuge des Projektablaufes viel geprägt. Von einer erwartungsvollen und hochmotivierten Anfangsphase über unterschiedliche Neufindungsphasen bis zum zielorientierten Endspurt hat das Projekt alles erlebt. Wider allen Zwischenfällen konnte das Team Problemen und Hindernissen effektiv entgegensteuern, da stets eine gepflegte Kommunikationspolitik zwischen den Teammitgliedern, der Betreuungsperson sowie der Auftraggeberposition herrschte.
 
 //TODO Denis: Abbildungsverzeichnis
