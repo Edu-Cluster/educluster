@@ -38,8 +38,10 @@ const AppointmentButtonGroup = ({ cluster, appointment }: Props) => {
       onSuccess: () => {
         const userIds: bigint[] = [];
 
-        userOfAppointment.forEach((user: any) => {
-          userIds.push(user.id);
+        userOfAppointment.forEach((userArr: any) => {
+          userArr.forEach((user: any) => {
+            userIds.push(user.id);
+          });
         });
 
         sendAppointmentDeletedWarningMutation({
