@@ -296,7 +296,7 @@ const RoomFilterBox = ({ showResetButton, showSummary }: Props) => {
             className="primary-button w-80 h-16 mt-10 bg-emerald-500 hover:bg-emerald-700"
             onClick={createNewAppointment}
           >
-            Termin erstellen
+            Lerneinheit erstellen
           </button>
           <button
             className="primary-button w-80 h-16 bg-red-500 hover:bg-red-700"

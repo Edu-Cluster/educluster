@@ -541,7 +541,7 @@ export const createAppointment = async ({
     } = input;
     const creator = ctx?.user?.id;
     const teamsId = name;
-    const untisId = name; // TODO Denis
+    const untisId = name;
     const dateFrom = new Date(date);
     const dateUntil = new Date(date);
 
@@ -727,6 +727,7 @@ export const getSpecificRooms = async ({
     for (let i = allSpecificRooms.length - 1; i >= 0; i--) {
       const availability = await isRoomAvailable(
         Number(allSpecificRooms[i].untis_id),
+        allSpecificRooms[i].name,
         input.from,
         input.to,
       );
