@@ -479,7 +479,7 @@ Insgesamt habe ich 118 Commits gemacht, 27.753 Codezeilen hinzugefügt und 11.34
 ==== Stundenübersicht
 Das folgende Diagramm stellt meine Zeiteinteilung bildlich dar.
 
-// TODO: Tortendiagramm Stundenverteilung einfügen
+image:img/raymond/stundenverteilung.png[]
 
 Ich habe insgesamt 267 Stunden geleistet. Die Hälfte der geleisteten Stunden wurden in die Implementierung der Webapplikation investiert. Die andere Hälfte setzt sich aus fünf Teile zusammen. Darunter wurden 39,5 Stunden in Besprechungen, 31,25 Stunden in der Fertigstellung der Vorstudie, 27,75 Stunden in allgemeine Dokumentenerstellung, 24 Stunden in dem individuellen Teil und schließlich 9 Stunden im Konzeptpapier und im Projektantrag investiert.
 

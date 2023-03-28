@@ -60,7 +60,7 @@ Klasse: 7YBIF +
 E-Mail: christoph.kiessewetter@htlpinkafeld.at +
 GitHub: https://github.com/ChristophKiessewetter +
 7463 Oberpodgoria
-|Bild von Denis|Raymond Denis Vladu +
+^a|image::img/raymond/Foto.png[]|Raymond Denis Vladu +
 Entwickler, Softwarearchitekt +
 Klasse: 7YBIF +
 E-Mail: raymond.vladu@htlpinkafeld.at +
