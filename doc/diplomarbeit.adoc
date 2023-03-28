@@ -17,7 +17,7 @@ Diese Arbeit wurde in gleicher oder ähnlicher Form noch bei keiner anderen Prü
 
 Diese Arbeit wurde in gedruckter Version bei der zuständigen Prüferin/dem zuständigen Prüfer hinterlegt.
 
-//TODO Alle: Unterschriften
+//TODO Lara: Vorbereitung für Unterschriften
 
 <<<
 
@@ -102,6 +102,8 @@ Die Erfahrungen der Projektmitglieder haben sich im Zuge des Projektablaufes vie
 
 //TODO Denis: Quellenverzeichnis
 
-//TODO Denis: Anhang (Begleitprotokolle, Stundennachweise, )
+<<<
+
+include::Anhang.adoc[]
 
 :sectnums!:

@@ -41,12 +41,14 @@ Tel.: +43 3357 424 91 260 +
 E-Mail: david.zach@htlpinkafeld.at +
 Meierhofplatz 1 7423 Pinkafeld
 |===
-//TODO Alle: Bilder einfügen
+//TODO Denis: Bild einfügen
+//TODO Christoph: Bild einfügen
 .Teammitglieder
 [%header, cols="1,2"]
 |===
 |Bild|Beschreibung
-|Bild von Lara|Lara Kammerer +
+^a|image::img/lara/Foto.png[]
+|Lara Kammerer +
 Requirements Engineer, Entwicklerin, Datenbankarchitektin +
 Klasse: 7YCIF +
 E-Mail: lara.kammerer@htlpinkafeld.at +

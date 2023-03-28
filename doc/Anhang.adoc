@@ -1,0 +1,448 @@
+= Anhang
+== Begleitprotokolle
+=== Begleitprotokoll Lara Kammerer
+image::pdf/Begleitprotokoll_Kammerer.pdf[]
+
+<<<
+=== Begleitprotokoll Raymon Denis Vladu
+//TODO Lara: Begleitprotokoll Denis
+
+<<<
+=== Begleitprotokoll Christoph Kiessewetter
+//TODO Lara: Begelitprotokoll Christoph
+
+<<<
+== Stundennachweise
+=== Stundennachweise Lara Kammerer
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.05.2022|Besprechung mit Team: Themen in Übersichtsdokument|1,00
+|01.05.2022|Formulierung Projektkonzept|3,00
+|03.05.2022|Erstellung erster Projektkonzept-Prototyp|3,00
+|08.05.2022|Besprechung mit Team: Prototypen, Aufgabenzuteilung|2,00
+|11.05.2022|Besprechung mit HOBE: Grundsystem, Anmeldung über WebUntis Schnittstelle|1,25
+|12.05.2022|Besprechung mit Team: Doppelte Buchungen, Raumausstattungseinträge, Vorstudieneinteilung|0,75
+|14.05.2022|Besprechung mit Team und HOBE: WebApp priorisiert, EduCluster mit WebUntis syncen, Benachrichtigungsmöglichkeiten|2,50
+|15.05.2022|Konzeptpapier 1. Entwurf|1,00
+|18.05.2022|Besprechung mit Team: Vorstudie (Umstrukturieren, Architekturdiagramm, Use Cases, Finalisierung)|2,75
+|19.05.2022|Vorstudie bearbeiten: Ausgangssituation, IST-Prozesse|1,25
+|20.05.2022|Vorstudie überarbeiten: Zieldefinition, Aufbau|1,00
+|26.05.2022|Besprechung mit Team: Vorstudie (Tools Vorschläge, Verbesserungen)|3,00
+|28.05.2022|Besprechung mit Team und HAGE: IST- und SOLL-Prozesse, Aktivitätsdiagramme, Hosting|1,50
+||Summe:|24,00
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|02.06.2022|Besprechung mit ZADA: Softwarefunktionen & Datenmodell|2,00
+|04.06.2022|Besprechung mit Team und HOBE: Evaluierungen, Vorstudie|3,00
+|05.06.2022|Vorstudie überarbeiten: Zieldefinition, Anforderungen|1,50
+|06.06.2022|Projektantrag 1. Entwurf|1,00
+|07.06.2022|Projektantrag überarbeiten|1,00
+|08.06.2022|Use Case Diagramm erstellen|1,50
+|09.06.2022|Vorstudie überarbeiten: Zieldefinition, Aufbau|0,75
+|12.06.2022|Vorstudie überarbeiten: Zieldefinition, Aufbau, IST Prozesse, SOLL-Prozesse|4,25
+|14.06.2022|Datenbank 1. Entwurf: ER-Modell erstellen EC-180|1,00
+|16.06.2022|Besprechung mit Team: Nähere Definition von SOLL-Prozessen und Umformulierungen|2,00
+|17.06.2022|Vorstudie weiterbearbeiten: IST-Prozesse, SOLL-Prozesse|1,00
+|18.06.2022|Besprechung mit Team und HOBE und Überarbeitung der Vorstudie inklusive festgelegte IST- und SOLL-Prozesse|2,25
+|19.06.2022|Vorstudie weiterbearbeiten: Nicht-Ziele, Anforderungen|2,00
+|24.06.2022|Besprechung mit ZADA: Datenbankentwurf, Datenbanken Evaluierung|2,25
+|30.06.2022|Vorstudie weiterbearbeiten: IST-Prozesse, SOLL-Prozesse|1,00
+||Summe:|26,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|25.07.2022|Vorstudie weiterbearbeiten: SOLL-Prozesse|2,00
+|26.07.2022|Vorstudie weiterbearbeiten: SOLL-Prozesse|1,00
+|28.07.2022|Vorstudie weiterbearbeiten: SOLL-Prozesse|2,50
+||Summe:|5,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.08.2022|Vorstudie weiterbearbeiten: SOLL-Prozesse|2,00
+|01.08.2022|Erste Tests Datenbank-Anbindung-Tests|3,50
+|04.08.2022|Vorstudie überarbeiten: Zieldefinition, Anforderungen, Software-Design|2,25
+|04.08.2022|Requirements: Festlegung der User Stories|0,50
+|05.08.2022|Requirements: Spezifikation der User Stories|1,25
+|07.08.2022|Requirements: Spezifikation der User Stories|2,25
+|11.08.2022|Vorstudie weiterbearbeiten: IST-Prozesse, SOLL-Prozesse|2,75
+|12.08.2022|Vorstudie weiterbearbeiten: IST-Prozesse, SOLL-Prozesse|2,00
+|12.08.2022|Requirements: Spezifikation der User Stories|2,50
+|13.08.2022|Vorstudie überarbeiten: Zieldefinition, Anforderungen, Software-Design|1,75
+|13.08.2022|Requirements: Spezifikation der User Stories|2,75
+|13.08.2022|Vorstudie überarbeiten: Zieldefinition, Anforderungen, Software-Design|1,00
+|14.08.2022|Requirements: Spezifikation der User Stories|2,50
+|26.08.2022|Requirements: Spezifikation der User Stories|3,75
+|26.08.2022|Vorstudie - SWOT Analyse|1,25
+|26.08.2022|Requirements: Spezifikation der User Stories|1,00
+|27.08.2022|Erste Tests Datenbank-Anbindung-Tests|2,75
+|30.08.2022|Requirements: Spezifikation der User Stories|0,50
+|31.08.2022|Requirements: Überarbeitung der User Stories|2,75
+||Summe:|39,00
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.09.2022|Requirements: Überarbeitung der User Stories|1,50
+|02.09.2022|Requirements: Überarbeitung der User Stories|2,75
+|05.09.2022|Requirements: Überarbeitung der User Stories|1,50
+|06.09.2022|Backlog: Organisation des Youtrack Projekts (Workflow)|1,00
+|08.09.2022|Backlog: Organisation des Youtrack Projekts (Workflow)|1,00
+|10.09.2022|Backlog: Organisation des Youtrack Projekts (Workflow)|0,50
+|12.09.2022|Backlog: Organisation des Youtrack Projekts (Workflow)|2,00
+|13.09.2022|Backlog: Gruppierung der User Stories in zukünftige Epics und Stories|4,00
+|15.09.2022|Backlog: Gruppierung der User Stories in zukünftige Epics und Stories|1,25
+|19.09.2022|Backlog: Gruppierung der Bedingungen aus User Stories in Features|3,00
+|20.09.2022|Backlog: Gruppierung der Bedingungen aus User Stories in Features|2,00
+|21.09.2022|Backlog: Formulierung der Epics, Stories und Features|3,75
+|22.09.2022|Backlog: Formulierung der Epics, Stories und Features|1,00
+|24.09.2022|Projektantrag finalisieren & einreichen|3,25
+|25.09.2022|Backlog: Formulierung der Epics, Stories und Features|1,00
+|26.09.2022|Backlog: Formulierung der Epics, Stories und Features|2,00
+|27.09.2022|Backlog: Formulierung der Epics, Stories und Features|2,50
+|28.09.2022|Backlog: Formulierung der Epics, Stories und Features|2,75
+|29.09.2022|Backlog: Formulierung der Epics, Stories und Features|1,00
+||Summe:|37,75
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|02.10.2022|Backlog: Formulierung der Epics, Stories und Features|1,25
+|03.10.2022|Backlog: Formulierung der Epics, Stories und Features|3,50
+|04.10.2022|Backlog: Übernehmen von Epics, Stories und Features in Youtrack|3,25
+|05.10.2022|Besprechung mit Team: Backlog in YouTrack Workflows und Tasks|1,50
+|08.10.2022|Besprechung mit Team und HOBE: Erster Sprint, Finalisierung der Vorstudie, Weiteres Vorgehen|3,25
+|08.10.2022|Backlog: Übernehmen von Epics, Stories und Features in Youtrack|1,00
+|11.10.2022|ER-Modell erstellen EC-180|1,00
+|11.10.2022|Besprechung mit ZADA: Datenbank ER Modell finalisiert|2,50
+|13.10.2022|Backlog: Übernehmen von Epics, Stories und Features in Youtrack|1,50
+|16.10.2022|Backlog: Übernehmen von Epics, Stories und Features in Youtrack|0,50
+|18.10.2022|Besprechung mit Team: Geplante Features und Weiterentwicklung des Projekts|1,25
+|19.10.2022|DB Evaluierung: Erste Überlegungen zum Aufbau|2,50
+|20.10.2022|DB Evaluierung: Aufbau festlegen|1,25
+|22.10.2022|Besprechung: Planung der nächsten Sprints und Projektplanung|4,75
+|22.10.2022|Backlog: Ergänzung von Features in Youtrack|3,00
+|22.10.2022|Besprechung mit ZADA:  Datenbank Evaluierung|2,00
+|24.10.2022|DB Evaluierung: Aufbau festlegen|1,25
+|25.10.2022|Erste Tests Datenbank-Anbindung|2,00
+|25.10.2022|Testdatenbank & Systemdatenbank erzeugen EC-183|0,25
+|26.10.2022|DB Evaluierung: Recherchen zu Datenbanken|1,00
+|26.10.2022|Backlog: Ergänzung von Features in Youtrack|2,5
+|29.10.2022|DB Evaluierung: Recherchen zu Datenbanken|1,5
+|31.10.2022|DB Evaluierung: Recherchen zu Datenbanken|0,75
+||Summe:|43,25
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.11.2022|DB Evaluierung: Recherchen zu Datenbanken|0,50
+|05.11.2022|PopUp MSTeams nach erstmaligem Einloggen Vorbereitung EC-241|3,25
+|08.11.2022|Speicherung der TeamsID in Datenbank EC-243|1,00
+|08.11.2022|Check zum Login in Datenbank EC-247|0,50
+|09.11.2022|Testdatenbank & Systemdatenbank erzeugen EC-183|1,75
+|11.11.2022|Testdatenbank & Systemdatenbank erzeugen EC-183|1,75
+|13.11.2022|Testdatenbank & Systemdatenbank erzeugen EC-183|1,00
+|14.11.2022|Testdatenbank mit Testdaten befüllen EC-184|2,25
+|15.11.2022|Testdatenbank mit Testdaten befüllen EC-184|2,00
+|16.11.2022|DB Evaluierung: Zusammenstellung Aufbau und erste Informationen|1,75
+|22.11.2022|Testdatenbank mit Testdaten befüllen EC-184|1,00
+|22.11.2022|Implementierung Daten Auslesen EC-47|2,25
+|23.11.2022|Implementierung Daten Auslesen EC-47|1,25
+|27.11.2022|Besprechung mit ZADA: Datenbankanbindung|1,00
+||Summe:|21,25
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|02.12.2022|Implementierung Daten Auslesen EC-47|1,75
+|03.12.2022|Implementierung Daten Auslesen EC-47|4,75
+|04.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|05.12.2022|Implementierung Daten Auslesen EC-47|1,00
+|06.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|07.12.2022|Implementierung Daten Auslesen EC-47|4,00
+|08.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|09.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|12.12.2022|Implementierung Daten Auslesen EC-47|1,00
+|13.12.2022|Besprechung mit Team und ZADA: Weiteres Vorgehen bis Abgabetermin|1,00
+|14.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|17.12.2022|Implementierung Daten Auslesen EC-47|1,00
+|20.12.2022|Implementierung Daten Auslesen EC-47|3,00
+|22.12.2022|Implementierung Daten Auslesen EC-47|1,00
+|24.12.2022|Besprechung mit Team: Allgemeine Zugriffseinrichtungen & erste Testversuche|1,50
+|25.12.2022|Implementierung Daten Auslesen EC-47|2,00
+|25.12.2022|Implementierung Daten zu Cluster auslesen EC-65|2,00
+|28.12.2022|Implementierung Daten zu Cluster auslesen EC-65|2,50
+|29.12.2022|Implementierung Daten zu Cluster auslesen EC-65|1,50
+|30.12.2022|Implementierung Daten zu Cluster auslesen EC-65|2,50
+||Summe:|40,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.01.2023|Implementierung Daten zu Cluster auslesen EC-65|4,50
+|03.01.2023|Implementierung Daten zu Cluster auslesen EC-65|2,50
+|04.01.2023|Implementierung Daten zu Cluster auslesen EC-65|1,50
+|05.01.2023|Uhrzeitfelder EC-94|2,00
+|06.01.2023|DB Evaluierung: Schreiben SOLL-Situation, Definition, Stakeholderanalyse|1,00
+|17.01.2023|DB Evaluierung: Schreiben SOLL-Situation, Definition, Stakeholderanalyse|0,50
+|18.01.2023|DB Evaluierung: Schreiben Zieldefinition, Hosting/On Premise|2,00
+|27.01.2023|Backlog: Ergänzung von Features in Youtrack|1,50
+|28.01.2023|Backlog: Ergänzung von Features in Youtrack|2,50
+|30.01.2023|DB Evaluierung: NoSQL/SQL|0,50
+||Summe:|18,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|04.02.2023|Überarbeitung Individueller Teil Zusammenstellung|0,75
+|04.02.2023|DB Evaluierung: Recherchen zu Datenbanken|1,25
+|05.02.2023|Datenbank anpassen (Cluster um Spalte ergänzt)|0,75
+|06.02.2023|DB Evaluierung: Recherchen zu Datenbanken|0,50
+|11.02.2023|DB Evaluierung: Evaluierung der Anforderungen|1,50
+|12.02.2023|DB Evaluierung: Evaluierung der Anforderungen|1,50
+|13.02.2023|Besprechung mit ZADA: DB Evaluierung - Anforderungen an Datenbanken|1,00
+|13.02.2023|DB Evaluierung: Evaluierung der Anforderungen|0,50
+|14.02.2023|DB Evaluierung: Evaluierung der Anforderungen|2,00
+|15.02.2023|Uhrzeitfelder EC-115|1,00
+|15.02.2023|Terminansicht mit Daten befüllen EC-100|2,25
+|15.02.2023|DB Evaluierung: Evaluierung der Anforderungen|1,50
+|16.02.2023|Filter zu Raumgröße und Ausstattung EC-116|1,00
+|16.02.2023|Terminansicht mit Daten befüllen EC-100|3,50
+|16.02.2023|Terminansicht mit Daten befüllen EC-100|2,25
+|17.02.2023|Terminansicht mit Daten befüllen EC-100|2,00
+|17.02.2023|DB Evaluierung: Evaluierung der Anforderungen|1,75
+|20.02.2023|Individueller Teil: Implementierung Datenbank|0,50
+|20.02.2023|Besprechung mit ZADA: DB Evaluierung - Anforderungen an Datenbanken|0,75
+|21.02.2023|Individueller Teil: Implementierung Datenbank|1,50
+|23.02.2023|DB Evaluierung: Evaluierung der Anforderungen|0,50
+|26.02.2023|Individueller Teil: Implementierung Datenbank|1,50
+|27.02.2023|Individueller Teil: Implementierung Datenbank|1,25
+|28.02.2023|Individueller Teil: Implementierung Datenbank|2,25
+||Summe:|33,25
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.03.2023|Besprechung mit ZADA: DB Evaluierung - Anforderungen an Datenbanken|0,50
+|04.03.2023|Individueller Teil: Implementierung Datenbank|2,00
+|05.03.2023|Individueller Teil: Implementierung Datenbank|2,50
+|06.03.2023|Individueller Teil: Implementierung Datenbank|1,00
+|09.03.2023|Dokumentenerstellung Abgabedokument|1,50
+|10.03.2023|Dokumentenerstellung Abgabedokument|1,00
+|12.03.2023|DB Evaluierung: Evaluierung der Anforderungen|2,25
+|13.03.2023|Besprechung: Finalisierungen|1,00
+|14.03.2023|Dokumentenerstellung Abgabedokument|4,25
+|14.03.2023|DB Evaluierung: Evaluierung der Anforderungen|0,75
+|15.03.2023|Dokumentenerstellung Abgabedokument|2,50
+|16.03.2023|Dokumentenerstellung Abgabedokument|3,50
+|18.03.2023|Dokumentenerstellung Abgabedokument|0,50
+|18.03.2023|Kurzfassung schreiben|1,50
+|18.03.2023|A3-Plakat|0,75
+|21.03.2023|Abstract|0,50
+|21.03.2023|Individueller Teil: finalisieren|2,25
+|21.03.2023|Dokumentenerstellung Abgabedokument|1,00
+|22.03.2023|Dokumentenerstellung Abgabedokument|1,50
+|25.03.2023|Dokumentenerstellung Abgabedokument|3,50
+|26.03.2023|Dokumentenerstellung Abgabedokument|2,75
+|27.03.2023|Dokumentenerstellung Abgabedokument|1,75
+||Summe:|
+//TODO Lara: Stundenliste vervollständigen
+|===
+
+<<<
+=== Stundennachweise Raymond Denis Vladu
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.05.2022|Erstellung Übersichtsdokument|3,00
+|01.05.2022|Besprechung Team: Themen in Übersichtsdokument|1,00
+|01.05.2022|Formulierung Projektkonzept|3,00
+|03.05.2022|Erstellung erster Projektkonzept-Prototyp|3,00
+|08.05.2022|Besprechung mit Team: Prototypen, Aufgabenzuteilung|2,00
+|11.05.2022|Besprechung mit HOBE: Grundsystem, Anmeldung über WebUntis Schnittstelle|1,25
+|12.05.2022|Besprechung mit Team: Doppelte Buchungen, Raumausstattungseinträge, Vorstudieneinteilung|0,75
+|14.05.2022|Besprechung mit Team und HOBE: WebApp priorisiert, EduCluster mit WebUntis syncen, Benachrichtigungsmöglichkeiten|2,50
+|15.05.2022|Konzeptpapier 1. Entwurf|1,00
+|18.05.2022|Besprechung mit Team: Vorstudie (Umstrukturieren, Architekturdiagramm, Use Cases, Finalisierung)|2,75
+|19.05.2022|Erstellung Applikation-Architektur|3,00
+|20.05.2022|Vorstudie: Zieldefinition, Aufbau|3,00
+|26.05.2022|Besprechung mit Team: Vorstudie (Tools Vorschläge, Verbesserungen)|3,00
+|28.05.2022|Besprechung mit Team und HAGE: IST- und SOLL-Prozesse, Aktivitätsdiagramme, Hosting|1,50
+|29.05.2022|Eine kleine Applikation entwickelt um WebUntis API zu testen (webuntis-api-test)|3,00
+||Summe:|33,75
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|04.06.2022|Besprechung mit Team und HOBE: Evaluierungen, Vorstudie|3,00
+|05.06.2022|Vorstudie:  Anforderungen|1,50
+|06.06.2022|Projektantrag 1. Entwurf|1,00
+|07.06.2022|Projektantrag überarbeiten|1,00
+|12.06.2022|Vorstudie: Zieldefinition, Aufbau|2,00
+|12.06.2022|Vorstudie: Nicht-Ziele, Anforderungen|2,00
+|16.06.2022|Besprechung mit Team: Nähere Definition von SOLL-Prozessen und Umformulierungen|2,00
+|18.06.2022|Besprechung mit Team und HOBE und Überarbeitung der Vorstudie inklusive festgelegte IST- und SOLL-Prozesse|2,25
+|19.06.2022|Vorstudie: Nicht-Ziele, Anforderungen|2,00
+|19.06.2022|Projektaufsetzung lokal und auf GitHub|1,00
+|25.06.2022|Konkrete Definierung der Prozesse und grobe Darstellung des GUIs|2,25
+|25.06.2022|Header Komponente + Anfang Cluster Seite mit Komponenten|2,00
+|30.06.2022|Vorstudie: Funktionale Anforderungen|3,00
+|30.06.2022|Vorstudie: Nicht-funktionale Anforderungen, Nicht-Ziele|2,00
+||Summe:|27,00
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|04.08.2022|Vorstudie: Zieldefinition, Anforderungen, Software-Design|2,25
+|12.08.2022|Vorstudie: IST-Prozesse, SOLL-Prozesse|2,00
+|13.08.2022|Vorstudie: Zieldefinition, Anforderungen, Software-Design|1,75
+|13.08.2022|Vorstudie: Zieldefinition, Anforderungen, Software-Design|1,00
+|20.08.2022|Vorstudie: Kapitel Software Design geschrieben|2,00
+|26.08.2022|Vorstudie - SWOT Analyse|1,25
+|28.08.2022|Setup des Projekts fortgesetzt (tRPC API sowie Backend-Struktur entwickelt)|2,50
+||Summe:|12,75
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.10.2022|Webuntis API Test Projekt aufgestellt und Endpoints auf Schnittstelle getestet|1,00
+|05.10.2022|Besprechung mit Team: Backlog in YouTrack Workflows und Tasks|1,50
+|08.10.2022|Besprechung mit Team und HOBE: Erster Sprint, Finalisierung der Vorstudie, Weiteres Vorgehen|3,25
+|09.10.2022|Ticket EC-42: Login Maske erstellt|4,00
+|13.10.2022|Ticket EC-220: Hintergrund der Login-Seite erstellt|2,00
+|18.10.2022|Besprechung mit Team: Geplante Features und Weiterentwicklung des Projekts|1,25
+|19.10.2022|Ticket EC-235: Menüleiste erstellen|6,00
+|20.10.2022|Ticket EC-45: Checkbox angemeldet bleiben|1,00
+|20.10.2022|Ticket EC-49: Logout Funktionalität|1,00
+|22.10.2022|Besprechung: Planung der nächsten Sprints und Projektplanung|4,75
+|23.10.2022|Ticket EC-244: Menüleiste-Drawer auf Mobile-Ansicht erstellen|1,00
+|25.10.2022|Lara bei DB-Aufsetzung unterstützt und Projektstruktur erklärt|2,00
+|26.10.2022|Ticket EC-248: Vorbereitung Session in der DB speichern|3,00
+|29.10.2022|Individuellen Teil angefangen|4,00
+||Summe:|35,75
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|20.11.2022|Ticket EC-242: Popup MSTeams nach erstmaligem Login|6,00
+|20.11.2022|Ticket EC-52 Cluster erstellen Button|0,50
+|27.11.2022|Support Developer Lara|1,00
+|28.11.2022|Ticket EC-53: Clustermenü zur Erstellung und zum Einsehen von Cluster als Clusteradministrator|8,00
+|29.11.2022|Ticket EC-66: Mitglieder einladen Button|1,00
+|29.11.2022|Ticket EC-67: Mitglieder Einlade Menü|2,00
+||Summe:|18,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.12.2022|Ticket EC-68: + und – Buttons|4,00
+|01.12.2022|Ticket EC-64: Clustermenü zum Bearbeiten für Clusteradministrator|2,00
+|13.12.2022|Besprechung mit Team und ZADA: Weiteres Vorgehen bis Abgabetermin|1,00
+|23.12.2022|Ticket EC-92: Terminsuche|5,00
+|24.12.2022|Ticket EC-237: Clustersuche|2,00
+|24.12.2022|Besprechung mit Team: Allgemeine Zugriffseinrichtungen & erste Testversuche|1,50
+|25.12.2022|Support Developer Lara: EC-47|1,00
+|26.12.2022|Ticket EC-113: Raumsuche|4,00
+|29.12.2022|ASCII-DOC aufgesetzt|1,00
+||Summe:|21,50
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|04.01.2023|Projektantrag in Ascii-Doc-Dokument übertragen|2,00
+|06.01.2023|Support Developer Lara: EC-65 und EC-94|1,00
+|06.01.2023|Ticket EC-69: Funktionalität des Anfragen-Versenden-Buttons implementiert|4,00
+|12.01.2023|Ticket EC-84: Informationsmeldung Einladung|4,00
+|15.01.2023|Evaluierung angefangen|4,00
+|20.01.2023|Evaluierung abgeschlossen|6,00
+|22.01.2023|EC-54: Checkbox zur Clusterführung|0,50
+|22.01.2023|EC-55: Geschlossene Clusterführung in Abfrage|3,00
+|22.01.2023|EC-56: Speichern und Abbrechen|2,00
+|23.01.2023|EC-57: Automatisches Befüllen in der DB bei Clustererstellung|2,00
+|23.01.2023|EC-58: Automatische Abfrage beim Öffnen eines bestehenden Cluster|3,50
+|23.01.2023|EC-63: Clustermenü zum Ansehen für Mitglieder und Benutzer|1,50
+|24.01.2023|EC-211: Cluster erzeugen|0,50
+|24.01.2023|EC-82: Schaltflächen zum Erteilen und Entziehen der Administratorenrechte|2,00
+|25.01.2023|EC-91: Termin finden Button|0,25
+|25.01.2023|EC-98: Termin auswählen Button|0,25
+|25.01.2023|EC-136: Termin ansehen Schaltfläche|0,25
+|25.01.2023|EC-246: Funktionalitäten der Drawer-Buttons einbauen|0,25
+|25.01.2023|EC-249: Hauptmenü Cluster und Terminliste scrollbar oder Seiten|0,25
+|25.01.2023|EC-146: Einstellungen-Button implementiert|0,25
+|25.01.2023|EC-147: Einstellungsseite|1,00
+|25.01.2023|EC-148: Einstellungsseite Felder laden|0,25
+|26.01.2023|EC-150: Speichern Information|3,00
+||Summe:|41,75
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|01.02.2023|EC-99: Terminansicht zum Beitreten|1,25
+|01.02.2023|EC-101: Cluster beitreten aus Terminansicht|0,50
+|01.02.2023|EC-255, EC-256 Bugs gefixt|0,50
+|05.02.2023|EC-95: Filter zu Unterrichtsfach und Thema Übernehmen|1,00
+|05.02.2023|EC-238: Filter zu Clustername, Unterrichtsfach und Thema Übernehmen|0,25
+|06.02.2023|EC-86: Informationsmeldung Einladung|5,00
+|07.02.2023|EC-87: Bestätigen und Ablehnen Button|2,00
+|12.02.2023|Technische Implementierung angefangen|2,00
+|16.02.2023|Technische Implementierung abgeschlossen|4,00
+|21.02.2023|EC-111: Termin erstellen Button.|0,50
+|22.02.2023|EC-121: Terminmenü Administrator Bearbeiten.|3,00
+||Summe:|20,00
+|===
+
+[%header,cols="1,4,1"]
+|===
+|Datum|Beschreibung|Aufwand [h]
+|07.03.2023|EC-117: Raumabfrage WebUntis.|6,00
+|07.03.2023|EC-118: Darstellung Raumabfrage durch WebUntis|2,00
+|08.03.2023|EC-114: Filter anwenden Schaltfläche WebUntis Vorbereitung|0,50
+|09.03.2023|EC-104: Cluster Beitreten Button|0,50
+|13.03.2023|EC-120: Raum auswählen Schaltfläche|2,50
+|13.03.2023|EC-124: Automatisches Befüllen des Erstellers und Clusters in der Datenbank|1,00
+|13.03.2023|Besprechung: Finalisierungen|1,00
+|14.03.2023|Dokumentenerstellung Abgabedokument|4,25
+|15.03.2023|Dokumentenerstellung Abgabedokument|2,50
+|16.03.2023|Dokumentenerstellung Abgabedokument|3,50
+|18.03.2023|Dokumentenerstellung Abgabedokument|0,50
+|18.03.2023|Kurzfassung|1,50
+|18.03.2023|A3-Plakat|0,75
+|19.03.2023|Sämtliche Probleme gefixt und offene TODOs erledigt|4,00
+|19.03.2023|EC-96: Filter-Anwenden-Schaltfläche|2,00
+|21.03.2023|Abstract|0,50
+|21.03.2023|Dokumentenerstellung Abgabedokument|1,00
+|22.03.2023|Dokumentenerstellung Abgabedokument|1,50
+|23.03.2023|EC-133: Automatische Versendung der Informationsmeldung|1,00
+|24.03.2023|EC-257: Cluster löschen|1,00
+|25.03.2023|Einleitung, Zusammenfassung, Vorwort|4,50
+|16.03.2023|EC-127: Termin in WebUntis synchronisieren|3,00
+|26.03.2023|EC-131: Termin aus WebUntis entfernen|2,00
+|26.03.2023|Individuellen Teil abgeschlossen|4,00
+|27.03.2023|Offene Bugs gefixt und wichtige Prozesse getestet|5,00
+||Summe:|56,00
+|===
+
+<<<
+=== Stundennachweise Christoph Kiessewetter
+//TODO Christoph: Stundenliste einfügen
