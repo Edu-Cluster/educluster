@@ -1,10 +1,22 @@
 import authenticatedWebUntis from '../utils/untis';
+import { prisma } from '../utils/prisma';
 
 export const isRoomAvailable = async (
   untisId: number,
+  roomname: string,
   from: Date,
   to: Date,
 ) => {
+  const roomAlreadyInUse = await prisma.appointment.findFirst({
+    where: {
+      roomname,
+    },
+  });
+
+  if (roomAlreadyInUse) {
+    return false;
+  }
+
   let fromDate: number;
   let fromMonth = (from.getMonth() + 1).toString();
   let fromDay = from.getDate().toString();
