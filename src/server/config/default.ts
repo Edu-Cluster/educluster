@@ -1,3 +1,5 @@
+// NOTE: Local Env-Variables and Vercel Env-Variables must be manually synced!
+
 const customConfig: {
   port: number;
   accessTokenExpiresIn: number;
