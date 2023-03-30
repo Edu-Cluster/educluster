@@ -127,7 +127,7 @@ export const sendClusterDeletedWarning = async ({
     for (const id of input.userIds) {
       await insertNewNotification(
         'Warnung',
-        `Der Cluster "${input.clusterId}#${input.clusterId}" wurde gelöscht!`,
+        `Der Cluster "${input.clusterName}#${input.clusterId}" wurde gelöscht!`,
         id,
         username,
       );

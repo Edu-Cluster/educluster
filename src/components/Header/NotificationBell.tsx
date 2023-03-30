@@ -221,7 +221,13 @@ const NotificationBell = (props: Props) => {
                 <div className="w-full break-words">
                   <span className="flex justify-between">
                     <span className="flex gap-2">
-                      <p className="text-md font-semibold">
+                      <p
+                        className={`text-md font-semibold${
+                          notification.title === 'Warnung'
+                            ? ' text-red-600'
+                            : ' text-green-600'
+                        }`}
+                      >
                         {notification.title}
                       </p>
                       {!notification.viewed ? (
@@ -240,7 +246,7 @@ const NotificationBell = (props: Props) => {
                     </span>
                   </span>
                   <p className="text-sm leading-tight">{notification.body}</p>
-                  {notification.title === 'Einladung' ? (
+                  {notification.title === 'Einladung' && (
                     <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-4 mb-2">
                       <div
                         className="banner-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
@@ -261,8 +267,6 @@ const NotificationBell = (props: Props) => {
                         <XIcon height={20} width={20} />
                       </div>
                     </div>
-                  ) : (
-                    <div>TEST</div>
                   )}
                 </div>
               </div>
