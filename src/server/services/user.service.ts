@@ -38,6 +38,7 @@ export const findUsersByEduClusterUsername = async (
     where: {
       username: {
         contains: username,
+        mode: 'insensitive',
       },
       AND: [
         {
@@ -45,6 +46,7 @@ export const findUsersByEduClusterUsername = async (
             member_of: {
               some: {
                 cluster_id: clusterId,
+                is_active: true,
               },
             },
           },

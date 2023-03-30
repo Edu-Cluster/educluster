@@ -246,7 +246,7 @@ const NotificationBell = (props: Props) => {
                     </span>
                   </span>
                   <p className="text-sm leading-tight">{notification.body}</p>
-                  {notification.title === 'Einladung' && (
+                  {notification.title === 'Einladung' ? (
                     <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-4 mb-2">
                       <div
                         className="banner-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
@@ -263,6 +263,20 @@ const NotificationBell = (props: Props) => {
                       >
                         <p className="mr-2 text-red-500 dark:text-red-500">
                           Ablehnen
+                        </p>
+                        <XIcon height={20} width={20} />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex">
+                      <div
+                        className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
+                        onClick={() =>
+                          deleteNotification(notifications[idx].id)
+                        }
+                      >
+                        <p className="mr-2 text-red-500 dark:text-red-500">
+                          Benachrichtigung Löschen
                         </p>
                         <XIcon height={20} width={20} />
                       </div>
