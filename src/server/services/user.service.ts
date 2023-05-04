@@ -37,7 +37,7 @@ export const findUsersByEduClusterUsername = async (
   await prisma.person.findMany({
     where: {
       username: {
-        contains: username,
+        startsWith: username,
         mode: 'insensitive',
       },
       AND: [

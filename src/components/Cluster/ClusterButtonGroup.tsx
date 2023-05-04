@@ -29,6 +29,7 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
     clusterDetails,
     clusterAssociation,
     userOfCluster,
+    authUser,
   } = useStore();
   const clusterfullname = `${clusterDetails.clustername}*${clusterDetails.id}`;
   const isAdmin = clusterAssociation === clusterAssociations.IS_ADMIN;
@@ -101,7 +102,9 @@ const ClusterButtonGroup = ({ isNotMainPage, isPrivate }: Props) => {
 
         userOfCluster.forEach((userArr: any) => {
           userArr.forEach((user: any) => {
-            userIds.push(user.id);
+            if (authUser && user.username !== authUser.username) {
+              userIds.push(user.id);
+            }
           });
         });
 

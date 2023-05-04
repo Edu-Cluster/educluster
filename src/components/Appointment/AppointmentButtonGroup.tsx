@@ -15,7 +15,7 @@ type Props = {
 };
 
 const AppointmentButtonGroup = ({ cluster, appointment }: Props) => {
-  const { clusterAssociation, userOfAppointment } = useStore();
+  const { clusterAssociation, userOfAppointment, authUser } = useStore();
   const isAdmin = clusterAssociation === clusterAssociations.IS_ADMIN;
   const id = appointment?.id;
   const name = appointment?.name;
@@ -40,7 +40,9 @@ const AppointmentButtonGroup = ({ cluster, appointment }: Props) => {
 
         userOfAppointment.forEach((userArr: any) => {
           userArr.forEach((user: any) => {
-            userIds.push(user.id);
+            if (authUser && user.username !== authUser.username) {
+              userIds.push(user.id);
+            }
           });
         });
 

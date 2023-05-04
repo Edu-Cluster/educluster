@@ -48,6 +48,9 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
   };
 
   const onSubmit = handleSubmit(() => {
+    setSearchItemsLoading(true);
+    setAppointments(null);
+
     // Get values from the input fields
     const { timeFrom, timeTo } = getValues();
 
@@ -64,8 +67,8 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
       timeTo: timeTo === '-1' ? null : timeTo,
       dateFrom: newFromDate || null,
       dateTo: newToDate || null,
-      topics: topics || null,
-      subject: subjects || null,
+      topics: topics && topics.length ? topics : null,
+      subject: subjects && subjects.length ? subjects : null,
     });
 
     // Reset some filters
@@ -142,11 +145,17 @@ const AppointmentFilterBox = ({ showResetButton }: Props) => {
           <SubjectTopicSearchField resource={resources.TOPIC} />
         </div>
         {subjects && subjects.length ? (
-          <div className="flex flex-wrap gap-2 w-full">
-            <p className="mr-2 text-cyan-700 dark:text-cyan-700">Fächer</p>
-            {subjects.map((subject, idx) => (
-              <FullTag key={idx} resource={resources.SUBJECT} name={subject} />
-            ))}
+          <div className="mt-4">
+            <ItemListHeader title="Fächer" />
+            <div className="flex flex-wrap gap-2 mt-4">
+              {subjects.map((subject, idx) => (
+                <FullTag
+                  key={idx}
+                  resource={resources.SUBJECT}
+                  name={subject}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <></>

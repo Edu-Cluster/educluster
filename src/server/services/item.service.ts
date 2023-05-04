@@ -101,7 +101,7 @@ export const readPublicAppointments = async (name?: string) => {
         cluster_appointmentTocluster: {
           is_private: false,
         },
-        name: { contains: name },
+        name: { startsWith: name },
       },
       include: { person: true },
     });
@@ -137,7 +137,7 @@ export const readSpecificPublicAppointments = async (
         is_private: false,
       },
       topics_for_appointment: {
-        ...(topics ? { topic: { in: topics } } : {}),
+        ...(topics ? { every: { topic: { in: topics } } } : {}),
         ...(subjects
           ? {
               every: {
@@ -162,7 +162,7 @@ export const readSpecificPublicAppointments = async (
             },
           }
         : {}),
-      ...(name ? { name: { contains: name } } : {}),
+      ...(name ? { name: { startsWith: name } } : {}),
     },
     include: {
       person: true,
@@ -195,7 +195,7 @@ export const readPublicClusters = async (clustername?: string) => {
     return await prisma.cluster.findMany({
       where: {
         is_private: false,
-        clustername: { contains: clustername },
+        clustername: { startsWith: clustername },
       },
       include: { person: true },
     });
@@ -542,7 +542,7 @@ export const getAllRooms = async (name?: string) => {
   if (name) {
     return await prisma.room.findMany({
       where: {
-        name: { contains: name },
+        name: { startsWith: name },
       },
     });
   }

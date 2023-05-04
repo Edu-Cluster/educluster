@@ -32,6 +32,7 @@ export const readTopics = async (name) =>
   await prisma.topic.findMany({
     where: {
       name: { contains: name },
+      is_visible: true,
     },
   });
 

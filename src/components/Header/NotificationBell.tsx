@@ -3,7 +3,7 @@ import useStore from '../../lib/store';
 import { clusterAssociations, statusCodes } from '../../lib/enums';
 import trpc from '../../lib/trpc';
 import { useTheme } from 'next-themes';
-import { CheckIcon, XIcon } from '@heroicons/react/outline';
+import { CheckIcon, TrashIcon, XIcon } from '@heroicons/react/outline';
 import { deleteCookie } from 'cookies-next';
 import Loader from '../Loader';
 
@@ -245,40 +245,36 @@ const NotificationBell = (props: Props) => {
                       </p>
                     </span>
                   </span>
-                  <p className="text-sm leading-tight">{notification.body}</p>
                   {notification.title === 'Einladung' ? (
-                    <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-4 mb-2">
-                      <div
-                        className="banner-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-36 sm:w-52"
-                        onClick={() => respondToInvitation(true, idx)}
-                      >
-                        <p className="mr-2 text-emerald-500 dark:text-emerald-500">
-                          Annehmen
-                        </p>
-                        <CheckIcon height={20} width={20} />
+                    <>
+                      <p className="text-sm leading-tight">
+                        {notification.body}
+                      </p>
+                      <div className="flex flex-wrap sm:flex-nowrap justify-around gap-2 mt-2 mb-2">
+                        <div
+                          className="banner-button text-emerald-500 dark:hover:bg-emerald-100 hover:bg-emerald-100 w-16"
+                          onClick={() => respondToInvitation(true, idx)}
+                        >
+                          <CheckIcon height={20} width={20} />
+                        </div>
+                        <div
+                          className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-16"
+                          onClick={() => respondToInvitation(false, idx)}
+                        >
+                          <XIcon height={20} width={20} />
+                        </div>
                       </div>
-                      <div
-                        className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
-                        onClick={() => respondToInvitation(false, idx)}
-                      >
-                        <p className="mr-2 text-red-500 dark:text-red-500">
-                          Ablehnen
-                        </p>
-                        <XIcon height={20} width={20} />
-                      </div>
-                    </div>
+                    </>
                   ) : (
-                    <div className="flex">
+                    <div className="flex mt-2 gap-4">
+                      <p className="text-sm leading-9">{notification.body}</p>
                       <div
-                        className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-36 sm:w-52"
+                        className="banner-button text-red-500 dark:hover:bg-red-100 hover:bg-red-100 w-12"
                         onClick={() =>
                           deleteNotification(notifications[idx].id)
                         }
                       >
-                        <p className="mr-2 text-red-500 dark:text-red-500">
-                          Benachrichtigung Löschen
-                        </p>
-                        <XIcon height={20} width={20} />
+                        <TrashIcon height={20} width={20} />
                       </div>
                     </div>
                   )}

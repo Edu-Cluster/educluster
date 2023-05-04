@@ -106,9 +106,9 @@ const AppointmentPage: NextPage = () => {
           {tagsOfAppointment && tagsOfAppointment.length && (
             <div className="h-fit w-full max-w-[800px] mt-8">
               <ItemListHeader title="Tags" />
-              <div className="mt-2 px-2">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {tagsOfAppointment?.map((tag: string, idx: number) => (
-                  <Tag key={idx} name={tag} />
+                  <Tag key={idx} name={tag} bigger={true} />
                 ))}
               </div>
             </div>
