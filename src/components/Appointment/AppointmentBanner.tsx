@@ -23,7 +23,7 @@ const AppointmentBanner = ({ appointment }: Props) => {
     <div className="h-[700px] w-full max-w-[800px] sm:min-w-[400px] screen-xxl:max-w-[400px] card mt-16 px-8 flex flex-col items-center justify-around">
       <div className="h-auto flex flex-col items-center mt-2">
         <p className="text-md underline">LERNEINHEIT</p>
-        <p className="text-2xl">{appointmentname}</p>
+        <p className="text-2xl text-center">{appointmentname}</p>
         <div className="mt-12 w-full h-24 flex justify-center items-center">
           <Avatar type="thing" seed={appointmentname} bigger={true} />
         </div>

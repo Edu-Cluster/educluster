@@ -39,7 +39,7 @@ const ClusterItemInList = ({
         <div className="w-48 md:w-[400px] overflow-hidden">
           {description ? <p className="text-sm">{description}</p> : <></>}
         </div>
-        <div>###</div>
+        <div></div>
       </div>
     </div>
   );
