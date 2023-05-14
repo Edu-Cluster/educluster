@@ -202,7 +202,7 @@ const NotificationBell = (props: Props) => {
       </div>
       <div
         id="dropdown-bell-content"
-        className={`hidden absolute right-[-50%] w-[250px] sm:w-[400px] h-[500px] shadow-2xl flex-col items-start dropdown-content-click rounded-md${
+        className={`hidden absolute overflow-y-auto right-[-50%] w-[250px] sm:w-[400px] h-[500px] shadow-2xl flex-col items-start dropdown-content-click rounded-md${
           darkMode ? ' bg-black' : ' bg-white'
         }`}
       >
