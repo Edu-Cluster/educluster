@@ -20,3 +20,9 @@ Unser Tech-Stack besteht aus:
 - TailwindCSS
 - tRPC
 - Prisma
+
+## Links
+
+- Azure App: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Owners/appId/f7c7c0f0-1f3e-4444-b003-6e3c118178d0/objectId/eda4f9ba-619a-43ee-a86d-1147745abe71/isMSAApp~/false/defaultBlade/Overview/appSignInAudience/AzureADMyOrg/servicePrincipalCreated~/true
+- Microsoft Teams API Docs: https://docs.microsoft.com/en-us/graph/api/team-post?view=graph-rest-1.0&tabs=http
+- WebUntis API Docs: https://webuntis.noim.me/ 
